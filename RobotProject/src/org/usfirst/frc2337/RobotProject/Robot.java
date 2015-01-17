@@ -82,4 +82,47 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
     }
+    
+    
+    // -----------------------------------------------------
+    // Utility methods ...
+    // -----------------------------------------------------
+    /**
+     * Flag that states whether debug messages should be written.
+     */
+    private static volatile boolean debug = false;
+    
+    /**
+     * Return the status of Debug Mode
+     */
+    public static boolean isDebugModeEnabled() {
+        return debug;
+    }
+    
+    /**
+     * Enable/Disable whether Debug messages should be written.
+     * 
+     * @param state whether the debug output should be enabled or not.
+     */
+    public static void setDebugMode(boolean state) {
+        debug = state;
+    }
+    
+    /**
+     * Output a message.
+     * 
+     * @param message the message to be outputted.
+     */
+    public static void print(String message) {
+        System.out.println(message);
+    }
+    
+    /**
+     * Output a message if the Debug Mode is enabled.
+     * 
+     * @param message the message to be outputted.
+     */
+    public static void printDebug(String message) {
+        if (debug) System.out.println(message);
+    }
 }
