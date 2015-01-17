@@ -13,16 +13,19 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class chassis extends Subsystem {
 	//Declare variables and subsystem's contents
-    SpeedController frontLeft = RobotMap.chassisfrontLeft;
-    SpeedController backLeft = RobotMap.chassisbackLeft;
-    SpeedController frontRight = RobotMap.chassisfrontRight;
-    SpeedController backRight = RobotMap.chassisbackRight;
+    SpeedController frontLeft = RobotMap.chassisFrontLeft;
+    SpeedController backLeft = RobotMap.chassisBackLeft;
+    SpeedController frontRight = RobotMap.chassisFrontRight;
+    SpeedController backRight = RobotMap.chassisBackRight;
     RobotDrive robotDrive = new RobotDrive(backLeft, frontLeft, backRight, frontRight);
     
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-
+    
+    /**
+     * Set the default command that will be run whenever no commands for this subsystem are queued.
+     */
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

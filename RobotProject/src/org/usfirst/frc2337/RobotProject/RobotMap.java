@@ -1,6 +1,7 @@
 package org.usfirst.frc2337.RobotProject;
     
 
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -12,23 +13,31 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  * floating around.
  */
 public class RobotMap {
-    public static SpeedController chassisfrontLeft;
-    public static SpeedController chassisbackLeft;
-    public static SpeedController chassisfrontRight;
-    public static SpeedController chassisbackRight;
+    public static SpeedController chassisFrontLeft;
+    public static SpeedController chassisBackLeft;
+    public static SpeedController chassisFrontRight;
+    public static SpeedController chassisBackRight;
+    public static RobotDrive chassisRobotDrive;
 
 
     public static void init() {
-        chassisfrontLeft = new VictorSP(2);
-        LiveWindow.addActuator("chassis", "frontLeft", (VictorSP) chassisfrontLeft);
+        chassisFrontLeft = new VictorSP(2);
+        LiveWindow.addActuator("chassis", "frontLeft", (VictorSP) chassisFrontLeft);
         
-        chassisbackLeft = new VictorSP(0);
-        LiveWindow.addActuator("chassis", "backLeft", (VictorSP) chassisbackLeft);
+        chassisBackLeft = new VictorSP(0);
+        LiveWindow.addActuator("chassis", "backLeft", (VictorSP) chassisBackLeft);
         
-        chassisfrontRight = new VictorSP(3);
-        LiveWindow.addActuator("chassis", "frontRight", (VictorSP) chassisfrontRight);
+        chassisFrontRight = new VictorSP(3);
+        LiveWindow.addActuator("chassis", "frontRight", (VictorSP) chassisFrontRight);
         
-        chassisbackRight = new VictorSP(1);
-        LiveWindow.addActuator("chassis", "backRight", (VictorSP) chassisbackRight);
+        chassisBackRight = new VictorSP(1);
+        LiveWindow.addActuator("chassis", "backRight", (VictorSP) chassisBackRight);
+        
+        chassisRobotDrive = new RobotDrive(chassisBackLeft, chassisFrontLeft, chassisBackRight, chassisFrontRight);
+        
+        chassisRobotDrive.setSafetyEnabled(true);
+        chassisRobotDrive.setExpiration(0.1);
+        chassisRobotDrive.setSensitivity(0.5);
+        chassisRobotDrive.setMaxOutput(1.0);
     }
 }
