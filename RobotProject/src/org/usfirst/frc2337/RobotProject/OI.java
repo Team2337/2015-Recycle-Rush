@@ -12,6 +12,9 @@
 package org.usfirst.frc2337.RobotProject;
 
 import org.usfirst.frc2337.RobotProject.commands.*;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
