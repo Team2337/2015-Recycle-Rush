@@ -399,6 +399,14 @@ Children:
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: DoNothing
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: chassis}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: StopMotors
   Properties: {}
   Base: Commands
   Name: Commands

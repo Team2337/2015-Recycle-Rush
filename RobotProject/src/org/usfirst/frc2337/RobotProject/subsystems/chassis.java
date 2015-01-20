@@ -45,5 +45,43 @@ public class chassis extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
+    /**
+     * Stops all motors and sets their output to 0
+     */
+    public void stopMotors() {
+    	robotDrive.stopMotor();
+    }
+    
+    /**
+     * Controls the motors with an arcade-style control system.
+     * 
+     * @param moveValue The fraction of full speed to drive, ranging from -1.0 (full back) to 1.0 (full forward).
+     * @param rotateValue The fraction of full speed to rotate, ranging from -1.0 (left) to 1.0 (right).
+     */
+    public void driveArcade(double moveValue, double rotateValue) {
+    	robotDrive.arcadeDrive(moveValue, rotateValue);
+    }
+    
+    /**
+     * Controls the motors with a tank-style control system.
+     * 
+     * @param leftValue The fraction of full speed to drive the left motors, ranging from -1.0 (full back) to 1.0 (full forward).
+     * @param rightValue The fraction of full speed to drive the right motors, ranging from -1.0 (full back) to 1.0 (full forward).
+     */
+    public void driveTank(double leftValue, double rightValue) {
+    	robotDrive.tankDrive(leftValue, rightValue);
+    }
+    
+    /**
+     * Controls the motors with a mecanum drive setup.
+     * 
+     * @param moveValue The fraction of full speed to drive, ranging from -1.0 (full back) to 1.0 (full forward).
+     * @param strafeValue The fraction of full speed to strafe, ranging from -1.0 (full back) to 1.0 (full forward).
+     * @param rotateValue The fraction of full speed to rotate, ranging from -1.0 (full back) to 1.0 (full forward).
+     */
+    public void driveMecanum(double moveValue, double strafeValue, double rotateValue) {
+    	robotDrive.mecanumDrive_Cartesian(strafeValue, moveValue, rotateValue, 0);
+    }
 }
 
