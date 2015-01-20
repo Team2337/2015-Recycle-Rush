@@ -83,5 +83,14 @@ public class chassis extends Subsystem {
     public void driveMecanum(double moveValue, double strafeValue, double rotateValue) {
     	robotDrive.mecanumDrive_Cartesian(strafeValue, moveValue, rotateValue, 0);
     }
+    
+    /**
+     * Change the default command for the chassis.
+     * 
+     * @param defaultCommand The default command to use.
+     */
+    public void setDefaultCommand(Command defaultCommand) {
+    	setDefaultCommand(defaultCommand);
+    }
 }
 
