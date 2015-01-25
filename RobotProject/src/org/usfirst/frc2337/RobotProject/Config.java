@@ -16,9 +16,8 @@ public class Config {
        static {
 
               try {
-
                            ClassLoader loader = Thread.currentThread().getContextClassLoader();
-                           properties.load(loader.getResourceAsStream("config.properties"));
+                           properties.load(loader.getResourceAsStream("/home/admin/config.properties"));
 
                      } catch (IOException e) {
 
