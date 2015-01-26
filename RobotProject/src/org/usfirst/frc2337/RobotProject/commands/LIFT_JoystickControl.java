@@ -12,6 +12,7 @@
 package org.usfirst.frc2337.RobotProject.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc2337.RobotProject.Robot;
 import org.usfirst.frc2337.RobotProject.RobotMap;
@@ -43,9 +44,10 @@ public class  LIFT_JoystickControl extends Command {
     protected void execute() {
     	double liftJoystickY = Robot.oi.liftJoystick.getRawAxis(1);
     	
-    	if ((liftJoystickY > -.1 ) && (liftJoystickY < .1)) {
+    	//Check the joystick for a dead band, if in do...
+    	if ((liftJoystickY > -.1 ) && (liftJoystickY < .1)) { //Dead band
     		
-    		liftJoystickY = 0; 
+    		liftJoystickY = 0;  //Set Motor to 0 if in dead band
     		if (!setPointSet) {
     			Robot.lift.enable();
     			Robot.lift.setSetpoint(Robot.lift.getPosition());
@@ -75,6 +77,7 @@ public class  LIFT_JoystickControl extends Command {
     	RobotMap.liftMotor.set(0);
     	Robot.lift.enable();
 		Robot.lift.setSetpoint(Robot.lift.getPosition());
+		SmartDashboard.putNumber("Elevator", Robot.lift.getPosition());
     }
 
     // Called when another command which requires one or more of the same
