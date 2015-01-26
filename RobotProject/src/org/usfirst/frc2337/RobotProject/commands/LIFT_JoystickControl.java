@@ -48,16 +48,23 @@ public class  LIFT_JoystickControl extends Command {
     	if ((liftJoystickY > -.1 ) && (liftJoystickY < .1)) { //Dead band
     		
     		liftJoystickY = 0;  //Set Motor to 0 if in dead band
+    		//If setPointSet, is not set (so false), run this ONCE and
+    		//enable the Lift PID and set the PID to where the lift is
     		if (!setPointSet) {
-    			Robot.lift.enable();
-    			Robot.lift.setSetpoint(Robot.lift.getPosition());
-    			setPointSet = true;
+    			Robot.lift.enable(); //Enable Lift Pid
+    			Robot.lift.setSetpoint(Robot.lift.getPosition()); //Set the Lift
+    			//Make setPointSet true so this statment true so it won't loop
+    			setPointSet = true; 
     		}
     		
     	}
+    	
+    	//If the Joystick is out of the dead band, do..
     	else {
-    		Robot.lift.disable();
-    		RobotMap.liftMotor.set(0.15 * liftJoystickY);
+    		Robot.lift.disable(); //Disable the Lift PID
+    		//Make the motor be controlled by the joystick but at 15%
+    		RobotMap.liftMotor.set(0.15 * liftJoystickY); 
+    		//Make the setPointSet to false, so if in dead band, the PID can reset
     		setPointSet = false;
     		
     	}
