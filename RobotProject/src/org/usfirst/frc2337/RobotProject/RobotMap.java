@@ -12,10 +12,9 @@
 package org.usfirst.frc2337.RobotProject;
     
 
-import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import java.util.Vector;
 
@@ -60,7 +59,7 @@ public class RobotMap {
         LiveWindow.addActuator("Lift", "LimitUpper", liftUpperLimitSwitch);
         LiveWindow.addActuator("Lift", "LimitLower", liftLowerLimitSwitch);
         
-        liftAutoTote = new DigitalInput(2);
+        liftAutoTote = new DigitalInput(3);
         LiveWindow.addActuator("Lift", "AutoTote", liftAutoTote);
         
         

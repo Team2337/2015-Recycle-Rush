@@ -99,7 +99,7 @@ public class OI {
         
         //AutoToteLift Detector
         operatorControlsAutoTote = new JoystickButton(operatorControls, 10);
-        operatorControlsAutoTote.whileHeld(new LIFT_AutoToteLift(1,1));
+        operatorControlsAutoTote.whileHeld(new LIFT_AutoToteLift(1));
         
         //Smart Dashboard 
         SmartDashboard.putData("Pos0", new LIFT_PidSet(0,1));
