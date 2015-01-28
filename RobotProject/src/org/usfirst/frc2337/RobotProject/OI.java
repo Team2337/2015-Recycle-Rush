@@ -61,6 +61,7 @@ public class OI {
     public JoystickButton operatorControlsLift3;
     public JoystickButton operatorControlsLift4;
     public JoystickButton operatorControlsLift5;
+    public JoystickButton operatorControlsAutoTote;
     public Joystick operatorControls;
     
     public Joystick liftJoystick; //Lift Control (Precise Motor Action)
@@ -84,17 +85,21 @@ public class OI {
         
         //Tote Buttons (Pos0 - Pos5)
         operatorControlsLift0 = new JoystickButton(operatorControls, 4);
-        operatorControlsLift0.whenPressed(new LIFT_PidSet(0,1));
+        operatorControlsLift0.whileHeld(new LIFT_PidSet(0,1));
         operatorControlsLift1 = new JoystickButton(operatorControls, 5);
-        operatorControlsLift1.whenPressed(new LIFT_PidSet(1,1));
+        operatorControlsLift1.whileHeld(new LIFT_PidSet(1,1));
         operatorControlsLift2 = new JoystickButton(operatorControls, 6);
-        operatorControlsLift2.whenPressed(new LIFT_PidSet(2,1));
+        operatorControlsLift2.whileHeld(new LIFT_PidSet(2,1));
         operatorControlsLift3 = new JoystickButton(operatorControls, 7);
-        operatorControlsLift3.whenPressed(new LIFT_PidSet(0,1));
+        operatorControlsLift3.whileHeld(new LIFT_PidSet(0,1));
         operatorControlsLift4 = new JoystickButton(operatorControls, 8);
-        operatorControlsLift4.whenPressed(new LIFT_PidSet(1,1));
+        operatorControlsLift4.whileHeld(new LIFT_PidSet(1,1));
         operatorControlsLift5 = new JoystickButton(operatorControls, 9);
-        operatorControlsLift5.whenPressed(new LIFT_PidSet(2,1));        
+        operatorControlsLift5.whileHeld(new LIFT_PidSet(2,1));        
+        
+        //AutoToteLift Detector
+        operatorControlsAutoTote = new JoystickButton(operatorControls, 10);
+        operatorControlsAutoTote.whileHeld(new LIFT_AutoToteLift(1,1));
         
         //Smart Dashboard 
         SmartDashboard.putData("Pos0", new LIFT_PidSet(0,1));

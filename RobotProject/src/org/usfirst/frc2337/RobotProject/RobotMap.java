@@ -39,7 +39,7 @@ public class RobotMap {
     public static SpeedController intakeLeftArmMotor;
     public static SpeedController intakeRightArmMotor;
     
-    
+    public static DigitalInput liftAutoTote;
     
     
     
@@ -59,6 +59,10 @@ public class RobotMap {
         liftLowerLimitSwitch = new DigitalInput(1);
         LiveWindow.addActuator("Lift", "LimitUpper", liftUpperLimitSwitch);
         LiveWindow.addActuator("Lift", "LimitLower", liftLowerLimitSwitch);
+        
+        liftAutoTote = new DigitalInput(2);
+        LiveWindow.addActuator("Lift", "AutoTote", liftAutoTote);
+        
         
         pdp = new PowerDistributionPanel();
         LiveWindow.addSensor("Lift", "PDP1", pdp);
