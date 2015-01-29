@@ -151,26 +151,26 @@ public class OI {
         
         
         //Controls for Base Pos.
-        operatorControlsBase1 = new JoystickButton(operatorControls, 1);
+        operatorControlsBase1 = new JoystickButton(operatorControls, 9);
         operatorControlsBase1.whenPressed(new LIFT_PidSet(0,0));
-        operatorControlsBase2 = new JoystickButton(operatorControls, 2);
+        operatorControlsBase2 = new JoystickButton(operatorControls, 8);
         operatorControlsBase2.whenPressed(new LIFT_PidSet(1,0));
-        operatorControlsBase3 = new JoystickButton(operatorControls, 3);
+        operatorControlsBase3 = new JoystickButton(operatorControls, 7);
         operatorControlsBase3.whenPressed(new LIFT_PidSet(2,0));
         
         
         //Tote Buttons (Pos0 - Pos5)
-        operatorControlsLift0 = new JoystickButton(operatorControls, 4);
+        operatorControlsLift0 = new JoystickButton(operatorControls, 15);
         operatorControlsLift0.whileHeld(new LIFT_PidSet(0,1));
-        operatorControlsLift1 = new JoystickButton(operatorControls, 5);
+        operatorControlsLift1 = new JoystickButton(operatorControls, 14);
         operatorControlsLift1.whileHeld(new LIFT_PidSet(1,1));
-        operatorControlsLift2 = new JoystickButton(operatorControls, 6);
+        operatorControlsLift2 = new JoystickButton(operatorControls, 13);
         operatorControlsLift2.whileHeld(new LIFT_PidSet(2,1));
-        operatorControlsLift3 = new JoystickButton(operatorControls, 7);
+        operatorControlsLift3 = new JoystickButton(operatorControls, 12);
         operatorControlsLift3.whileHeld(new LIFT_PidSet(0,1));
-        operatorControlsLift4 = new JoystickButton(operatorControls, 8);
+        operatorControlsLift4 = new JoystickButton(operatorControls, 11);
         operatorControlsLift4.whileHeld(new LIFT_PidSet(1,1));
-        operatorControlsLift5 = new JoystickButton(operatorControls, 9);
+        operatorControlsLift5 = new JoystickButton(operatorControls, 10);
         operatorControlsLift5.whileHeld(new LIFT_PidSet(2,1));        
         
         //AutoToteLift Detector
