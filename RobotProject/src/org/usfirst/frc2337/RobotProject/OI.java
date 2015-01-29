@@ -138,15 +138,15 @@ public class OI {
         operatorControls = new Joystick(2); //ButtonPanel for Lift (Operator Left Hand)
         liftJoystick = new Joystick(1); //Nice Fancy Control, for Lift (Precise) (Operator Right hand)
         
-        intakeDeploy = new JoystickButton(liftJoystick, 5);
+        intakeDeploy = new JoystickButton(liftJoystick, 1);
         intakeDeploy.whileHeld(new PNUEMATIC_ArmsOut());
         intakeLeft = new JoystickButton(liftJoystick, 4);
         intakeLeft.whileHeld(new INTAKE_ActivateMotors(leftRotateLeft,rightRotateLeft));
-        intakeRight = new JoystickButton(liftJoystick, 3);
+        intakeRight = new JoystickButton(liftJoystick, 5);
         intakeRight.whileHeld(new INTAKE_ActivateMotors(leftRotateRight,rightRotateRight));
-        intakePush = new JoystickButton(liftJoystick, 2);
+        intakePush = new JoystickButton(liftJoystick, 3);
         intakePush.whileHeld(new INTAKE_ActivateMotors(leftPush,rightPush));
-        intakePull = new JoystickButton(liftJoystick, 1);
+        intakePull = new JoystickButton(liftJoystick, 2);
         intakePull.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
         
         
