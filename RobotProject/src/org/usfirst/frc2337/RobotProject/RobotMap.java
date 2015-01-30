@@ -73,6 +73,10 @@ public class RobotMap {
         chassisrobotDrive.setExpiration(0.1);
         chassisrobotDrive.setSensitivity(0.5);
         chassisrobotDrive.setMaxOutput(1.0);
+        chassisrobotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
+        chassisrobotDrive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
+        chassisrobotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, false);
+        chassisrobotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, false);
         
         liftMotor = new Talon(4);
         LiveWindow.addActuator("Lift", "Motor", (Talon) liftMotor);
