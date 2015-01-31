@@ -62,6 +62,7 @@ public class OI {
     public JoystickButton operatorControlsLift4;
     public JoystickButton operatorControlsLift5;
     public JoystickButton operatorControlsAutoTote;
+    public JoystickButton operatorControlsLiftToggle;
     public Joystick operatorControls;
     
     public Joystick liftJoystick; //Lift Control (Precise Motor Action)
@@ -100,6 +101,10 @@ public class OI {
         //AutoToteLift Detector
         operatorControlsAutoTote = new JoystickButton(operatorControls, 4);
         operatorControlsAutoTote.whileHeld(new LIFT_AutoToteLift(1));
+        
+        //LiftToggle (On or Off)
+        operatorControlsLiftToggle = new JoystickButton(operatorControls, 11);
+        operatorControlsLiftToggle.whenPressed(new LIFT_StopPID());
         
         //Smart Dashboard 
         SmartDashboard.putData("Pos0", new LIFT_PidSet(0,1));
