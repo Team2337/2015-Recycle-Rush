@@ -76,6 +76,7 @@ public class OI {
     public JoystickButton operatorControlsLift4;
     public JoystickButton operatorControlsLift5;
     public JoystickButton operatorControlsAutoTote;
+    public JoystickButton operatorControlsLiftToggle;
     public Joystick operatorControls;
     
     public JoystickButton intakePull;
@@ -176,6 +177,12 @@ public class OI {
         //AutoToteLift Detector
         operatorControlsAutoTote = new JoystickButton(operatorControls, 10);
         operatorControlsAutoTote.whileHeld(new LIFT_AutoToteLift(1));
+        
+        //LiftToggle (On or Off)
+        operatorControlsLiftToggle = new JoystickButton(operatorControls, 11);
+        operatorControlsLiftToggle.whileHeld(new LIFT_StopPID());
+        
+        operatorControlsLiftToggle.whenReleased(new LIFT_StartPID());
         
 
 	    
