@@ -99,7 +99,7 @@ public class chassis extends Subsystem {
         robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
         robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
         
-    	robotDrive.mecanumDrive_Cartesian(strafeValue, moveValue, rotateValue, 0);
+    	robotDrive.mecanumDrive_Cartesian(strafeValue, -moveValue, rotateValue, 0);	//Invert moveValue because the mecanumDrive inverts it for the joystick
     }
     
     /**
