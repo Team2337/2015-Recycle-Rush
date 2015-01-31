@@ -49,5 +49,22 @@ public class AutonomousCommand extends CommandGroup {
     	addSequential(new AutonStrafeAtSpeedForTime( 0.0, 2));
     	addSequential(new AutonStrafeAtSpeedForTime( 0.5, 2));
     	addSequential(new AutonStrafeAtSpeedForTime( 1.0, 2));
+
+    	addSequential(new AutonDriveUntilBlocked());
+    	addSequential(new AutonWait(1));
+    	addSequential(new AutonDriveUntilUnblocked());
+    	addSequential(new AutonWait(1));
+    	addSequential(new AutonDriveUntilBlocked());
+    	addSequential(new AutonWait(1));
+    	addSequential(new AutonDriveUntilUnblocked());
+    	addSequential(new AutonWait(1));
+    	addSequential(new AutonDriveUntilBlocked());
+    	addSequential(new AutonWait(1));
+    	addSequential(new AutonDriveUntilUnblocked());
+    	addSequential(new AutonWait(1));
+    	addSequential(new AutonDriveUntilBlocked());
+    	addSequential(new AutonWait(1));
+    	addSequential(new AutonDriveUntilUnblocked());
+    	addSequential(new AutonWait(1));
     }
 }

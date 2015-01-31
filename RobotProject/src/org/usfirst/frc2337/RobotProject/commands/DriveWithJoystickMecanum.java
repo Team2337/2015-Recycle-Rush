@@ -44,7 +44,7 @@ public class  DriveWithJoystickMecanum extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double moveValue = joystickDriver.getRawAxis(1);
+    	double moveValue = -joystickDriver.getRawAxis(1);	//Invert the jou=ystick to account for the joystick's "up = -1"
     	double strafeValue = joystickDriver.getRawAxis(3) - joystickDriver.getRawAxis(2);
     	double rotateValue = joystickDriver.getRawAxis(4);
     	
