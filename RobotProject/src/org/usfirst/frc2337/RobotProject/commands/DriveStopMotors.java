@@ -17,9 +17,9 @@ import org.usfirst.frc2337.RobotProject.Robot;
 /**
  *
  */
-public class  StopMotors extends Command {
+public class  DriveStopMotors extends Command {
 
-    public StopMotors() {
+    public DriveStopMotors() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 
