@@ -104,7 +104,9 @@ public class OI {
         
         //LiftToggle (On or Off)
         operatorControlsLiftToggle = new JoystickButton(operatorControls, 11);
-        operatorControlsLiftToggle.whenPressed(new LIFT_StopPID());
+        operatorControlsLiftToggle.whileHeld(new LIFT_StopPID());
+        
+        operatorControlsLiftToggle.whenReleased(new LIFT_StartPID());
         
         //Smart Dashboard 
         SmartDashboard.putData("Pos0", new LIFT_PidSet(0,1));
