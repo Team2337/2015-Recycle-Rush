@@ -61,6 +61,11 @@ public class chassis extends Subsystem {
      * @param rotateValue The fraction of full speed to rotate, ranging from -1.0 (left) to 1.0 (right).
      */
     public void driveArcade(double moveValue, double rotateValue) {
+    	robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
+        robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
+        robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
+        robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
+        
     	robotDrive.arcadeDrive(moveValue, rotateValue);
     }
     
@@ -71,6 +76,11 @@ public class chassis extends Subsystem {
      * @param rightValue The fraction of full speed to drive the right motors, ranging from -1.0 (full back) to 1.0 (full forward).
      */
     public void driveTank(double leftValue, double rightValue) {
+    	robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, false);
+        robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, false);
+        robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, false);
+        robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearRight, false);
+        
     	robotDrive.tankDrive(leftValue, rightValue);
     }
     
@@ -82,6 +92,11 @@ public class chassis extends Subsystem {
      * @param rotateValue The fraction of full speed to rotate, ranging from -1.0 (full back) to 1.0 (full forward).
      */
     public void driveMecanum(double moveValue, double strafeValue, double rotateValue) {
+    	robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, false);
+        robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, false);
+        robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
+        robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
+        
     	robotDrive.mecanumDrive_Cartesian(strafeValue, moveValue, rotateValue, 0);
     }
 }

@@ -42,8 +42,8 @@ public class  DriveWithJoystickTank extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double leftValue = joystickDriver.getRawAxis(1);
-    	double rightValue = joystickDriver.getRawAxis(5);
+    	double leftValue = - joystickDriver.getRawAxis(1);	//Invert move axis to account for the joystick's "up = -1"
+    	double rightValue = - joystickDriver.getRawAxis(5);	//Invert move axis to account for the joystick's "up = -1"
     	
     	//Set the values to 0 if the input is below threshold
     	if (Math.abs(leftValue) < threshold) {
