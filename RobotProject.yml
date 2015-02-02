@@ -35,7 +35,7 @@ Children:
             default: '0'
             name: Output Channel (PWM)
             validators: *id003
-            value: '1'
+            value: '2'
         Base: Speed Controller
         Name: backLeft
       - Children: []
@@ -51,7 +51,7 @@ Children:
             default: '0'
             name: Output Channel (PWM)
             validators: *id003
-            value: '2'
+            value: '1'
         Base: Speed Controller
         Name: frontRight
       - Children: []

@@ -42,10 +42,10 @@ public class RobotMap {
         chassisfrontLeft = new VictorSP(0);
         LiveWindow.addActuator("chassis", "frontLeft", (VictorSP) chassisfrontLeft);
         
-        chassisbackLeft = new VictorSP(1);
+        chassisbackLeft = new VictorSP(2);
         LiveWindow.addActuator("chassis", "backLeft", (VictorSP) chassisbackLeft);
         
-        chassisfrontRight = new VictorSP(2);
+        chassisfrontRight = new VictorSP(1);
         LiveWindow.addActuator("chassis", "frontRight", (VictorSP) chassisfrontRight);
         
         chassisbackRight = new VictorSP(3);
