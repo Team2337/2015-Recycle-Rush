@@ -140,7 +140,7 @@ public class OI {
         liftJoystick = new Joystick(1); //Nice Fancy Control, for Lift (Precise) (Operator Right hand)
         
         intakeDeploy = new JoystickButton(liftJoystick, 1);
-        intakeDeploy.whileHeld(new PNUEMATIC_ArmsOut());
+        intakeDeploy.whileHeld(new INTAKE_ArmsOut());
         intakeLeft = new JoystickButton(liftJoystick, 4);
         intakeLeft.whileHeld(new INTAKE_ActivateMotors(leftRotateLeft,rightRotateLeft));
         intakeRight = new JoystickButton(liftJoystick, 5);
@@ -191,8 +191,8 @@ public class OI {
 
         SmartDashboard.putData("StopMotors", new StopMotors());
         
-        SmartDashboard.putData("PNEUMATIC_ArmsIn", new PNEUMATIC_ArmsIn());
-        SmartDashboard.putData("PNUEMATIC_ArmsOut", new PNUEMATIC_ArmsOut());
+        SmartDashboard.putData("PNEUMATIC_ArmsIn", new INTAKE_ArmsIn());
+        SmartDashboard.putData("PNUEMATIC_ArmsOut", new INTAKE_ArmsOut());
         SmartDashboard.putData("INTAKE_ActivateMotors", new INTAKE_ActivateMotors(.5,.5));
         
         SmartDashboard.putData("Pos0", new LIFT_PidSet(0,1));
