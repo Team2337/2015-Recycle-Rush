@@ -88,7 +88,8 @@ public class  LIFT_JoystickControl extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (Robot.lift.AtLowerLimit() || Robot.lift.AtUpperLimit());
+        //return (Robot.lift.AtLowerLimit() || Robot.lift.AtUpperLimit());
+    	return false;
     }
 
     // Called once after isFinished returns true
