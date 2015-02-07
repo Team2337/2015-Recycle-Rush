@@ -57,15 +57,7 @@ public class RobotMap {
     	slaveLiftMotor2 = new CANTalon(3);
     	slaveLiftMotor3 = new CANTalon(4);
         
-        
-        
-        
-        
-        
-        
-        
-        
-        liftPotentiometer = new AnalogPotentiometer(2, 10.0, 0.0);
+        liftPotentiometer = new AnalogPotentiometer(2, 100.0, 0.0);
         LiveWindow.addSensor("Lift", "Potentiometer", liftPotentiometer);
         
 
