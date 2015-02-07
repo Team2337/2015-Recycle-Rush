@@ -24,6 +24,7 @@ public class  LIFT_JoystickControl extends Command {
 
 	public boolean setPointSet = false;
 	
+	
     public LIFT_JoystickControl() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -67,13 +68,13 @@ public class  LIFT_JoystickControl extends Command {
     		if (!Robot.lift.getPIDStatus()) {
     			Robot.lift.disable(); //Disable the Lift PID, just in cases
         		//Make the motor be controlled by the joystick but at 15%
-        		RobotMap.liftMotor.set(0.15 * liftJoystickY); 
+        		RobotMap.masterLiftMotor.set(0.15 * liftJoystickY); 
 
     		}
     		else {	
     			Robot.lift.disable(); //Disable the Lift PID
     			//Make the motor be controlled by the joystick but at 15%
-    			RobotMap.liftMotor.set(0.15 * liftJoystickY); 
+    			RobotMap.masterLiftMotor.set(0.15 * liftJoystickY); 
     			//Make the setPointSet to false, so if in dead band, the PID can reset
     			setPointSet = false;
     		}
@@ -92,7 +93,7 @@ public class  LIFT_JoystickControl extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	RobotMap.liftMotor.set(0);
+    	RobotMap.masterLiftMotor.set(0);
     	Robot.lift.enable();
 		Robot.lift.setSetpoint(Robot.lift.getPosition());
 		SmartDashboard.putNumber("Elevator", Robot.lift.getPosition());
