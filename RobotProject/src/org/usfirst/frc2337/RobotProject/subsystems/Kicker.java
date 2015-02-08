@@ -13,6 +13,7 @@ public class Kicker extends Subsystem {
     
 	DigitalInput fingerSensor = RobotMap.kickerFingerSensor;
 	DoubleSolenoid solenoid = RobotMap.kickerSolenoid;
+	public boolean stateOut = false;
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -22,9 +23,11 @@ public class Kicker extends Subsystem {
     
     public void kickOut() {
     	solenoid.set(DoubleSolenoid.Value.kForward);
+    	stateOut = true;
     }
     public void kickIn() {
     	solenoid.set(DoubleSolenoid.Value.kReverse);
+    	stateOut = false;
     }
     
 }

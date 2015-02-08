@@ -17,8 +17,12 @@ public class KICKER_Kick extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.kicker.kickOut();
-    	Robot.kicker.kickIn();
+    	if (Robot.kicker.stateOut) {
+    		Robot.kicker.kickIn();
+    	}
+    	else{
+    		Robot.kicker.kickOut();
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
