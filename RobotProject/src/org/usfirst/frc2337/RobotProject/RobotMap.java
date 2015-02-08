@@ -85,8 +85,9 @@ public class RobotMap {
         liftMotor = new Talon(4);
         LiveWindow.addActuator("Lift", "Motor", (Talon) liftMotor);
         
-        liftPotentiometer = new AnalogPotentiometer(2, 10.0, 0.0);
+        liftPotentiometer = new AnalogPotentiometer(2, 10.0, 0.068);
         LiveWindow.addSensor("Lift", "Potentiometer", liftPotentiometer);
+        
         
         //Add a Talon for Right Intake Motor
         intakeintakeLeftArmMotor = new Talon(5);
