@@ -1,17 +1,17 @@
 package org.usfirst.frc2337.RobotProject.commands;
 
-import org.usfirst.frc2337.RobotProject.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc2337.RobotProject.Robot;
 
 /**
  *
  */
-public class KICKER_StopKick extends Command {
+public class LED_Auto extends Command {
 
-    public KICKER_StopKick() {
+    public LED_Auto() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.led);
     }
 
     // Called just before this Command runs the first time
@@ -20,6 +20,10 @@ public class KICKER_StopKick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.led.kickerLED(Robot.kicker.stateOut);
+    	Robot.led.fingerLED(Robot.kicker.fingerSensor.get());
+    	Robot.led.bumperLED(Robot.lift.liftAutoTote.get());
+    	Robot.led.PIDLED(Robot.lift.onTarget());
     }
 
     // Make this return true when this Command no longer needs to run execute()
