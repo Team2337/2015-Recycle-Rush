@@ -22,7 +22,7 @@ import org.usfirst.frc2337.RobotProject.Robot;
 public class  LIFT_PidSet extends Command {
 
    
-
+	int i;  //test variable.
     int pos; //What Pos (for Array)
     int type; //The type of Command (0 = Base Buttons) (1 = Tote Buttons)
     
