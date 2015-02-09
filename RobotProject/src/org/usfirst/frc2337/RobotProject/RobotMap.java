@@ -14,6 +14,7 @@ package org.usfirst.frc2337.RobotProject;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import java.util.Vector;
@@ -57,7 +58,11 @@ public class RobotMap {
     	slaveLiftMotor2 = new CANTalon(3);
     	slaveLiftMotor3 = new CANTalon(4);
         
-        liftPotentiometer = new AnalogPotentiometer(2, 100.0, 0.0);
+    	slaveLiftMotor1.reverseOutput(true);
+    	
+    	
+    	
+        liftPotentiometer = new AnalogPotentiometer(2, 10.0, 0.0);
         LiveWindow.addSensor("Lift", "Potentiometer", liftPotentiometer);
         
 

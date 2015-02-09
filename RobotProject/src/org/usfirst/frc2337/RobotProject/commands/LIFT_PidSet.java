@@ -81,6 +81,7 @@ public class  LIFT_PidSet extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.lift.setSetpoint(Robot.lift.getPosition());
+    	Robot.lift.enable();
     }
 
     // Called when another command which requires one or more of the same

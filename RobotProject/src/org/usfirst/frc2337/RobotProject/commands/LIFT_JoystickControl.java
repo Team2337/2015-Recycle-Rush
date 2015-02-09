@@ -68,13 +68,13 @@ public class  LIFT_JoystickControl extends Command {
     		if (!Robot.lift.getPIDStatus()) {
     			Robot.lift.disable(); //Disable the Lift PID, just in cases
         		//Make the motor be controlled by the joystick but at 15%
-        		RobotMap.masterLiftMotor.set(0.15 * liftJoystickY); 
+        		RobotMap.masterLiftMotor.set(1 * liftJoystickY); 
 
     		}
     		else {	
     			Robot.lift.disable(); //Disable the Lift PID
     			//Make the motor be controlled by the joystick but at 15%
-    			RobotMap.masterLiftMotor.set(0.15 * liftJoystickY); 
+    			RobotMap.masterLiftMotor.set(1 * liftJoystickY); 
     			//Make the setPointSet to false, so if in dead band, the PID can reset
     			setPointSet = false;
     		}
@@ -82,7 +82,9 @@ public class  LIFT_JoystickControl extends Command {
     	}
     	
     	
-    	
+    	SmartDashboard.putNumber("Elevator inJoy", Robot.lift.getPosition());
+    	SmartDashboard.putNumber("joy y",liftJoystickY);
+   
     	
     }
 
@@ -97,7 +99,7 @@ public class  LIFT_JoystickControl extends Command {
     	RobotMap.masterLiftMotor.set(0);
     	Robot.lift.enable();
 		Robot.lift.setSetpoint(Robot.lift.getPosition());
-		SmartDashboard.putNumber("Elevator", Robot.lift.getPosition());
+		//SmartDashboard.putNumber("Elevator", Robot.lift.getPosition());
     }
 
     // Called when another command which requires one or more of the same
