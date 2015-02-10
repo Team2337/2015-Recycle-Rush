@@ -53,6 +53,11 @@ public class RobotMap {
     
     public static DigitalInput liftAutoTote;
     
+    //Kicker finger sensor
+    public static DigitalInput kickerFingerSensor;
+    //Kicker actuator
+    public static DoubleSolenoid kickerSolenoid;
+    
     //For Camera
     public static CameraServer usbCamera1;
     
@@ -96,6 +101,13 @@ public class RobotMap {
         //Add a Talon for Right In-take Motor
         intakeintakeRightArmMotor = new Talon(6);
         LiveWindow.addActuator("Intake", "intakeRightArmMotor", (Talon) intakeintakeRightArmMotor);
+        
+        //Add kicker finger sensor
+        kickerFingerSensor = new DigitalInput(4);
+        LiveWindow.addActuator("Kicker", "FingerSensor", kickerFingerSensor);
+        
+        //Add kicker solenoid
+        kickerSolenoid = new DoubleSolenoid(0,6,7);
         
         //Make new Compressor
         pnuematicsCompressor = new Compressor(0);
