@@ -1,15 +1,21 @@
 package org.usfirst.frc2337.RobotProject.commands;
 
+import org.usfirst.frc2337.RobotProject.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 
 /**
  *
  */
 public class KICKER_StopKick extends Command {
+	
+	int i = 1;
 
     public KICKER_StopKick() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires (Robot.kicker);
     }
 
     // Called just before this Command runs the first time
@@ -18,6 +24,8 @@ public class KICKER_StopKick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	i++;
+    	SmartDashboard.putNumber("testStop", i);
     }
 
     // Make this return true when this Command no longer needs to run execute()

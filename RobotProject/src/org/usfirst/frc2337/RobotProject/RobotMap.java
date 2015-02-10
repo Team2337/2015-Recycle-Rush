@@ -106,7 +106,7 @@ public class RobotMap {
         LiveWindow.addActuator("Kicker", "FingerSensor", kickerFingerSensor);
         
         //Add kicker solenoid
-        kickerSolenoid = new DoubleSolenoid(2,3);
+        kickerSolenoid = new DoubleSolenoid(0,2,3);
         
         //Make new Compressor
         pneumaticsCompressor = new Compressor(0);
@@ -136,6 +136,6 @@ public class RobotMap {
         
         usbCamera1 = CameraServer.getInstance();
         usbCamera1.setQuality(50);
-        usbCamera1.setSize(0); 
+        //usbCamera1.setSize(0); 
     }
 }
