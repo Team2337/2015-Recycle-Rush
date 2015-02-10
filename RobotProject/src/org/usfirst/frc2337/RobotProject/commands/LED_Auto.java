@@ -7,6 +7,9 @@ import org.usfirst.frc2337.RobotProject.Robot;
  *
  */
 public class LED_Auto extends Command {
+	
+	boolean flasher = false;
+	int flashInt = 0;
 
     public LED_Auto() {
         // Use requires() here to declare subsystem dependencies
@@ -20,8 +23,11 @@ public class LED_Auto extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.led.kickerLED(Robot.kicker.stateOut);
-    	Robot.led.fingerLED(Robot.kicker.fingerSensor.get());
+    	flashInt++;
+    	if (flashInt >= 25) {
+    		flasher = !flasher;
+    	}
+    	Robot.led.kickerLED(Robot.kicker.stateOut, Robot.kicker.fingerSensor.get(), flasher);
     	Robot.led.bumperLED(Robot.lift.liftAutoTote.get());
     	Robot.led.PIDLED(Robot.lift.onTarget());
     }
