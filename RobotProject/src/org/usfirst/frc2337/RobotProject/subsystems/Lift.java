@@ -86,6 +86,8 @@ public class Lift extends PIDSubsystem {
     	slaveLift2.set(masterLift.getDeviceID());
     	slaveLift3.set(masterLift.getDeviceID());
     	
+    	masterLift.enableBrakeMode(true);
+    	
         
         //Bottoms Positions
         setarray[0][0] = bottom + pos0;
