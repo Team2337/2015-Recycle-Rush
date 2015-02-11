@@ -19,7 +19,7 @@ public class CAMERA_StartUp extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-    	RobotMap.usbCamera1.startAutomaticCapture("cam0");
+    	//RobotMap.usbCamera1.startAutomaticCapture("cam0");
     	
     }
 

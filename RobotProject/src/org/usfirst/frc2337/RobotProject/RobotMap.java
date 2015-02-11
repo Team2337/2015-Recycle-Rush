@@ -116,26 +116,24 @@ public class RobotMap {
         LiveWindow.addActuator("Kicker", "FingerSensor", kickerFingerSensor);
         
         //Add kicker solenoid
-        kickerSolenoid = new DoubleSolenoid(2,3);
+        kickerSolenoid = new DoubleSolenoid(0,6,7);
         
         //Make new Compressor
-        pneumaticsCompressor = new Compressor(0);
+        pneumaticsCompressor = new Compressor(8);
         //DoubleSolenoid(port,port), double.set(DoubleSolenoid.Value.kForward/Reverse)
         
         //Solenoids for arms
-        intakeRightSolenoid = new Solenoid(0, 0);
+        intakeRightSolenoid = new Solenoid(0, 4);
         LiveWindow.addActuator("Pnuematics", "RightSolenoid", intakeRightSolenoid);
-        intakeLeftSolenoid = new Solenoid(0, 1);
+        intakeLeftSolenoid = new Solenoid(0, 5);
         LiveWindow.addActuator("Pnuematics", "LeftSolenoid", intakeLeftSolenoid);
         
         //LEDs initialized as pneumatics, as we are putting them in the pneumatics module.
-        ledKicker = new Solenoid(0,2);
+        ledKicker = new Solenoid(0,1);
         LiveWindow.addActuator("LED", "KickerLED", ledKicker);
-        ledPID = new Solenoid(0,3);
+        ledPID = new Solenoid(0,2);
         LiveWindow.addActuator("LED", "PIDLED", ledPID);
-        ledFingers = new Solenoid(0,4);
-        LiveWindow.addActuator("LED", "FingerLED", ledFingers);
-        ledBumper = new Solenoid(0,5);
+        ledBumper = new Solenoid(0,3);
         LiveWindow.addActuator("LED", "BumperLED", ledBumper);
 
 
@@ -154,8 +152,8 @@ public class RobotMap {
         pdp = new PowerDistributionPanel();
         LiveWindow.addSensor("Lift", "PDP1", pdp);
         
-        usbCamera1 = CameraServer.getInstance();
+        /*usbCamera1 = CameraServer.getInstance();
         usbCamera1.setQuality(50);
-        usbCamera1.setSize(0); 
+        //usbCamera1.setSize(0); */
     }
 }

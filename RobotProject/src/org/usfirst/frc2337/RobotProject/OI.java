@@ -191,9 +191,9 @@ public class OI {
         
         //Kicker controls
         operatorControlsKickToggle = new JoystickButton(operatorControls, 6);
-        operatorControlsKickToggle.whileHeld(new KICKER_StopKick());
+        operatorControlsKickToggle.whenPressed(new KICKER_StopKick());
         
-        kickerKick = new JoystickButton(liftJoystick, 11);
+        kickerKick = new JoystickButton(liftJoystick, 8);
         kickerKick.whenPressed(new KICKER_Kick());
         
 

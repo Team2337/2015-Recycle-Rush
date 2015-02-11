@@ -2,6 +2,7 @@ package org.usfirst.frc2337.RobotProject.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2337.RobotProject.Robot;
+import org.usfirst.frc2337.RobotProject.RobotMap;
 
 /**
  *
@@ -24,12 +25,14 @@ public class LED_Auto extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	flashInt++;
-    	if (flashInt >= 25) {
+    	if (flashInt >= 15) {
     		flasher = !flasher;
+    		flashInt = 0;
     	}
     	Robot.led.kickerLED(Robot.kicker.stateOut, Robot.kicker.fingerSensor.get(), flasher);
     	Robot.led.bumperLED(Robot.lift.liftAutoTote.get());
-    	Robot.led.PIDLED(Robot.lift.onTarget());
+    	//Robot.led.PIDLED(Robot.lift.onTarget());
+    	Robot.led.PIDLED(Robot.kicker.stateOut);
     }
 
     // Make this return true when this Command no longer needs to run execute()
