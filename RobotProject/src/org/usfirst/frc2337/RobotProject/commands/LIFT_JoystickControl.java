@@ -23,6 +23,7 @@ import org.usfirst.frc2337.RobotProject.RobotMap;
 public class  LIFT_JoystickControl extends Command {
 
 	public boolean setPointSet;
+	double joyLiftSpeed = 0.60;   		// percentage used to limit speed of lift when driving by joystick
 	
     public LIFT_JoystickControl() {
         // Use requires() here to declare subsystem dependencies
@@ -68,14 +69,14 @@ public class  LIFT_JoystickControl extends Command {
     	else {
     		if (!Robot.lift.getPIDStatus()) {
     			Robot.lift.disable(); //Disable the Lift PID, just in cases
-        		//Make the motor be controlled by the joystick but at 15%
-        		RobotMap.masterLiftMotor.set(.6 * liftJoystickY); 
+        		//Make the motor be controlled by the joystick but at some %
+        		RobotMap.masterLiftMotor.set(joyLiftSpeed * liftJoystickY); 
 
     		}
     		else {	
     			Robot.lift.disable(); //Disable the Lift PID
-    			//Make the motor be controlled by the joystick but at 15%
-    			RobotMap.masterLiftMotor.set(.6 * liftJoystickY); 
+    			//Make the motor be controlled by the joystick but at some %
+    			RobotMap.masterLiftMotor.set(joyLiftSpeed * liftJoystickY); 
     			//Make the setPointSet to false, so if in dead band, the PID can reset
     			setPointSet = false;
     		}
