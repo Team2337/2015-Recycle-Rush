@@ -69,13 +69,13 @@ public class  LIFT_JoystickControl extends Command {
     		if (!Robot.lift.getPIDStatus()) {
     			Robot.lift.disable(); //Disable the Lift PID, just in cases
         		//Make the motor be controlled by the joystick but at 15%
-        		RobotMap.masterLiftMotor.set(.5 * liftJoystickY); 
+        		RobotMap.masterLiftMotor.set(.6 * liftJoystickY); 
 
     		}
     		else {	
     			Robot.lift.disable(); //Disable the Lift PID
     			//Make the motor be controlled by the joystick but at 15%
-    			RobotMap.masterLiftMotor.set(.5 * liftJoystickY); 
+    			RobotMap.masterLiftMotor.set(.6 * liftJoystickY); 
     			//Make the setPointSet to false, so if in dead band, the PID can reset
     			setPointSet = false;
     		}
