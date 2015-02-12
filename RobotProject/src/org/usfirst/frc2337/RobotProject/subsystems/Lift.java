@@ -98,8 +98,9 @@ public class Lift extends PIDSubsystem {
     	slaveLift3.set(masterLift.getDeviceID());
     	
     	masterLift.enableBrakeMode(true);                  // may need to set brake on followers too...
-    	
-        
+    	slaveLift1.enableBrakeMode(true);
+    	slaveLift2.enableBrakeMode(true);
+        slaveLift3.enableBrakeMode(true);
         //Bottoms Positions
         setarray[0][0] = bottom + pos0;
         setarray[0][1] = bottom + pos1;
