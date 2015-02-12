@@ -19,35 +19,52 @@ public class Auton_3Tote extends CommandGroup {
     
     public  Auton_3Tote() {
         // Add Commands here:
+        // e.g. addSequential(new Command1());
+        //      addSequential(new Command2());
+        // these will run in order.
+
+        // To run multiple commands at the same time,
+        // use addParallel()
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
+        // Command1 and Command2 will run in parallel.
 
-
-    	addSequential(new LIFT_PidSet(1,1));   						//lift tote to position 1 to pick up tote
-    	addSequential(new AutonWait(1));
-    	addSequential(new AutonDriveAtSpeedForTime(-0.3,0.5));		//drive back to clear can lid when lifting
-    	addSequential(new AutonWait(1));
-    	addParallel(new AutonStrafeAtSpeedForTime(-0.3,0.5));		//strafe out to clear handle of can when driving forward
-    	addSequential(new AutonWait(1));
-    	addSequential(new LIFT_PidSet(5,1));						//lift tote to position 5 to clear can
-    	addSequential(new AutonWait(1));
-
-    	//   works up to here so far...
+        // A command group will require all of the subsystems that each member
+        // would require.
+        // e.g. if Command1 requires chassis, and Command2 requires arm,
+        // a CommandGroup containing them would require both the chassis and the
+        // arm.
     	
-    	addSequential(new AutonDriveUntilBlocked());		//drive until blocked (can)
-    	addSequential(new AutonWait(1));
-    	addSequential(new AutonDriveUntilUnblocked());				//drive until unblocked (past can)
-    	addSequential(new AutonWait(1));
-    	addParallel(new LIFT_PidSet(1,2));				//lower tote to pos 2 in parallel while driving to next tote
-    	addSequential(new AutonWait(1));
-    	addSequential(new AutonDriveUntilBlocked());				//drive until blocked  (next tote)
-    	addSequential(new AutonWait(1));
-    	addSequential(new AutonStrafeAtSpeedForTime(0.3,0.5));		//strafe in to set down tote 1 on tote 2
-    	addSequential(new AutonWait(1));
-    	addSequential(new LIFT_PidSet(1,0));						//lower lift to set down tote and get ready to pick up 2nd tote
-    	addSequential(new AutonWait(1));
-    														//repeat process to go ot 3rd tote
-    	addSequential(new LIFT_PidSet(1,1)); 
 
+    	addSequential(new AutonDriveAtSpeedForTime(-1.0, 2));
+    	addSequential(new AutonDriveAtSpeedForTime(-0.5, 2));
+    	addSequential(new AutonDriveAtSpeedForTime( 0.0, 2));
+    	addSequential(new AutonDriveAtSpeedForTime( 0.5, 2));
+    	addSequential(new AutonDriveAtSpeedForTime( 1.0, 2));
+    	
+    	addSequential(new AutonWait(2));
+
+    	addSequential(new AutonStrafeAtSpeedForTime(-1.0, 2));
+    	addSequential(new AutonStrafeAtSpeedForTime(-0.5, 2));
+    	addSequential(new AutonStrafeAtSpeedForTime( 0.0, 2));
+    	addSequential(new AutonStrafeAtSpeedForTime( 0.5, 2));
+    	addSequential(new AutonStrafeAtSpeedForTime( 1.0, 2));
+
+    	addSequential(new AutonDriveUntilBlocked());
+    	addSequential(new AutonWait(1));
+    	addSequential(new AutonDriveUntilUnblocked());
+    	addSequential(new AutonWait(1));
+    	addSequential(new AutonDriveUntilBlocked());
+    	addSequential(new AutonWait(1));
+    	addSequential(new AutonDriveUntilUnblocked());
+    	addSequential(new AutonWait(1));
+    	addSequential(new AutonDriveUntilBlocked());
+    	addSequential(new AutonWait(1));
+    	addSequential(new AutonDriveUntilUnblocked());
+    	addSequential(new AutonWait(1));
+    	addSequential(new AutonDriveUntilBlocked());
+    	addSequential(new AutonWait(1));
+    	addSequential(new AutonDriveUntilUnblocked());
+    	addSequential(new AutonWait(1));
     }
 }
