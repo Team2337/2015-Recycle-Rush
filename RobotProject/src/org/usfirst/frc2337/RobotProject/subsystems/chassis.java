@@ -85,9 +85,12 @@ public class chassis extends Subsystem {
     }
     
     /**
-     * Change the default command for the chassis.
+     * Return whether the tote sensor has been triggered.
      * 
-     * @param defaultCommand The default command to use.
+     * @return the current state of the tote sensor, inverted to read roperly
      */
+    public boolean isToteSensor() {
+    	return !toteSensor.get();
+    }
 }
 
