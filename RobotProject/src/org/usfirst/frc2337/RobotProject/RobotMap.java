@@ -71,11 +71,11 @@ public class RobotMap {
         chassisfrontLeft = new VictorSP(0);
         LiveWindow.addActuator("chassis", "frontLeft", (VictorSP) chassisfrontLeft);
         
-        chassisbackLeft = new VictorSP(2);
-        LiveWindow.addActuator("chassis", "backLeft", (VictorSP) chassisbackLeft);
-        
         chassisfrontRight = new VictorSP(1);
         LiveWindow.addActuator("chassis", "frontRight", (VictorSP) chassisfrontRight);
+        
+        chassisbackLeft = new VictorSP(2);
+        LiveWindow.addActuator("chassis", "backLeft", (VictorSP) chassisbackLeft);
         
         chassisbackRight = new VictorSP(3);
         LiveWindow.addActuator("chassis", "backRight", (VictorSP) chassisbackRight);
@@ -104,7 +104,7 @@ public class RobotMap {
         slaveliftMotor1.enableBrakeMode(true);
         
         
-        //LiveWindow.addActuator("Lift", "Motor", (Talon) liftMotor);
+        //LiveWindow.addActuator("Lift", "Motor", (CANTalon) masterliftMotor);   //LiveWindow doesn't play nice with CANTalons
         
         liftPotentiometer = new AnalogPotentiometer(2, 10.0, 0.068);
         LiveWindow.addSensor("Lift", "Potentiometer", liftPotentiometer);
