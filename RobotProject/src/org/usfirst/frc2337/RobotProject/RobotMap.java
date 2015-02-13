@@ -38,9 +38,9 @@ public class RobotMap {
     public static AnalogPotentiometer liftPotentiometer;
     public static SpeedController intakeintakeLeftArmMotor;
     public static SpeedController intakeintakeRightArmMotor;
-    public static Compressor pnuematicsCompressor;
-    public static Solenoid pnuematicsRightSolenoid;
-    public static Solenoid pnuematicsLeftSolenoid;
+    public static Compressor pneumaticsCompressor;
+    public static Solenoid intakeRightSolenoid;
+    public static Solenoid intakeLeftSolenoid;
 
   //LEDs
     //LED to show whether the kicker is out or in.
@@ -132,13 +132,13 @@ public class RobotMap {
         kickerSolenoid = new DoubleSolenoid(0,6,7);
         
         //Make new Compressor
-        pnuematicsCompressor = new Compressor(0);
+        pneumaticsCompressor = new Compressor(0);
         
         //Solenoids for arms
-        pnuematicsRightSolenoid = new Solenoid(0, 4);
-        LiveWindow.addActuator("Pnuematics", "RightSolenoid", pnuematicsRightSolenoid);
-        pnuematicsLeftSolenoid = new Solenoid(0, 5);
-        LiveWindow.addActuator("Pnuematics", "LeftSolenoid", pnuematicsLeftSolenoid);
+        intakeRightSolenoid = new Solenoid(0, 4);
+        LiveWindow.addActuator("Pnuematics", "RightSolenoid", intakeRightSolenoid);
+        intakeLeftSolenoid = new Solenoid(0, 5);
+        LiveWindow.addActuator("Pnuematics", "LeftSolenoid", intakeLeftSolenoid);
 
         //LEDs initialized as pneumatics, as we are putting them in the pneumatics module.
         ledKicker = new Solenoid(0,1);
