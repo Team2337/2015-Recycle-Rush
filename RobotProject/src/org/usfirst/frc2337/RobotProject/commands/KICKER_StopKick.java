@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
  */
 public class KICKER_StopKick extends Command {
 	
-	int i = 1;
 
     public KICKER_StopKick() {
         // Use requires() here to declare subsystem dependencies
@@ -20,17 +19,16 @@ public class KICKER_StopKick extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.kicker.autoOff = true;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	i++;
-    	SmartDashboard.putNumber("testStop", i);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
