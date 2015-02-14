@@ -81,6 +81,8 @@ public class OI {
     public JoystickButton operatorControlsAutoTote;
     public JoystickButton operatorControlsLiftToggle;
     public JoystickButton operatorControlsKickToggle;
+    public JoystickButton operatorControlsJoystickMode;
+    public JoystickButton operatorControlsExtension;
     public Joystick operatorControls;
     
     //Buttons for intake/kicker
@@ -197,7 +199,15 @@ public class OI {
         kickerKick = new JoystickButton(liftJoystick, 11);
         kickerKick.whenPressed(new KICKER_Kick());
         
+        //ContainerArm
+        operatorControlsJoystickMode = new JoystickButton(operatorControls, 16);
+        operatorControlsExtension = new JoystickButton(operatorControls, 17);
+        
+        operatorControlsJoystickMode.whenPressed(new CONTAINERARM_JoystickMode(false));
+        operatorControlsJoystickMode.whenReleased(new CONTAINERARM_JoystickMode(true));
 
+        operatorControlsExtension.whenPressed(new CONTAINERARM_ExtensionOut());
+        operatorControlsExtension.whenReleased(new CONTAINERARM_ExtensionIn());
 	    
         // SmartDashboard Buttons
         SmartDashboard.putData("Auton Strafe out (-0.3,0.5)", new AutonStrafeAtSpeedForTime(-0.3,0.5));

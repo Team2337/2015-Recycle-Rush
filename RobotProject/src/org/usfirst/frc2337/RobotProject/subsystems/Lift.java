@@ -53,6 +53,8 @@ public class Lift extends PIDSubsystem {
     //boolean practiceBot = true;                            // create DIO on RoboRio to set this as true on practice bot.
     
     double pos0,pos1,pos2,pos3,pos4,pos5,bottom,mid,top;
+    //Joystick mode for switching back motor and lift
+    public boolean joystickStatus = true;
     
     public void setPracticeSetPoints() { 					// method to for set points on practice bot, called per practiceBot boolean
     	pos0 = 0.85; 	//Position 0
@@ -189,5 +191,8 @@ public class Lift extends PIDSubsystem {
     //
     public boolean LiftAutoTote() {
     	return liftAutoTote.get();
+    }
+    public boolean joystickModeStatus() {
+    	return this.joystickStatus;
     }
 }
