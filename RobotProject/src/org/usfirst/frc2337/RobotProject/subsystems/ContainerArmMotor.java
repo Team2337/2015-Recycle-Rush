@@ -13,18 +13,10 @@ public class ContainerArmMotor extends Subsystem {
     SpeedController containerArm = RobotMap.containerArm;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    boolean joystickStatus = true;
+    public boolean joystickStatus = false;
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         setDefaultCommand(new CONTAINERARM_JoystickRun());
-    }
-    public void joystickModeOn() {
-    	this.joystickStatus = true;
-    	
-    }
-    public void joystickModeOff() {
-    	this.joystickStatus = false;
-    	
     }
     public boolean joystickModeStatus() {
     	return this.joystickStatus;

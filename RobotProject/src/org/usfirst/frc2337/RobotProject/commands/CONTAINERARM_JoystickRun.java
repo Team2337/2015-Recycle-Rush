@@ -22,7 +22,7 @@ import org.usfirst.frc2337.RobotProject.RobotMap;
 public class  CONTAINERARM_JoystickRun extends Command {
 	
 	public boolean onUse = false;
-	public double speed = 0.20;
+	public double speed = 0.50;
 	
     public CONTAINERARM_JoystickRun() {
         // Use requires() here to declare subsystem dependencies
@@ -40,15 +40,18 @@ public class  CONTAINERARM_JoystickRun extends Command {
     protected void execute() {
     	double conJoystick = Robot.oi.containerJoystick.getRawAxis(1);
     	
-    	if ((conJoystick > -0.1) || (conJoystick < 0.1)) { //Dead Band for Joystick
+    	if ((conJoystick < -0.1) || (conJoystick > 0.1)) { //Dead Band for Joystick
+    		System.out.println("Out of deadband");
     		if (!Robot.conArm.joystickModeStatus())
     		{
+    			System.out.println("In mode");
     			RobotMap.containerArm.set(speed * conJoystick);
     			onUse = true;
     		}
     	}
     	else {
     		if (onUse) {
+    			System.out.println("Disabled");
     			onUse = false;
     			RobotMap.containerArm.disable();
     		}
@@ -68,5 +71,6 @@ public class  CONTAINERARM_JoystickRun extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	this.end();
     }
 }

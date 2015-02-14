@@ -29,14 +29,13 @@ public class RobotMap {
 	//Add Motor
     public static SpeedController containerArm;    
     public static Solenoid containerSolenoid1;
-    public static Solenoid containerSolenoid2;
     public static Compressor pnuematicsCompressor;
+    
     public static void init() {  
     	//Set Motor as a Talon
-    	containerArm = new Talon(1);
+    	containerArm = new Talon(4);
     	//
     	containerSolenoid1 = new Solenoid(0,4);
-    	containerSolenoid2 = new Solenoid(0,5);
     	pnuematicsCompressor = new Compressor(0);
     	
         
