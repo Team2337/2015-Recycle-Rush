@@ -74,12 +74,12 @@ public class Robot extends IterativeRobot {
 
         // instantiate the command used for the autonomous period
         
-        //autonomousCommand = new Auton_3Tote();
+        //autonCommand = new Auton_3Tote();
         
         //SmartDashboard Auton Selector
         autonChooser = new SendableChooser();
         autonChooser.addObject("Move Straight to Auton Zone", new AutonDriveAtSpeedForTime(0.5,3.0)); //speed, time
-        //autonChooser.addObject("Move 1 Tote to Auton Zone", new Auton1Tote());
+        autonChooser.addObject("Move 1 Tote to Auton Zone", new Auton_1Tote());
         //autonChooser.addObject("Move 2 Totes to Auton Zone", new Auton2Tote());
         autonChooser.addDefault("Move 3 Totes to Auton Zone", new Auton_3Tote());
         //autonChooser.addObject("Move 1 Container to Auton Zone", new Auton1Container());
@@ -111,6 +111,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
+    	autonCommand = (Command) autonChooser.getSelected();
         if (autonCommand != null) autonCommand.start();
     }
 

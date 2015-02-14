@@ -55,9 +55,9 @@ public class RobotMap {
     //Tote sensor for Auton
     public static DigitalInput chassistoteSensor;
     
-    //Limit Switches for Tote Lift Mechanism
-    public static DigitalInput liftUpperLimitSwitch;
-    public static DigitalInput liftLowerLimitSwitch;
+    //Switch for determining comp/practice bot for set points
+    public static DigitalInput practiceBot;
+    
     //PowerDistroPanel for reading Volts and Amps.
     public static PowerDistributionPanel pdp;
     //Intake Motors for Arms
@@ -154,11 +154,9 @@ public class RobotMap {
         chassistoteSensor = new DigitalInput(2);
         LiveWindow.addSensor("chassis", "toteSensor", chassistoteSensor);
         
-      //Init Intake Motors
-        //liftUpperLimitSwitch = new DigitalInput(0);
-        //liftLowerLimitSwitch = new DigitalInput(1);
-        //LiveWindow.addActuator("Lift", "LimitUpper", liftUpperLimitSwitch);
-        //LiveWindow.addActuator("Lift", "LimitLower", liftLowerLimitSwitch);
+      //Jumper to determine comp vs practice bot
+        practiceBot = new DigitalInput(0);
+        LiveWindow.addActuator("Lift", "Practice Bot Set Points:", practiceBot);
         
         liftAutoTote = new DigitalInput(3);
         LiveWindow.addActuator("Lift", "AutoTote", liftAutoTote);
