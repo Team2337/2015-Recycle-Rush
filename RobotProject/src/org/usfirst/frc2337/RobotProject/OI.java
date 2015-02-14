@@ -102,7 +102,7 @@ public class OI {
     	//Speed for the motors for any given button or command
    	    double speed = .7; 
         double p = 1; //Positive
-        double n = -1; //Negitive
+        double n = -1; //Negative
         
         //Pull commands. 
         double rightPull = speed * n; 
@@ -115,7 +115,7 @@ public class OI {
         //Declare variables
         double rightRotateRight,leftRotateRight, leftRotateLeft,rightRotateLeft;
         
-        //Rotaing commands
+        //Rotating commands
         rightRotateRight = leftRotateRight = speed *n;
         leftRotateLeft = rightRotateLeft = speed * p;  	
     	
