@@ -41,8 +41,11 @@ public class  CONTAINERARM_JoystickRun extends Command {
     	double conJoystick = Robot.oi.containerJoystick.getRawAxis(1);
     	
     	if ((conJoystick > -0.1) || (conJoystick < 0.1)) { //Dead Band for Joystick
-    		RobotMap.containerArm.set(speed * conJoystick);
-    		onUse = true;
+    		if (!Robot.conArm.joystickModeStatus())
+    		{
+    			RobotMap.containerArm.set(speed * conJoystick);
+    			onUse = true;
+    		}
     	}
     	else {
     		if (onUse) {
