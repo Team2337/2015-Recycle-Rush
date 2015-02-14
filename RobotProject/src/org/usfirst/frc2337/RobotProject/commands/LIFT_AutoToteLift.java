@@ -23,7 +23,7 @@ import org.usfirst.frc2337.RobotProject.Robot;
 public class  LIFT_AutoToteLift extends Command {
 	
 	public boolean autoToteSet = false;
-	public int value;
+	public int value = 1;
 	
     public LIFT_AutoToteLift(int value) {
         // Use requires() here to declare subsystem dependencies
