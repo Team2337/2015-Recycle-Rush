@@ -184,11 +184,11 @@ public class OI {
         operatorControlsLift5.whileHeld(new LIFT_PidSet(5,1));        
         
         //AutoToteLift Detector Components
-        operatorControlsAutoTote = new JoystickButton(operatorControls, 10);
+        operatorControlsAutoTote = new JoystickButton(operatorControls, 5);
         operatorControlsAutoTote.whileHeld(new LIFT_AutoToteLift(1));
         
         //LiftToggle (On or Off) Components
-        operatorControlsLiftToggle = new JoystickButton(operatorControls, 11);
+        operatorControlsLiftToggle = new JoystickButton(operatorControls, 6);
         operatorControlsLiftToggle.whileHeld(new LIFT_StopPID());
         
         operatorControlsLiftToggle.whenReleased(new LIFT_StartPID());
@@ -201,8 +201,8 @@ public class OI {
         kickerKick.whenPressed(new KICKER_Kick());
         
         //ContainerArm Components
-        operatorControlsJoystickMode = new JoystickButton(operatorControls, 1);
-        operatorControlsExtension = new JoystickButton(operatorControls, 2);
+        operatorControlsJoystickMode = new JoystickButton(operatorControls, 3);
+        operatorControlsExtension = new JoystickButton(operatorControls, 4);
         
         operatorControlsJoystickMode.whenPressed(new CONTAINERARM_JoystickMode(false));
         operatorControlsJoystickMode.whenReleased(new CONTAINERARM_JoystickMode(true));
