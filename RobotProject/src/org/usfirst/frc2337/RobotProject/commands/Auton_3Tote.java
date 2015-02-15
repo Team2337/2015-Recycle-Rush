@@ -22,34 +22,106 @@ public class Auton_3Tote extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
 
+    	addSequential(new ResetEncoder());
+    	addSequential(new KICKER_StopKick());
     	
-    	addSequential(new LIFT_PidSet(1,1));   						//lift tote to position 1 to pick up tote
-    	addSequential(new AutonWait(1));
-    	addSequential(new AutonDriveAtSpeedForTime(-0.3,0.5));		//drive back to clear can lid when lifting
-    	addSequential(new AutonWait(1));
-    	addParallel(new AutonStrafeAtSpeedForTime(-0.3,0.5));		//strafe out to clear handle of can when driving forward
-    	addSequential(new AutonWait(1));
-    	addSequential(new LIFT_PidSet(5,1));						//lift tote to position 5 to clear can
+    	
+    	//LIFT TOTE 1
+    	addParallel(new KICKER_Kick());								//deploy kicker
+    	addSequential(new LIFT_PidSet(1, 1));   					//lift tote to position 1
+    	
+    	//AVOID CONTAINER
+    	addSequential(new AutonDriveAtSpeedForTime(-0.3, 0.5));		//drive back to clear can lid when lifting
+    	addParallel(new LIFT_PidSet(5, 1));							//lift tote to position 6 to clear can
+    	addSequential(new AutonStrafeAtSpeedForTime(-0.5, 0.3));	//strafe out to clear handle of can when driving forward
     	addSequential(new AutonWait(1));
 
-    	//   works up to here so far...
+    	//DRIVE TO TOTE 2
+    	addSequential(new Auton_ChassisPidSet(80));					//drive past container
+    	addParallel(new LIFT_PidSet(2, 1));							//lower tote to pos 2 in parallel while driving to next tote
+    	addSequential(new Auton_ChassisPidSet(500));				//drive to 2nd tote
     	
-    	addSequential(new AutonDriveUntilBlocked());				//drive until blocked (can)
+    	//SET DOWN TOTE 1 ON TOTE 2
+    	addSequential(new AutonStrafeAtSpeedForTime(0.5, 0.2));		//strafe in to set down tote 1 on tote 2
+    	addParallel(new KICKER_Kick());								//release kicker
+       	addSequential(new AutonStrafeAtSpeedForTime(0.3, 0.5));		//nest totes
+    	addSequential(new LIFT_PidSet(0, 1));						//set down tote and get ready to pick up 2nd tote
+    	
+    	
+    	
+    	
+    	
+    	//AVOID CONTAINER 2: PART 1
+    	addSequential(new LIFT_PidSet(1, 0));						//grab 2 tote stack
+    	addSequential(new AutonDriveAtSpeedForTime(-0.3, 0.5));		//drive back to clear can lid when lifting
+    	
+    	//PICK UP 2 TOTE STACK
+    	addParallel(new KICKER_Kick());								//deploy kicker
+    	addSequential(new LIFT_PidSet(2, 0));						//pick up 2 tote stack
+    	
+    	//RESET ENCODER
+    	addSequential(new ResetEncoder());
+    	
+    	//AVOID CONTAINER 2: PART 2
+    	addParallel(new LIFT_PidSet(6, 1));							//lift tote stack to position 6 to clear can
+    	addSequential(new AutonStrafeAtSpeedForTime(-0.5, 0.7));	//strafe out to clear handle of can when driving forward
+    	addSequential(new AutonWait(0.5));
+    	
+    	//DRIVE TO TOTE 3
+    	//Changed to 200 from 100
+    	//Changed to 300 from 200
+    	addSequential(new Auton_ChassisPidSet(300));				//Drive past container
+    	addParallel(new LIFT_PidSet(7, 1));							//lower tote to pos 3 in parallel while driving to next tote
+    	// Changed to 500 from 600
+    	//Changed to 400 from 500
+    	addSequential(new Auton_ChassisPidSet(600));				//Drive to next tote
+    	
+    	
+    	
+    	
+    	
+    	//SET DOWN TOTE & STRAFE TO AUTON ZONE
+    	addParallel(new LIFT_PidSet(7, 1));							//lower tote to pos 7
+    	addSequential(new AutonStrafeAtSpeedForTime(0.5, 1.5));		//strafe in to set down tote 1 on tote 2
+    	addParallel(new KICKER_Kick());								//retract kicker
+    	addParallel(new LIFT_PidSet(0, 1));							//lower intake to pos 0
+    	addSequential(new LIFT_PidSet(0,0));
+    	addSequential(new LIFT_PidSet(1,0));
+    	addSequential(new AutonStrafeAtSpeedForTime(0.8, 2.5));		//strafe into the auton zone
+    	addSequential(new LIFT_PidSet(0,0));
+    	addSequential(new AutonWait(0.2));
+    	addSequential(new AutonStrafeAtSpeedForTime(-0.8, 0.5));	//strafe away from totes
+    	
+
+    	
+    	
+    	
+    	
+    	
+    	/*addSequential(new AutonWait(1));
+    	
+    	//addSequential(new AutonDriveAtSpeedForTime(-0.3,0.5));	//drive back to clear can lid when lifting
+    	addSequential(new Auton_ChassisPidSet(-15));
     	addSequential(new AutonWait(1));
-    	addSequential(new AutonDriveUntilUnblocked());				//drive until unblocked (past can)
+    	
+    	addSequential(new LIFT_PidSet(5, 1));						//lift tote to position 5 to clear can
+    	addParallel(new AutonStrafeAtSpeedForTime(-0.3, 0.5));		//strafe out to clear handle of can when driving forward
     	addSequential(new AutonWait(1));
-    	addParallel(new LIFT_PidSet(1,2));							//lower tote to pos 2 in parallel while driving to next tote
+
+    	//addSequential(new AutonDriveUntilBlocked());				//drive until blocked (can)
+    	//addSequential(new AutonDriveUntilUnblocked());			//drive until unblocked (past can)
+    	//addSequential(new AutonDriveUntilBlocked());				//drive to next tote
+    	addSequential(new Auton_ChassisPidSet(531));
+    	addParallel(new LIFT_PidSet(7, 1));							//lower tote to pos 2 in parallel while driving to next tote
     	addSequential(new AutonWait(1));
-    	addSequential(new AutonDriveUntilBlocked());				//drive until blocked  (next tote)
-    	addSequential(new AutonWait(1));
+    	
     	addSequential(new AutonStrafeAtSpeedForTime(0.3,0.5));		//strafe in to set down tote 1 on tote 2
     	addSequential(new AutonWait(1));
-    	addSequential(new LIFT_PidSet(1,0));						//lower lift to set down tote and get ready to pick up 2nd tote
-    	addSequential(new AutonWait(1));					
     	
-    														//repeat process to go to 3rd tote
+    	addSequential(new LIFT_PidSet(0,1));						//lower lift to set down tote and get ready to pick up 2nd tote
+    	addSequential(new AutonWait(1));
     	
-    	addSequential(new LIFT_PidSet(1,1)); 
+    	addSequential(new LIFT_PidSet(1,1)); */
 
     	
     }

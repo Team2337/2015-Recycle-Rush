@@ -62,13 +62,12 @@ public class  LIFT_JoystickControl extends Command {
     	
     	//If the Joystick is out of the dead band, do..
     	else {
-			if (Robot.lift.joystickModeStatus()) {
-				Robot.lift.disable(); //Disable the Lift PID
-				//Make the motor be controlled by the joystick but at 15%
-				RobotMap.masterliftMotor.set(0.15 * liftJoystickY); 
-				//Make the setPointSet to false, so if in dead band, the PID can reset
-				setPointSet = false;
-			}
+    		Robot.lift.disable(); //Disable the Lift PID
+    		//Make the motor be controlled by the joystick but at 15%
+    		RobotMap.masterliftMotor.set(0.4 * liftJoystickY); 
+    		//Make the setPointSet to false, so if in dead band, the PID can reset
+    		setPointSet = false;
+    		
     	}
     	
     	
@@ -86,7 +85,6 @@ public class  LIFT_JoystickControl extends Command {
     	RobotMap.masterliftMotor.set(0);
     	Robot.lift.enable();
 		Robot.lift.setSetpoint(Robot.lift.getPosition());
-		SmartDashboard.putNumber("Elevator", Robot.lift.getPosition());
     }
 
     // Called when another command which requires one or more of the same

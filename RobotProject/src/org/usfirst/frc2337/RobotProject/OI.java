@@ -142,7 +142,7 @@ public class OI {
         joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
         joystickDriverButtonB.whileHeld(new DoNothing());
         joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
-        joystickDriverButtonA.whileHeld(new DoNothing());
+        joystickDriverButtonA.whileHeld(new ResetEncoder());
         
         
         //ButtonPanel for Lift (Operator Left Hand)
@@ -150,7 +150,7 @@ public class OI {
         //Nice Fancy Control, for Lift (Precise) (Operator Right hand)
         liftJoystick = new Joystick(1); 
         
-        intakeDeploy = new JoystickButton(liftJoystick, 1);
+        intakeDeploy = new JoystickButton(liftJoystick, 11);
         intakeDeploy.whileHeld(new INTAKEPNEUMATICS_ArmsOut());
         intakeLeft = new JoystickButton(liftJoystick, 4);
         intakeLeft.whileHeld(new INTAKE_ActivateMotors(leftRotateLeft,rightRotateLeft));
@@ -158,7 +158,7 @@ public class OI {
         intakeRight.whileHeld(new INTAKE_ActivateMotors(leftRotateRight,rightRotateRight));
         intakePush = new JoystickButton(liftJoystick, 3);
         intakePush.whileHeld(new INTAKE_ActivateMotors(leftPush,rightPush));
-        intakePull = new JoystickButton(liftJoystick, 2);
+        intakePull = new JoystickButton(liftJoystick, 12);
         intakePull.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
         
         
@@ -194,15 +194,15 @@ public class OI {
         operatorControlsLiftToggle.whenReleased(new LIFT_StartPID());
         
         //Kicker Controls Components
-        operatorControlsKickToggle = new JoystickButton(operatorControls, 6);
+        operatorControlsKickToggle = new JoystickButton(liftJoystick, 2);
         operatorControlsKickToggle.whenPressed(new KICKER_StopKick());
         
-        kickerKick = new JoystickButton(liftJoystick, 11);
+        kickerKick = new JoystickButton(liftJoystick, 1);
         kickerKick.whenPressed(new KICKER_Kick());
         
         //ContainerArm Components
-        operatorControlsJoystickMode = new JoystickButton(operatorControls, 16);
-        operatorControlsExtension = new JoystickButton(operatorControls, 17);
+        operatorControlsJoystickMode = new JoystickButton(operatorControls, 1);
+        operatorControlsExtension = new JoystickButton(operatorControls, 2);
         
         operatorControlsJoystickMode.whenPressed(new CONTAINERARM_JoystickMode(false));
         operatorControlsJoystickMode.whenReleased(new CONTAINERARM_JoystickMode(true));
