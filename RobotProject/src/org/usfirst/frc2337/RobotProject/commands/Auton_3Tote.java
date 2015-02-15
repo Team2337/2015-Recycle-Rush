@@ -87,7 +87,7 @@ public class Auton_3Tote extends CommandGroup {
     	addParallel(new LIFT_PidSet(0, 1));							//lower intake to pos 0
     	addSequential(new LIFT_PidSet(0,0));
     	addSequential(new LIFT_PidSet(1,0));
-    	addSequential(new AutonStrafeAtSpeedForTime(0.8, 2.5));		//strafe into the auton zone
+    	addSequential(new AutonStrafeAtSpeedForTime(0.8, 2.0));		//strafe into the auton zone
     	addSequential(new LIFT_PidSet(0,0));
     	addSequential(new AutonWait(0.2));
     	addSequential(new AutonStrafeAtSpeedForTime(-0.8, 0.5));	//strafe away from totes

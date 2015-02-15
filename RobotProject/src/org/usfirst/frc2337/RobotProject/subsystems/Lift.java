@@ -115,7 +115,7 @@ public class Lift extends PIDSubsystem {
         setarray[0][4] = bottom + pos4;
         setarray[0][5] = bottom + pos5;
         setarray[0][6] = bottom + pos6;
-        setarray[0][7] = bottom + pos7;        
+        //setarray[0][7] = bottom + pos7;        
         //Middle Positions     
         setarray[1][0] = mid + pos0;
         setarray[1][1] = mid + pos1;
@@ -124,7 +124,7 @@ public class Lift extends PIDSubsystem {
         setarray[1][4] = mid + pos4;
         setarray[1][5] = mid + pos5;				//may need to adjust as trolley may hit top?  Max range may limit though.
         setarray[1][6] = mid + pos6;				//may need to adjust as trolley may hit top?  Max range may limit though.
-        setarray[1][7] = mid + pos7;
+        //setarray[1][7] = mid + pos7;
         //Top Positions
         setarray[2][0] = top + pos0;
         setarray[2][1] = top + pos1;
@@ -133,7 +133,7 @@ public class Lift extends PIDSubsystem {
         setarray[2][4] = top + pos4;
         setarray[2][5] = top + pos5; 				//may need to adjust
         setarray[2][6] = top + pos6; 				//may need to adjust
-        setarray[2][7] = top + pos7;
+        //setarray[2][7] = top + pos7;
         
 
         // Use these to get going:
