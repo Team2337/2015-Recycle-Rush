@@ -30,6 +30,14 @@ public class Kicker extends Subsystem {
     	solenoid.set(DoubleSolenoid.Value.kReverse);
     	stateOut = false;
     }
-    
+    public boolean getPosition() {
+    	return stateOut;
+    }
+    public boolean isAutoKick() {
+    	return !autoOff;
+    }
+    public boolean isFingerSensor() {
+    	return fingerSensor.get();
+    }
 }
 
