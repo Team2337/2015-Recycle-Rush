@@ -14,7 +14,6 @@ package org.usfirst.frc2337.RobotProject;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.CANTalon.ControlMode;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
@@ -168,6 +167,7 @@ public class RobotMap {
         
         //Add kicker solenoid
         kickerSolenoid = new DoubleSolenoid(0,7,6);
+        LiveWindow.addActuator("Kicker", "kickerSolenoid", kickerSolenoid);
         
         //Make new Compressor
         pneumaticsCompressor = new Compressor(0);
@@ -215,11 +215,5 @@ public class RobotMap {
     	autonEncoder = new Encoder(5, 6, false, EncodingType.k4X);
     	autonEncoder.setPIDSourceParameter(Encoder.PIDSourceParameter.kDistance);
     	LiveWindow.addSensor("ChassisPID", "Encoder", autonEncoder);
-        
-        double encoder = autonEncoder.getDistance();
-        SmartDashboard.putNumber("encoder", encoder);
-    	LiveWindow.addSensor("chassis", 5, autonEncoder);
-    	LiveWindow.addSensor("chassis", 6, autonEncoder);
-    	
     }
 }

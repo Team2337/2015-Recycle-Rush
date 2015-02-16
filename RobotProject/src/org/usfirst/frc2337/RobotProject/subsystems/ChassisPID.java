@@ -22,7 +22,6 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -56,7 +55,6 @@ public class ChassisPID extends PIDSubsystem {
         getPIDController().setContinuous(false);
         
         LiveWindow.addActuator("ChassisPID", "PIDSubsystem Controller", getPIDController());
-        SmartDashboard.putNumber("setpoint", this.getSetpoint());
         getPIDController().setOutputRange(-0.5, 0.5);  
         //getPIDController().setInputRange(liftBottomLimit, liftTopLimit);
     }

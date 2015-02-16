@@ -88,6 +88,25 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Auton Chooser", autonChooser);
         
     }
+    
+    /**
+     * This function is called periodically while the robot is on, regardless of current mode.
+     * The most obvious use for this is continuously updating SmartDashboard outputs.
+     */
+    public void robotPeriodic() {
+    	//Chassis
+        SmartDashboard.putNumber("Chassis PID Setpoint", Robot.chassis.getSetpoint());
+    	SmartDashboard.putNumber("Chassis PID Position", Robot.chassis.getPosition());
+    	SmartDashboard.putNumber("Chassis Encoder Position", Robot.chassis.readEncoderDistance());
+    	
+    	//Lift
+    	SmartDashboard.putBoolean("Using Practice Bot Positions", Robot.lift.isPracticeBot());
+    	SmartDashboard.putNumber("Variable: Base", Robot.lift.base);
+    	SmartDashboard.putNumber("Variable: Tote", Robot.lift.tote);
+    	SmartDashboard.putNumber("Variable: Type", Robot.lift.type);
+    	SmartDashboard.putNumber("Variable: Array", Robot.lift.setarray[Robot.lift.base][Robot.lift.tote]);
+        SmartDashboard.getBoolean("Lift Tote Switch", Robot.lift.LiftAutoTote());
+    }
 
     /**
      * This function is called when the disabled button is hit.
@@ -99,6 +118,7 @@ public class Robot extends IterativeRobot {
 
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
+        robotPeriodic();
     }
 
     public void autonomousInit() {
@@ -112,6 +132,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        robotPeriodic();
     }
 
     public void teleopInit() {
@@ -127,6 +148,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        robotPeriodic();
     }
 
     /**
@@ -134,5 +156,6 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+        robotPeriodic();
     }
 }

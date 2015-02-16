@@ -1,8 +1,6 @@
 package org.usfirst.frc2337.RobotProject.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.usfirst.frc2337.RobotProject.RobotMap;
 import org.usfirst.frc2337.RobotProject.Robot;
 
