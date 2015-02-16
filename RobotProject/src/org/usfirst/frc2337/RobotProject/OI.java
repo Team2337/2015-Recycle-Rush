@@ -10,11 +10,6 @@
 
 
 package org.usfirst.frc2337.RobotProject;
-
-
-//import KICKER_Kick;
-//import KICKER_StopKick;
-
 import org.usfirst.frc2337.RobotProject.commands.*;
 
 import edu.wpi.first.wpilibj.*;
@@ -141,13 +136,11 @@ public class OI {
         joystickDriverButtonX.whileHeld(new DoNothing());
         joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
         joystickDriverButtonB.whileHeld(new DoNothing());
-        joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
+        joystickDriverButtonA = new JoystickButton(joystickDriver, 1);				//resets encoder
         joystickDriverButtonA.whileHeld(new ResetEncoder());
         
         
-        //ButtonPanel for Lift (Operator Left Hand)
-        operatorControls = new Joystick(2); 
-        //Nice Fancy Control, for Lift (Precise) (Operator Right hand)
+        //Joystick Control, for Lift (Precise) (Operator Right hand)
         liftJoystick = new Joystick(1); 
         
         intakeDeploy = new JoystickButton(liftJoystick, 11);
@@ -162,14 +155,16 @@ public class OI {
         intakePull.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
         
         
-        //Controls for Base Position
+        //ButtonPanel for Lift (Operator Left Hand)
+        operatorControls = new Joystick(2);         
+        //Buttons for Base Position
         operatorControlsBase1 = new JoystickButton(operatorControls, 9);
         operatorControlsBase1.whenPressed(new LIFT_PidSet(0,0));
         operatorControlsBase2 = new JoystickButton(operatorControls, 8);
         operatorControlsBase2.whenPressed(new LIFT_PidSet(1,0));
         operatorControlsBase3 = new JoystickButton(operatorControls, 7);
         operatorControlsBase3.whenPressed(new LIFT_PidSet(2,0));
-        //Tote Buttons (Pos0 - Pos5)
+        //Buttons for Tote Position (Pos0 - Pos5)
         operatorControlsLift0 = new JoystickButton(operatorControls, 15);
         operatorControlsLift0.whileHeld(new LIFT_PidSet(0,1));
         operatorControlsLift1 = new JoystickButton(operatorControls, 14);
@@ -194,7 +189,7 @@ public class OI {
         operatorControlsLiftToggle.whenReleased(new LIFT_StartPID());
         
         //Kicker Controls Components
-        operatorControlsKickToggle = new JoystickButton(liftJoystick, 2);
+        operatorControlsKickToggle = new JoystickButton(liftJoystick, 2);         //currently on LIFTJOYTICK
         operatorControlsKickToggle.whenPressed(new KICKER_StopKick());
         
         kickerKick = new JoystickButton(liftJoystick, 1);

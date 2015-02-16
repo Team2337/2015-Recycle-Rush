@@ -29,7 +29,8 @@ import java.util.Vector;
  * floating around.
  */
 public class RobotMap {
-    //////////////////////
+
+	//////////////////////
 	// Drive Components //
 	/////////////////////
 	public static SpeedController chassisfrontLeft;
@@ -68,15 +69,15 @@ public class RobotMap {
     //LED to show whether our bumper limit switch is returning true or false, and thus if we are touching a crate or not.
     public static Solenoid ledBumper;
     
-    
-    
     //////////////////
     // Tote Sensing //
     //////////////////
-
     //Tote sensor for Auton
     public static DigitalInput chassistoteSensor;
     
+    ///////////////////////
+    //  Set Point Jumper //
+    ///////////////////////
     //Switch for determining comp/practice bot for set points
     public static DigitalInput practiceBot;
     
@@ -85,7 +86,6 @@ public class RobotMap {
     /////////
     //PowerDistroPanel for reading Volts and Amps.
     public static PowerDistributionPanel pdp;
-    
     
     ///////////////////////
     // Intake and Kicker //
@@ -101,14 +101,14 @@ public class RobotMap {
     //Kicker > Actuator
     public static DoubleSolenoid kickerSolenoid;
     
-
-    
     ////////////
     // Camera //
-    ///////////
+    ////////////
     public static CameraServer usbCamera1;
     
-    // Encoder
+    /////////////
+    // Encoder //
+    /////////////
     public static Encoder autonEncoder;
     
     public static void init() {
@@ -138,7 +138,9 @@ public class RobotMap {
         chassisrobotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, false);
         
         masterliftMotor = new CANTalon(1);
+        //LiveWindow.addActuator("Lift", "Motor", (CANTalon) masterliftMotor);   //LiveWindow doesn't play nice with CANTalons 
         masterliftMotor.changeControlMode(ControlMode.PercentVbus);
+        
         
         slaveliftMotor1 = new CANTalon(2);
         slaveliftMotor1.changeControlMode(ControlMode.Follower);
@@ -147,8 +149,7 @@ public class RobotMap {
         
         masterliftMotor.enableBrakeMode(true);
         slaveliftMotor1.enableBrakeMode(true);
-                
-        //LiveWindow.addActuator("Lift", "Motor", (CANTalon) masterliftMotor);   //LiveWindow doesn't play nice with CANTalons        
+       
  
         liftPotentiometer = new AnalogPotentiometer(2, 10.0, 0.068);
         LiveWindow.addSensor("Lift", "Potentiometer", liftPotentiometer);
@@ -191,14 +192,14 @@ public class RobotMap {
         chassistoteSensor = new DigitalInput(2);
         LiveWindow.addSensor("chassis", "toteSensor", chassistoteSensor);
         
-      //Jumper to determine comp vs practice bot
+        //Jumper to determine comp vs practice bot
         practiceBot = new DigitalInput(0);
         LiveWindow.addActuator("Lift", "Practice Bot Set Points:", practiceBot);
         
         liftAutoTote = new DigitalInput(3);
         LiveWindow.addActuator("Lift", "AutoTote", liftAutoTote);
         
-        
+        //Power Distribution
         pdp = new PowerDistributionPanel();
         LiveWindow.addSensor("Lift", "PDP1", pdp);
         

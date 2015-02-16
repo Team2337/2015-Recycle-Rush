@@ -50,21 +50,22 @@ public class Lift extends PIDSubsystem {
     
     boolean PIDStatus = false;
     
-    //boolean practiceBot = true;                            // create DIO on RoboRio to set this as true on practice bot.
+    //boolean practiceBot = true;          // now set by jumper on roborio
     
     double pos0,pos1,pos2,pos3,pos4,pos5,pos6,pos7,bottom,mid,top;
+    
     //Joystick mode for switching back motor and lift
     public boolean joystickStatus = true;
     
-    public void setPracticeSetPoints() { 					// method to for set points on practice bot, called per practiceBot boolean
+    public void setPracticeSetPoints() { 		// method to for set points on practice bot, called per practiceBot boolean/jumper
     	pos0 = 0.85; 	//Position 0
     	pos1 = 1.8;		//1
     	pos2 = 2.6;		//2
     	pos3 = 4.0;		//3
     	pos4 = 5.0;		//4
     	pos5 = 7.0;		//5
-    	pos6 = 4.8;		//  Just above container for Auton
-    	pos7 = 2.6;		// Auton second tote
+    	pos6 = 4.8;		// Auton: just above container
+    	pos7 = 2.6;		// Auton: second tote
     
     	bottom = 0;		//Bottom
     	mid = 0.2;		//Middle
@@ -72,15 +73,15 @@ public class Lift extends PIDSubsystem {
     	//SmartDashboard.putString(null, "USING PRACTICE SET POINTS");
     }
     
-    public void setCompetitionSetPoints() {					// method to for set points on competition bot, called per practiceBot boolean
+    public void setCompetitionSetPoints() {		// competition bot set points, called per practiceBot boolean/jumper (i.e. NO jumper)
     	pos0 = 0.85; 	//Position 0
     	pos1 = 1.8;		//1
     	pos2 = 2.6;		//2
     	pos3 = 4.0;		//3
     	pos4 = 5.0;		//4
     	pos5 = 7.0;		//5
-    	pos6 = 4.8;		//  Just above container for Auton
-    	pos7 = 2.6;		// Auton second tote
+    	pos6 = 4.8;		// Auton: just above container
+    	pos7 = 2.6;		// Auton: second tote
     
     	bottom = 0;		//Bottom
     	mid = 0.2;		//Middle
@@ -100,7 +101,7 @@ public class Lift extends PIDSubsystem {
         getPIDController().setOutputRange(maxSpeedDown, maxSpeedUp);   //For the lift PID
         getPIDController().setInputRange(liftBottomLimit, liftTopLimit);
         
-        if (practiceBot.get()) { 											//call method to set set-points based on DIO jumper        	
+        if (practiceBot.get()) { 						//call method to set set-points based on DIO jumper        	
         	setPracticeSetPoints();
     	} else {
     		setCompetitionSetPoints();
@@ -122,8 +123,8 @@ public class Lift extends PIDSubsystem {
         setarray[1][2] = mid + pos2;
         setarray[1][3] = mid + pos3;
         setarray[1][4] = mid + pos4;
-        setarray[1][5] = mid + pos5;				//may need to adjust as trolley may hit top?  Max range may limit though.
-        setarray[1][6] = mid + pos6;				//may need to adjust as trolley may hit top?  Max range may limit though.
+        setarray[1][5] = mid + pos5;				
+        setarray[1][6] = mid + pos6;			
         //setarray[1][7] = mid + pos7;
         //Top Positions
         setarray[2][0] = top + pos0;
