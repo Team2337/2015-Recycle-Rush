@@ -153,6 +153,10 @@ public class OI {
         intakePush.whileHeld(new INTAKE_ActivateMotors(leftPush,rightPush));
         intakePull = new JoystickButton(liftJoystick, 12);
         intakePull.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
+        operatorControlsKickToggle = new JoystickButton(liftJoystick, 2);
+        operatorControlsKickToggle.whenPressed(new KICKER_StopKick());
+        kickerKick = new JoystickButton(liftJoystick, 1);
+        kickerKick.whenPressed(new KICKER_Kick());
         
         
         //ButtonPanel for Lift (Operator Left Hand)
@@ -185,23 +189,13 @@ public class OI {
         //LiftToggle (On or Off) Components
         operatorControlsLiftToggle = new JoystickButton(operatorControls, 6);
         operatorControlsLiftToggle.whileHeld(new LIFT_StopPID());
-        
         operatorControlsLiftToggle.whenReleased(new LIFT_StartPID());
-        
-        //Kicker Controls Components
-        operatorControlsKickToggle = new JoystickButton(liftJoystick, 2);         //currently on LIFTJOYTICK
-        operatorControlsKickToggle.whenPressed(new KICKER_StopKick());
-        
-        kickerKick = new JoystickButton(liftJoystick, 1);
-        kickerKick.whenPressed(new KICKER_Kick());
         
         //ContainerArm Components
         operatorControlsJoystickMode = new JoystickButton(operatorControls, 3);
         operatorControlsExtension = new JoystickButton(operatorControls, 4);
-        
         operatorControlsJoystickMode.whenPressed(new CONTAINERARM_JoystickMode(false));
         operatorControlsJoystickMode.whenReleased(new CONTAINERARM_JoystickMode(true));
-
         operatorControlsExtension.whenPressed(new CONTAINERARM_ExtensionOut());
         operatorControlsExtension.whenReleased(new CONTAINERARM_ExtensionIn());
 	    
