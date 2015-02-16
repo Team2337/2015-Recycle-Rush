@@ -17,9 +17,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Auton_3ToteB extends CommandGroup {
+public class Auton_3ToteC extends CommandGroup {
 	
-    public  Auton_3ToteB() {
+    public  Auton_3ToteC() {
         // Add Commands here:
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
