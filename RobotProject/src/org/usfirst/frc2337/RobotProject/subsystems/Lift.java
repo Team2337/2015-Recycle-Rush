@@ -34,7 +34,7 @@ public class Lift extends PIDSubsystem {
     
     //Lift PID variables
     double setPointTolerance = 0.05;
-    double maxSpeedUp = 0.5;
+    double maxSpeedUp = 0.75;
     double maxSpeedDown = -0.5;
     double liftTopLimit = 7.0;
     double liftBottomLimit = 0.85;
@@ -68,15 +68,6 @@ public class Lift extends PIDSubsystem {
     
     //Joystick mode for switching back motor and lift
     public boolean joystickStatus = true;
-    
-    /* New position setpoints
-     	pos0 = 0.80; 	//Position 0
-    	pos1 = 2.1;		//1
-    	pos2 = 3.5;		//2
-    	pos3 = 4.9;		//3
-    	pos4 = 6.3;		//4
-    	pos5 = 7.7;		//5
-     */
     
     public void setPracticeSetPoints() { 		// method to for set points on practice bot, called per practiceBot boolean/jumper
     	pos0 = 0.85; 	//Position 0
