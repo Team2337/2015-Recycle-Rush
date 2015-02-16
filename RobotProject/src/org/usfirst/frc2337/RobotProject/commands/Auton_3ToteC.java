@@ -87,8 +87,8 @@ public class Auton_3ToteC extends CommandGroup {
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));							//lower tote to pos 7
     	addSequential(new AutonStrafeAtSpeedForTime(0.5, 1.5));		//strafe in to set down tote 1 on tote 2
     	addParallel(new KICKER_Kick());								//retract kicker				
-    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos3));						//lower intake to pos 0
-    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos3));
+    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));						//lower intake to pos 0
+    	//addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos3));
     	addSequential(new AutonStrafeAtSpeedForTime(0.8, 2.0));		//strafe into the auton zone
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos12));
     	addSequential(new AutonWait(0.2));
