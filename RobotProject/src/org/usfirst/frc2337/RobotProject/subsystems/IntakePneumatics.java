@@ -15,6 +15,7 @@ public class IntakePneumatics extends Subsystem {
     // here. Call these from Commands.
 	Solenoid rightSolenoid = RobotMap.intakeRightSolenoid;
     Solenoid leftSolenoid = RobotMap.intakeLeftSolenoid;
+    boolean armPosition;
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -22,12 +23,18 @@ public class IntakePneumatics extends Subsystem {
     	setDefaultCommand(new INTAKEPNEUMATICS_ArmsIn());
     }
     public void armsOut() {
+    	armPosition = true;
     	rightSolenoid.set(true);
     	leftSolenoid.set(true);
     }
     public void armsIn() {
+    	armPosition = false;
     	rightSolenoid.set(false);
     	leftSolenoid.set(false);
     }
+    public boolean getArmPosition() {
+    	return armPosition;
+    }
+    
 }
 

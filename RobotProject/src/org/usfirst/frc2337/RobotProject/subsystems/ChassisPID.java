@@ -128,7 +128,7 @@ public class ChassisPID extends PIDSubsystem {
     /**
      * Return whether the tote sensor has been triggered.
      * 
-     * @return the current state of the tote sensor, inverted to read roperly
+     * @return the current state of the tote sensor, inverted to read properly
      */
     public boolean isToteSensor() {
     	return !toteSensor.get();

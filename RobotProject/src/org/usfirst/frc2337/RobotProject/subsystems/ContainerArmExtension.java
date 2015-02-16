@@ -27,5 +27,8 @@ public class ContainerArmExtension extends Subsystem {
     public void extIn() {
     	Solenoid1.set(false);
     }
+    public boolean getSolenoidPosition() {
+    	return Solenoid1.get();
+    }
 }
 

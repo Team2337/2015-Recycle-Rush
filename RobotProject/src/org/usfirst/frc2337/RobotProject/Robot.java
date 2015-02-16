@@ -94,18 +94,32 @@ public class Robot extends IterativeRobot {
      * The most obvious use for this is continuously updating SmartDashboard outputs.
      */
     public void robotPeriodic() {
+    	SmartDashboard.putData		("Scheduled Commands", 			Scheduler.getInstance());
+    	
     	//Chassis
-        SmartDashboard.putNumber("Chassis PID Setpoint", Robot.chassis.getSetpoint());
-    	SmartDashboard.putNumber("Chassis PID Position", Robot.chassis.getPosition());
-    	SmartDashboard.putNumber("Chassis Encoder Position", Robot.chassis.readEncoderDistance());
+        SmartDashboard.putNumber	("Chassis PID Setpoint", 		Robot.chassis.getSetpoint());
+    	SmartDashboard.putNumber	("Chassis PID Position", 		Robot.chassis.getPosition());
+    	SmartDashboard.putNumber	("Chassis Encoder Position",	Robot.chassis.readEncoderDistance());
+    	SmartDashboard.putBoolean	("Chassis Tote Sensor", 		Robot.chassis.isToteSensor());
+    	
+    	//Intake
+    	SmartDashboard.putBoolean	("Intake Extended", 			Robot.intakePneumatics.getArmPosition());
     	
     	//Lift
-    	SmartDashboard.putBoolean("Using Practice Bot Positions", Robot.lift.isPracticeBot());
-    	SmartDashboard.putNumber("Variable: Base", Robot.lift.base);
-    	SmartDashboard.putNumber("Variable: Tote", Robot.lift.tote);
-    	SmartDashboard.putNumber("Variable: Type", Robot.lift.type);
-    	SmartDashboard.putNumber("Variable: Array", Robot.lift.setarray[Robot.lift.base][Robot.lift.tote]);
-        SmartDashboard.getBoolean("Lift Tote Switch", Robot.lift.LiftAutoTote());
+    	SmartDashboard.putBoolean	("Practice Bot Positions",		Robot.lift.isPracticeBot());
+    	SmartDashboard.putNumber	("Lift Variable: Base", 		Robot.lift.base);
+    	SmartDashboard.putNumber	("Lift Variable: Tote", 		Robot.lift.tote);
+    	SmartDashboard.putNumber	("Lift Variable: Type", 		Robot.lift.type);
+    	SmartDashboard.putNumber	("Lift Variable: Array", 		Robot.lift.setarray[Robot.lift.base][Robot.lift.tote]);
+        SmartDashboard.getBoolean	("Lift Tote Switch", 			Robot.lift.LiftAutoTote());
+        
+        //Kicker
+        SmartDashboard.putBoolean	("Kicker Position", 			Robot.kicker.getPosition());
+        SmartDashboard.putBoolean	("Kicker Tote Sensor", 			Robot.kicker.isFingerSensor());
+        SmartDashboard.putBoolean	("Kicker AutoKick",				Robot.kicker.isAutoKick());
+        
+        //Container Arm
+        SmartDashboard.putBoolean	("Container Arm Extended", 		Robot.conExtension.getSolenoidPosition());
     }
 
     /**
