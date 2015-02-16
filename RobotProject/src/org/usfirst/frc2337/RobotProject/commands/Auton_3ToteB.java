@@ -50,7 +50,7 @@ public class Auton_3ToteB extends CommandGroup {
     						//set down tote and get ready to pick up 2nd tote
        	addSequential(new AutonStrafeAtSpeedForTime(0.3, 0.5));		//nest totes
     	
-    	//made strafe above a parallel , moved strafe after lift drop
+    	//made strafe above a parallel command, moved strafe after lift drop
        	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos4));	
     	
     	
