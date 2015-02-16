@@ -74,7 +74,7 @@ public class Auton_3ToteC extends CommandGroup {
     	//Changed to 200 from 100
     	//Changed to 300 from 200
     	addSequential(new Auton_ChassisPidSet(300));				//Drive past container
-    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos8));							//lower tote to pos 3 in parallel while driving to next tote
+    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));							//lower tote to pos 3 in parallel while driving to next tote
     	// Changed to 500 from 600
     	//Changed to 400 from 500
     	addSequential(new Auton_ChassisPidSet(600));				//Drive to next tote
@@ -84,11 +84,11 @@ public class Auton_3ToteC extends CommandGroup {
     	
     	
     	//SET DOWN TOTE & STRAFE TO AUTON ZONE
-    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos9));							//lower tote to pos 7
+    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));							//lower tote to pos 7
     	addSequential(new AutonStrafeAtSpeedForTime(0.5, 1.5));		//strafe in to set down tote 1 on tote 2
     	addParallel(new KICKER_Kick());								//retract kicker				
-    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos10));						//lower intake to pos 0
-    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos11));
+    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos3));						//lower intake to pos 0
+    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos3));
     	addSequential(new AutonStrafeAtSpeedForTime(0.8, 2.0));		//strafe into the auton zone
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos12));
     	addSequential(new AutonWait(0.2));
