@@ -44,6 +44,7 @@ public class Lift extends PIDSubsystem {
        
     public int tote = 0; 			//Store the tote array number
     public int base = 0; 			//Store the base array number
+    double autonTote = 0;
     public int pos; 				//The Pos.
     public int type; 				//The Type
     
@@ -52,6 +53,18 @@ public class Lift extends PIDSubsystem {
     //boolean practiceBot = true;          // now set by jumper on roborio
     
     double pos0,pos1,pos2,pos3,pos4,pos5,pos6,pos7,bottom,mid,top;
+	public double autonPos1;
+	public double autonPos2;
+	public double autonPos3;
+	public double autonPos4;
+	public double autonPos5;
+	public double autonPos6;
+	public double autonPos7;
+	public double autonPos8;
+	public double autonPos9;
+	public double autonPos10;
+	public double autonPos11;
+	public double autonPos12;
     
     //Joystick mode for switching back motor and lift
     public boolean joystickStatus = true;
@@ -69,6 +82,19 @@ public class Lift extends PIDSubsystem {
     	bottom = 0;		//Bottom
     	mid = 0.2;		//Middle
     	top = 0.8;		//Top
+
+    	autonPos1 = 1.8;
+    	autonPos2 = 7.0;
+    	autonPos3 = 2.6;
+    	autonPos4 = .85;
+    	autonPos5 = 1.05;
+    	autonPos6 = 1.65;
+    	autonPos7 = 5.6;
+    	autonPos8 = .85;
+    	autonPos9 = .85;
+    	autonPos10 = .85;
+    	autonPos11 = 1.05;
+    	autonPos12 = .85;
     }
     
     public void setCompetitionSetPoints() {		// competition bot set points, called per practiceBot boolean/jumper (i.e. NO jumper)
@@ -84,6 +110,19 @@ public class Lift extends PIDSubsystem {
     	bottom = 0;		//Bottom
     	mid = 0.2;		//Middle
     	top = 0.8;		//Top
+
+    	autonPos1 = 1.8;
+    	autonPos2 = 7.0;
+    	autonPos3 = 2.6;
+    	autonPos4 = .85;
+    	autonPos5 = 1.05;
+    	autonPos6 = 1.65;
+    	autonPos7 = 5.6;
+    	autonPos8 = .85;
+    	autonPos9 = .85;
+    	autonPos10 = .85;
+    	autonPos11 = 1.05;
+    	autonPos12 = .85;
     }
     
     // Initialize your subsystem here
@@ -179,6 +218,10 @@ public class Lift extends PIDSubsystem {
     public void setTote(int toteIn){
     	this.tote = toteIn;
     	setSetpoint(setarray[this.base][this.tote]);	
+    }
+    public void setAutonPID(double autonTote){
+    	this.autonTote = autonTote;
+    	setSetpoint(autonTote);
     }
     //StopPID, toggle option for stopping it. 
     public void stopPID(){

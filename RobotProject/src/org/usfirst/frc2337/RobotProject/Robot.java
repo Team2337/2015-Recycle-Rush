@@ -81,6 +81,7 @@ public class Robot extends IterativeRobot {
         autonChooser.addObject("Move 1 Tote to Auton Zone", new Auton_1Tote());
         //autonChooser.addObject("Move 2 Totes to Auton Zone", new Auton2Tote());
         autonChooser.addDefault("Move 3 Totes to Auton Zone", new Auton_3Tote());
+        autonChooser.addObject("Move 3B Totes to Auton Zone", new Auton_3ToteB());
         //autonChooser.addObject("Move 1 Container to Auton Zone", new Auton1Container());
         //autonChooser.addObject("Move 2 Containers to Auton Zone", new Auton2Container());
         //autonChooser.addObject("Move 3 Containers to Auton Zone", new Auton3Container());

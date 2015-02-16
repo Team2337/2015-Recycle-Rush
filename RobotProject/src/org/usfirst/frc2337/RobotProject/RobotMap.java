@@ -14,6 +14,7 @@ package org.usfirst.frc2337.RobotProject;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.CANTalon.ControlMode;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
@@ -43,6 +44,8 @@ public class RobotMap {
     //////////////////
     public static CANTalon masterliftMotor;
     public static CANTalon slaveliftMotor1;
+    public static CANTalon slaveliftMotor2;
+    public static CANTalon slaveliftMotor3;
     public static AnalogPotentiometer liftPotentiometer;
     
     public static SpeedController intakeintakeLeftArmMotor;
@@ -146,8 +149,20 @@ public class RobotMap {
         slaveliftMotor1.reverseOutput(true);
         slaveliftMotor1.set(masterliftMotor.getDeviceID());
         
+        slaveliftMotor2 = new CANTalon(3);
+        slaveliftMotor2.changeControlMode(ControlMode.Follower);
+        slaveliftMotor2.reverseOutput(false);
+        slaveliftMotor2.set(masterliftMotor.getDeviceID());
+        
+        slaveliftMotor3 = new CANTalon(4);
+        slaveliftMotor3.changeControlMode(ControlMode.Follower);
+        slaveliftMotor3.reverseOutput(true);
+        slaveliftMotor3.set(masterliftMotor.getDeviceID());
+        
         masterliftMotor.enableBrakeMode(true);
         slaveliftMotor1.enableBrakeMode(true);
+        slaveliftMotor2.enableBrakeMode(true);
+        slaveliftMotor3.enableBrakeMode(true);
        
  
         liftPotentiometer = new AnalogPotentiometer(2, 10.0, 0.068);
@@ -215,5 +230,11 @@ public class RobotMap {
     	autonEncoder = new Encoder(5, 6, false, EncodingType.k4X);
     	autonEncoder.setPIDSourceParameter(Encoder.PIDSourceParameter.kDistance);
     	LiveWindow.addSensor("ChassisPID", "Encoder", autonEncoder);
+        
+        double encoder = autonEncoder.getDistance();
+        SmartDashboard.putNumber("encoder", encoder);
+    	LiveWindow.addSensor("chassis", 5, autonEncoder);
+    	LiveWindow.addSensor("chassis", 6, autonEncoder);
+    	
     }
 }
