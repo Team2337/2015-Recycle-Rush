@@ -90,10 +90,10 @@ public class Auton_3ToteC extends CommandGroup {
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));						//lower intake to pos 0
     	//addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos3));
     	addSequential(new AutonStrafeAtSpeedForTime(0.8, 2.0));		//strafe into the auton zone
-    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos12));
-    	addSequential(new AutonWait(0.2));
+    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));
+    	//addSequential(new AutonWait(0.2));
     	addSequential(new AutonStrafeAtSpeedForTime(-0.8, 0.5));	//strafe away from totes
-    	
+    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos12));
 
     	
     	
