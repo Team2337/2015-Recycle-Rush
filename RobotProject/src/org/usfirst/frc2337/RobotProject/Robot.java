@@ -114,6 +114,7 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putNumber	("Lift Variable: Type", 		Robot.lift.type);
     	SmartDashboard.putNumber	("Lift Variable: Array", 		Robot.lift.setarray[Robot.lift.base][Robot.lift.tote]);
         SmartDashboard.getBoolean	("Lift Tote Switch", 			Robot.lift.LiftAutoTote());
+        SmartDashboard.putNumber	("Lift Variable: Auton", 		Robot.lift.getSetpoint());
         
         //Kicker
         SmartDashboard.putBoolean	("Kicker Position", 			Robot.kicker.getPosition());
