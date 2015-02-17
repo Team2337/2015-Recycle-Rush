@@ -77,7 +77,7 @@ public class Robot extends IterativeRobot {
         
         //SmartDashboard Auton Selector
         autonChooser = new SendableChooser();
-        autonChooser.addObject("Move Straight to Auton Zone", new AutonDriveAtSpeedForTime(0.5,3.0)); //speed, time
+        autonChooser.addObject("Move Straight to Auton Zone", new AutonDriveAtSpeedForTime(0.5,0.5)); //speed, time
         autonChooser.addObject("Move 1 Tote to Auton Zone", new Auton_1Tote());
         //autonChooser.addObject("Move 2 Totes to Auton Zone", new Auton2Tote());
         autonChooser.addDefault("Move 3A Totes to Auton Zone", new Auton_3Tote());

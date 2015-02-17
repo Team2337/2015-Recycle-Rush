@@ -78,6 +78,7 @@ public class Auton_3ToteD extends CommandGroup {
     	// Changed to 500 from 600
     	
     	//Changed to 400 from 500
+    	//Changed to 570 from 600
     	addSequential(new Auton_ChassisPidSet(570));				//Drive to next tote
     	
     	
