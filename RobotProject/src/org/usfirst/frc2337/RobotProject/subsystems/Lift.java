@@ -70,7 +70,7 @@ public class Lift extends PIDSubsystem {
     //Joystick mode for switching back motor and lift
     public boolean joystickStatus = true;
     
-    /* New position setpoints
+    /* New position setpoints (need to replace others)
      	pos0 = 0.80; 	//Position 0
     	pos1 = 2.1;		//1
     	pos2 = 3.5;		//2
