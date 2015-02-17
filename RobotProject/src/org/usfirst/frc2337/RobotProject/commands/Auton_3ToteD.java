@@ -17,9 +17,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Auton_3ToteC extends CommandGroup {
+public class Auton_3ToteD extends CommandGroup {
 	
-    public  Auton_3ToteC() {
+    public  Auton_3ToteD() {
         // Add Commands here:
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
@@ -34,13 +34,13 @@ public class Auton_3ToteC extends CommandGroup {
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));   					//lift tote to position 1
     	
     	//AVOID CONTAINER
-    	addSequential(new AutonDriveAtSpeedForTime(-0.3, 0.5));		//drive back to clear can lid when lifting
-    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos2));							//lift tote to position 6 to clear can
+    	addSequential(new AutonDriveAtSpeedForTime(-0.3, 0.3));		//drive back to clear can lid when lifting
+    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos7));							//lift tote to position 6 to clear can
     	addSequential(new AutonStrafeAtSpeedForTime(-0.5, 0.3));	//strafe out to clear handle of can when driving forward
     	addSequential(new AutonWait(1));
 
     	//DRIVE TO TOTE 2
-    	addSequential(new Auton_ChassisPidSet(80));					//drive past container
+    	addSequential(new Auton_ChassisPidSet(300));					//drive past container
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));							//lower tote to pos 2 in parallel while driving to next tote
     	addSequential(new Auton_ChassisPidSet(500));				//drive to 2nd tote
     	
@@ -56,7 +56,7 @@ public class Auton_3ToteC extends CommandGroup {
     	
     	//AVOID CONTAINER 2: PART 1
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos5));						//grab 2 tote stack
-    	addSequential(new AutonDriveAtSpeedForTime(-0.3, 0.5));		//drive back to clear can lid when lifting
+    	addSequential(new AutonDriveAtSpeedForTime(-0.3, 0.3));		//drive back to clear can lid when lifting
     	
     	//PICK UP 2 TOTE STACK
     	addParallel(new KICKER_Kick());								//deploy kicker
@@ -67,7 +67,7 @@ public class Auton_3ToteC extends CommandGroup {
     	
     	//AVOID CONTAINER 2: PART 2
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos7));							//lift tote stack to position 6 to clear can
-    	addSequential(new AutonStrafeAtSpeedForTime(-0.5, 0.7));	//strafe out to clear handle of can when driving forward
+    	addSequential(new AutonStrafeAtSpeedForTime(-0.5, 0.4));	//strafe out to clear handle of can when driving forward
     	addSequential(new AutonWait(0.5));
     	
     	//DRIVE TO TOTE 3
@@ -76,8 +76,9 @@ public class Auton_3ToteC extends CommandGroup {
     	addSequential(new Auton_ChassisPidSet(300));				//Drive past container
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));							//lower tote to pos 3 in parallel while driving to next tote
     	// Changed to 500 from 600
+    	
     	//Changed to 400 from 500
-    	addSequential(new Auton_ChassisPidSet(600));				//Drive to next tote
+    	addSequential(new Auton_ChassisPidSet(570));				//Drive to next tote
     	
     	
     	
@@ -89,10 +90,10 @@ public class Auton_3ToteC extends CommandGroup {
     	addParallel(new KICKER_Kick());								//retract kicker				
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));						//lower intake to pos 0
     	//addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos3));
-    	addSequential(new AutonStrafeAtSpeedForTime(0.8, 2.0));		//strafe into the auton zone
+    	addSequential(new AutonStrafeAtSpeedForTime(0.8, 1.7));		//strafe into the auton zone
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));
     	//addSequential(new AutonWait(0.2));
-    	addSequential(new AutonStrafeAtSpeedForTime(-0.8, 0.5));	//strafe away from totes
+    	addSequential(new AutonStrafeAtSpeedForTime(-0.8, 0.2));	//strafe away from totes
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos12));
 
     	

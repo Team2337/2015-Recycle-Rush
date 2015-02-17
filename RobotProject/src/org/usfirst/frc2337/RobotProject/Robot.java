@@ -80,9 +80,10 @@ public class Robot extends IterativeRobot {
         autonChooser.addObject("Move Straight to Auton Zone", new AutonDriveAtSpeedForTime(0.5,3.0)); //speed, time
         autonChooser.addObject("Move 1 Tote to Auton Zone", new Auton_1Tote());
         //autonChooser.addObject("Move 2 Totes to Auton Zone", new Auton2Tote());
-        autonChooser.addDefault("Move 3 Totes to Auton Zone", new Auton_3Tote());
+        autonChooser.addDefault("Move 3A Totes to Auton Zone", new Auton_3Tote());
         autonChooser.addObject("Move 3B Totes to Auton Zone", new Auton_3ToteB());
         autonChooser.addObject("Move 3C Totes to Auton Zone", new Auton_3ToteC());
+        autonChooser.addObject("Move 3D Totes to Auton Zone", new Auton_3ToteD());
         //autonChooser.addObject("Move 1 Container to Auton Zone", new Auton1Container());
         //autonChooser.addObject("Move 2 Containers to Auton Zone", new Auton2Container());
         //autonChooser.addObject("Move 3 Containers to Auton Zone", new Auton3Container());
@@ -113,8 +114,11 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putNumber	("Lift Variable: Tote", 		Robot.lift.tote);
     	SmartDashboard.putNumber	("Lift Variable: Type", 		Robot.lift.type);
     	SmartDashboard.putNumber	("Lift Variable: Array", 		Robot.lift.setarray[Robot.lift.base][Robot.lift.tote]);
+        SmartDashboard.putNumber	("Lift Current Position",		Robot.lift.getSetpoint());
+        SmartDashboard.putNumber	("Lift New Position",			Robot.lift.getPosition());
         SmartDashboard.getBoolean	("Lift Tote Switch", 			Robot.lift.LiftAutoTote());
-        SmartDashboard.putNumber	("Lift Variable: Auton", 		Robot.lift.getSetpoint());
+
+        
         
         //Kicker
         SmartDashboard.putBoolean	("Kicker Position", 			Robot.kicker.getPosition());

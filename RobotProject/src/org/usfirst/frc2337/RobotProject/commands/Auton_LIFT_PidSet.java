@@ -43,7 +43,8 @@ public class  Auton_LIFT_PidSet extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.lift.setAutonPID(pos); //Run command in Lift Subsytem     	   	
+    	Robot.lift.setAutonPID(pos); //Run command in Lift Subsytem 
+        
     }
 
     // Called repeatedly when this Command is scheduled to run

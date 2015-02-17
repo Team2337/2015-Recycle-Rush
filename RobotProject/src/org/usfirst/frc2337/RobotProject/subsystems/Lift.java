@@ -36,7 +36,7 @@ public class Lift extends PIDSubsystem {
     //Lift PID variables
     double setPointTolerance = 0.05;
     double maxSpeedUp = 0.75;
-    double maxSpeedDown = -0.5;
+    double maxSpeedDown = -0.6;
     double liftTopLimit = 7.0;
     double liftBottomLimit = 0.80;
 	
@@ -97,7 +97,7 @@ public class Lift extends PIDSubsystem {
     	autonPos2 = 7.0;
     	autonPos3 = 2.6;
     	autonPos4 = .85;
-    	autonPos5 = 1.10;   //1.05;
+    	autonPos5 = 1.25;   //1.05;
     	autonPos6 = 1.65;
     	autonPos7 = 5.6;
     	autonPos8 = .85;
@@ -223,15 +223,18 @@ public class Lift extends PIDSubsystem {
     public void setBase(int baseIn){
     	this.base= baseIn;
     	setSetpoint(setarray[this.base][this.tote]);
+    	System.out.println(setarray[this.base][this.tote]);
     }
    //Grab the toteIn position, save the variable then set it global.
     public void setTote(int toteIn){
     	this.tote = toteIn;
-    	setSetpoint(setarray[this.base][this.tote]);	
+    	setSetpoint(setarray[this.base][this.tote]);
+    	System.out.println(setarray[this.base][this.tote]);
     }
     public void setAutonPID(double autonTote){
     	this.autonTote = autonTote;
     	setSetpoint(autonTote);
+    	System.out.println(autonTote);
     }
     //StopPID, toggle option for stopping it. 
     public void stopPID(){
