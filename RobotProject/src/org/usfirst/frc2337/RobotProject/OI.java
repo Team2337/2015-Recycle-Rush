@@ -117,7 +117,7 @@ public class OI {
     	//Joystick Driver
         joystickDriver = new Joystick(0);
         
-        //These DoNothing!
+        /*
         joystickDriverHatRight = new JoystickButton(joystickDriver, 10);
         joystickDriverHatRight.whileHeld(new DoNothing());
         joystickDriverHatLeft = new JoystickButton(joystickDriver, 9);
@@ -138,7 +138,7 @@ public class OI {
         joystickDriverButtonB.whileHeld(new DoNothing());
         joystickDriverButtonA = new JoystickButton(joystickDriver, 1);				//resets encoder
         joystickDriverButtonA.whileHeld(new ResetEncoder());
-        
+        */
         
         //Joystick Control, for Lift (Precise) (Operator Right hand)
         liftJoystick = new Joystick(1); 
@@ -188,11 +188,9 @@ public class OI {
         
         //LiftToggle (On or Off) Components
         operatorControlsLiftToggle = new JoystickButton(operatorControls, 6);
-        //operatorControlsLiftToggle.whenPressed(new LIFT_StopPID());
-        //operatorControlsLiftToggle.whenReleased(new LIFT_StartPID());
+        operatorControlsLiftToggle.whenPressed(new LIFT_StopPID());
+        operatorControlsLiftToggle.whenReleased(new LIFT_StartPID());
         
-        operatorControlsLiftToggle.whenPressed(new CopyOfDoNothing());
-        operatorControlsLiftToggle.whenReleased(new DoNothing());
         
         //ContainerArm Components
         operatorControlsJoystickMode = new JoystickButton(operatorControls, 3);
@@ -203,7 +201,6 @@ public class OI {
         operatorControlsExtension.whenReleased(new CONTAINERARM_ExtensionIn());
 	    
         // SMARTDASH BOARD STUFF
-        SmartDashboard.putData("Auton DriveTurnStrafe (1.0,0.0,3.0,3.0)", new AutonDriveTurnStrafeForTime(1.0,0,3.0,3.0));
         
         SmartDashboard.putData("Auton Strafe out (-1.0,3.0)", new AutonStrafeAtSpeedForTime(-1.0,1.0));
         SmartDashboard.putData("Auton Backup (-1.0,2.0)", new AutonDriveAtSpeedForTime(-0.3,1.0));

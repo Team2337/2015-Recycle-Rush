@@ -31,72 +31,66 @@ public class Auton_3ToteF extends CommandGroup {
     	
     	
     	//LIFT TOTE 1
-    	addParallel(new KICKER_Kick());								//deploy kicker
-    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));   					//lift tote to position 1
+    	addParallel(new KICKER_Kick());									//deploy kicker
+    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));   	//lift tote to position 1
     	
     	//AVOID CONTAINER
     	addSequential(new AutonDriveAtSpeedForTimeGyro(-0.3, 0.3));		//drive back to clear can lid when lifting
-    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos7));							//lift tote to position 6 to clear can
+    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos7));		//lift tote to position 6 to clear can
     	addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.5, 0.3));	//strafe out to clear handle of can when driving forward
     	addSequential(new AutonWait(1));
 
     	//DRIVE TO TOTE 2
     	addSequential(new Auton_ChassisPidSet(300));					//drive past container
-    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));							//lower tote to pos 2 in parallel while driving to next tote
-    	addSequential(new Auton_ChassisPidSet(513));				//drive to 2nd tote
+    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower tote to pos 2 in parallel while driving to next tote
+    	addSequential(new Auton_ChassisPidSet(513));					//drive to 2nd tote
     	
     	//SET DOWN TOTE 1 ON TOTE 2
     	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.5, 0.2));		//strafe in to set down tote 1 on tote 2
-    	addParallel(new KICKER_Kick());								//release kicker
-    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos4));						//set down tote and get ready to pick up 2nd tote
+    	addParallel(new KICKER_Kick());									//release kicker
+    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos4));		//set down tote and get ready to pick up 2nd tote
        	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.3, 0.5));		//nest totes
-    	
-    	//made strafe above a parallel command, moved strafe after lift drop
-    	
-    	
+	
     	
     	//AVOID CONTAINER 2: PART 1
-    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos5));						//grab 2 tote stack
+    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos5));		//grab 2 tote stack
     	addSequential(new AutonDriveAtSpeedForTimeGyro(-0.3, 0.3));		//drive back to clear can lid when lifting
     	
     	//PICK UP 2 TOTE STACK
-    	addParallel(new KICKER_Kick());								//deploy kicker
-    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos6));						//pick up 2 tote stack
+    	addParallel(new KICKER_Kick());									//deploy kicker
+    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos6));		//pick up 2 tote stack
     	
     	//RESET ENCODER
     	addSequential(new ResetEncoder());
     	
     	//AVOID CONTAINER 2: PART 2
-    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos7));							//lift tote stack to position 6 to clear can
+    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos7));		//lift tote stack to position 6 to clear can
     	addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.5, 0.4));	//strafe out to clear handle of can when driving forward
     	addSequential(new AutonWait(0.5));
     	
     	//DRIVE TO TOTE 3
     	//Changed to 200 from 100
     	//Changed to 300 from 200
-    	addSequential(new Auton_ChassisPidSet(300));				//Drive past container
-    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));							//lower tote to pos 3 in parallel while driving to next tote
-    	// Changed to 500 from 600
+    	addSequential(new Auton_ChassisPidSet(300));					//Drive past container
+    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower tote to pos 3 in parallel while driving to next tote
+    	//Changed to 500 from 600
     	
     	//Changed to 400 from 500
     	//Changed to 570 from 600
-    	addSequential(new Auton_ChassisPidSet(560));				//Drive to next tote
+    	addSequential(new Auton_ChassisPidSet(560));					//Drive to next tote
     	
-    	
-    	
-    	
-    	
+
     	//SET DOWN TOTE & STRAFE TO AUTON ZONE
-    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));							//lower tote to pos 7
+    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower tote to pos 7
     	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 1.5));		//strafe in to set down tote 1 on tote 2
-    	addParallel(new KICKER_Kick());								//retract kicker				
-    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));						//lower intake to pos 0
+    	addParallel(new KICKER_Kick());									//retract kicker				
+    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower intake to pos 0
     	//addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos3));
     	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 1.7));		//strafe into the auton zone
-    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));
+    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));		//lower lift to release tote
     	//addSequential(new AutonWait(0.2));
     	addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.8, 0.2));	//strafe away from totes
-    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos12));
+    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos12));	//lower left to ground to prepare for teleop
 
     	
     	

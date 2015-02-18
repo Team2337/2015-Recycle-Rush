@@ -137,6 +137,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean	("Container Arm Extended", 		Robot.conExtension.getSolenoidPosition());
         
         //PDP drive motors
+        /*
         double current15 = RobotMap.pdp.getCurrent(15);
         SmartDashboard.putNumber("pdpA15-pwm0-LftFrt", current15);
         double current0 = RobotMap.pdp.getCurrent(0);
@@ -148,7 +149,7 @@ public class Robot extends IterativeRobot {
 
         double current11 = RobotMap.pdp.getCurrent(11);
         SmartDashboard.putNumber("pdp11-pwm8-alt", current11);
-        
+        */
 
         //GYRO - IMU
         SmartDashboard.putBoolean(  "IMU_Connected",        RobotMap.imu.isConnected());
