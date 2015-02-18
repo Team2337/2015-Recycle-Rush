@@ -12,16 +12,18 @@
 package org.usfirst.frc2337.RobotProject.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc2337.RobotProject.Robot;
+import org.usfirst.frc2337.RobotProject.RobotMap;
 
 /**
  *
  */
-public class  DoNothing extends Command {
+public class  GyroReset extends Command {
 
-    public DoNothing() {
+    public GyroReset() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 
@@ -31,16 +33,18 @@ public class  DoNothing extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	RobotMap.imu.zeroYaw();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putString("PID Switch", "Off");
+    	SmartDashboard.putString("GyroReset", "True");
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

@@ -22,6 +22,7 @@ public class  Auton_ChassisPidSet extends Command {
 
    boolean leave = false;
    double pidset;
+
     
     public Auton_ChassisPidSet(double pidset) {
     	this.pidset = pidset;

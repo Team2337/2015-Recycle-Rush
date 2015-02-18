@@ -35,7 +35,7 @@ public class Lift extends PIDSubsystem {
     
     //Lift PID variables
     double setPointTolerance = 0.05;
-    double maxSpeedUp = 0.75;
+    double maxSpeedUp = 0.65;
     double maxSpeedDown = -0.6;
     double liftTopLimit = 7.0;
     double liftBottomLimit = 0.80;
@@ -97,7 +97,7 @@ public class Lift extends PIDSubsystem {
     	autonPos2 = 7.0;
     	autonPos3 = 2.6;
     	autonPos4 = .85;
-    	autonPos5 = 1.25;   //1.05;
+    	autonPos5 = 1.35;   //1.05;
     	autonPos6 = 1.65;
     	autonPos7 = 5.6;
     	autonPos8 = .85;
@@ -125,7 +125,7 @@ public class Lift extends PIDSubsystem {
     	autonPos2 = 7.0;
     	autonPos3 = 2.6;
     	autonPos4 = .85;
-    	autonPos5 = 1.05;
+    	autonPos5 = 1.35;
     	autonPos6 = 1.65;
     	autonPos7 = 5.6;
     	autonPos8 = .85;

@@ -18,6 +18,11 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import com.kauailabs.nav6.frc.IMUAdvanced;
+
+import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.Timer;
+
 import org.usfirst.frc2337.RobotProject.commands.*;
 import org.usfirst.frc2337.RobotProject.subsystems.*;
 
@@ -84,6 +89,9 @@ public class Robot extends IterativeRobot {
         autonChooser.addObject("Move 3B Totes to Auton Zone", new Auton_3ToteB());
         autonChooser.addObject("Move 3C Totes to Auton Zone", new Auton_3ToteC());
         autonChooser.addObject("Move 3D Totes to Auton Zone", new Auton_3ToteD());
+        autonChooser.addObject("Move 3E -COMP- Totes to Auton Zone", new Auton_3ToteE());
+        autonChooser.addObject("Move 3F -COMP Gyro- 3 Totes", new Auton_3ToteF());
+
         //autonChooser.addObject("Move 1 Container to Auton Zone", new Auton1Container());
         //autonChooser.addObject("Move 2 Containers to Auton Zone", new Auton2Container());
         //autonChooser.addObject("Move 3 Containers to Auton Zone", new Auton3Container());
@@ -127,6 +135,26 @@ public class Robot extends IterativeRobot {
         
         //Container Arm
         SmartDashboard.putBoolean	("Container Arm Extended", 		Robot.conExtension.getSolenoidPosition());
+        
+        //PDP drive motors
+        double current15 = RobotMap.pdp.getCurrent(15);
+        SmartDashboard.putNumber("pdpA15-pwm0-LftFrt", current15);
+        double current0 = RobotMap.pdp.getCurrent(0);
+        SmartDashboard.putNumber("pdp0-pwm1-LftRr", current0);
+        double current14 = RobotMap.pdp.getCurrent(14);
+        SmartDashboard.putNumber("pdp14-pwm2-RtFrt", current14);
+        double current1 = RobotMap.pdp.getCurrent(1);
+        SmartDashboard.putNumber("pdp1-pwm3-RtRr", current1);
+
+        double current11 = RobotMap.pdp.getCurrent(11);
+        SmartDashboard.putNumber("pdp11-pwm8-alt", current11);
+        
+
+        //GYRO - IMU
+        SmartDashboard.putBoolean(  "IMU_Connected",        RobotMap.imu.isConnected());
+        SmartDashboard.putBoolean(  "IMU_IsCalibrating",    RobotMap.imu.isCalibrating());
+        SmartDashboard.putNumber(   "IMU_Yaw",              RobotMap.imu.getYaw());
+        
     }
 
     /**
@@ -144,6 +172,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
+    	RobotMap.imu.zeroYaw();
     	autonCommand = (Command) autonChooser.getSelected();
         if (autonCommand != null) autonCommand.start();
     }
@@ -161,6 +190,7 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
+    	RobotMap.imu.zeroYaw();
         if (autonCommand != null) autonCommand.cancel();
     }
 
