@@ -43,7 +43,7 @@ public class Auton_3ToteF extends CommandGroup {
     	//DRIVE TO TOTE 2
     	addSequential(new Auton_ChassisPidSet(300));					//drive past container
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));							//lower tote to pos 2 in parallel while driving to next tote
-    	addSequential(new Auton_ChassisPidSet(510));				//drive to 2nd tote
+    	addSequential(new Auton_ChassisPidSet(513));				//drive to 2nd tote
     	
     	//SET DOWN TOTE 1 ON TOTE 2
     	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.5, 0.2));		//strafe in to set down tote 1 on tote 2
@@ -80,7 +80,7 @@ public class Auton_3ToteF extends CommandGroup {
     	
     	//Changed to 400 from 500
     	//Changed to 570 from 600
-    	addSequential(new Auton_ChassisPidSet(570));				//Drive to next tote
+    	addSequential(new Auton_ChassisPidSet(560));				//Drive to next tote
     	
     	
     	
