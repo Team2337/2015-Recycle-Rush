@@ -208,6 +208,8 @@ public class OI {
         SmartDashboard.putData("Auton Drive Gyro in (0.3,3.0)", new AutonDriveAtSpeedForTimeGyro(0.5,6.0));
         SmartDashboard.putData("Auton Strafe Gyro in (0.3,3.0)", new AutonStrafeAtSpeedForTimeGyro(0.7,6.0));
 
+        SmartDashboard.putData("PID with Gyro and Totoe Sensor in ", new Auton_ChassisPidSetWithToteSensor(300));
+        
         SmartDashboard.putData("StopMotors", new StopMotors());
         
         SmartDashboard.putData("PNEUMATIC_ArmsIn", new INTAKEPNEUMATICS_ArmsIn());

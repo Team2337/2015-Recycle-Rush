@@ -91,6 +91,9 @@ public class Robot extends IterativeRobot {
         autonChooser.addObject("Move 3D Totes to Auton Zone", new Auton_3ToteD());
         autonChooser.addObject("Move 3E -COMP- Totes to Auton Zone", new Auton_3ToteE());
         autonChooser.addObject("Move 3F -COMP Gyro- 3 Totes", new Auton_3ToteF());
+        autonChooser.addObject("Move 3G -COMP Gyro strafe W Enc- 3 Totes", new Auton_3ToteG());
+        
+        autonChooser.addObject("TEST Move 3G -COMP Gyro strafe W Enc- 3 Totes", new Auton_3ToteH());
 
         //autonChooser.addObject("Move 1 Container to Auton Zone", new Auton1Container());
         //autonChooser.addObject("Move 2 Containers to Auton Zone", new Auton2Container());
@@ -117,7 +120,7 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putBoolean	("Intake Extended", 			Robot.intakePneumatics.getArmPosition());
     	
     	//Lift
-    	SmartDashboard.putBoolean	("Practice Bot Positions",		Robot.lift.isPracticeBot());
+    	SmartDashboard.putBoolean	("Practice Bot Positions",		Robot.lift.isCompetitionBot());
     	SmartDashboard.putNumber	("Lift Variable: Base", 		Robot.lift.base);
     	SmartDashboard.putNumber	("Lift Variable: Tote", 		Robot.lift.tote);
     	SmartDashboard.putNumber	("Lift Variable: Type", 		Robot.lift.type);
@@ -192,6 +195,8 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
     	RobotMap.imu.zeroYaw();
+    	Robot.chassis.disable();
+    	Robot.lift.setTeleopLiftSpeed();
         if (autonCommand != null) autonCommand.cancel();
     }
 

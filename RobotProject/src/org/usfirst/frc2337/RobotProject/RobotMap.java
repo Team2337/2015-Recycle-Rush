@@ -94,7 +94,7 @@ public class RobotMap {
     //  Set Point Jumper //
     ///////////////////////
     //Switch for determining comp/practice bot for set points
-    public static DigitalInput practiceBot;
+    public static DigitalInput competitionBot;
     
     /////////
     // PDP //
@@ -221,8 +221,8 @@ public class RobotMap {
         LiveWindow.addSensor("chassis", "toteSensor", chassistoteSensor);
         
         //Jumper to determine comp vs practice bot
-        practiceBot = new DigitalInput(0);
-        LiveWindow.addActuator("Lift", "Practice Bot Set Points:", practiceBot);
+        competitionBot = new DigitalInput(0);
+        LiveWindow.addActuator("Lift", "Competition Bot Set Points:", competitionBot);
         
         liftAutoTote = new DigitalInput(3);
         LiveWindow.addActuator("Lift", "AutoTote", liftAutoTote);

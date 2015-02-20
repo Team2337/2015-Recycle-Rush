@@ -18,42 +18,40 @@ import org.usfirst.frc2337.RobotProject.Robot;
 /**
  *
  */
-public class  Auton_ChassisPidSet extends Command {
+public class  Auton_ChassisPidSetWithToteSensor extends Command {
 
-   double pidset;
-
-    
-    public Auton_ChassisPidSet(double pidset) {
+   double pidset; 
+   
+    public Auton_ChassisPidSetWithToteSensor(double pidset) {
     	this.pidset = pidset;
     	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	//requires(Robot.chassis);
-    	requires(Robot.chassis);
+    	requires(Robot.chassis); 
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     		Robot.chassis.enable();
-    		Robot.chassis.setSetpoint(pidset);
+    		Robot.chassis.setSetpoint(pidset);    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double pidget = Robot.chassis.getPosition();
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	 return Robot.chassis.onTarget();
+    	 return (Robot.chassis.onTarget() || Robot.chassis.isToteSensor());
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	//Robot.chassis.stopMotors();
-    	Robot.chassis.disable();
- 
+    	//Robot.chassis.disable();
+    	Robot.chassis.setSetpoint(Robot.chassis.getPosition());
     }
 
     // Called when another command which requires one or more of the same
