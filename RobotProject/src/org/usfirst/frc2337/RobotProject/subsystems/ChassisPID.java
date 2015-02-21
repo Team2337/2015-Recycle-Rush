@@ -17,6 +17,7 @@ import org.usfirst.frc2337.RobotProject.commands.*;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Command;
@@ -47,6 +48,9 @@ public class ChassisPID extends PIDSubsystem {
     int encoderSamplesToAverage = 5;
 	private double gyroValue;
 	private double kP = .08;
+	public double autonPIDSet1;
+	public double autonPIDSet2;
+	public static Preferences chassisPref;
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -58,6 +62,10 @@ public class ChassisPID extends PIDSubsystem {
         LiveWindow.addActuator("ChassisPID", "PIDSubsystem Controller", getPIDController());
         getPIDController().setOutputRange(-0.5, 0.5);  
         //getPIDController().setInputRange(liftBottomLimit, liftTopLimit);
+        
+       //Preferences cpref = chassisPref.getInstance();
+       //autonPIDSet1 = cpref.getDouble("autonPIDSet1", 513);
+       //autonPIDSet2 = cpref.getDouble("autonPIDSet2", 560);
     }
 
     public void initDefaultCommand() {

@@ -11,6 +11,7 @@
 
 package org.usfirst.frc2337.RobotProject.commands;
 import org.usfirst.frc2337.RobotProject.Robot;
+import org.usfirst.frc2337.RobotProject.RobotMap;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -43,6 +44,8 @@ public class Auton_3ToteG extends CommandGroup {
     	//DRIVE TO TOTE 2
     	addSequential(new Auton_ChassisPidSet(300));					//drive past container
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower tote to pos 2 in parallel while driving to next tote
+    	//changes from 513 to autonPIDSet 1 in ChassisPID.
+    	//addSequential(new Auton_ChassisPidSetWithToteSensor(Robot.chassis.autonPIDSet1));					//drive to 2nd tote
     	addSequential(new Auton_ChassisPidSetWithToteSensor(513));					//drive to 2nd tote
     	
     	//SET DOWN TOTE 1 ON TOTE 2
@@ -78,6 +81,8 @@ public class Auton_3ToteG extends CommandGroup {
     	
     	//Changed to 400 from 500
     	//Changed to 570 from 600
+    	//changes from 560 to autonPIDSet 2 in ChassisPID.
+    	//addSequential(new Auton_ChassisPidSetWithToteSensor(Robot.chassis.autonPIDSet2));					//Drive to next tote
     	addSequential(new Auton_ChassisPidSetWithToteSensor(560));					//Drive to next tote
     	
 

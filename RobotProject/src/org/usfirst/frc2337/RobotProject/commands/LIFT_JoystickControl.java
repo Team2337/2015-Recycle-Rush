@@ -41,6 +41,7 @@ public class  LIFT_JoystickControl extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double liftJoystickY = Robot.oi.liftJoystick.getRawAxis(1);
+    	liftJoystickY = -liftJoystickY;
     	
     	//Check the joystick for a dead band, if in do...
     	if ((liftJoystickY > -.1 ) && (liftJoystickY < .1)) { //Dead band
@@ -63,8 +64,10 @@ public class  LIFT_JoystickControl extends Command {
     		//Make the motor be controlled by the joystick but at a multiplied speed
     		if (liftJoystickY < 0) {
     			RobotMap.masterliftMotor.set(1.00 * liftJoystickY); //Positive
-    		} else {
+    		} else if (Robot.lift.getPosition() > 1.65)  {
     			RobotMap.masterliftMotor.set(0.50 * liftJoystickY);	//Negative
+    		} else {
+    			RobotMap.masterliftMotor.stopMotor();
     		}
     		//Make the setPointSet to false, so if in dead band, the PID can reset
     		setPointSet = false;
