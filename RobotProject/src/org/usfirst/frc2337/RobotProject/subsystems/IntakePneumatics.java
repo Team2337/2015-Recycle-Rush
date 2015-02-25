@@ -24,12 +24,12 @@ public class IntakePneumatics extends Subsystem {
     }
     public void armsOut() {
     	armPosition = true;
-    	rightSolenoid.set(true);
+   // 	rightSolenoid.set(true);
     	leftSolenoid.set(true);
     }
     public void armsIn() {
     	armPosition = false;
-    	rightSolenoid.set(false);
+   // 	rightSolenoid.set(false);
     	leftSolenoid.set(false);
     }
     public boolean getArmPosition() {

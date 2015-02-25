@@ -38,9 +38,10 @@ public class Lift extends PIDSubsystem {
     //Lift PID variables
     double setPointTolerance = 0.05;
     
-    double autonMaxSpeedUp = 0.65;
-    double autonMaxSpeedDown = -0.6;
-    public double teleopMaxSpeedUp = 1;
+    
+    public double autonMaxSpeedUp = 0.65;
+    public double autonMaxSpeedDown = -0.8;
+    public double teleopMaxSpeedUp = .8;
     public double teleopMaxSpeedDown = -.5;
     
 
@@ -89,26 +90,27 @@ public class Lift extends PIDSubsystem {
     public static Preferences liftPref;
     
     public void setPracticeSetPoints() { 		// method to for set points on practice bot, called per practiceBot boolean/jumper
-    	pos0 = 0.85; 	//Position 0
-    	pos1 = 1.8;		//1
-    	pos2 = 2.6;		//2
-    	pos3 = 4.0;		//3
-    	pos4 = 5.0;		//4
-    	pos5 = 7.0;		//5
+    	pos0 = 0.82
+    			; 	//Position 0
+    	pos1 = 1.39;		//1
+    	pos2 = 2.735;		//2
+    	pos3 = 4.04;		//3
+    	pos4 = 5.4;		//4
+    	pos5 = 6.7;		//5
     	pos6 = 4.8;		// Auton: just above container
     	pos7 = 2.6;		// Auton: second tote
     
     	bottom = 0;		//Bottom
-    	mid = 0.2;		//Middle
+    	mid = 0.4;		//Middle
     	top = 0.8;		//Top
 
     	autonPos1 = 1.8;
-    	autonPos2 = 7.0;
+    	autonPos2 = 2.6;
     	autonPos3 = 2.6;
     	autonPos4 = .85;
     	autonPos5 = 1.35;   //1.05;
     	autonPos6 = 1.65;
-    	autonPos7 = 5.6;
+    	autonPos7 = 5.6;    // 6.0 on 2/23/2015   //5.6 at kettering
     	autonPos8 = .85;
     	autonPos9 = .85;
     	autonPos10 = .85;
@@ -117,17 +119,17 @@ public class Lift extends PIDSubsystem {
     }
     
     public void setCompetitionSetPoints() {		// competition bot set points, called per practiceBot boolean/jumper (i.e. NO jumper)
-    	pos0 = 0.85; 	//Position 0
-    	pos1 = 1.8;		//1
-    	pos2 = 2.6;		//2
-    	pos3 = 4.0;		//3
-    	pos4 = 5.0;		//4
-    	pos5 = 7.0;		//5
+    	pos0 = 0.82; 	//Position 0
+    	pos1 = 1.39;		//1
+    	pos2 = 2.735;		//2
+    	pos3 = 4.04;		//3
+    	pos4 = 5.4;		//4
+    	pos5 = 6.7;		//5
     	pos6 = 4.8;		// Auton: just above container
     	pos7 = 2.6;		// Auton: second tote
     
     	bottom = 0;		//Bottom
-    	mid = 0.2;		//Middle
+    	mid = 0.4;		//Middle
     	top = 0.8;		//Top
 
     	autonPos1 = 1.8;
@@ -136,7 +138,7 @@ public class Lift extends PIDSubsystem {
     	autonPos4 = .85;
     	autonPos5 = 1.35;
     	autonPos6 = 1.65;
-    	autonPos7 = 5.6;
+    	autonPos7 = 5.6;    //6.0 on 2/23/2015   //5.6 at kettering
     	autonPos8 = .85;
     	autonPos9 = .85;
     	autonPos10 = 7.0; //.85;

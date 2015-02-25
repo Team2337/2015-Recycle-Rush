@@ -100,19 +100,20 @@ public class OI {
         double n = -1; //Negative
         
         //Pull commands. 
-        double rightPull = speed * n; 
-        double leftPull = speed * p;
+        double rightPull = speed * p; 
+        double leftPull = speed * n;
         
         //Push commands. 
-        double rightPush = speed * p;
-        double leftPush = speed * n;
+        double rightPush = speed * n;
+        double leftPush = speed * p;
         		
         //Declare variables
+        
         double rightRotateRight,leftRotateRight, leftRotateLeft,rightRotateLeft;
         
         //Rotating commands
-        rightRotateRight = leftRotateRight = speed *n;
-        leftRotateLeft = rightRotateLeft = speed * p;  	
+        rightRotateRight = leftRotateRight = speed *p;
+        leftRotateLeft = rightRotateLeft = speed * n;  	
     	
     	//Joystick Driver
         joystickDriver = new Joystick(0);
@@ -153,10 +154,10 @@ public class OI {
         intakePush.whileHeld(new INTAKE_ActivateMotors(leftPush,rightPush));
         intakePull = new JoystickButton(liftJoystick, 1);
         intakePull.whileHeld(new INTAKE_OutAndPull(leftPull,rightPull));
-        operatorControlsKickToggle = new JoystickButton(liftJoystick, 6);
+        operatorControlsKickToggle = new JoystickButton(liftJoystick, 8);
         operatorControlsKickToggle.whenPressed(new KICKER_StopKick());
         kickerKick = new JoystickButton(liftJoystick, 2);
-        kickerKick.whenPressed(new KICKER_Kick());
+        kickerKick.whenPressed(new KICKER_KickIn());
         
         
         //ButtonPanel for Lift (Operator Left Hand)
@@ -170,11 +171,16 @@ public class OI {
         operatorControlsBase3.whenPressed(new LIFT_PidSet(2,0));
         //Buttons for Tote Position (Pos0 - Pos5)
         operatorControlsLift0 = new JoystickButton(operatorControls, 15);
-        operatorControlsLift0.whileHeld(new LIFT_PidSet(0,1));
+        //operatorControlsLift0.whileHeld(new LIFT_PidSet(0,1));
+        operatorControlsLift0.whileHeld(new LIFT_PidSetWhiteButton());
+        
         operatorControlsLift1 = new JoystickButton(operatorControls, 14);
-        operatorControlsLift1.whileHeld(new LIFT_PidSet(1,1));
+        //operatorControlsLift1.whileHeld(new LIFT_PidSet(1,1));
+        operatorControlsLift1.whileHeld(new LIFT_PidSetGreenButton());
         operatorControlsLift2 = new JoystickButton(operatorControls, 13);
-        operatorControlsLift2.whileHeld(new LIFT_PidSet(2,1));
+        //operatorControlsLift2.whileHeld(new LIFT_PidSet(2,1));
+        operatorControlsLift2.whenPressed(new LIFT_PidSet1stBlackButton());
+        
         operatorControlsLift3 = new JoystickButton(operatorControls, 12);
         operatorControlsLift3.whileHeld(new LIFT_PidSet(3,1));
         operatorControlsLift4 = new JoystickButton(operatorControls, 11);
@@ -207,8 +213,16 @@ public class OI {
         SmartDashboard.putData("Auton Strafe in (1.0,3.0)", new AutonStrafeAtSpeedForTime(0.3,1.0));
         SmartDashboard.putData("Auton Drive Gyro in (0.3,3.0)", new AutonDriveAtSpeedForTimeGyro(0.5,6.0));
         SmartDashboard.putData("Auton Strafe Gyro in (0.3,3.0)", new AutonStrafeAtSpeedForTimeGyro(0.7,6.0));
+               
+        SmartDashboard.putData("PID Drive with Tote Sensor", new Auton_ChassisPidSetWithToteSensor(171.250));
 
-        SmartDashboard.putData("PID with Gyro and Totoe Sensor in ", new Auton_ChassisPidSetWithToteSensor(300));
+        SmartDashboard.putData("PID with Gyro and Totoe Sensor in ", new Auton_ChassisPidSetWithToteSensor(165));
+        SmartDashboard.putData("AutonRandomTest", new AutonRandomTest());
+        SmartDashboard.putData("Auton_3ToteF_AfterKetteringWithToteB", new Auton_3ToteF_AfterKetteringWithToteB());
+        SmartDashboard.putData("Auton_3ToteF_AfterKetteringWithToteC", new Auton_3ToteF_AfterKetteringWithToteC());
+
+        SmartDashboard.putData("AutonDriveForTimeGyroIterative.5", new AutonDriveForTimeGyroIterative(.5));
+        SmartDashboard.putData("AutonDriveForTimeGyroIterative1", new AutonDriveForTimeGyroIterative(1));
         
         SmartDashboard.putData("StopMotors", new StopMotors());
         

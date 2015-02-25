@@ -220,8 +220,8 @@ public class RobotMap {
         pneumaticsCompressor = new Compressor(0);
         
         //Solenoids for arms
-        intakeRightSolenoid = new Solenoid(0, 4);
-        LiveWindow.addActuator("Pnuematics", "RightSolenoid", intakeRightSolenoid);
+    //    intakeRightSolenoid = new Solenoid(0, 4);
+     //   LiveWindow.addActuator("Pnuematics", "RightSolenoid", intakeRightSolenoid);
         intakeLeftSolenoid = new Solenoid(0, 5);
         LiveWindow.addActuator("Pnuematics", "LeftSolenoid", intakeLeftSolenoid);
 

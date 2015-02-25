@@ -1,16 +1,17 @@
 package org.usfirst.frc2337.RobotProject.commands;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc2337.RobotProject.RobotMap;
 import org.usfirst.frc2337.RobotProject.Robot;
 
 /**
  *
  */
-public class KICKER_AutoKick extends Command {
-	
+public class KICKER_KickIn extends Command {
 
-    public KICKER_AutoKick() {
+    public KICKER_KickIn() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.kicker);
@@ -18,24 +19,18 @@ public class KICKER_AutoKick extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    		Robot.kicker.autoOff = true;
+    		Robot.kicker.solenoid.set(DoubleSolenoid.Value.kReverse);
+    		//Robot.kicker.stateOut = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (!Robot.kicker.autoOff) {
-    		
-    		if (!RobotMap.kickerFingerSensor.get()) {
-    			Robot.kicker.kickIn();
-    		}
-    		if (RobotMap.kickerFingerSensor.get()) {
-    			Robot.kicker.kickOut();
-    		}
-    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
@@ -45,6 +40,5 @@ public class KICKER_AutoKick extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	this.end();
     }
 }

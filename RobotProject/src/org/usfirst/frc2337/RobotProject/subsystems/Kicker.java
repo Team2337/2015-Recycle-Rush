@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.*;
 public class Kicker extends Subsystem {
     
 	public DigitalInput fingerSensor = RobotMap.kickerFingerSensor;
-	DoubleSolenoid solenoid = RobotMap.kickerSolenoid;
+	public DoubleSolenoid solenoid = RobotMap.kickerSolenoid;
 	public boolean stateOut = false;
 	public boolean autoOff = false;
 

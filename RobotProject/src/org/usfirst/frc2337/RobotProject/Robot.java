@@ -85,22 +85,26 @@ public class Robot extends IterativeRobot {
         autonChooser.addObject("Move Straight to Auton Zone", new AutonDriveAtSpeedForTime(0.5,0.5)); //speed, time
         autonChooser.addObject("Move 1 Tote to Auton Zone", new Auton_1Tote());
         //autonChooser.addObject("Move 2 Totes to Auton Zone", new Auton2Tote());
-        autonChooser.addDefault("Move 3A Totes to Auton Zone", new Auton_3Tote());
-        autonChooser.addObject("Move 3B Totes to Auton Zone", new Auton_3ToteB());
-        autonChooser.addObject("Move 3C Totes to Auton Zone", new Auton_3ToteC());
-        autonChooser.addObject("Move 3D Totes to Auton Zone", new Auton_3ToteD());
-        autonChooser.addObject("Move 3E -COMP- Totes to Auton Zone", new Auton_3ToteE());
-        autonChooser.addObject("Move 3F -COMP Gyro- 3 Totes", new Auton_3ToteF());
-        autonChooser.addObject("Move 3G -COMP Gyro strafe W Enc- 3 Totes", new Auton_3ToteG());
+        autonChooser.addObject("Move 3A Totes to Auton Zone", new Auton_3Tote());
+        //autonChooser.addObject("Move 3B Totes to Auton Zone", new Auton_3ToteB());
+        //autonChooser.addObject("Move 3C Totes to Auton Zone", new Auton_3ToteC());
+        //autonChooser.addObject("Move 3D Totes to Auton Zone", new Auton_3ToteD());
+        //autonChooser.addObject("Move 3E -COMP- Totes to Auton Zone", new Auton_3ToteE());
+        autonChooser.addObject("Kettering test Move 3F -COMP Gyro- 3 Totes", new Auton_3ToteF());
+        autonChooser.addObject("Kettering Comp Move 3F -COMP Gyro- 3 Totes", new Auton_3ToteF_KetteringTestComp());
+        autonChooser.addDefault("After Kettering Gyro- 3 Totes", new Auton_3ToteF_AfterKettering());
+        autonChooser.addObject("Kettering Comp Move 3F -COMP Gyro Tote- 3 Totes", new Auton_3ToteF_AfterKetteringWithTote());
         
-        autonChooser.addObject("TEST Move 3G -COMP Gyro strafe W Enc- 3 Totes", new Auton_3ToteH());
+        
+        //autonChooser.addObject("Move 3G -COMP Gyro strafe W Enc- 3 Totes", new Auton_3ToteG());
+        
+        //autonChooser.addObject("TEST Move 3G -COMP Gyro strafe W Enc- 3 Totes", new Auton_3ToteH());
 
         //autonChooser.addObject("Move 1 Container to Auton Zone", new Auton1Container());
         //autonChooser.addObject("Move 2 Containers to Auton Zone", new Auton2Container());
         //autonChooser.addObject("Move 3 Containers to Auton Zone", new Auton3Container());
         autonChooser.addObject("Do Nothing", new DoNothing());
         SmartDashboard.putData("Auton Chooser", autonChooser);
-        
     }
     
     /**
@@ -108,6 +112,10 @@ public class Robot extends IterativeRobot {
      * The most obvious use for this is continuously updating SmartDashboard outputs.
      */
     public void robotPeriodic() {
+    	LiveWindow.run();
+    	
+    	
+    	
     	SmartDashboard.putData		("Scheduled Commands", 			Scheduler.getInstance());
     	
     	//Chassis

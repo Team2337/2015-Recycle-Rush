@@ -55,8 +55,8 @@ public class ChassisPID extends PIDSubsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     public ChassisPID() {
-        super("ChassisPID", .005, 0.0, 0.0);
-        setAbsoluteTolerance(5);
+        super("ChassisPID", .019, 0.0, 0.040);
+        setAbsoluteTolerance(2);
         getPIDController().setContinuous(false);
         
         LiveWindow.addActuator("ChassisPID", "PIDSubsystem Controller", getPIDController());

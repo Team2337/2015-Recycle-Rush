@@ -38,7 +38,7 @@ public class Auton_3ToteG extends CommandGroup {
     	//AVOID CONTAINER
     	addSequential(new AutonDriveAtSpeedForTimeGyro(-0.3, 0.3));		//drive back to clear can lid when lifting
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos7));		//lift tote to position 6 to clear can
-    	addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.5, 0.3));	//strafe out to clear handle of can when driving forward
+    	addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.5, 0.5));	//strafe out to clear handle of can when driving forward
     	addSequential(new AutonWait(1));
 
     	//DRIVE TO TOTE 2
@@ -49,9 +49,11 @@ public class Auton_3ToteG extends CommandGroup {
     	addSequential(new Auton_ChassisPidSetWithToteSensor(513));					//drive to 2nd tote
     	
     	//SET DOWN TOTE 1 ON TOTE 2
-    	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.5, 0.2));		//strafe in to set down tote 1 on tote 2
+    	addSequential(new KICKER_Kick());
+    	addSequential(new AutonWait(0.2));
+    	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.5, 0.3));		//strafe in to set down tote 1 on tote 2
 
-    	addParallel(new KICKER_Kick());									//release kicker
+    	//addParallel(new KICKER_Kick());									//release kicker
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos4));		//set down tote and get ready to pick up 2nd tote
        	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.3, 0.5));		//nest totes
 	
@@ -69,7 +71,8 @@ public class Auton_3ToteG extends CommandGroup {
     	
     	//AVOID CONTAINER 2: PART 2
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos7));		//lift tote stack to position 6 to clear can
-    	addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.5, 0.4));	//strafe out to clear handle of can when driving forward
+    	// changed to -0.5 and .075 at kettering
+    	addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.75, 0.7));	//strafe out to clear handle of can when driving forward
     	addSequential(new AutonWait(0.5));
     	
     	//DRIVE TO TOTE 3
@@ -83,7 +86,7 @@ public class Auton_3ToteG extends CommandGroup {
     	//Changed to 570 from 600
     	//changes from 560 to autonPIDSet 2 in ChassisPID.
     	//addSequential(new Auton_ChassisPidSetWithToteSensor(Robot.chassis.autonPIDSet2));					//Drive to next tote
-    	addSequential(new Auton_ChassisPidSetWithToteSensor(560));					//Drive to next tote
+    	addSequential(new Auton_ChassisPidSetWithToteSensor(540));					//Drive to next tote
     	
 
     	//SET DOWN TOTE & STRAFE TO AUTON ZONE
@@ -92,7 +95,7 @@ public class Auton_3ToteG extends CommandGroup {
     	addParallel(new KICKER_Kick());									//retract kicker				
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower intake to pos 0
     	//addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos3));
-    	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 1.7));		//strafe into the auton zone
+    	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 2.0));		//strafe into the auton zone
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));		//lower lift to release tote
     	//addSequential(new AutonWait(0.2));
     	addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.8, 0.2));	//strafe away from totes

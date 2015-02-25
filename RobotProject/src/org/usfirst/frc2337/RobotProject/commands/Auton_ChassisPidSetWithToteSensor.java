@@ -21,6 +21,7 @@ import org.usfirst.frc2337.RobotProject.Robot;
 public class  Auton_ChassisPidSetWithToteSensor extends Command {
 
    double pidset; 
+   double totePosition = 158;
    
     public Auton_ChassisPidSetWithToteSensor(double pidset) {
     	this.pidset = pidset;
@@ -40,18 +41,27 @@ public class  Auton_ChassisPidSetWithToteSensor extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double pidget = Robot.chassis.getPosition();
+    	
+    	if (Robot.chassis.isToteSensor()) {
+    		Robot.chassis.disable();
+    		Robot.chassis.setSetpoint(pidget + totePosition);
+    		Robot.chassis.enable();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	 return (Robot.chassis.onTarget() || Robot.chassis.isToteSensor());
+    	// return (Robot.chassis.onTarget() || Robot.chassis.isToteSensor());
+    	//return (Robot.chassis.onTarget());
+    	return Robot.chassis.isToteSensor();
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	//Robot.chassis.stopMotors();
+    	//Robot.chassis.resetEncoder();
     	//Robot.chassis.disable();
-    	Robot.chassis.setSetpoint(Robot.chassis.getPosition());
+    	//    	Robot.chassis.setSetpoint(Robot.chassis.getPosition());
     }
 
     // Called when another command which requires one or more of the same

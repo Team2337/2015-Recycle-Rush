@@ -22,6 +22,7 @@ public class  LIFT_JoystickControl extends Command {
 
 	public boolean setPointSet = false;
 	
+	
     public LIFT_JoystickControl() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -35,6 +36,7 @@ public class  LIFT_JoystickControl extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	setPointSet = false; 
     	Robot.lift.disable();
     }
 
@@ -62,18 +64,22 @@ public class  LIFT_JoystickControl extends Command {
     	else {
     		Robot.lift.disable(); //Disable the Lift PID
     		//Make the motor be controlled by the joystick but at a multiplied speed
-    		if (liftJoystickY < 0) {
+    		if  ((liftJoystickY < 0) && (Robot.lift.getPosition() > 7.9)) {
+    			RobotMap.masterliftMotor.set(0);
+    		} else if (liftJoystickY < 0) {
     			RobotMap.masterliftMotor.set(1.00 * liftJoystickY); //Positive
-    		} else if (Robot.lift.getPosition() > 1.65)  {
-    			RobotMap.masterliftMotor.set(0.50 * liftJoystickY);	//Negative
-    		} else {
-    			RobotMap.masterliftMotor.stopMotor();
+
+    		} else if ((Robot.lift.getPosition() > 1.65) && (liftJoystickY > 0)) {
+    			RobotMap.masterliftMotor.set(1.00 * liftJoystickY);	//Negative
+
+    		} else  {
+    			RobotMap.masterliftMotor.set(0);
     		}
     		//Make the setPointSet to false, so if in dead band, the PID can reset
     		setPointSet = false;
     		
     	}
-    	
+  
     	
     	
     	
@@ -89,6 +95,8 @@ public class  LIFT_JoystickControl extends Command {
     	RobotMap.masterliftMotor.set(0);
     	Robot.lift.enable();
 		Robot.lift.setSetpoint(Robot.lift.getPosition());
+
+		
     }
 
     // Called when another command which requires one or more of the same
