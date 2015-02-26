@@ -119,10 +119,11 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putData		("Scheduled Commands", 			Scheduler.getInstance());
     	
     	//Chassis
-        SmartDashboard.putNumber	("Chassis PID Setpoint", 		Robot.chassis.getSetpoint());
-    	SmartDashboard.putNumber	("Chassis PID Position", 		Robot.chassis.getPosition());
-    	SmartDashboard.putNumber	("Chassis Encoder Position",	Robot.chassis.readEncoderDistance());
-    	SmartDashboard.putBoolean	("Chassis Tote Sensor", 		Robot.chassis.isToteSensor());
+        SmartDashboard.putNumber	("Chassis PID Setpoint", 			Robot.chassis.getSetpoint());
+    	SmartDashboard.putNumber	("Chassis PID Position", 			Robot.chassis.getPosition());
+    	SmartDashboard.putNumber	("Chassis Auton Encoder Position",	Robot.chassis.readAutonEncoder());
+    	SmartDashboard.putNumber	("Chassis Strafe Encoder Position",	Robot.chassis.readStrafeEncoder());
+    	SmartDashboard.putBoolean	("Chassis Tote Sensor", 			Robot.chassis.isToteSensor());
     	
     	//Intake
     	SmartDashboard.putBoolean	("Intake Extended", 			Robot.intakePneumatics.getArmPosition());

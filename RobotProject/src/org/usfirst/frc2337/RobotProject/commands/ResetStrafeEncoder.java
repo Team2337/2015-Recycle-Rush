@@ -19,9 +19,9 @@ import org.usfirst.frc2337.RobotProject.Robot;
 /**
  *
  */
-public class  ResetEncoder extends Command {
+public class  ResetStrafeEncoder extends Command {
 
-    public ResetEncoder() {
+    public ResetStrafeEncoder() {
         // Use requires() here to declare subsystem dependencies
         // eg. 
     	requires(Robot.chassis);
@@ -32,7 +32,7 @@ public class  ResetEncoder extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.chassis.resetAutonEncoder();
+    	Robot.chassis.resetStrafeEncoder();
     }
 
     // Called repeatedly when this Command is scheduled to run

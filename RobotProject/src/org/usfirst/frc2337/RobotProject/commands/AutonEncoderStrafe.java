@@ -17,13 +17,12 @@ import org.usfirst.frc2337.RobotProject.Robot;
 	/**
 	 * Drive until the tote sensor is triggered.
 	 */
-	public class  AutonEncoderDrive extends Command {
+	public class  AutonEncoderStrafe extends Command {
 		
-		double distance;
-		double speed;
-		double toteSpacing = 25000.0;
-
-	    public AutonEncoderDrive() {
+		int distance;
+		
+	    public AutonEncoderStrafe(int distance) {
+	    	this.distance = distance;
 	        // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
 
@@ -35,31 +34,25 @@ import org.usfirst.frc2337.RobotProject.Robot;
 
 	    // Called just before this Command runs the first time
 	    protected void initialize() {
-	    	setTimeout(3);
-	    	Robot.chassis.resetAutonEncoder();
+	    	Robot.chassis.resetStrafeEncoder();
 	    }
 
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
-	    	distance = Robot.chassis.readAutonEncoder();
-	    	speed = (distance-toteSpacing)/1000;
-	    	if (speed < 0.5) {
-	    		speed = -0.5;
-	    	}		
-	    	Robot.chassis.driveMecanum(speed, 0, 0);
+	    	Robot.chassis.driveMecanum(0, -0.5, 0);
 	    }
 
 	    // Make this return true when this Command no longer needs to run execute()
 	    protected boolean isFinished() {
-	        return ((distance > toteSpacing) || isTimedOut());
+	        return ((Robot.chassis.readStrafeEncoder() > distance) || isTimedOut());
 	    }
 
 	    // Called once after isFinished returns true
 	    protected void end() {
-	    	Robot.chassis.driveMecanum(0.5, 0, 0);
+	    	Robot.chassis.driveMecanum(0, 1, 0);
 	    	Robot.chassis.stopMotors();
 	    }
-
+	    
 	    // Called when another command which requires one or more of the same
 	    // subsystems is scheduled to run
 	    protected void interrupted() {

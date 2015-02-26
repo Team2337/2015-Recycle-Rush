@@ -211,15 +211,15 @@ public class OI {
         SmartDashboard.putData("Auton Strafe out (-1.0,3.0)", new AutonStrafeAtSpeedForTime(-1.0,1.0));
         SmartDashboard.putData("Auton Backup (-1.0,2.0)", new AutonDriveAtSpeedForTime(-0.3,1.0));
         SmartDashboard.putData("Auton Strafe in (1.0,3.0)", new AutonStrafeAtSpeedForTime(0.3,1.0));
-        SmartDashboard.putData("Auton Drive Gyro in (0.3,3.0)", new AutonDriveAtSpeedForTimeGyro(0.5,6.0));
+        SmartDashboard.putData("Auton Drive Gyro (0.3,3.0)", new AutonDriveAtSpeedForTimeGyro(0.5,6.0));
         SmartDashboard.putData("Auton Strafe Gyro in (0.3,3.0)", new AutonStrafeAtSpeedForTimeGyro(0.7,6.0));
                
         SmartDashboard.putData("PID Drive with Tote Sensor", new Auton_ChassisPidSetWithToteSensor(171.250));
-
         SmartDashboard.putData("PID with Gyro and Totoe Sensor in ", new Auton_ChassisPidSetWithToteSensor(165));
+        
         SmartDashboard.putData("AutonRandomTest", new AutonRandomTest());
         SmartDashboard.putData("Auton_3ToteF_AfterKetteringWithToteB", new Auton_3ToteF_AfterKetteringWithToteB());
-        SmartDashboard.putData("Auton_3ToteF_AfterKetteringWithToteC", new Auton_3ToteF_AfterKetteringWithToteC());
+        SmartDashboard.putData("Auton_3ToteJ (was _AfterKetteringWithToteC)", new Auton_3ToteJ());
 
         SmartDashboard.putData("AutonDriveForTimeGyroIterative.5", new AutonDriveForTimeGyroIterative(.5));
         SmartDashboard.putData("AutonDriveForTimeGyroIterative1", new AutonDriveForTimeGyroIterative(1));
@@ -246,7 +246,7 @@ public class OI {
         SmartDashboard.putNumber("teleopMaxSpeedUp", Robot.lift.teleopMaxSpeedUp);
         SmartDashboard.putNumber("teleopMaxSpeedDown", Robot.lift.teleopMaxSpeedDown);
         SmartDashboard.putNumber("autonPIDSet1", Robot.chassis.autonPIDSet1);
-        SmartDashboard.putNumber("teleopMaxSpeedDown", Robot.chassis.autonPIDSet2);
+        SmartDashboard.putNumber("autonPIDSet2", Robot.chassis.autonPIDSet2);
         
 
 
