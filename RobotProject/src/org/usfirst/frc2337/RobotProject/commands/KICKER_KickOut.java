@@ -20,7 +20,7 @@ public class KICKER_KickOut extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     		Robot.kicker.autoOff = true;
-    		Robot.kicker.solenoid.set(DoubleSolenoid.Value.kForward);
+    		Robot.kicker.solenoid.set(DoubleSolenoid.Value.kReverse);
     		//Robot.kicker.stateOut = false;
     }
 

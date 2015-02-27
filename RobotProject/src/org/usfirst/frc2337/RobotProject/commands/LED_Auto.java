@@ -29,8 +29,8 @@ public class LED_Auto extends Command {
     		flasher = !flasher;
     		flashInt = 0;
     	}
-    	Robot.led.kickerLED(Robot.kicker.stateOut, Robot.kicker.fingerSensor.get(), flasher);
-    	Robot.led.bumperLED(Robot.lift.liftAutoTote.get());
+    	//Robot.led.kickerLED(Robot.kicker.stateOut, Robot.kicker.fingerSensor.get(), flasher);
+    	//Robot.led.bumperLED(Robot.lift.liftAutoTote.get());
     	//Robot.led.PIDLED(Robot.lift.onTarget());
     	Robot.led.PIDLED(Robot.kicker.stateOut);
     }

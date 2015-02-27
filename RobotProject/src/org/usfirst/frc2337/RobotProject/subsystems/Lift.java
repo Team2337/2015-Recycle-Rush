@@ -93,7 +93,7 @@ public class Lift extends PIDSubsystem {
     	pos0 = 0.82
     			; 	//Position 0
     	pos1 = 1.39;		//1
-    	pos2 = 2.735;		//2
+    	pos2 = 2.735;		//2   
     	pos3 = 4.04;		//3
     	pos4 = 5.4;		//4
     	pos5 = 6.7;		//5
@@ -105,14 +105,14 @@ public class Lift extends PIDSubsystem {
     	top = 0.8;		//Top
 
     	autonPos1 = 1.8;
-    	autonPos2 = 2.6;
+    	autonPos2 = 3.2;			///2.6  2/26/15
     	autonPos3 = 2.6;
     	autonPos4 = .85;
     	autonPos5 = 1.35;   //1.05;
     	autonPos6 = 1.65;
     	autonPos7 = 5.6;    // 6.0 on 2/23/2015   //5.6 at kettering
     	autonPos8 = .85;
-    	autonPos9 = .85;
+    	autonPos9 = 5.0;
     	autonPos10 = .85;
     	autonPos11 = 1.05;
     	autonPos12 = .85;
@@ -271,9 +271,11 @@ public class Lift extends PIDSubsystem {
     	return this.PIDStatus;
     }
     //
+   /*
     public boolean LiftAutoTote() {
     	return liftAutoTote.get();
     }
+    */
     public boolean joystickModeStatus() {
     	return this.joystickStatus;
     }

@@ -41,6 +41,7 @@ public class  LIFT_AutoToteLift extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	//Checks if LiftAutoTote is pressed
+    	/*
     	if (Robot.lift.LiftAutoTote()){
     		//Check if the variable is FALSE, this is so the PIDSetPoint won't be always set when button
     		//is pressed
@@ -50,7 +51,9 @@ public class  LIFT_AutoToteLift extends Command {
     			//Run the tote command to pos. 1
     			Robot.lift.setTote(value); 
     		}
-    	}
+    	}	
+    		*/
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

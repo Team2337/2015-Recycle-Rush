@@ -33,7 +33,7 @@ public class Auton_3ToteK extends CommandGroup {
     	addSequential(new KICKER_StopKick());
     	 	
     	//LIFT TOTE 1
-    	addParallel(new KICKER_KickOut());								//deploy kicker IN
+    	addParallel(new KICKER_KickIn());								//deploy kicker IN
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));   	//lift tote to position 1
     	
     	//AVOID CONTAINER
@@ -56,7 +56,7 @@ public class Auton_3ToteK extends CommandGroup {
     	//SET DOWN TOTE 1 ON TOTE 2
     	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.5, 0.3));		//strafe in to set down tote 1 on tote 2
 
-    	addParallel(new KICKER_KickOut());								//kicker already in?????????
+    	addParallel(new KICKER_KickIn());								//kicker already in?????????
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos4));		//set down tote and get ready to pick up 2nd tote
 
     	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.4, 0.5));		//nest totes  Changed to .4 .5 Kettering comp.
@@ -69,7 +69,7 @@ public class Auton_3ToteK extends CommandGroup {
     	addSequential(new AutonDriveAtSpeedForTimeGyro(-0.3, 0.3));		//drive back to clear can lid when lifting
     	
     	//PICK UP 2 TOTE STACK
-    	addParallel(new KICKER_KickIn());								//deploy kicker
+    	addParallel(new KICKER_KickOut());								//deploy kicker
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos6));		//pick up 2 tote stack
     	
     	//RESET ENCODER
@@ -113,7 +113,7 @@ public class Auton_3ToteK extends CommandGroup {
 	
 	protected void end() {
 		Robot.lift.setSetpoint(1.8);				//trying to back away from stacked totes to score auton points
-		Robot.kicker.kickOut();
+		Robot.kicker.kickIn();
 
 		for (int i = 0; i < 20; i++) {
 			RobotMap.chassisbackLeft.set(0.8);

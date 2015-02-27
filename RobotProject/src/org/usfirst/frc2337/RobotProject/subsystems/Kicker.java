@@ -36,8 +36,10 @@ public class Kicker extends Subsystem {
     public boolean isAutoKick() {
     	return !autoOff;
     }
+    /*
     public boolean isFingerSensor() {
     	return fingerSensor.get();
     }
+    */
 }
 

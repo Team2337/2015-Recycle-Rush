@@ -130,26 +130,10 @@ public class RobotMap {
     public static Encoder autonEncoder;
     public static Encoder strafeEncoder;
     
-    //Preferences for SmartDashboard.
-  //  public static Preferences pref;
-    
-   // public static double teleopMaxSpeedUp;
-   // public static double teleopMaxSpeedDown;
-    //Preferences pref = Preferences.getInstance();
-   // public static double autonPIDSet1;
-   // public static double autonPIDSet2;
-    
 
     
     public static void init() {
     	
-    //	pref.getInstance();
-    	
-     //   teleopMaxSpeedUp = RobotMap.pref.getDouble("teleopMaxSpeedUp", 0.65);
-     //   teleopMaxSpeedDown = RobotMap.pref.getDouble("teleopMaxSpeedDown", -0.6);
- 	//	autonPIDSet1 = RobotMap.pref.getDouble("autonPIDSet1", 513);
- 	//	autonPIDSet2 = RobotMap.pref.getDouble("autonPIDSet2", 560);
-
     	
         chassisfrontLeft = new VictorSP(0);												//was 0 before strafe problem testing  
         LiveWindow.addActuator("chassis", "frontLeft", (VictorSP) chassisfrontLeft);
@@ -178,7 +162,7 @@ public class RobotMap {
         SmartDashboard.putNumber("autonEncoder", autonEncoder.getDistance());
         
         //Strafe Encoder
-    	strafeEncoder = new Encoder(5, 6, false, EncodingType.k4X);
+    	strafeEncoder = new Encoder(3, 4, false, EncodingType.k4X);
     	strafeEncoder.setPIDSourceParameter(Encoder.PIDSourceParameter.kDistance);
     	LiveWindow.addSensor("ChassisPID", "Strafe Encoder", strafeEncoder);
         SmartDashboard.putNumber("strafeEncoder", strafeEncoder.getDistance());
@@ -219,8 +203,8 @@ public class RobotMap {
         LiveWindow.addActuator("Kicker", "kickerSolenoid", kickerSolenoid);
         
         //Kicker Finger Sensor
-        kickerFingerSensor = new DigitalInput(4);
-        LiveWindow.addActuator("Kicker", "FingerSensor", kickerFingerSensor);
+        //kickerFingerSensor = new DigitalInput(4);
+       // LiveWindow.addActuator("Kicker", "FingerSensor", kickerFingerSensor);
         
 
         //Intake Solenoids
@@ -254,8 +238,8 @@ public class RobotMap {
         LiveWindow.addActuator("Lift", "Competition Bot Set Points:", competitionBot);
         
         //Not sure what this is?
-        liftAutoTote = new DigitalInput(3);
-        LiveWindow.addActuator("Lift", "AutoTote", liftAutoTote);
+       // liftAutoTote = new DigitalInput(3);
+      //  LiveWindow.addActuator("Lift", "AutoTote", liftAutoTote);
         
         //Power Distribution Board
         pdp = new PowerDistributionPanel();
@@ -267,7 +251,7 @@ public class RobotMap {
         
     	//Container items
         containerArmMotor = new VictorSP(5);
-        armPotentiometer = new AnalogPotentiometer(2, 10.0, 0.068);			//settings ok????
+        armPotentiometer = new AnalogPotentiometer(0, 10.0, 0.068);			//settings ok????
     	containerSolenoid1 = new Solenoid(0,4);
 
         //GYRO - IMU initialization

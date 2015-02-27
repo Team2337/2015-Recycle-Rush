@@ -157,7 +157,7 @@ public class OI {
         operatorControlsKickToggle = new JoystickButton(liftJoystick, 8);
         operatorControlsKickToggle.whenPressed(new KICKER_StopKick());
         kickerKick = new JoystickButton(liftJoystick, 2);
-        kickerKick.whenPressed(new KICKER_KickIn());
+        kickerKick.whenPressed(new KICKER_KickOut());
         
         
         //ButtonPanel for Lift (Operator Left Hand)
@@ -223,6 +223,7 @@ public class OI {
 
         SmartDashboard.putData("AutonDriveForTimeGyroIterative.5", new AutonDriveForTimeGyroIterative(.5));
         SmartDashboard.putData("AutonDriveForTimeGyroIterative1", new AutonDriveForTimeGyroIterative(1));
+        SmartDashboard.putData("AutonStrafewithEncoder", new AutonEncoderStrafeIn(.5, 900));
         
         SmartDashboard.putData("StopMotors", new StopMotors());
         

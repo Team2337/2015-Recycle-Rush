@@ -26,7 +26,7 @@ public class LIFT_PidSet1stBlackButton extends CommandGroup {
     	
     	addSequential(new LIFT_PidSetWithSpeed(1,1,.5,-.5)); 						//lift tote to position 2 (also to simulate end of 3-tote auton)
     												// kick out pancake cylinder in preperation to push tote(s)
-    	addSequential(new KICKER_KickIn());							//drop tote to floor
+    	addSequential(new KICKER_KickOut());							//drop tote to floor
     	addSequential(new AutonWait(.5));
     	addSequential(new LIFT_PidSetWithSpeed(2,1,.5,-.5)); 
 

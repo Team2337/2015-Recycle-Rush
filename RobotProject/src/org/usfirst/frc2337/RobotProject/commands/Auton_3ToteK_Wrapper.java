@@ -30,7 +30,7 @@ public class Auton_3ToteK_Wrapper extends CommandGroup {
     	
     	
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));		//lower lift to release totes
-    	addSequential(new KICKER_KickOut());							//bring kicker in, I HOPE!!!
+    	addSequential(new KICKER_KickIn());							//bring kicker in
     	addSequential(new AutonStrafeAtSpeedForTime(1.0,0.1));			//move way from stacked totes to get auton score
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos12));	//lower lift to floor to get ready for teleop
     	

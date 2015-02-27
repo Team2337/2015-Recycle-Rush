@@ -21,7 +21,7 @@ import org.usfirst.frc2337.RobotProject.RobotMap;
 	 * Parameters are distance(ticks) and speed.
 	 * Needs Negative speed - towards lift.  Approx 86 ticks per foot.
 	 */
-	public class  AutonEncoderStrafeIn extends Command {
+	public class  AutonEncoderStrafeOut extends Command {
 		
 		double speed;    	//negative is towards totes/auton zone
 		int distance;		//Auton zone is approx 975 ticks
@@ -29,9 +29,9 @@ import org.usfirst.frc2337.RobotProject.RobotMap;
 		private double kP = .03;  
 
 		
-	    public AutonEncoderStrafeIn(double speed, int distance) {
+	    public AutonEncoderStrafeOut(double speed, int distance) {
 	    	this.distance = distance;
-	    	this.speed = speed;
+	    	this.speed = -speed;
 	        // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
 
@@ -48,6 +48,7 @@ import org.usfirst.frc2337.RobotProject.RobotMap;
 
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
+	    	
 	     	gyroValue = RobotMap.imu.getYaw();
 	    	
 	    	gyroValue = gyroValue * -kP;
@@ -58,13 +59,12 @@ import org.usfirst.frc2337.RobotProject.RobotMap;
 	    	if (gyroValue < -0.5) {
 	    		gyroValue = -0.5;
 	    	}
-	    	
 	    	Robot.chassis.driveMecanum(0, speed, gyroValue);
 	    }
 
 	    // Make this return true when this Command no longer needs to run execute()
 	    protected boolean isFinished() {
-	        return ((Robot.chassis.readStrafeEncoder() < distance) || isTimedOut());
+	        return ((Robot.chassis.readStrafeEncoder() > distance) || isTimedOut());
 	    }
 
 	    // Called once after isFinished returns true

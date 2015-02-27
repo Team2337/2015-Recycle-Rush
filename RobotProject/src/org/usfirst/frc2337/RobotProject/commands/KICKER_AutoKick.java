@@ -22,7 +22,7 @@ public class KICKER_AutoKick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (!Robot.kicker.autoOff) {
+    /*if (!Robot.kicker.autoOff) {
     		
     		if (!RobotMap.kickerFingerSensor.get()) {
     			Robot.kicker.kickIn();
@@ -30,7 +30,10 @@ public class KICKER_AutoKick extends Command {
     		if (RobotMap.kickerFingerSensor.get()) {
     			Robot.kicker.kickOut();
     		}
+    		
+    	
     	}
+    */
     }
 
     // Make this return true when this Command no longer needs to run execute()
