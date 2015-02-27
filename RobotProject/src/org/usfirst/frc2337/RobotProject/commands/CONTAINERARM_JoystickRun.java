@@ -28,7 +28,7 @@ public class  CONTAINERARM_JoystickRun extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	//requires(Robot.chassis);
-    	requires(Robot.conArm);
+    	requires(Robot.containerArmLift);
     	
     }
 
@@ -45,7 +45,7 @@ public class  CONTAINERARM_JoystickRun extends Command {
     		if (!Robot.lift.joystickModeStatus())
     		{
     			System.out.println("In mode");
-    			RobotMap.containerArm.set(speed * conJoystick);
+    			RobotMap.containerArmMotor.set(speed * conJoystick);
     			onUse = true;
     		}
     	}
@@ -53,7 +53,7 @@ public class  CONTAINERARM_JoystickRun extends Command {
     		if (onUse) {
     			System.out.println("Disabled");
     			onUse = false;
-    			RobotMap.containerArm.disable();
+    			RobotMap.containerArmMotor.disable();
     		}
     	}
     	
