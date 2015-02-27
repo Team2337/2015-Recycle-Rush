@@ -43,15 +43,17 @@ public class ChassisPID extends PIDSubsystem {
     Encoder autonEncoder = RobotMap.autonEncoder;
     Encoder strafeEncoder = RobotMap.strafeEncoder;
     
+    //These 4 values are being used on both Strafe and Drive Encoders.
     double minRate = 10;
     double distancePerPulse = 2;
     boolean encoderReverseDirection;
     int encoderSamplesToAverage = 5;
+    
 	private double gyroValue;
 	private double kP = .08;
 	public double autonPIDSet1;
 	public double autonPIDSet2;
-	public static Preferences chassisPref;
+	//public static Preferences chassisPref;
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

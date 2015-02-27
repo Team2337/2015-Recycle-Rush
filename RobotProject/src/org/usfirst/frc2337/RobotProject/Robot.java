@@ -46,7 +46,7 @@ public class Robot extends IterativeRobot {
     public static Pneumatics pneumatics;
     public static IntakePneumatics intakePneumatics;
     public static Kicker kicker;
-    public static ContainerArmMotor conArm;
+    public static ContainerArmLift containerArmLift;
     public static ContainerArmExtension conExtension;
     public static LED led;
 
@@ -65,7 +65,7 @@ public class Robot extends IterativeRobot {
         pneumatics = new Pneumatics();
         intakePneumatics = new IntakePneumatics();
         kicker = new Kicker();
-        conArm = new ContainerArmMotor();
+        containerArmLift = new ContainerArmLift();
         conExtension = new ContainerArmExtension();
         led = new LED();
 
@@ -94,6 +94,9 @@ public class Robot extends IterativeRobot {
         autonChooser.addObject("Kettering Comp Move 3F -COMP Gyro- 3 Totes", new Auton_3ToteF_KetteringTestComp());
         autonChooser.addDefault("After Kettering Gyro- 3 Totes", new Auton_3ToteF_AfterKettering());
         autonChooser.addObject("Kettering Comp Move 3F -COMP Gyro Tote- 3 Totes", new Auton_3ToteF_AfterKetteringWithTote());
+        autonChooser.addObject("Move 3 Totes J - added velocity ramp up & isFinished timer", new Auton_3ToteJ());
+        autonChooser.addObject("Move 3 Totes K - added strafe encoder on end", new Auton_3ToteK());
+        autonChooser.addObject("Move 3 Totes K_Wrapper - alternate timer by nesting commands", new Auton_3ToteK_Wrapper());
         
         
         //autonChooser.addObject("Move 3G -COMP Gyro strafe W Enc- 3 Totes", new Auton_3ToteG());

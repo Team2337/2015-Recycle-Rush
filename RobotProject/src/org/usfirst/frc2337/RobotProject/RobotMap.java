@@ -64,13 +64,15 @@ public class RobotMap {
     
     public static SpeedController intakeintakeLeftArmMotor;
     public static SpeedController intakeintakeRightArmMotor;
+    
     //Pneumatics Compressor and Solenoids
     public static Compressor pneumaticsCompressor;
     public static Solenoid intakeRightSolenoid;
     public static Solenoid intakeLeftSolenoid;
 
     //ContainerArm and Extension (Solenoid)
-    public static SpeedController containerArm;    
+    public static SpeedController containerArmMotor;  
+    public static AnalogPotentiometer armPotentiometer;
     public static Solenoid containerSolenoid1;
     
     //////////
@@ -264,7 +266,8 @@ public class RobotMap {
         //usbCamera1.setSize(0); 
         
     	//Container items
-        containerArm = new Talon(5);
+        containerArmMotor = new VictorSP(5);
+        armPotentiometer = new AnalogPotentiometer(2, 10.0, 0.068);			//settings ok????
     	containerSolenoid1 = new Solenoid(0,4);
 
         //GYRO - IMU initialization

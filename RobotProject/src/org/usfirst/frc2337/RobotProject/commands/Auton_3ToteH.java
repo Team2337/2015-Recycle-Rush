@@ -15,7 +15,7 @@ import org.usfirst.frc2337.RobotProject.Robot;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ *  added velocity profile ramp up (iterative) after picking up tote
  */
 public class Auton_3ToteH extends CommandGroup {
 	
@@ -41,7 +41,7 @@ public class Auton_3ToteH extends CommandGroup {
     	addSequential(new AutonWait(1));
 
     	//DRIVE TO TOTE 2
-    	addSequential(new AutonDriveForTimeGyroIterative(0.2));
+    	addSequential(new AutonDriveForTimeGyroIterative(0.75));
     	addSequential(new Auton_ChassisPidSetWithToteSensor(300));
     	//addSequential(new Auton_ChassisPidSet(300));					//drive past container
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower tote to pos 2 in parallel while driving to next tote	
