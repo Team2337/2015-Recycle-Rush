@@ -61,8 +61,8 @@ public class  INTAKE_OutAndPull extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	RobotMap.intakeintakeLeftArmMotor.set(0);
-    	RobotMap.intakeintakeRightArmMotor.set(0);
+    	RobotMap.intakeLeftArmMotor.set(0);
+    	RobotMap.intakeRightArmMotor.set(0);
     	//Robot.intakePneumatics.armsIn();
     }
 

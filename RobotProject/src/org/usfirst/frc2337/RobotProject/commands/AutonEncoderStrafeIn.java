@@ -19,7 +19,7 @@ import org.usfirst.frc2337.RobotProject.RobotMap;
 	/**
 	 * Strafe using Encoder. 
 	 * Parameters are distance(ticks) and speed.
-	 * Needs Negative speed - towards lift.  Approx 86 ticks per foot.
+	 * Needs Negative speed - towards lift.  Approx 86 ticks per foot (negative ticks is towards lift).
 	 */
 	public class  AutonEncoderStrafeIn extends Command {
 		

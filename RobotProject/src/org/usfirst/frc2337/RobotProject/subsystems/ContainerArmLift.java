@@ -35,11 +35,11 @@ public class ContainerArmLift extends PIDSubsystem {
     //Lift PID variables
     double armSetPointTolerance = 0.05;
     
-    public double armMaxSpeedUp = 0.65;
-    public double armMaxSpeedDown = -0.8;
+    public double armMaxSpeedUp = 0.5;
+    public double armMaxSpeedDown = -0.5;
 
-    double armTopLimit = 8.1;
-    double armBottomLimit = 0.80;
+    double armTopLimit = 2.0;
+    double armBottomLimit = 1.0;
 	
  
     double pos0,pos1,pos2,pos3,pos4,pos5,pos6,pos7;
@@ -58,11 +58,7 @@ public class ContainerArmLift extends PIDSubsystem {
         
         getPIDController().setOutputRange(armMaxSpeedDown, armMaxSpeedUp);   //For the lift PID
         getPIDController().setInputRange(armBottomLimit, armTopLimit);
-        
-
-        
-
-        	
+          	
 
         // Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
