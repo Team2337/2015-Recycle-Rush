@@ -21,12 +21,22 @@ public class ContainerArmExtension extends Subsystem {
         // Set the default command for a subsystem here.
         setDefaultCommand(new CONTAINERARM_ExtensionIn());
     }
+    /**
+     * Extend the container arm
+     */
     public void extOut() {
     	Solenoid1.set(true);
     }
+    /**
+     * Retract the container arm
+     */
     public void extIn() {
     	Solenoid1.set(false);
     }
+    /**
+     * Returns the position of the solenoid
+     * @return true or false
+     */
     public boolean getSolenoidPosition() {
     	return Solenoid1.get();
     }

@@ -15,6 +15,7 @@ public class IntakePneumatics extends Subsystem {
     // here. Call these from Commands.
 	Solenoid rightSolenoid = RobotMap.intakeRightSolenoid;
     Solenoid leftSolenoid = RobotMap.intakeLeftSolenoid;
+    /** Defines whether the intake arms are deployed or not */
     boolean armPosition;
 
     public void initDefaultCommand() {
@@ -22,16 +23,25 @@ public class IntakePneumatics extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new INTAKEPNEUMATICS_ArmsIn());
     }
+
+    /**
+     * Deploys the intake arms
+     */
     public void armsOut() {
     	armPosition = true;
-   // 	rightSolenoid.set(true);
     	leftSolenoid.set(true);
     }
+    /**
+     * Retracts the intake arms
+     */
     public void armsIn() {
     	armPosition = false;
-   // 	rightSolenoid.set(false);
     	leftSolenoid.set(false);
     }
+    /**
+     * Returns the poisition of the intake arms
+     * @return true or false
+     */
     public boolean getArmPosition() {
     	return armPosition;
     }

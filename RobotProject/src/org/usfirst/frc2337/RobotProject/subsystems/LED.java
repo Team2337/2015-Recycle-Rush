@@ -26,6 +26,12 @@ public class LED extends Subsystem {
     	setDefaultCommand(new LED_Auto());
     }
     
+    /**
+     * Sets the state of the kicker and finger LEDs and determines whether they are flashing or not.
+     * @param kicker 
+     * @param finger
+     * @param flasher
+     */
     public void kickerLED(boolean kicker, boolean finger, boolean flasher) {
     	if (!Robot.kicker.autoOff) {
     		kickerLED.set(finger);
@@ -37,9 +43,19 @@ public class LED extends Subsystem {
     		kickerLED.set(false);
     	}
     }
+    /**
+     * Sets the state of the PID LED
+     * @param on  Set to true if the LED is on
+     * Accepts boolean
+     */
     public void PIDLED(boolean on) {
     	PIDLED.set(on);
     }
+    /**
+     * Sets the state of the bumper LED
+     * @param on  Set to true if the LED is on
+     * Accepts boolean
+     */
     public void bumperLED(boolean on) {
     	bumperLED.set(on);
     }

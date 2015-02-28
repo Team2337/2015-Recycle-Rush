@@ -54,7 +54,7 @@ public class  LIFT_JoystickControl extends Command {
     		if (!setPointSet) {
     			Robot.lift.enable(); //Enable Lift Pid
     			Robot.lift.setSetpoint(Robot.lift.getPosition()); //Set the Lift
-    			//Make setPointSet true so this statment true so it won't loop
+    			//Make setPointSet true so this statement true so it won't loop
     			setPointSet = true; 
     		}
     		

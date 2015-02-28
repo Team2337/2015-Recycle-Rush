@@ -67,8 +67,8 @@ public class OI {
     public JoystickButton operatorControlsLeftToggle;
     public JoystickButton operatorControlsRightToggle;
     public JoystickButton operatorControlsKickToggle;
-    public JoystickButton operatorControlsJoystickMode;
-    public JoystickButton operatorControlsExtension;
+    public JoystickButton operatorControlsBlueButton;
+    public JoystickButton operatorControlsYellowButton;
     public Joystick operatorControls;
     
     //Buttons for intake/kicker
@@ -109,29 +109,7 @@ public class OI {
     	//Joystick Driver
         joystickDriver = new Joystick(0);
         
-        /*
-        joystickDriverHatRight = new JoystickButton(joystickDriver, 10);
-        joystickDriverHatRight.whileHeld(new DoNothing());
-        joystickDriverHatLeft = new JoystickButton(joystickDriver, 9);
-        joystickDriverHatLeft.whileHeld(new DoNothing());
-        joystickDriverButtonStart = new JoystickButton(joystickDriver, 8);
-        joystickDriverButtonStart.whileHeld(new DoNothing());
-        joystickDriverButtonBack = new JoystickButton(joystickDriver, 7);
-        joystickDriverButtonBack.whileHeld(new DoNothing());
-        joystickDriverBumperRight = new JoystickButton(joystickDriver, 6);
-        joystickDriverBumperRight.whileHeld(new DoNothing());
-        joystickDriverBumperLeft = new JoystickButton(joystickDriver, 5);
-        joystickDriverBumperLeft.whileHeld(new DoNothing());
-        joystickDriverButtonY = new JoystickButton(joystickDriver, 4);
-        joystickDriverButtonY.whileHeld(new DoNothing());
-        joystickDriverButtonX = new JoystickButton(joystickDriver, 3);
-        joystickDriverButtonX.whileHeld(new DoNothing());
-        joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
-        joystickDriverButtonB.whileHeld(new DoNothing());
-        joystickDriverButtonA = new JoystickButton(joystickDriver, 1);				//resets encoder
-        joystickDriverButtonA.whileHeld(new ResetEncoder());
-        */
-        
+
         //Joystick Control, for Lift (Precise) (Operator Right hand)
         liftJoystick = new Joystick(1); 
         
@@ -149,7 +127,8 @@ public class OI {
         intakePush.whileHeld(new INTAKE_ActivateMotors(leftPush,rightPush));
         //Lift Joystick trigger
         intakePull = new JoystickButton(liftJoystick, 1);
-        intakePull.whileHeld(new INTAKE_OutAndPull(leftPull,rightPull));
+        //intakePull.whileHeld(new INTAKE_OutAndPull(leftPull,rightPull));
+        intakePull.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
         //Lift Joystick base front right
         operatorControlsKickToggle = new JoystickButton(liftJoystick, 8);
         operatorControlsKickToggle.whenPressed(new KICKER_StopKick());
@@ -160,7 +139,9 @@ public class OI {
         
         //ButtonPanel for Lift (Operator Left Hand)
         operatorControls = new Joystick(2);         
-        //Buttons for Base Position
+        
+        //Operator Station Rocker switch
+        
         //Rocker switch Pos 2
         operatorControlsBase1 = new JoystickButton(operatorControls, 9);
         operatorControlsBase1.whenPressed(new LIFT_PidSet(0,0));
@@ -170,7 +151,10 @@ public class OI {
         //Rocker switch Pos 1
         operatorControlsBase3 = new JoystickButton(operatorControls, 7);
         operatorControlsBase3.whenPressed(new LIFT_PidSet(2,0));
-        //Buttons for Tote Position (Pos0 - Pos5)
+
+        
+        
+        //  Operator Station Buttons 10 - 15  White, Green, and 4 Black buttons.
         
         //Operator Controls white button # 15
         operatorControlsLift0 = new JoystickButton(operatorControls, 15);
@@ -178,7 +162,7 @@ public class OI {
         
         //Operator Controls Green button # 14
         operatorControlsLift1 = new JoystickButton(operatorControls, 14);
-        operatorControlsLift1.whileHeld(new LIFT_PidSetGreenButton());
+        operatorControlsLift1.whenPressed(new LIFT_PidSetGreenButton());
         //Operator controls bottom Black Button # 13
         operatorControlsLift2 = new JoystickButton(operatorControls, 13);
         operatorControlsLift2.whenPressed(new LIFT_PidSet1stBlackButton());
@@ -192,7 +176,8 @@ public class OI {
         operatorControlsLift5 = new JoystickButton(operatorControls, 10);
         operatorControlsLift5.whileHeld(new LIFT_PidSet(5,1));        
         
-        //AutoToteLift Detector Components
+        
+        //Operator Station Toggles
         // Left Toggle Operator Controls # 5
         operatorControlsLeftToggle = new JoystickButton(operatorControls, 5);
         //operatorControlsAutoTote.whileHeld(new LIFT_AutoToteLift(1));
@@ -207,16 +192,22 @@ public class OI {
         
         
         //ContainerArm Components
-   
-        
+        // Buttons 3 and 4
+
         //Operator Controls Blue button # 3
-        operatorControlsJoystickMode = new JoystickButton(operatorControls, 3);
+        operatorControlsBlueButton = new JoystickButton(operatorControls, 3);
+        //operatorControlsJoystickMode.whenPressed(new CONTAINERARM_JoystickMode(false));
+        //operatorControlsJoystickMode.whenReleased(new CONTAINERARM_JoystickMode(true));
+        operatorControlsBlueButton.whenPressed(new CONTAINERARM_ExtensionOut());
+        operatorControlsBlueButton.whenReleased(new CONTAINERARM_ExtensionIn());
+        
         //Operator Controls yellow button # 4
-        operatorControlsExtension = new JoystickButton(operatorControls, 4);
-        operatorControlsJoystickMode.whenPressed(new CONTAINERARM_JoystickMode(false));
-        operatorControlsJoystickMode.whenReleased(new CONTAINERARM_JoystickMode(true));
-        operatorControlsExtension.whenPressed(new CONTAINERARM_ExtensionOut());
-        operatorControlsExtension.whenReleased(new CONTAINERARM_ExtensionIn());
+        operatorControlsYellowButton = new JoystickButton(operatorControls, 4);
+        operatorControlsYellowButton.whileHeld(new INTAKE_OutAndPull(leftPull,rightPull));
+        
+        
+        
+        
 	    
         // SMARTDASH BOARD STUFF
         
