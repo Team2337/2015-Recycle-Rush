@@ -2,6 +2,7 @@ package org.usfirst.frc2337.RobotProject.subsystems;
 
 import org.usfirst.frc2337.RobotProject.RobotMap;
 import org.usfirst.frc2337.RobotProject.commands.KICKER_AutoKick;
+import org.usfirst.frc2337.RobotProject.commands.KICKER_DoNothing;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.*;
@@ -19,7 +20,7 @@ public class Kicker extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());\
-    	setDefaultCommand(new KICKER_AutoKick());
+    	setDefaultCommand(new KICKER_DoNothing());
     }
     
     public void kickOut() {

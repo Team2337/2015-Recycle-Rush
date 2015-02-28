@@ -87,8 +87,8 @@ public class OI {
 
     	//Speed for the motors for any given button or command
    	    double speed = 1.0;
-        double p = 1; //Positive
-        double n = -1; //Negative
+        double p = .5; //Positive
+        double n = -.5; //Negative
         
         //Pull commands. 
         double rightPull = speed * p; 
