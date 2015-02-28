@@ -69,7 +69,7 @@ public class  LIFT_JoystickControl extends Command {
     		} else if (liftJoystickY < 0) {
     			RobotMap.masterliftMotor.set(1.00 * liftJoystickY); //Positive
 
-    		} else if ((Robot.lift.getPosition() > 1.65) && (liftJoystickY > 0)) {
+    		} else if ((Robot.lift.getPosition() > 1.249) && (liftJoystickY > 0)) {
     			RobotMap.masterliftMotor.set(1.00 * liftJoystickY);	//Negative
 
     		} else  {

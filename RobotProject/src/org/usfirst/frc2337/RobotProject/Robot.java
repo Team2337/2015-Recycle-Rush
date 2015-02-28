@@ -9,10 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import com.kauailabs.nav6.frc.IMUAdvanced;
 
-import edu.wpi.first.wpilibj.SerialPort;
-import edu.wpi.first.wpilibj.Timer;
 
 import org.usfirst.frc2337.RobotProject.commands.*;
 import org.usfirst.frc2337.RobotProject.subsystems.*;

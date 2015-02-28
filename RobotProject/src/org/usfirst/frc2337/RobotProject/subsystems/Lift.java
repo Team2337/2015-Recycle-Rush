@@ -243,30 +243,55 @@ public class Lift extends PIDSubsystem {
     }
     
     //Grab the baseIn position, save the variable then set it global.
+    /**
+     * Based on the input sets the variable for the base lift height and set the setpoint for the lift using the existing tote position and the new base position
+     * @param baseIn 
+     *  double range from 0 to 2
+     */ 
     public void setBase(int baseIn){
     	this.base= baseIn;
     	setSetpoint(setarray[this.base][this.tote]);
     	System.out.println(setarray[this.base][this.tote]);
     }
    //Grab the toteIn position, save the variable then set it global.
+    /**
+     * Based on the input sets the variable for the tote lift height and set the setpoint for the lift using the existing base position and the new tote position
+     * @param toteIn 
+     *  double range from 0 to 7
+     */
     public void setTote(int toteIn){
     	this.tote = toteIn;
     	setSetpoint(setarray[this.base][this.tote]);
     	System.out.println(setarray[this.base][this.tote]);
     }
+    /**
+     * Directly sets the position of the lift to the desired height.
+     * @param autonTote
+     * double range from lift max to min. Roughly .8 to 8
+     */
     public void setAutonPID(double autonTote){
     	this.autonTote = autonTote;
     	setSetpoint(autonTote);
     	System.out.println(autonTote);
     }
     //StopPID, toggle option for stopping it. 
+    /**
+     * Disables the PID subsystem on the lift.
+     */
     public void stopPID(){
     	this.PIDStatus = true;
     }
+    /**
+     * Enables the PID subsystem on the lift.
+     */
     public void startPID() {
     	this.PIDStatus = false;
     }
     //Return the PID when needed to another command.
+    /**
+     * Returns the status of the PID subsystem to determine whether it is enabled.
+     * @return
+     */
     public boolean getPIDStatus(){
     	return this.PIDStatus;
     }
@@ -276,12 +301,27 @@ public class Lift extends PIDSubsystem {
     	return liftAutoTote.get();
     }
     */
+    
+    /**
+     * Returns the status of the operator station button to determine whether the joystick Y axis controls the lift or the back arm.
+     * @return
+     */
+    
     public boolean joystickModeStatus() {
     	return this.joystickStatus;
     }
+    
+    /**
+     * Determines whether the robot is the practice or Comp bot based on the output of Dogital input 0;
+     * @return
+     */
+    
     public boolean isCompetitionBot() {
     	return competitionBot.get();
     }
+    /**
+     * Set the Output range for the Lift during Telop.
+     */
     public void setTeleopLiftSpeed() {
         getPIDController().setOutputRange(teleopMaxSpeedDown, teleopMaxSpeedUp);   //For the lift PID
     }
