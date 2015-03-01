@@ -50,17 +50,17 @@ public class  CONTAINERARM_JoystickThrottle extends Command {
     	double conJoystick = Robot.oi.liftJoystick.getRawAxis(2);
     			//RobotMap.containerArmMotor.set(speed * conJoystick);
     	
-    			throttlePosition = conJoystick + 1;  // Scale input to 0-2
+    			throttlePosition = -1*(conJoystick - 1);  // Scale input to 0-2 and invert
     			range = (Robot.containerArmLift.armTopLimit - Robot.containerArmLift.armBottomLimit)/2;
     			
-    			armPosition = throttlePosition * range; 
+    			armPosition = (throttlePosition * range) + Robot.containerArmLift.armBottomLimit; 
     			
     			
     			
     			Robot.containerArmLift.setSetpoint(armPosition);
     			
     			
-    			
+    			SmartDashboard.putNumber("range", range);
     			SmartDashboard.putNumber("Scaled Throttle", throttlePosition);
     			SmartDashboard.putNumber("Desired Arm Position", armPosition);
     }

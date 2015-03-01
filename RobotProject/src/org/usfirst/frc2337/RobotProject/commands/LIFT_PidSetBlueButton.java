@@ -15,20 +15,15 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class LIFT_PidSet1stBlackButton extends CommandGroup {
+public class LIFT_PidSetBlueButton extends CommandGroup {
     
-    public  LIFT_PidSet1stBlackButton() {
+    public  LIFT_PidSetBlueButton() {
         // Add Commands here:
-        // e.g. addParallel(new Command1());[]\
-    	
+        // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
 
-    	
-    	addSequential(new LIFT_PidSetWithSpeed(1,1,.5,-.5)); 						//lift tote to position 2 (also to simulate end of 3-tote auton)
-    												// kick out pancake cylinder in preperation to push tote(s)
-    	addSequential(new KICKER_KickOut());							//drop tote to floor
-    	addSequential(new AutonWait(.25));
-    	addSequential(new LIFT_PidSetWithSpeed(2,1,.5,-.5)); 
+    	addSequential(new KICKER_KickOut());		// Extend Kicker
+    	addSequential(new LIFT_PidSetWithSpeed(6,1,.5,-.5)); 	//lift tote to position 6 to pick up container
 
 	
     }

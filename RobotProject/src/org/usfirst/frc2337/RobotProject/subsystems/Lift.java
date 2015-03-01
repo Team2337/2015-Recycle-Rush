@@ -92,7 +92,7 @@ public class Lift extends PIDSubsystem {
     	pos3 = 4.04;		//3
     	pos4 = 5.4;		//4
     	pos5 = 6.7;		//5
-    	pos6 = 4.8;		// Auton: just above container
+    	pos6 = 2.475;		// Container Pickup with toes
     	pos7 = 2.6;		// Auton: second tote
     
     	bottom = 0;		//Bottom
@@ -122,7 +122,7 @@ public class Lift extends PIDSubsystem {
     	pos3 = 4.04;		//3
     	pos4 = 5.4;		//4
     	pos5 = 6.7;		//5
-    	pos6 = 4.8;		// Auton: just above container
+    	pos6 = 2.475;		// Container Pickup with toes
     	pos7 = 2.6;		// Auton: second tote
     
     	bottom = 0;		//Bottom

@@ -15,21 +15,16 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class LIFT_PidSet1stBlackButton extends CommandGroup {
+public class INTAKE_CloseArmsAndIntake extends CommandGroup {
     
-    public  LIFT_PidSet1stBlackButton() {
+    public  INTAKE_CloseArmsAndIntake() {
         // Add Commands here:
-        // e.g. addParallel(new Command1());[]\
-    	
+        // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
-
+    	addParallel(new INTAKE_OpenArms_ArmsIn());
+    	addSequential(new INTAKE_ActivateMotors(1,-1));
+    	//addSequential(new INTAKE_OpenArms_ArmsOut());
     	
-    	addSequential(new LIFT_PidSetWithSpeed(1,1,.5,-.5)); 						//lift tote to position 2 (also to simulate end of 3-tote auton)
-    												// kick out pancake cylinder in preperation to push tote(s)
-    	addSequential(new KICKER_KickOut());							//drop tote to floor
-    	addSequential(new AutonWait(.25));
-    	addSequential(new LIFT_PidSetWithSpeed(2,1,.5,-.5)); 
-
 	
     }
 }

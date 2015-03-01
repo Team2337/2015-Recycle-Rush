@@ -166,6 +166,7 @@ public class Robot extends IterativeRobot {
     	RobotMap.imu.zeroYaw();
     	Robot.chassis.disable();
     	Robot.lift.setTeleopLiftSpeed();
+    	Robot.containerArmLift.enable();
 
     }
 
