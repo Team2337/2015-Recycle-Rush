@@ -2,6 +2,7 @@ package org.usfirst.frc2337.RobotProject.subsystems;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc2337.RobotProject.RobotMap;
 import org.usfirst.frc2337.RobotProject.commands.*;
@@ -9,44 +10,49 @@ import org.usfirst.frc2337.RobotProject.commands.*;
 /**
  *
  */
-public class IntakePneumatics extends Subsystem {
+public class IntakeOpenArms extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	//Solenoid rightSolenoid = RobotMap.intakeRightSolenoid;
-    Solenoid leftSolenoid = RobotMap.intakeLeftSolenoid;
-    /** Defines whether the intake arms are deployed or not */
-    public boolean armPosition = true;
+	Solenoid openArmsSolenoid = RobotMap.intakeOpenSolenoid;
+
+    /** Defines whether the intake arms are deployed in the open position or not */
+    public boolean openArmPosition = true;
+   
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new INTAKEPNEUMATICS_ArmsIn());
+    	//.setDefaultCommand(new INTAKE_OpenArms_Toggle());
+    	setDefaultCommand(new INTAKE_OpenArms_ArmsIn());
     }
 
     /**
      * Deploys the intake arms
      */
-    public void armsOut() {
-    	armPosition = true;
-    	leftSolenoid.set(true);
+    public void openArmsOut() {
+    	openArmPosition = true;
+    	openArmsSolenoid.set(true);
     }
-    /**
+    /**[]\
      * Retracts the intake arms
      */
-    public void armsIn() {
-    	armPosition = false;
-    	leftSolenoid.set(false);
+    public void openArmsIn() {
+    	openArmPosition = false;
+    	openArmsSolenoid.set(false);
     }
     /**
      * Returns the poisition of the intake arms
+     * 
+     * 
      * @return true or false
      */
     public boolean getArmPosition() {
-    	return armPosition;
+    	return openArmPosition;
     }
-    public void setArmPosition(boolean armPosition) {
-    	this.armPosition = armPosition;
+    public void setOpenArmPosition(boolean input) {
+    	this.openArmPosition = input;
+    	
     }
     
 }

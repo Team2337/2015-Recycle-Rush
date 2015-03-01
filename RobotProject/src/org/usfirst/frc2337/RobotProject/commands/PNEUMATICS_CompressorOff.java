@@ -15,7 +15,6 @@ public class PNEUMATICS_CompressorOff extends Command {
 
     public PNEUMATICS_CompressorOff() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	requires(Robot.pneumatics);
     }
 

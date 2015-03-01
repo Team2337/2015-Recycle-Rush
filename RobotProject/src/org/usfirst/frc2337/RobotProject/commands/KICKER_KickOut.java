@@ -2,18 +2,15 @@ package org.usfirst.frc2337.RobotProject.commands;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
-
-import org.usfirst.frc2337.RobotProject.RobotMap;
 import org.usfirst.frc2337.RobotProject.Robot;
 
 /**
- *
+ * The KICKER_KickOut Class extends the lift kicker
  */
 public class KICKER_KickOut extends Command {
 
     public KICKER_KickOut() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	requires(Robot.kicker);
     }
 
@@ -21,7 +18,7 @@ public class KICKER_KickOut extends Command {
     protected void initialize() {
     	//Robot.kicker.autoOff = true;
     		Robot.kicker.solenoid.set(DoubleSolenoid.Value.kReverse);
-    		//Robot.kicker.stateOut = false;
+    		Robot.kicker.stateOut = false;
     }
 
     // Called repeatedly when this Command is scheduled to run

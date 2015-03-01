@@ -72,6 +72,7 @@ public class RobotMap {
     //public static SpeedController intakeintakeRightArmMotor;
     public static Solenoid intakeRightSolenoid;
     public static Solenoid intakeLeftSolenoid;
+    public static Solenoid intakeOpenSolenoid;
     public static Compressor pneumaticsCompressor;
     //Intake Motors for Arms
     public static SpeedController intakeLeftArmMotor;
@@ -194,6 +195,9 @@ public class RobotMap {
         intakeLeftSolenoid = new Solenoid(0, 5);
         LiveWindow.addActuator("Pnuematics", "LeftSolenoid", intakeLeftSolenoid);
         
+        intakeOpenSolenoid = new Solenoid(0, 4);
+        LiveWindow.addActuator("Intake_OpenArms", "Open Arms Solenoid", intakeOpenSolenoid);
+        
         //Intake Motors
         intakeLeftArmMotor = new Talon(8);
         LiveWindow.addActuator("Intake", "intakeLeftArmMotor", (Talon) intakeLeftArmMotor);
@@ -218,8 +222,9 @@ public class RobotMap {
         competitionBot = new DigitalInput(0);
         LiveWindow.addActuator("Lift", "Competition Bot Set Points:", competitionBot);
         
-        //Not sure what this is?
+
         // liftAutoTote = new DigitalInput(3);
+
         // LiveWindow.addActuator("Lift", "AutoTote", liftAutoTote);
         
         //Power Distribution Board
@@ -235,7 +240,7 @@ public class RobotMap {
         LiveWindow.addActuator("ContainerArmLift", "Container Arm Mmotor", (VictorSP) containerArmMotor);
         armPotentiometer = new AnalogPotentiometer(0, 10.0, 0.068);			//settings ok????
         LiveWindow.addSensor("ContainerArmLift", "Container Arm Potentiometer", liftPotentiometer);
-    	containerSolenoid1 = new Solenoid(0,4);
+    	containerSolenoid1 = new Solenoid(0,3);
     	LiveWindow.addActuator("ContainerArmLift", "Conyainer Arm Extender", containerSolenoid1);
 
         //GYRO - IMU initialization
@@ -243,7 +248,7 @@ public class RobotMap {
 	    	serial_port = new SerialPort(57600,SerialPort.Port.kOnboard);
 			
 			// You can add a second parameter to modify the 
-			// update rate (in hz) from 4 to 100.  The default is 100.
+			// update rate (in hz) from	to 100.  The default is 100.
 			// If you need to minimize CPU load, you can set it to a
 			// lower value, as shown here, depending upon your needs.
 			

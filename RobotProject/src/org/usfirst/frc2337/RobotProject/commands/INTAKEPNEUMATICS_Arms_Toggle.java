@@ -20,9 +20,9 @@ import org.usfirst.frc2337.RobotProject.Robot;
 /**
  *
  */
-public class  INTAKEPNEUMATICS_ArmsOut extends Command {
+public class  INTAKEPNEUMATICS_Arms_Toggle extends Command {
 
-    public INTAKEPNEUMATICS_ArmsOut() {
+    public INTAKEPNEUMATICS_Arms_Toggle() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 
@@ -35,8 +35,7 @@ public class  INTAKEPNEUMATICS_ArmsOut extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	//Use public function in Intake Subsystem
-
-    		Robot.intakePneumatics.armsOut();
+    	Robot.intakePneumatics.setArmPosition(Robot.intakePneumatics.armPosition);
 
     }
 

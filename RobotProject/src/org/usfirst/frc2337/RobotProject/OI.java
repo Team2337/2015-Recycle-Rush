@@ -72,7 +72,7 @@ public class OI {
     public Joystick operatorControls;
     
     //Buttons for intake/kicker
-    public JoystickButton intakePull;
+    public JoystickButton liftJoystickTrigger;
     public JoystickButton intakePush;
     public JoystickButton intakeRight;
     public JoystickButton intakeLeft;
@@ -124,11 +124,13 @@ public class OI {
         intakeRight.whileHeld(new INTAKE_ActivateMotors(leftRotateRight,rightRotateRight));
         //Lift Joystick on Hat center button
         intakePush = new JoystickButton(liftJoystick, 3);
-        intakePush.whileHeld(new INTAKE_ActivateMotors(leftPush,rightPush));
+        intakePush.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
         //Lift Joystick trigger
-        intakePull = new JoystickButton(liftJoystick, 1);
-        //intakePull.whileHeld(new INTAKE_OutAndPull(leftPull,rightPull));
-        intakePull.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
+        liftJoystickTrigger = new JoystickButton(liftJoystick, 1);
+        //intakePull.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
+        liftJoystickTrigger.whileHeld(new INTAKE_CloseArmsAndPull(leftPull,rightPull));
+        
+       
         //Lift Joystick base front right
         operatorControlsKickToggle = new JoystickButton(liftJoystick, 8);
         operatorControlsKickToggle.whenPressed(new KICKER_StopKick());
@@ -186,10 +188,14 @@ public class OI {
        
         //LiftToggle (On or Off) Components
         // Right Toggle Operator Controls # 6
-        operatorControlsRightToggle = new JoystickButton(operatorControls, 6);
-        operatorControlsRightToggle.whenPressed(new LIFT_StopPID());
-        operatorControlsRightToggle.whenReleased(new LIFT_StartPID());
         
+        operatorControlsRightToggle = new JoystickButton(operatorControls, 6);
+       // operatorControlsRightToggle.whenPressed(new LIFT_StopPID());
+        //operatorControlsRightToggle.whenReleased(new LIFT_StartPID());
+        operatorControlsRightToggle.whileHeld(new INTAKE_OpenArms_ArmsOut());
+        operatorControlsRightToggle.whenReleased(new INTAKE_OpenArms_ArmsIn());
+        
+      
         
         //ContainerArm Components
         // Buttons 3 and 4
@@ -198,8 +204,9 @@ public class OI {
         operatorControlsBlueButton = new JoystickButton(operatorControls, 3);
         //operatorControlsJoystickMode.whenPressed(new CONTAINERARM_JoystickMode(false));
         //operatorControlsJoystickMode.whenReleased(new CONTAINERARM_JoystickMode(true));
-        operatorControlsBlueButton.whenPressed(new CONTAINERARM_ExtensionOut());
-        operatorControlsBlueButton.whenReleased(new CONTAINERARM_ExtensionIn());
+       // operatorControlsBlueButton.whenPressed(new CONTAINERARM_ExtensionOut());
+       // operatorControlsBlueButton.whenReleased(new CONTAINERARM_ExtensionIn());
+        
         
         //Operator Controls yellow button # 4
         operatorControlsYellowButton = new JoystickButton(operatorControls, 4);
@@ -249,7 +256,9 @@ public class OI {
         //Preferences
         SmartDashboard.putNumber("teleopMaxSpeedUp", Robot.lift.teleopMaxSpeedUp);
         SmartDashboard.putNumber("teleopMaxSpeedDown", Robot.lift.teleopMaxSpeedDown);
-
+        
+        SmartDashboard.putBoolean("openArmPositionOI", Robot.intakeOpen.openArmPosition);
+        SmartDashboard.putBoolean("outArmPositionOI", Robot.intakePneumatics.armPosition);
         
 
 

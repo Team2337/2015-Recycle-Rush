@@ -1,7 +1,6 @@
 package org.usfirst.frc2337.RobotProject.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc2337.RobotProject.RobotMap;
 import org.usfirst.frc2337.RobotProject.Robot;
 
 /**
@@ -11,7 +10,6 @@ public class KICKER_Kick extends Command {
 
     public KICKER_Kick() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	requires(Robot.kicker);
     }
 
