@@ -72,7 +72,7 @@ public class Auton_3ToteJ extends CommandGroup {
 
     	addSequential(new ChassisDisable());
     	addSequential(new AutonDriveAtSpeedForTimeGyro(-0.3, 0.3));		//drive back to clear can lid when lifting
-    	
+  
     	//PICK UP 2 TOTE STACK
     	addParallel(new KICKER_KickOut());								//deploy kicker
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos6));		//pick up 2 tote stack
@@ -89,18 +89,18 @@ public class Auton_3ToteJ extends CommandGroup {
     	addSequential(new AutonWait(0.5));								//STILL NEED ?????
     	
     	//DRIVE TO TOTE 3
-    	addSequential(new AutonDriveForTimeGyroIterative(.85));			//Ramp up speed and drive past container
+    	addSequential(new AutonDriveForTimeGyroIterative(.95));			//Ramp up speed and drive past container
     	
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower tote 3 in parallel while driving to next tote
     	addSequential(new Auton_ChassisPidSetWithToteSensor(600));		//Drive to next tote with sensor
 
-    	addSequential(new ChassisDisable());							//  MAY NEED TO ENABLE IF CAN WAS REMOVED
+    	//addSequential(new ChassisDisable());							//  MAY NEED TO ENABLE IF CAN WAS REMOVED
 
     	//SET DOWN TOTE & STRAFE TO AUTON ZONE
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower tote
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 1.5));		//strafe in
-    	addSequential(new AutonEncoderStrafeIn(0.8, -300));
-    	
+    	addSequential(new AutonEncoderStrafeIn(0.8, -100));
+    	addSequential(new ChassisDisable());
 
     	addParallel(new KICKER_KickIn());								//retract kicker		OR IS THIS OUT????		
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//		STILL NEED ????
@@ -109,7 +109,7 @@ public class Auton_3ToteJ extends CommandGroup {
     	addSequential(new AutonEncoderStrafeIn(0.8, -750));
     	
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));		//lower lift to release tote
-    	//addSequential(new AutonWait(0.2));
+    	addSequential(new AutonWait(0.2));
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.8, 0.15));	//strafe away from totes
     	addSequential(new AutonEncoderStrafeOut(0.8, -745));
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos12));	//lower left to ground to prepare for teleop
@@ -121,10 +121,11 @@ public class Auton_3ToteJ extends CommandGroup {
 	}
 	
 	protected void end() {
+		Timer.delay(.1);
 		Robot.lift.setSetpoint(1.8);				//trying to back away from stacked totes to score auton points
 		Robot.kicker.kickIn();
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			RobotMap.chassisbackLeft.set(0.8);
 			RobotMap.chassisbackRight.set(0.8);
 			RobotMap.chassisfrontLeft.set(-0.8);
