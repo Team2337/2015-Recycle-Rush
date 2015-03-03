@@ -243,7 +243,6 @@ public class OI {
         SmartDashboard.putData("PID with Gyro and Totoe Sensor in (165)", new Auton_ChassisPidSetWithToteSensor(165));
         
         SmartDashboard.putData("AutonRandomTest", new AutonRandomTest());
-        SmartDashboard.putData("Auton_3ToteF_AfterKetteringWithToteB", new Auton_3ToteF_AfterKetteringWithToteB());
         SmartDashboard.putData("Auton_3ToteJ (was _AfterKetteringWithToteC)", new Auton_3ToteJ());
 
         SmartDashboard.putData("AutonDriveForTimeGyroIterative(.5)", new AutonDriveForTimeGyroIterative(.5));
