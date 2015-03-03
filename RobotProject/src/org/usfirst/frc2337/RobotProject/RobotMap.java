@@ -81,7 +81,7 @@ public class RobotMap {
     public static DigitalInput liftAutoTote;
 
     //ContainerArm and Extension (Solenoid)
-    public static SpeedController containerArmMotor;  
+    public static CANTalon containerArmMotor;  
     public static AnalogPotentiometer armPotentiometer;
     public static Solenoid containerSolenoid1;
     
@@ -174,10 +174,22 @@ public class RobotMap {
         slaveliftMotor1.enableBrakeMode(true);
         slaveliftMotor2.enableBrakeMode(true);
         slaveliftMotor3.enableBrakeMode(true);
+
         
         //Lift Potentiometer
         liftPotentiometer = new AnalogPotentiometer(2, 10.0, 0.068);
         LiveWindow.addSensor("Lift", "Potentiometer", liftPotentiometer);
+        
+    	//Container items
+        containerArmMotor = new CANTalon(10);
+        containerArmMotor.changeControlMode(ControlMode.PercentVbus);
+        containerArmMotor.enableBrakeMode(false);
+        containerArmMotor.reverseOutput(false);
+        
+        armPotentiometer = new AnalogPotentiometer(0, 10.0, 0.068);			//settings ok????
+        LiveWindow.addSensor("ContainerArmLift", "Container Arm Potentiometer", liftPotentiometer);
+    	containerSolenoid1 = new Solenoid(0,3);
+    	LiveWindow.addActuator("ContainerArmLift", "Conyainer Arm Extender", containerSolenoid1);
         
         
         //Kicker Solenoid
@@ -235,13 +247,7 @@ public class RobotMap {
         //usbCamera1.setQuality(50);
         //usbCamera1.setSize(0); 
         
-    	//Container items
-        containerArmMotor = new VictorSP(5);
-        LiveWindow.addActuator("ContainerArmLift", "Container Arm Mmotor", (VictorSP) containerArmMotor);
-        armPotentiometer = new AnalogPotentiometer(0, 10.0, 0.068);			//settings ok????
-        LiveWindow.addSensor("ContainerArmLift", "Container Arm Potentiometer", liftPotentiometer);
-    	containerSolenoid1 = new Solenoid(0,3);
-    	LiveWindow.addActuator("ContainerArmLift", "Conyainer Arm Extender", containerSolenoid1);
+
 
         //GYRO - IMU initialization
 	    	try {
