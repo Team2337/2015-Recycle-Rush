@@ -60,8 +60,8 @@ public class  CONTAINERARM_JoystickThrottle extends Command {
     			Robot.containerArmLift.setSetpoint(armPosition);
     			
     			
-    			SmartDashboard.putNumber("range", range);
-    			SmartDashboard.putNumber("Scaled Throttle", throttlePosition);
+    			//SmartDashboard.putNumber("range", range);
+    			//SmartDashboard.putNumber("Scaled Throttle", throttlePosition);
     			SmartDashboard.putNumber("Desired Arm Position", armPosition);
     }
 

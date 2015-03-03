@@ -48,7 +48,7 @@ public class Auton_3ToteJ extends CommandGroup {
     	addSequential(new AutonWait(1));								// STILL NEED??????
 
     	//DRIVE TO TOTE 2   	
-    	addSequential(new AutonDriveForTimeGyroIterative(.75));			//ramp speed up and drive past container
+    	addSequential(new AutonDriveForTimeGyroIterative(.85));			//ramp speed up and drive past container
 
     	addParallel(new Auton_ChassisPidSetWithToteSensor(600));		//drive to 2nd tote, reset setpoint when sensor sees tote
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos2));		//lower tote to pos 2 in parallel while driving to next tote

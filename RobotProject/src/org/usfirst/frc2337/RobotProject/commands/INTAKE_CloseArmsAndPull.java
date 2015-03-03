@@ -49,8 +49,8 @@ public class  INTAKE_CloseArmsAndPull extends Command {
     protected void execute() {
     	//Set the Speed of the arms
     	
-    	Robot.intake.setLeftArmSpeed(left);
-    	Robot.intake.setRightArmSpeed(right);
+    	//Robot.intake.setLeftArmSpeed(left);
+    	//Robot.intake.setRightArmSpeed(right);
     	Robot.intakeOpen.openArmsIn();
 
 

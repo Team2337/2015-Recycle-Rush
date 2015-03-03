@@ -83,7 +83,7 @@ public class RobotMap {
     //ContainerArm and Extension (Solenoid)
     public static CANTalon containerArmMotor;  
     public static AnalogPotentiometer armPotentiometer;
-    public static Solenoid containerSolenoid1;
+    //public static Solenoid containerSolenoid1;
     
     //////////
     // LEDS //
@@ -185,11 +185,12 @@ public class RobotMap {
         containerArmMotor.changeControlMode(ControlMode.PercentVbus);
         containerArmMotor.enableBrakeMode(false);
         containerArmMotor.reverseOutput(false);
-        
         armPotentiometer = new AnalogPotentiometer(0, 10.0, 0.068);			//settings ok????
         LiveWindow.addSensor("ContainerArmLift", "Container Arm Potentiometer", liftPotentiometer);
-    	containerSolenoid1 = new Solenoid(0,3);
-    	LiveWindow.addActuator("ContainerArmLift", "Conyainer Arm Extender", containerSolenoid1);
+        
+        
+    	//containerSolenoid1 = new Solenoid(0,3);
+    	//LiveWindow.addActuator("ContainerArmLift", "Conyainer Arm Extender", containerSolenoid1);
         
         
         //Kicker Solenoid
@@ -226,7 +227,7 @@ public class RobotMap {
         LiveWindow.addActuator("LED", "BumperLED", ledBumper);
 
         
-        //Tote Sensor
+        //Tote Sensor for Auton
         chassistoteSensor = new DigitalInput(2);
         LiveWindow.addSensor("chassis", "toteSensor", chassistoteSensor);
         

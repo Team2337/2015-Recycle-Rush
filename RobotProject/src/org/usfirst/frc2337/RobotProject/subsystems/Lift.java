@@ -239,7 +239,7 @@ public class Lift extends PIDSubsystem {
     public void setBase(int baseIn){
     	this.base= baseIn;
     	setSetpoint(setarray[this.base][this.tote]);
-    	System.out.println(setarray[this.base][this.tote]);
+    	//System.out.println(setarray[this.base][this.tote]);
     }
    //Grab the toteIn position, save the variable then set it global.
     /**
@@ -250,7 +250,7 @@ public class Lift extends PIDSubsystem {
     public void setTote(int toteIn){
     	this.tote = toteIn;
     	setSetpoint(setarray[this.base][this.tote]);
-    	System.out.println(setarray[this.base][this.tote]);
+    	//System.out.println(setarray[this.base][this.tote]);
     }
     /**
      * Directly sets the position of the lift to the desired height.
@@ -260,7 +260,7 @@ public class Lift extends PIDSubsystem {
     public void setAutonPID(double autonTote){
     	this.autonTote = autonTote;
     	setSetpoint(autonTote);
-    	System.out.println(autonTote);
+    	//System.out.println(autonTote);
     }
     //StopPID, toggle option for stopping it. 
     /**

@@ -15,7 +15,7 @@ public class ContainerArmExtension extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	Solenoid Solenoid1  =  RobotMap.containerSolenoid1;
+	//Solenoid Solenoid1  =  RobotMap.containerSolenoid1;
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -25,20 +25,21 @@ public class ContainerArmExtension extends Subsystem {
      * Extend the container arm
      */
     public void extOut() {
-    	Solenoid1.set(true);
+    	//Solenoid1.set(true);
     }
     /**
      * Retract the container arm
      */
     public void extIn() {
-    	Solenoid1.set(false);
+    	//Solenoid1.set(false);
     }
     /**
      * Returns the position of the solenoid
      * @return true or false
      */
     public boolean getSolenoidPosition() {
-    	return Solenoid1.get();
+    	//return Solenoid1.get();
+    	return false;
     }
 }
 

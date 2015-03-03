@@ -164,13 +164,13 @@ public class OI {
         
         //Rocker switch Pos 2
         operatorControlsBase1 = new JoystickButton(operatorControls, 9);
-        operatorControlsBase1.whenPressed(new LIFT_PidSet(0,0));
+       // operatorControlsBase1.whenPressed(new LIFT_PidSet(0,0));
         //Rocker switch Pos OFF
         operatorControlsBase2 = new JoystickButton(operatorControls, 8);
-        operatorControlsBase2.whenPressed(new LIFT_PidSet(1,0));
+       // operatorControlsBase2.whenPressed(new LIFT_PidSet(1,0));
         //Rocker switch Pos 1
         operatorControlsBase3 = new JoystickButton(operatorControls, 7);
-        operatorControlsBase3.whenPressed(new LIFT_PidSet(2,0));
+       // operatorControlsBase3.whenPressed(new LIFT_PidSet(2,0));
 
         
         
@@ -233,23 +233,23 @@ public class OI {
 	    
         // SMARTDASH BOARD STUFF
         
-        SmartDashboard.putData("Auton Strafe out (-1.0,1.0)", new AutonStrafeAtSpeedForTime(-1.0,1.0));
-        SmartDashboard.putData("Auton Backup (-0.3,1.0)", new AutonDriveAtSpeedForTime(-0.3,1.0));
-        SmartDashboard.putData("Auton Strafe in (0.3,1.0)", new AutonStrafeAtSpeedForTime(0.3,1.0));
-        SmartDashboard.putData("Auton Drive Gyro (0.5,6.0)", new AutonDriveAtSpeedForTimeGyro(0.5,6.0));
-        SmartDashboard.putData("Auton Strafe Gyro in (0.7,6.0)", new AutonStrafeAtSpeedForTimeGyro(0.7,6.0));
+        //SmartDashboard.putData("Auton Strafe out (-1.0,1.0)", new AutonStrafeAtSpeedForTime(-1.0,1.0));
+        //SmartDashboard.putData("Auton Backup (-0.3,1.0)", new AutonDriveAtSpeedForTime(-0.3,1.0));
+        //SmartDashboard.putData("Auton Strafe in (0.3,1.0)", new AutonStrafeAtSpeedForTime(0.3,1.0));
+        //SmartDashboard.putData("Auton Drive Gyro (0.5,6.0)", new AutonDriveAtSpeedForTimeGyro(0.5,6.0));
+        //SmartDashboard.putData("Auton Strafe Gyro in (0.7,6.0)", new AutonStrafeAtSpeedForTimeGyro(0.7,6.0));
                
-        SmartDashboard.putData("PID Drive with Tote Sensor (171.250)", new Auton_ChassisPidSetWithToteSensor(171.250));
-        SmartDashboard.putData("PID with Gyro and Totoe Sensor in (165)", new Auton_ChassisPidSetWithToteSensor(165));
+        //SmartDashboard.putData("PID Drive with Tote Sensor (171.250)", new Auton_ChassisPidSetWithToteSensor(171.250));
+        //SmartDashboard.putData("PID with Gyro and Totoe Sensor in (165)", new Auton_ChassisPidSetWithToteSensor(165));
         
-        SmartDashboard.putData("AutonRandomTest", new AutonRandomTest());
-        SmartDashboard.putData("Auton_3ToteJ (was _AfterKetteringWithToteC)", new Auton_3ToteJ());
+        //SmartDashboard.putData("AutonRandomTest", new AutonRandomTest());
+        //SmartDashboard.putData("Auton_3ToteJ (was _AfterKetteringWithToteC)", new Auton_3ToteJ());
 
-        SmartDashboard.putData("AutonDriveForTimeGyroIterative(.5)", new AutonDriveForTimeGyroIterative(.5));
-        SmartDashboard.putData("AutonDriveForTimeGyroIterative(1)", new AutonDriveForTimeGyroIterative(1));
-        SmartDashboard.putData("AutonStrafewithEncoder(0.5,90)", new AutonEncoderStrafeIn(.5, 900));
+        //SmartDashboard.putData("AutonDriveForTimeGyroIterative(.5)", new AutonDriveForTimeGyroIterative(.5));
+        //SmartDashboard.putData("AutonDriveForTimeGyroIterative(1)", new AutonDriveForTimeGyroIterative(1));
+        //SmartDashboard.putData("AutonStrafewithEncoder(0.5,90)", new AutonEncoderStrafeIn(.5, 900));
         
-        SmartDashboard.putData("StopMotors", new StopMotors());
+        //SmartDashboard.putData("StopMotors", new StopMotors());
         
         SmartDashboard.putData("PNEUMATIC_ArmsIn", new INTAKEPNEUMATICS_ArmsIn());
         SmartDashboard.putData("PNUEMATIC_ArmsOut", new INTAKEPNEUMATICS_ArmsOut());
@@ -262,17 +262,17 @@ public class OI {
         SmartDashboard.putData("Pos4", new LIFT_PidSet(4,1));
         SmartDashboard.putData("Pos5", new LIFT_PidSet(5,1));
         
-        SmartDashboard.putData("Base0", new LIFT_PidSet(0,0));
-        SmartDashboard.putData("Base1", new LIFT_PidSet(1,0));
-        SmartDashboard.putData("Base2", new LIFT_PidSet(2,0));
+        //SmartDashboard.putData("Base0", new LIFT_PidSet(0,0));
+        //SmartDashboard.putData("Base1", new LIFT_PidSet(1,0));
+        //SmartDashboard.putData("Base2", new LIFT_PidSet(2,0));
         
         
         //Preferences
-        SmartDashboard.putNumber("teleopMaxSpeedUp", Robot.lift.teleopMaxSpeedUp);
-        SmartDashboard.putNumber("teleopMaxSpeedDown", Robot.lift.teleopMaxSpeedDown);
+        //SmartDashboard.putNumber("teleopMaxSpeedUp", Robot.lift.teleopMaxSpeedUp);
+        //SmartDashboard.putNumber("teleopMaxSpeedDown", Robot.lift.teleopMaxSpeedDown);
         
-        SmartDashboard.putBoolean("openArmPositionOI", Robot.intakeOpen.openArmPosition);
-        SmartDashboard.putBoolean("outArmPositionOI", Robot.intakePneumatics.armPosition);
+       // SmartDashboard.putBoolean("openArmPositionOI", Robot.intakeOpen.openArmPosition);
+        //SmartDashboard.putBoolean("outArmPositionOI", Robot.intakePneumatics.armPosition);
         
 
 

@@ -23,7 +23,6 @@ import org.usfirst.frc2337.RobotProject.Robot;
  */
 public class  INTAKE_OpenArms_Toggle extends Command {
 
-	int num;
 	
     public INTAKE_OpenArms_Toggle() {
         // Use requires() here to declare subsystem dependencies
@@ -45,8 +44,7 @@ public class  INTAKE_OpenArms_Toggle extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	SmartDashboard.putNumber("toggle number", num);
-    	num++;
+   
     }
 
     // Make this return true when this Command no longer needs to run execute()
