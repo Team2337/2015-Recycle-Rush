@@ -182,10 +182,10 @@ public class OI {
         
         //Operator Controls Green button # 14
         operatorControlsLift1 = new JoystickButton(operatorControls, 14);
-        operatorControlsLift1.whenPressed(new LIFT_PidSetGreenButton());
+        operatorControlsLift1.whenPressed(new LIFT_PidSet1stBlackButton());
         //Operator controls bottom Black Button # 13
         operatorControlsLift2 = new JoystickButton(operatorControls, 13);
-        operatorControlsLift2.whenPressed(new LIFT_PidSet1stBlackButton());
+        operatorControlsLift2.whenPressed(new LIFT_PidSetGreenButton());
         //Operator controls second from bottom Black Button # 12
         operatorControlsLift3 = new JoystickButton(operatorControls, 12);
         operatorControlsLift3.whileHeld(new LIFT_PidSet(3,1));
