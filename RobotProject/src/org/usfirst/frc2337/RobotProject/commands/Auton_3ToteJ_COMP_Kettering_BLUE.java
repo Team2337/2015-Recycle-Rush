@@ -44,11 +44,11 @@ public class Auton_3ToteJ_COMP_Kettering_BLUE extends CommandGroup {
     	
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos7));		//lift tote to position to clear can
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.5, 0.3));	//strafe out to clear handle of can when driving forward
-    	addSequential(new AutonEncoderStrafeOut(0.5, 25));
+    	addSequential(new AutonEncoderStrafeOut(0.5, 15));				// changed at kettering for container arm
     	addSequential(new AutonWait(1));								// STILL NEED??????
 
     	//DRIVE TO TOTE 2   	
-    	addSequential(new AutonDriveForTimeGyroIterative(.75));			//ramp speed up and drive past container
+    	addSequential(new AutonDriveForTimeGyroIterative(.85));			//ramp speed up and drive past container
 
     	addParallel(new Auton_ChassisPidSetWithToteSensor(600));		//drive to 2nd tote, reset setpoint when sensor sees tote
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos2));		//lower tote to pos 2 in parallel while driving to next tote
@@ -60,11 +60,11 @@ public class Auton_3ToteJ_COMP_Kettering_BLUE extends CommandGroup {
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.5, 0.3));		//strafe in to set down tote 1 on tote 2
     	addSequential(new AutonEncoderStrafeIn(0.5, 1));
     
-    	addParallel(new KICKER_KickIn());								//kicker already in?????????
+    	//addParallel(new KICKER_KickIn());								//kicker already in?????????
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos4));		//set down tote and get ready to pick up 2nd tote
 
-    	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.4, 0.5));		//nest totes  Changed to .4 .5 Kettering comp.
-    	addSequential(new AutonEncoderStrafeIn(0.4, -20));
+    	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.4, 0.5));		//nest totes 
+    	addSequential(new AutonEncoderStrafeIn(0.4, -30));				//Changed at kettering from -20
 	
     	
     	//AVOID CONTAINER 2: PART 1
@@ -84,14 +84,15 @@ public class Auton_3ToteJ_COMP_Kettering_BLUE extends CommandGroup {
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos9));		//lift tote stack to position 6 to clear can
     	//Changed to .6 from .5 at kettering.
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.65, 0.6));	//strafe out to clear handle of can when driving forward
-    	addSequential(new AutonEncoderStrafeOut(0.65, 25));
+    	addSequential(new AutonEncoderStrafeOut(0.65, 15));				// changed at kettering for container arm
     	
     	addSequential(new AutonWait(0.5));								//STILL NEED ?????
     	
     	//DRIVE TO TOTE 3
-    	addSequential(new AutonDriveForTimeGyroIterative(.95));			//Ramp up speed and drive past container
+    	addSequential(new AutonDriveForTimeGyroIterative(1.05));			//Ramp up speed and drive past container
     	
-    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower tote 3 in parallel while driving to next tote
+    	//addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower tote 3 in parallel while driving to next tote
+    	// above removed at kettering
     	addSequential(new Auton_ChassisPidSetWithToteSensor(600));		//Drive to next tote with sensor
 
     	//addSequential(new ChassisDisable());							//  MAY NEED TO ENABLE IF CAN WAS REMOVED

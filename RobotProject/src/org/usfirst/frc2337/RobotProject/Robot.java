@@ -74,11 +74,16 @@ public class Robot extends IterativeRobot {
         autonChooser = new SendableChooser();
         autonChooser.addObject("Move Straight to Auton Zone", new AutonDriveAtSpeedForTime(0.5,0.5)); //speed, time
         autonChooser.addObject("Move 1 Tote to Auton Zone", new Auton_1Tote());
-        autonChooser.addDefault("Move 3 Totes J - added velocity ramp up & isFinished timer", new Auton_3ToteJ());
+        autonChooser.addObject("Move 3 Totes J - added velocity ramp up & isFinished timer", new Auton_3ToteJ());
         //autonChooser.addObject("Move 3 Totes K - added strafe encoder on end", new Auton_3ToteK());
        // autonChooser.addObject("Move 3 Totes K_Wrapper - alternate timer by nesting commands", new Auton_3ToteK_Wrapper());
         autonChooser.addObject("Move 3 Totes L Add intake arms", new Auton_3ToteL_WithIntakeArms());
         autonChooser.addObject("COMP - Move 3 Totes J At Premier", new Auton_3ToteJ_COMP_Premier_field());
+        autonChooser.addDefault("COMP - Move 3 Totes J Kettering BLUE", new Auton_3ToteJ_COMP_Kettering_BLUE());
+        autonChooser.addObject("COMP - Move 3 Totes J Kettering RED", new Auton_3ToteJ_COMP_Kettering_RED());
+        
+        
+       
         autonChooser.addObject("Do Nothing", new DoNothing());
         SmartDashboard.putData("Auton Chooser", autonChooser);
     }
@@ -146,8 +151,8 @@ public class Robot extends IterativeRobot {
         // schedule the autonomous command (example)
     	RobotMap.imu.zeroYaw();
     	Robot.chassis.initEncoder();
-    	//autonCommand = (Command) autonChooser.getSelected();
-    	autonCommand = new Auton_3ToteJ();
+    	autonCommand = (Command) autonChooser.getSelected();
+    	//autonCommand = new Auton_3ToteJ_COMP_Kettering_BLUE();
         if (autonCommand != null) autonCommand.start();
     }
 

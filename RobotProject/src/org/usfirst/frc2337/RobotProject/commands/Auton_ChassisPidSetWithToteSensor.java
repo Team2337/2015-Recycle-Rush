@@ -21,7 +21,7 @@ import org.usfirst.frc2337.RobotProject.Robot;
 public class  Auton_ChassisPidSetWithToteSensor extends Command {
 
    double pidset; 
-   double totePosition = 144;
+   double totePosition = 148;
    
     public Auton_ChassisPidSetWithToteSensor(double pidset) {
     	this.pidset = pidset;
