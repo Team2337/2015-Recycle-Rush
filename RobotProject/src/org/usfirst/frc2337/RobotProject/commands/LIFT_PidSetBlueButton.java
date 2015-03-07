@@ -22,7 +22,7 @@ public class LIFT_PidSetBlueButton extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
 
-    	addSequential(new KICKER_KickOut());		// Extend Kicker
+    	//addSequential(new KICKER_KickOut());		// Extend Kicker
     	addSequential(new LIFT_PidSetWithSpeed(6,1,.5,-.5)); 	//lift tote to position 6 to pick up container
 
 	

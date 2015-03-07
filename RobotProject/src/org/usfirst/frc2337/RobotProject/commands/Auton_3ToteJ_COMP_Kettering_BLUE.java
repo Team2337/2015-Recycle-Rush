@@ -26,7 +26,7 @@ public class Auton_3ToteJ_COMP_Kettering_BLUE extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
 
-    	setTimeout(14);											// set Auton timer here
+    	setTimeout(14.3);											// set Auton timer here
     	
     	addSequential(new GyroReset());
     	addSequential(new ResetEncoder());
@@ -40,11 +40,11 @@ public class Auton_3ToteJ_COMP_Kettering_BLUE extends CommandGroup {
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));   	//lift tote to position 1
     	
     	//AVOID CONTAINER
-    	addSequential(new AutonDriveAtSpeedForTimeGyro(-0.3, 0.15));	//drive back to clear can lid when lifting
+    	addSequential(new AutonDriveAtSpeedForTimeGyro(-0.3, 0.11));	//drive back to clear can lid when lifting
     	
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos7));		//lift tote to position to clear can
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.5, 0.3));	//strafe out to clear handle of can when driving forward
-    	addSequential(new AutonEncoderStrafeOut(0.5, 15));				// changed at kettering for container arm
+    	addSequential(new AutonEncoderStrafeOut(0.5, 10));				// changed at kettering for container arm
     	addSequential(new AutonWait(1));								// STILL NEED??????
 
     	//DRIVE TO TOTE 2   	
@@ -84,7 +84,7 @@ public class Auton_3ToteJ_COMP_Kettering_BLUE extends CommandGroup {
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos9));		//lift tote stack to position 6 to clear can
     	//Changed to .6 from .5 at kettering.
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.65, 0.6));	//strafe out to clear handle of can when driving forward
-    	addSequential(new AutonEncoderStrafeOut(0.65, 15));				// changed at kettering for container arm
+    	addSequential(new AutonEncoderStrafeOut(0.65, 10));				// changed at kettering for container arm
     	
     	addSequential(new AutonWait(0.5));								//STILL NEED ?????
     	
@@ -98,19 +98,23 @@ public class Auton_3ToteJ_COMP_Kettering_BLUE extends CommandGroup {
     	//addSequential(new ChassisDisable());							//  MAY NEED TO ENABLE IF CAN WAS REMOVED
 
     	//SET DOWN TOTE & STRAFE TO AUTON ZONE
-    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower tote
+    	//addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower tote
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 1.5));		//strafe in
     	addSequential(new AutonEncoderStrafeIn(0.8, -100));
     	addSequential(new ChassisDisable());
-
-    	addParallel(new KICKER_KickIn());								//retract kicker		OR IS THIS OUT????		
+    	
+    	
+    	//addParallel(new KICKER_KickIn());								//retract kicker		OR IS THIS OUT????		
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//		STILL NEED ????
+
+
     	//addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos3));
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 1.8));		//strafe into the auton zone
     	addSequential(new AutonEncoderStrafeIn(0.8, -750));
-    	
+    	addSequential(new AutonWait(0.4));
+    	addSequential(new KICKER_KickIn());	
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));		//lower lift to release tote
-    	addSequential(new AutonWait(0.2));
+    	
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.8, 0.15));	//strafe away from totes
     	addSequential(new AutonEncoderStrafeOut(0.8, -745));
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos12));	//lower left to ground to prepare for teleop
@@ -123,14 +127,14 @@ public class Auton_3ToteJ_COMP_Kettering_BLUE extends CommandGroup {
 	
 	protected void end() {
 		Timer.delay(.1);
-		Robot.lift.setSetpoint(1.8);				//trying to back away from stacked totes to score auton points
-		Robot.kicker.kickIn();
+		//Robot.lift.setSetpoint(1.8);				//trying to back away from stacked totes to score auton points
+		//Robot.kicker.kickIn();
 
 		for (int i = 0; i < 5; i++) {
-			RobotMap.chassisbackLeft.set(0.8);
-			RobotMap.chassisbackRight.set(0.8);
-			RobotMap.chassisfrontLeft.set(-0.8);
-			RobotMap.chassisfrontRight.set(-0.8);
+			RobotMap.chassisbackLeft.set(0.5);
+			RobotMap.chassisbackRight.set(0.5);
+			RobotMap.chassisfrontLeft.set(-0.5);
+			RobotMap.chassisfrontRight.set(-0.5);
 			Timer.delay(.02);
 		}
 	}

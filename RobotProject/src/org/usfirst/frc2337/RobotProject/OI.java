@@ -146,7 +146,7 @@ public class OI {
         
         //Lift Joystick container arm button
         LiftJoystick9 = new JoystickButton(liftJoystick, 9);
-        LiftJoystick9.whileHeld (new CONTAINERARM_PidSet(1.455));
+        LiftJoystick9.whileHeld (new CONTAINERARM_PidSet(1.85));
         
         
         //Lift Joystick base front right
@@ -170,7 +170,7 @@ public class OI {
        // operatorControlsBase2.whenPressed(new LIFT_PidSet(1,0));
         //Rocker switch Pos 1
         operatorControlsBase3 = new JoystickButton(operatorControls, 7);
-       // operatorControlsBase3.whenPressed(new LIFT_PidSet(2,0));
+        operatorControlsBase3.whileHeld(new CONTAINERARM_DisablePID());
 
         
         
@@ -194,7 +194,8 @@ public class OI {
         operatorControlsLift4.whileHeld(new LIFT_PidSet(4,1));
         //Operator controls top Black Button # 10
         operatorControlsLift5 = new JoystickButton(operatorControls, 10);
-        operatorControlsLift5.whileHeld(new LIFT_PidSet(5,1));        
+        //operatorControlsLift5.whileHeld(new LIFT_PidSet(5,1));
+        operatorControlsLift5.whileHeld(new KICKER_KickIn());
         
         
         //ContainerArm Components
@@ -220,6 +221,8 @@ public class OI {
         operatorControlsRightToggle = new JoystickButton(operatorControls, 6);
        // operatorControlsRightToggle.whenPressed(new LIFT_StopPID());
         //operatorControlsRightToggle.whenReleased(new LIFT_StartPID());
+
+       //operatorControlsRightToggle.whileHeld(new CONTAINERARM_DisablePID());
         operatorControlsRightToggle.whileHeld(new INTAKE_OpenArms_ArmsOut());
         operatorControlsRightToggle.whenReleased(new INTAKE_OpenArms_ArmsIn());
         

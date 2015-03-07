@@ -22,9 +22,9 @@ public class ContainerArmLift extends PIDSubsystem {
     /** Defines the maximum speed for the rear arm for the down direction */
     public double armMaxSpeedDown = -1.0;
     /** Defines the top limit for the rear arm */
-    public double armTopLimit = 3.74;  //3.88
+    public double armTopLimit = 4.1;  //3.88
     /** Defines the bottom limit for the rear arm */
-    public double armBottomLimit = 1.12;   //1.215;  //1.44;
+    public double armBottomLimit = 1.1;   //1.215;  //1.44;  /1.95
 	
     /** define the positions for the rear arm */
     double pos0,pos1,pos2,pos3,pos4,pos5,pos6,pos7;

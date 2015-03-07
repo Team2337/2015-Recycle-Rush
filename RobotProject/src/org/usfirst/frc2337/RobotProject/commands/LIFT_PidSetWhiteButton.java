@@ -23,8 +23,10 @@ public class LIFT_PidSetWhiteButton extends CommandGroup {
         //      addSequential(new Command2());
 
 
-    	addSequential(new KICKER_KickIn());					
-    	addSequential(new LIFT_PidSet(0,1));
+    	addSequential(new KICKER_KickIn());	
+    	addSequential(new AutonWait(.15));
+    	//addSequential(new LIFT_PidSet(0,1));
+    	addSequential(new LIFT_PidSetWithSpeed(0,1, 0.8,-0.9));
 
 	
     }

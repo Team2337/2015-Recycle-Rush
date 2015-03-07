@@ -151,8 +151,8 @@ public class Robot extends IterativeRobot {
         // schedule the autonomous command (example)
     	RobotMap.imu.zeroYaw();
     	Robot.chassis.initEncoder();
-    	autonCommand = (Command) autonChooser.getSelected();
-    	//autonCommand = new Auton_3ToteJ_COMP_Kettering_BLUE();
+    	//autonCommand = (Command) autonChooser.getSelected();
+    	autonCommand = new Auton_3ToteJ_COMP_Kettering_BLUE();
         if (autonCommand != null) autonCommand.start();
     }
 

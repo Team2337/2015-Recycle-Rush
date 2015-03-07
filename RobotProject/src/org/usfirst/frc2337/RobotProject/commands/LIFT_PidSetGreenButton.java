@@ -24,7 +24,7 @@ public class LIFT_PidSetGreenButton extends CommandGroup {
 
     	
     	addSequential(new LIFT_PidSetWithSpeed(1,1,.5,-.5)); 						//lift tote to position 2 (also to simulate end of 3-tote auton)
-    												// kick out pancake cylinder in preperation to push tote(s)
+    																		// kick out pancake cylinder in preperation to push tote(s)
     	addSequential(new KICKER_KickOut());							//drop tote to floor
 
 	
