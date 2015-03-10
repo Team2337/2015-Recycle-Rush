@@ -77,7 +77,9 @@ public class OI {
     public JoystickButton intakeLeft;
     public JoystickButton intakeDeploy;
     public JoystickButton kickerKick;
+    public JoystickButton LiftJoystick7;
     public JoystickButton LiftJoystick9;
+    public JoystickButton LiftJoystick10;
     public Joystick liftJoystick; //Lift Control (Precise Motor Action)
 
 
@@ -98,6 +100,8 @@ public class OI {
         double rightPush = (speed * n)/3;
         double leftPush = (speed * p)/3;
         		
+        double rightSlowPull = (speed * p)/2;
+        double leftSlowPull = (speed * n)/2;
         //Declare variables
         
         double rightRotateRight, leftRotateRight, leftRotateLeft,rightRotateLeft;
@@ -123,7 +127,7 @@ public class OI {
         
         //Lift Joystick base rear right
         intakeDeploy = new JoystickButton(liftJoystick, 11);
-        intakeDeploy.whileHeld(new INTAKEPNEUMATICS_ArmsOut());
+        intakeDeploy.whileHeld(new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
         //Lift Joystick on Hat left button
         intakeLeft = new JoystickButton(liftJoystick, 4);
         intakeLeft.whileHeld(new INTAKE_ActivateMotors(leftPush,rightPush));
@@ -143,11 +147,17 @@ public class OI {
         //intakePull.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
        // liftJoystickTrigger.whileHeld(new INTAKE_CloseArmsAndPull(leftPull,rightPull));
         liftJoystickTrigger.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
+
+        LiftJoystick7 = new JoystickButton(liftJoystick, 7);
+        LiftJoystick7.whileHeld (new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
+                
         
         //Lift Joystick container arm button
         LiftJoystick9 = new JoystickButton(liftJoystick, 9);
         LiftJoystick9.whileHeld (new CONTAINERARM_PidSet(1.85));
         
+        LiftJoystick10 = new JoystickButton(liftJoystick, 10);
+        LiftJoystick10.whileHeld (new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
         
         //Lift Joystick base front right
         operatorControlsKickToggle = new JoystickButton(liftJoystick, 8);

@@ -116,7 +116,8 @@ public class Auton_3ToteJ_COMP_Kettering_BLUE extends CommandGroup {
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));		//lower lift to release tote
     	
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.8, 0.15));	//strafe away from totes
-    	addSequential(new AutonEncoderStrafeOut(0.8, -745));
+    	addSequential(new AutonEncoderStrafeOut(0.5, -748));
+    	//addSequential(new INTAKE_ActivateMotors(-.5, .5));
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos12));	//lower left to ground to prepare for teleop
 		
     }
