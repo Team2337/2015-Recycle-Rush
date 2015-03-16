@@ -19,14 +19,14 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Auton_3ToteJ_COMP_Kettering_Practice_field extends CommandGroup {
+public class Auton_3ToteJ_After_Kettering extends CommandGroup {
 	
-    public  Auton_3ToteJ_COMP_Kettering_Practice_field() {
+    public  Auton_3ToteJ_After_Kettering() {
         // Add Commands here:
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
 
-    	setTimeout(14);											// set Auton timer here
+    	setTimeout(14.3);											// set Auton timer here
     	
     	addSequential(new GyroReset());
     	addSequential(new ResetEncoder());
@@ -35,20 +35,24 @@ public class Auton_3ToteJ_COMP_Kettering_Practice_field extends CommandGroup {
     	 	
     	//LIFT TOTE 1
     	
-    	addParallel(new KICKER_KickIn());								//deploy kicker IN
-    	addSequential(new AutonEncoderStrafeIn(0.5, -5));
+    	addParallel(new KICKER_KickIn());								//deploy kicker IN Just in case
+    	//addSequential(new AutonEncoderStrafeIn(0.5, -5));
+    	//*****************MASK LACK OF STAFE ENCODER
+    	addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.5, 0.3));	//strafe out to clear handle of can when driving forward
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));   	//lift tote to position 1
     	
     	//AVOID CONTAINER
-    	addSequential(new AutonDriveAtSpeedForTimeGyro(-0.3, 0.15));	//drive back to clear can lid when lifting
+    	addSequential(new AutonDriveAtSpeedForTimeGyro(-0.3, 0.11));	//drive back to clear can lid when lifting
     	
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos7));		//lift tote to position to clear can
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.5, 0.3));	//strafe out to clear handle of can when driving forward
-    	addSequential(new AutonEncoderStrafeOut(0.5, 25));
+    	//addSequential(new AutonEncoderStrafeOut(0.5, 10));				// changed at kettering for container arm
+    	//*****************MASK LACK OF STAFE ENCODER
+    	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.5, 0.3));		//strafe in to set down tote 1 on tote 2
     	addSequential(new AutonWait(1));								// STILL NEED??????
 
     	//DRIVE TO TOTE 2   	
-    	addSequential(new AutonDriveForTimeGyroIterative(.75));			//ramp speed up and drive past container
+    	addSequential(new AutonDriveForTimeGyroIterative(.85));			//ramp speed up and drive past container
 
     	addParallel(new Auton_ChassisPidSetWithToteSensor(600));		//drive to 2nd tote, reset setpoint when sensor sees tote
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos2));		//lower tote to pos 2 in parallel while driving to next tote
@@ -58,13 +62,15 @@ public class Auton_3ToteJ_COMP_Kettering_Practice_field extends CommandGroup {
     	
     	//SET DOWN TOTE 1 ON TOTE 2
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.5, 0.3));		//strafe in to set down tote 1 on tote 2
-    	addSequential(new AutonEncoderStrafeIn(0.5, 1));
+    	//addSequential(new AutonEncoderStrafeIn(0.5, 1));
+    	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.5, 0.3));		//strafe in to set down tote 1 on tote 2
     
-    	addParallel(new KICKER_KickIn());								//kicker already in?????????
+    	//addParallel(new KICKER_KickIn());								//kicker already in?????????
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos4));		//set down tote and get ready to pick up 2nd tote
 
-    	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.4, 0.5));		//nest totes  Changed to .4 .5 Kettering comp.
-    	addSequential(new AutonEncoderStrafeIn(0.4, -20));
+    	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.4, 0.5));		//nest totes 
+    	//addSequential(new AutonEncoderStrafeIn(0.4, -30));				//Changed at kettering from -20
+    	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.3, 0.5));		//nest totes
 	
     	
     	//AVOID CONTAINER 2: PART 1
@@ -84,34 +90,44 @@ public class Auton_3ToteJ_COMP_Kettering_Practice_field extends CommandGroup {
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos9));		//lift tote stack to position 6 to clear can
     	//Changed to .6 from .5 at kettering.
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.65, 0.6));	//strafe out to clear handle of can when driving forward
-    	addSequential(new AutonEncoderStrafeOut(0.65, 25));
+    	//addSequential(new AutonEncoderStrafeOut(0.65, 10));				// changed at kettering for container arm
+    	addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.5, 0.4));	//strafe out to clear handle of can when driving forward
     	
     	addSequential(new AutonWait(0.5));								//STILL NEED ?????
     	
     	//DRIVE TO TOTE 3
-    	addSequential(new AutonDriveForTimeGyroIterative(.95));			//Ramp up speed and drive past container
+    	addSequential(new AutonDriveForTimeGyroIterative(1.05));			//Ramp up speed and drive past container
     	
-    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower tote 3 in parallel while driving to next tote
+    	//addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower tote 3 in parallel while driving to next tote
+    	// above removed at kettering
     	addSequential(new Auton_ChassisPidSetWithToteSensor(600));		//Drive to next tote with sensor
 
     	//addSequential(new ChassisDisable());							//  MAY NEED TO ENABLE IF CAN WAS REMOVED
 
     	//SET DOWN TOTE & STRAFE TO AUTON ZONE
-    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower tote
+    	//addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//lower tote
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 1.5));		//strafe in
-    	addSequential(new AutonEncoderStrafeIn(0.8, -100));
+    	//addSequential(new AutonEncoderStrafeIn(0.8, -100));
+    	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 1.5));		//strafe in to set down tote 1 on tote 2
     	addSequential(new ChassisDisable());
-
-    	addParallel(new KICKER_KickIn());								//retract kicker		OR IS THIS OUT????		
+    	
+    	
+    	//addParallel(new KICKER_KickIn());								//retract kicker		OR IS THIS OUT????		
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//		STILL NEED ????
+
+
     	//addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos3));
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 1.8));		//strafe into the auton zone
-    	addSequential(new AutonEncoderStrafeIn(0.8, -750));
-    	
+    	//addSequential(new AutonEncoderStrafeIn(0.8, -750));
+    	addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 2.4));		//strafe into the auton zone
+    	addSequential(new AutonWait(0.4));
+    	addSequential(new KICKER_KickIn());	
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));		//lower lift to release tote
-    	addSequential(new AutonWait(0.2));
+    	
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.8, 0.15));	//strafe away from totes
-    	addSequential(new AutonEncoderStrafeOut(0.8, -745));
+    	//addSequential(new AutonEncoderStrafeOut(0.5, -748));
+    	//addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.8, 0.2));	//strafe away from totes
+    	//addSequential(new INTAKE_ActivateMotors(-.5, .5));
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos12));	//lower left to ground to prepare for teleop
 		
     }
@@ -122,14 +138,14 @@ public class Auton_3ToteJ_COMP_Kettering_Practice_field extends CommandGroup {
 	
 	protected void end() {
 		Timer.delay(.1);
-		Robot.lift.setSetpoint(1.8);				//trying to back away from stacked totes to score auton points
-		Robot.kicker.kickIn();
+		//Robot.lift.setSetpoint(1.8);				//trying to back away from stacked totes to score auton points
+		//Robot.kicker.kickIn();
 
-		for (int i = 0; i < 5; i++) {
-			RobotMap.chassisbackLeft.set(0.8);
-			RobotMap.chassisbackRight.set(0.8);
-			RobotMap.chassisfrontLeft.set(-0.8);
-			RobotMap.chassisfrontRight.set(-0.8);
+		for (int i = 0; i < 15; i++) {
+			RobotMap.chassisbackLeft.set(0.5);
+			RobotMap.chassisbackRight.set(0.5);
+			RobotMap.chassisfrontLeft.set(-0.5);
+			RobotMap.chassisfrontRight.set(-0.5);
 			Timer.delay(.02);
 		}
 	}

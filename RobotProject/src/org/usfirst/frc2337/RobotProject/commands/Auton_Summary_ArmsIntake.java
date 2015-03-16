@@ -17,22 +17,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class LIFT_PidSet1stBlackButton extends CommandGroup {
+public class Auton_Summary_ArmsIntake extends CommandGroup {
     
-    public  LIFT_PidSet1stBlackButton() {
-        // Add Commands here:
-        // e.g. addParallel(new Command1());[]\
+    public  Auton_Summary_ArmsIntake() {
+    	addParallel(new INTAKE_OpenArms_ArmsOut());
+    	addSequential(new INTAKEPNEUMATICS_ArmsOut());
+    	addSequential(new INTAKE_ActivateMotors(-1,1));
     	
-        //      addSequential(new Command2());
-
-    	if (Robot.lift.getPosition() < 3) {
-    	addSequential(new LIFT_PidSetWithSpeed(1,1,.5,-.7)); 					//lift tote to position 2 (also to simulate end of 3-tote auton)
-    												// kick out pancake cylinder in preperation to push tote(s)
-    	addSequential(new KICKER_KickOut());							//drop tote to floor
-    	addSequential(new AutonWait(.15));
-    	addSequential(new LIFT_PidSetWithSpeed(2,1,.7,-.7)); 
-    	}
-
 	
     }
 }

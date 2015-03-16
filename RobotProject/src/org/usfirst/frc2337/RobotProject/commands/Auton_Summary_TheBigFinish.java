@@ -17,22 +17,20 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class LIFT_PidSet1stBlackButton extends CommandGroup {
+public class Auton_Summary_TheBigFinish extends CommandGroup {
     
-    public  LIFT_PidSet1stBlackButton() {
-        // Add Commands here:
-        // e.g. addParallel(new Command1());[]\
-    	
-        //      addSequential(new Command2());
+    public  Auton_Summary_TheBigFinish() {
+    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//		STILL NEED ????
 
-    	if (Robot.lift.getPosition() < 3) {
-    	addSequential(new LIFT_PidSetWithSpeed(1,1,.5,-.7)); 					//lift tote to position 2 (also to simulate end of 3-tote auton)
-    												// kick out pancake cylinder in preperation to push tote(s)
-    	addSequential(new KICKER_KickOut());							//drop tote to floor
-    	addSequential(new AutonWait(.15));
-    	addSequential(new LIFT_PidSetWithSpeed(2,1,.7,-.7)); 
-    	}
 
-	
+
+    	addSequential(new AutonEncoderStrafeIn(0.8, -750));
+    	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 2.4));		//strafe into the auton zone
+    	addSequential(new AutonWait(0.4));
+    	addSequential(new KICKER_KickIn());	
+    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));		//lower lift to release tote
+
+    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos12));	//lower lift to ground to prepare for teleop
+		
     }
 }

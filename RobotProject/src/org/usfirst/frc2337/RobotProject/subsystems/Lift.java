@@ -129,6 +129,7 @@ public class Lift extends PIDSubsystem {
     	mid = 0.4;		//Middle
     	top = 0.8;		//Top
 
+    	/*
     	autonPos1 = 1.8;
     	autonPos2 = 7.0;
     	autonPos3 = 2.6;
@@ -139,6 +140,22 @@ public class Lift extends PIDSubsystem {
     	autonPos8 = .85;
     	autonPos9 = .85;
     	autonPos10 = 7.0; //.85;
+    	autonPos11 = 1.05;
+    	autonPos12 = .85;
+    	*/
+    	
+    	//  Because Compbot is now practice bot...
+    	
+      	autonPos1 = 1.8;
+    	autonPos2 = 3.2;			///2.6  2/26/15
+    	autonPos3 = 2.6;
+    	autonPos4 = .85;
+    	autonPos5 = 1.35;   //1.05;
+    	autonPos6 = 1.65;
+    	autonPos7 = 5.6;    // 6.0 on 2/23/2015   //5.6 at kettering
+    	autonPos8 = .85;
+    	autonPos9 = 5.0;
+    	autonPos10 = .85;
     	autonPos11 = 1.05;
     	autonPos12 = .85;
     }

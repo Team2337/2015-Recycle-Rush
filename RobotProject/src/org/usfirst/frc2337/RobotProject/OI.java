@@ -2,7 +2,6 @@
 
 package org.usfirst.frc2337.RobotProject;
 import org.usfirst.frc2337.RobotProject.commands.*;
-
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.buttons.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
