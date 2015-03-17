@@ -51,6 +51,7 @@ public class  INTAKEPNEUMATICS_ArmsOut extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+		//Robot.intakePneumatics.armsIn();
     }
 
     // Called when another command which requires one or more of the same

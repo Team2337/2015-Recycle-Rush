@@ -42,10 +42,10 @@ public class Auton_Summary_MoveToTote3AndPush extends CommandGroup {
     	//addSequential(new AutonDriveForEncoderGyroIterative(290));			//Ramp up speed and drive past container
     	addSequential(new AutonDriveForTimeGyroIterative(1.05));			//Ramp up speed and drive past container
 
-    	addSequential(new Auton_ChassisPidSetWithToteSensor(600));		//Drive to next tote with sensor
+    	addSequential(new Auton_ChassisPidSetWithToteSensor(540));		//Drive to next tote with sensor
 
     	//SET DOWN TOTE & STRAFE TO AUTON ZONE
-    	addSequential(new AutonEncoderStrafeIn(0.8, -100));
+    	addSequential(new AutonEncoderStrafeIn(0.8, -75));
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 1.5));		//strafe in to set down tote 1 on tote 2
     	addSequential(new ChassisDisable());
     }

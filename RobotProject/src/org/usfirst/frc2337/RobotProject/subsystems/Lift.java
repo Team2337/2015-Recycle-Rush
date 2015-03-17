@@ -25,7 +25,7 @@ public class Lift extends PIDSubsystem {
     double setPointTolerance = 0.05;
     
     /** Defines the max speed for the lift in the up direction for auton */
-    public double autonMaxSpeedUp = 0.65;
+    public double autonMaxSpeedUp = 0.8; //65;
     /** Defines the max speed for the lift in the down direction for auton */
     public double autonMaxSpeedDown = -0.8;
     /** Defines the max speed for the lift in the up direction for teleop */

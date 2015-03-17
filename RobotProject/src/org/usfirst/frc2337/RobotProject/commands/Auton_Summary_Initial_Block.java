@@ -34,7 +34,7 @@ public class Auton_Summary_Initial_Block extends CommandGroup {
     	addSequential(new AutonEncoderStrafeOut(0.5, 10));				// changed at kettering for container arm
     	//*****************MASK LACK OF STAFE ENCODER
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.5, 0.3));		//strafe in to set down tote 1 on tote 2
-    	//addSequential(new AutonWait(1));								// STILL NEED??????
+    	addSequential(new AutonWait(1));								// STILL NEED??????
 
     	//DRIVE TO TOTE 2   	
     	//addSequential(new AutonDriveForEncoderGyroIterative(290));			//ramp speed up and drive past container

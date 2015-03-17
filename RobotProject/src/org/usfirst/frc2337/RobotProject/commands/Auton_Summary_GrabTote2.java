@@ -21,6 +21,12 @@ public class Auton_Summary_GrabTote2 extends CommandGroup {
     
     public  Auton_Summary_GrabTote2() {
 
+    	
+    	addSequential(new INTAKE_OpenArms_ArmsOut());
+    	addSequential(new INTAKEPNEUMATICS_ArmsOut());
+    	addSequential(new Auton_ActivateMotors(-1,1));
+    	
+    	
        	//SET DOWN TOTE 1 ON TOTE 2
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.5, 0.3));		//strafe in to set down tote 1 on tote 2
     	addSequential(new AutonEncoderStrafeIn(0.5, 1));
@@ -37,6 +43,10 @@ public class Auton_Summary_GrabTote2 extends CommandGroup {
 
     	addSequential(new ChassisDisable());
     	addSequential(new AutonDriveAtSpeedForTimeGyro(-0.3, 0.3));		//drive back to clear can lid when lifting
+    	
+    	addSequential(new INTAKE_OpenArms_ArmsIn());
+    	addSequential(new INTAKEPNEUMATICS_ArmsIn());
+    	addSequential(new Auton_ActivateMotors(0,0));
   
 
     	

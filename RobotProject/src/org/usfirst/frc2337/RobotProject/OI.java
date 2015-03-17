@@ -274,6 +274,9 @@ public class OI {
         SmartDashboard.putData("Pos4", new LIFT_PidSet(4,1));
         SmartDashboard.putData("Pos5", new LIFT_PidSet(5,1));
         
+        SmartDashboard.putData("GYRO Turn 90cw", new AutonTurnDegreesCwPos(90));
+        SmartDashboard.putData("GYRO Turn -90ccw", new AutonTurnDegreesCcwNeg(-90));
+        
         //SmartDashboard.putData("Base0", new LIFT_PidSet(0,0));
         //SmartDashboard.putData("Base1", new LIFT_PidSet(1,0));
         //SmartDashboard.putData("Base2", new LIFT_PidSet(2,0));

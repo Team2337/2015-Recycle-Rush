@@ -20,10 +20,16 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Auton_Summary_TheBigFinish extends CommandGroup {
     
     public  Auton_Summary_TheBigFinish() {
+    	
+    	
+    	addParallel(new INTAKE_OpenArms_ArmsOut());
+    	addSequential(new INTAKEPNEUMATICS_ArmsOut());
+    	addSequential(new Auton_ActivateMotors(-1,1));
+    	
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//		STILL NEED ????
 
-
-
+       	addSequential(new AutonEncoderStrafeIn(0.8, -250));
+    	addSequential(new Auton_ActivateMotors(0,0));
     	addSequential(new AutonEncoderStrafeIn(0.8, -750));
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 2.4));		//strafe into the auton zone
     	addSequential(new AutonWait(0.4));
@@ -31,6 +37,13 @@ public class Auton_Summary_TheBigFinish extends CommandGroup {
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));		//lower lift to release tote
 
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos12));	//lower lift to ground to prepare for teleop
+    	
+    	
+    	addParallel(new INTAKE_OpenArms_ArmsIn());
+    	addSequential(new INTAKEPNEUMATICS_ArmsIn());
+    	addSequential(new Auton_ActivateMotors(0,0));
+    	
+    	//addSequential(new AutonEncoderStrafeOut(0.8, -749));			//goes back a couple feet for some reason
 		
     }
 }
