@@ -12,6 +12,7 @@
 package org.usfirst.frc2337.RobotProject.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc2337.RobotProject.Robot;
 import org.usfirst.frc2337.RobotProject.RobotMap;
@@ -23,11 +24,11 @@ import org.usfirst.frc2337.RobotProject.RobotMap;
  */
 public class AutonTurnDegreesCwPos extends Command {
 	private double degrees;
-	private double gyroValue;
-	
-	private double seconds = 5;
-
+	private double gyroValue;	
+	private double seconds = 10;
 	private double kP = .08;
+	private double error = 0;
+	private double turnValue = 0;
 
 	
     public AutonTurnDegreesCwPos(double degrees) {
@@ -52,19 +53,19 @@ public class AutonTurnDegreesCwPos extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	gyroValue = RobotMap.imu.getYaw();
-    	
-    	gyroValue = (degrees - gyroValue) * -kP;
-    	
-    	if (gyroValue > 0.5) {
-    		gyroValue = .5;
+    	gyroValue = RobotMap.imu.getYaw();   	
+    	error = (degrees - gyroValue); 			
+    	turnValue = error * kP;		
+   	
+    	if (turnValue > 0.5) {
+    		turnValue = .5;
     	}
-    	if (gyroValue < -0.5) {
-    		gyroValue = -0.5;
+    	if (turnValue < -0.5) {
+    		turnValue = -0.5;
     	}
     	
-    	
-    	Robot.chassis.driveMecanum(0, 0, gyroValue);
+    	Robot.chassis.driveMecanum(0, 0, turnValue);//gyroValue
+  	
     }
 
     // Make this return true when this Command no longer needs to run execute()
