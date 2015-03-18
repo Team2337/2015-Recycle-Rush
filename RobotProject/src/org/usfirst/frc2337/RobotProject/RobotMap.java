@@ -96,6 +96,8 @@ public class RobotMap {
     public static Solenoid ledFingers;
     //LED to show whether our bumper limit switch is returning true or false, and thus if we are touching a crate or not.
     public static Solenoid ledBumper;
+    
+    public static Solenoid testled;
 
     
     ///////////////////////
@@ -225,6 +227,10 @@ public class RobotMap {
         LiveWindow.addActuator("LED", "PIDLED", ledPID);
         ledBumper = new Solenoid(0,3);
         LiveWindow.addActuator("LED", "BumperLED", ledBumper);
+        
+        testled = new Solenoid(2,1);
+        
+        
 
         
         //Tote Sensor for Auton

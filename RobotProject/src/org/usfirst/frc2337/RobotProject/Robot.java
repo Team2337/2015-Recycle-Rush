@@ -64,22 +64,17 @@ public class Robot extends IterativeRobot {
         
       //AUTON CHOOSER
         //Instantiate the command used for the autonomous period
-        
         //SmartDashboard Auton Selector
         autonChooser = new SendableChooser();
-        autonChooser.addObject("Move Straight to Auton Zone", new AutonDriveAtSpeedForTime(0.5,0.5)); //speed, time
+        autonChooser.addObject("Drive To Auton Zone with PID", new Auton_DriveToAutonZone());
+        autonChooser.addObject("Move 1 Container to Auton Zone", new Auton_OneContainer());
         autonChooser.addObject("Move 1 Tote to Auton Zone", new Auton_1Tote());
-        autonChooser.addObject("Move 3 Totes J - added velocity ramp up & isFinished timer", new Auton_3ToteJ());
-        //autonChooser.addObject("Move 3 Totes K - added strafe encoder on end", new Auton_3ToteK());
-       // autonChooser.addObject("Move 3 Totes K_Wrapper - alternate timer by nesting commands", new Auton_3ToteK_Wrapper());
-        autonChooser.addObject("Move 3 Totes L Add intake arms", new Auton_3ToteL_WithIntakeArms());
-        autonChooser.addObject("COMP - Move 3 Totes J At Premier", new Auton_3ToteJ_COMP_Premier_field());
-        autonChooser.addObject("COMP - Move 3 Totes J Kettering BLUE", new Auton_3ToteJ_COMP_Kettering_BLUE());
-        autonChooser.addDefault("COMP - Move 3 Totes J AFTER Kettering TEST", new Auton_3ToteJ_After_Kettering());
+      //  autonChooser.addObject("COMP - Move 3 Totes J Kettering BLUE", new Auton_3ToteJ_COMP_Kettering_BLUE());
+        autonChooser.addObject("COMP - Move 3 Totes J AFTER Kettering TEST", new Auton_3ToteJ_After_Kettering());
         autonChooser.addDefault("TEST - Move 3 Summary with arms", new Auton_Nested_A());
        
         autonChooser.addObject("Do Nothing", new DoNothing());
-        SmartDashboard.putData("Auton Chooser", autonChooser);
+        
     }
     
     /**
@@ -90,7 +85,8 @@ public class Robot extends IterativeRobot {
     	LiveWindow.run();
     	
     	
-    	
+        //Autonomous Chooser
+        SmartDashboard.putData(		"Auton Chooser", 		autonChooser);	
     	//SmartDashboard.putData		("Scheduled Commands", 			Scheduler.getInstance());
     	
     	//Chassis
@@ -125,6 +121,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean(  "IMU_Connected",        RobotMap.imu.isConnected());
         SmartDashboard.putBoolean(  "IMU_IsCalibrating",    RobotMap.imu.isCalibrating());
         SmartDashboard.putNumber(   "IMU_Yaw",              RobotMap.imu.getYaw());
+
         
     }
 

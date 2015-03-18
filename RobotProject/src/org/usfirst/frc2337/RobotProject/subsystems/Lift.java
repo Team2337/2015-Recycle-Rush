@@ -68,6 +68,7 @@ public class Lift extends PIDSubsystem {
 	public double autonPos10;
 	public double autonPos11;
 	public double autonPos12;
+	public double autonPos13;
     
     //Joystick mode for switching back motor and lift
     public boolean joystickStatus = true;
@@ -111,6 +112,7 @@ public class Lift extends PIDSubsystem {
     	autonPos10 = .85;
     	autonPos11 = 1.05;
     	autonPos12 = .85;
+    	autonPos13 = 3.5;
     }
     /**
      * Sets the lift set points for the Competition Robot.
@@ -158,6 +160,7 @@ public class Lift extends PIDSubsystem {
     	autonPos10 = .85;
     	autonPos11 = 1.05;
     	autonPos12 = .85;
+    	autonPos13 = 3.5;
     }
     
     // Initialize your subsystem here

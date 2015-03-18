@@ -112,6 +112,9 @@ public class OI {
     	//Joystick Driver
         joystickDriver = new Joystick(0);
         
+        
+        joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
+        joystickDriverButtonA.whileHeld(new TestLED());
         /* //Driver Joystick 
         joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
         joystickDriverButtonA.whileHeld(new CONTAINERARM_PidSet(1.52));
