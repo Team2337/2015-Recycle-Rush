@@ -5,18 +5,14 @@ package org.usfirst.frc2337.RobotProject;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.CANTalon.ControlMode;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
-import edu.wpi.first.wpilibj.PIDSource.PIDSourceParameter;
-
-import java.util.Vector;
-
 import com.kauailabs.nav6.frc.IMUAdvanced;
-
-import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.PIDSource.PIDSourceParameter;
+import java.util.Vector;
 import edu.wpi.first.wpilibj.Timer;
 
 /**
@@ -61,15 +57,10 @@ public class RobotMap {
     public static CANTalon slaveliftMotor3;
     public static AnalogPotentiometer liftPotentiometer;
     
-    //Kicker > Finger Sensor
-    //public static DigitalInput kickerFingerSensor;
-    
     //Kicker > Actuator
     public static DoubleSolenoid kickerSolenoid;
     
     //Intake Solenoids, Motors, & Compressor
-    //public static SpeedController intakeintakeLeftArmMotor;
-    //public static SpeedController intakeintakeRightArmMotor;
     public static Solenoid intakeRightSolenoid;
     public static Solenoid intakeLeftSolenoid;
     public static Solenoid intakeOpenSolenoid;
@@ -78,7 +69,7 @@ public class RobotMap {
     public static SpeedController intakeLeftArmMotor;
     public static SpeedController intakeRightArmMotor;
     
-    public static DigitalInput liftAutoTote;
+    		//public static DigitalInput liftAutoTote;
 
     //ContainerArm and Extension (Solenoid)
     public static CANTalon containerArmMotor;  
@@ -90,13 +81,7 @@ public class RobotMap {
     //////////
     //LED to show whether the kicker is out or in.
     public static Solenoid ledKicker;
-    //LED to show once the PID is in its proper position.
-    public static Solenoid ledPID;
-    //LED to show whether the light sensor on the fingers is returning true or false.
-    public static Solenoid ledFingers;
-    //LED to show whether our bumper limit switch is returning true or false, and thus if we are touching a crate or not.
-    public static Solenoid ledBumper;
-    
+
     public static Solenoid testled;
 
     
@@ -122,7 +107,7 @@ public class RobotMap {
     public static void init() {
     	
     	
-        chassisfrontLeft = new VictorSP(0);												//was 0 before strafe problem testing  
+        chassisfrontLeft = new VictorSP(0);		
         LiveWindow.addActuator("chassis", "frontLeft", (VictorSP) chassisfrontLeft);
         chassisfrontRight = new VictorSP(2);
         LiveWindow.addActuator("chassis", "frontRight", (VictorSP) chassisfrontRight);
@@ -188,45 +173,37 @@ public class RobotMap {
         containerArmMotor.enableBrakeMode(false);
         containerArmMotor.reverseOutput(false);
         armPotentiometer = new AnalogPotentiometer(0, 10.0, 0.068);			//settings ok????
-        LiveWindow.addSensor("ContainerArmLift", "Container Arm Potentiometer", liftPotentiometer);
+        LiveWindow.addSensor("ContainerArmLift", "Potentiometer", liftPotentiometer);
         
         
     	//containerSolenoid1 = new Solenoid(0,3);
-    	//LiveWindow.addActuator("ContainerArmLift", "Conyainer Arm Extender", containerSolenoid1);
+    	//LiveWindow.addActuator("ContainerArmLift", "Container Arm Extender", containerSolenoid1);
         
         
         //Kicker Solenoid
         kickerSolenoid = new DoubleSolenoid(0,7,6);
-        LiveWindow.addActuator("Kicker", "kickerSolenoid", kickerSolenoid);
-        
-        //Kicker Finger Sensor
-        //kickerFingerSensor = new DigitalInput(4);
-       // LiveWindow.addActuator("Kicker", "FingerSensor", kickerFingerSensor);
+        LiveWindow.addActuator("Kicker", "Solenoid", kickerSolenoid);
         
 
         //Intake Solenoids
-        //intakeRightSolenoid = new Solenoid(0, 4);									//  re-enable??????????????
-        //LiveWindow.addActuator("Pnuematics", "RightSolenoid", intakeRightSolenoid);
+        //intakeRightSolenoid = new Solenoid(0, 4);									
+        //LiveWindow.addActuator("Intake_ExtendArms", "RightSolenoid", intakeRightSolenoid);
         intakeLeftSolenoid = new Solenoid(0, 5);
-        LiveWindow.addActuator("Pnuematics", "LeftSolenoid", intakeLeftSolenoid);
+        LiveWindow.addActuator("Intake_ExtendArms", "Solenoids", intakeLeftSolenoid);
         
         intakeOpenSolenoid = new Solenoid(0, 4);
-        LiveWindow.addActuator("Intake_OpenArms", "Open Arms Solenoid", intakeOpenSolenoid);
+        LiveWindow.addActuator("Intake_OpenArms", "Solenoids", intakeOpenSolenoid);
         
         //Intake Motors
         intakeLeftArmMotor = new Talon(8);
-        LiveWindow.addActuator("Intake", "intakeLeftArmMotor", (Talon) intakeLeftArmMotor);
+        LiveWindow.addActuator("IntakeMotors", "LeftArm", (Talon) intakeLeftArmMotor);
         intakeRightArmMotor = new Talon(9);
-        LiveWindow.addActuator("Intake", "intakeRightArmMotor", (Talon) intakeRightArmMotor);
+        LiveWindow.addActuator("IntakeMotors", "RightArm", (Talon) intakeRightArmMotor);
 
         
         //LEDs initialized as pneumatics, as we are putting them in the pneumatics module.
         ledKicker = new Solenoid(0,1);
-        LiveWindow.addActuator("LED", "KickerLED", ledKicker);
-        ledPID = new Solenoid(0,2);
-        LiveWindow.addActuator("LED", "PIDLED", ledPID);
-        ledBumper = new Solenoid(0,3);
-        LiveWindow.addActuator("LED", "BumperLED", ledBumper);
+        LiveWindow.addActuator("LED", "Kicker", ledKicker);
         
         testled = new Solenoid(2,1);
         
@@ -235,16 +212,12 @@ public class RobotMap {
         
         //Tote Sensor for Auton
         chassistoteSensor = new DigitalInput(2);
-        LiveWindow.addSensor("chassis", "toteSensor", chassistoteSensor);
+        LiveWindow.addSensor("ChassisPID", "toteSensor", chassistoteSensor);
         
         //Jumper to determine comp vs practice bot
         competitionBot = new DigitalInput(0);
         LiveWindow.addActuator("Lift", "Competition Bot Set Points:", competitionBot);
-        
-
-        // liftAutoTote = new DigitalInput(3);
-
-        // LiveWindow.addActuator("Lift", "AutoTote", liftAutoTote);
+ 
         
         //Power Distribution Board
         pdp = new PowerDistributionPanel();

@@ -2,7 +2,6 @@ package org.usfirst.frc2337.RobotProject.subsystems;
 
 import org.usfirst.frc2337.RobotProject.RobotMap;
 import org.usfirst.frc2337.RobotProject.commands.CONTAINERARM_ExtensionIn;
-
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;

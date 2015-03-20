@@ -27,7 +27,7 @@ public class  Auton_OpenArms_ArmsOut extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 
-        requires(Robot.intakeOpen);
+        requires(Robot.intakeOpenArms);
 
     }
 
@@ -35,7 +35,7 @@ public class  Auton_OpenArms_ArmsOut extends Command {
     protected void initialize() {
     	//Use public function in Intake Subsystem
 
-    		Robot.intakeOpen.openArmsOut();
+    		Robot.intakeOpenArms.openArmsOut();
 
     }
 

@@ -3,7 +3,6 @@ package org.usfirst.frc2337.RobotProject.subsystems;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.usfirst.frc2337.RobotProject.RobotMap;
 import org.usfirst.frc2337.RobotProject.commands.*;
 
@@ -23,7 +22,6 @@ public class IntakeOpenArms extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	//.setDefaultCommand(new INTAKE_OpenArms_Toggle());
     	setDefaultCommand(new INTAKE_OpenArms_DoNothing());
     }
 
@@ -34,7 +32,7 @@ public class IntakeOpenArms extends Subsystem {
     	openArmPosition = true;
     	openArmsSolenoid.set(true);
     }
-    /**[]\
+    /**
      * Retracts the intake arms
      */
     public void openArmsIn() {
@@ -44,15 +42,10 @@ public class IntakeOpenArms extends Subsystem {
     /**
      * Returns the poisition of the intake arms
      * 
-     * 
      * @return true or false
      */
     public boolean getArmPosition() {
     	return openArmPosition;
-    }
-    public void setOpenArmPosition(boolean input) {
-    	this.openArmPosition = input;
-    	
     }
     
 }

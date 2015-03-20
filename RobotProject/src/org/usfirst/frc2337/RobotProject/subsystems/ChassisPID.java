@@ -63,8 +63,6 @@ public class ChassisPID extends PIDSubsystem {
         
         LiveWindow.addActuator("ChassisPID", "PIDSubsystem Controller", getPIDController());
         getPIDController().setOutputRange(-0.5, 0.5);  
-        //getPIDController().setInputRange(liftBottomLimit, liftTopLimit);
-        
     }
 
     public void initDefaultCommand() {

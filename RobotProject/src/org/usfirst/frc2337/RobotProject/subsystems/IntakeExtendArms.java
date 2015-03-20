@@ -2,7 +2,6 @@ package org.usfirst.frc2337.RobotProject.subsystems;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-
 import org.usfirst.frc2337.RobotProject.RobotMap;
 import org.usfirst.frc2337.RobotProject.commands.*;
 
@@ -44,9 +43,6 @@ public class IntakeExtendArms extends Subsystem {
      */
     public boolean getArmPosition() {
     	return armPosition;
-    }
-    public void setArmPosition(boolean armPosition) {
-    	this.armPosition = armPosition;
     }
     
 }

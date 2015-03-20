@@ -39,47 +39,49 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 
-
-    public JoystickButton joystickDriverButtonA;
-    public JoystickButton joystickDriverButtonB;
-    public JoystickButton joystickDriverButtonX;
-    public JoystickButton joystickDriverButtonY;
-    public JoystickButton joystickDriverBumperLeft;
-    public JoystickButton joystickDriverBumperRight;
-    public JoystickButton joystickDriverButtonBack;
-    public JoystickButton joystickDriverButtonStart;
-    public JoystickButton joystickDriverHatLeft;
-    public JoystickButton joystickDriverHatRight;
+    //Buttons for Driver Gamepad
+    public JoystickButton joystickDriverButtonA;		//1
+    public JoystickButton joystickDriverButtonB;		//2
+    public JoystickButton joystickDriverButtonX;		//3
+    public JoystickButton joystickDriverButtonY;		//4
+    public JoystickButton joystickDriverBumperLeft;		//5
+    public JoystickButton joystickDriverBumperRight;	//6
+    public JoystickButton joystickDriverButtonBack;		//7
+    public JoystickButton joystickDriverButtonStart;	//8
+    public JoystickButton joystickDriverHatLeft;		//9
+    public JoystickButton joystickDriverHatRight;		//10
     public Joystick joystickDriver;
     
-    //Buttons for Lift Positions
-    public JoystickButton operatorControlsBase1;
-    public JoystickButton operatorControlsBase2;
-    public JoystickButton operatorControlsBase3;
+    //Buttons for Operator Control Panel
+    public JoystickButton operatorControlsBase1;		//9
+    public JoystickButton operatorControlsBase2;		//8
+    public JoystickButton operatorControlsBase3;		//7
     public JoystickButton operatorControlsLift0;
-    public JoystickButton operatorControlsLift1;
-    public JoystickButton operatorControlsLift2;
-    public JoystickButton operatorControlsLift3;
-    public JoystickButton operatorControlsLift4;
-    public JoystickButton operatorControlsLift5;
-    public JoystickButton operatorControlsLeftToggle;
-    public JoystickButton operatorControlsRightToggle;
+    public JoystickButton operatorControlsLift1;		//14
+    public JoystickButton operatorControlsLift2;		//13
+    public JoystickButton operatorControlsLift3;		//12
+    public JoystickButton operatorControlsLift4;		//11
+    public JoystickButton operatorControlsLift5;		//10
+    public JoystickButton operatorControlsLeftToggle;	//5
+    public JoystickButton operatorControlsRightToggle;	//6
     public JoystickButton operatorControlsKickToggle;
-    public JoystickButton operatorControlsBlueButton;
-    public JoystickButton operatorControlsYellowButton;
+    public JoystickButton operatorControlsBlueButton;	//3
+    public JoystickButton operatorControlsYellowButton;	//4
     public Joystick operatorControls;
     
-    //Buttons for intake/kicker
-    public JoystickButton liftJoystickTrigger;
-    public JoystickButton intakePush;
-    public JoystickButton intakeRight;
-    public JoystickButton intakeLeft;
-    public JoystickButton intakeDeploy;
-    public JoystickButton kickerKick;
-    public JoystickButton LiftJoystick7;
-    public JoystickButton LiftJoystick9;
-    public JoystickButton LiftJoystick10;
-    public Joystick liftJoystick; //Lift Control (Precise Motor Action)
+    //Buttons for Operator Joystick, i.e. intake/kicker
+    public JoystickButton liftJoystickTrigger;	//Button1 
+    public JoystickButton LiftJoystickButton2;	//kickerKick;
+    public JoystickButton LiftJoystickButton3;	//intakePush;
+    public JoystickButton LiftJoystickButton4;	//intakeLeft;
+    public JoystickButton LiftJoystickButton5;	//intakeRight;
+    
+    public JoystickButton LiftJoystickButton7;
+    public JoystickButton LiftJoystickButton8; 
+    public JoystickButton LiftJoystickButton9;
+    public JoystickButton LiftJoystickButton10;
+    public JoystickButton liftJoystickButton11;	//intakeDeploy;
+    public Joystick liftJoystick; 
 
 
 
@@ -91,97 +93,87 @@ public class OI {
         double p = 1; //Positive
         double n = -1; //Negative
         
-        //Pull commands. 
+        //PULL speeds 
         double rightPull = speed * p; 
         double leftPull = speed * n;
         
-        //Push commands. 
-        double rightPush = (speed * n)/3;
-        double leftPush = (speed * p)/3;
-        		
         double rightSlowPull = (speed * p)/2;
         double leftSlowPull = (speed * n)/2;
         
-        //Move Totes to the side
-        double rightFullPush = (speed * n);
-        double leftFullPush = (speed * p);
+        //PUSH speeds 
+        double rightSlowPush = (speed * n)/3;
+        double leftSlowPush = (speed * p)/3;
+        		
+        	//Used to move Totes to the side
+        double rightPush = (speed * n);
+        double leftPush = (speed * p);
         
-        //Declare variables
         
-        double rightRotateRight, leftRotateRight, leftRotateLeft,rightRotateLeft;
-        
-        //Rotating commands
-        rightRotateRight = leftRotateRight = speed *p;
-        leftRotateLeft = rightRotateLeft = speed * n;  	
     	
-    	//Joystick Driver
+    	//Joystick Driver     - USED MOSTLY FOR TESTING
         joystickDriver = new Joystick(0);
         
-        
+        /*
         joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
         joystickDriverButtonA.whileHeld(new TestLED());
         joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
         joystickDriverButtonB.whenPressed(new ChassisRotate(45));
+        joystickDriverButtonX = new JoystickButton(joystickDriver, 3);
+        joystickDriverButtonX.whenPressed(new ChassisRotate(-45));
         joystickDriverButtonY = new JoystickButton(joystickDriver, 4);
-        joystickDriverButtonY.whenPressed(new ChassisRotate(-45));
-        /* //Driver Joystick 
-        joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
-        joystickDriverButtonA.whileHeld(new CONTAINERARM_PidSet(1.52));
-        joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
-        joystickDriverButtonB.whileHeld(new CONTAINERARM_PidSet(3.3));
-        joystickDriverButtonY = new JoystickButton(joystickDriver, 4);
-        joystickDriverButtonY.whileHeld(new CONTAINERARM_PidSet(3.6));
+        joystickDriverButtonY.whenPressed(new TestLED());
+        joystickDriverBumperLeft = new JoystickButton(joystickDriver, 5);
+        joystickDriverBumperLeft.whileHeld(new CONTAINERARM_PidSet(1.52));
+        joystickDriverBumperRight = new JoystickButton(joystickDriver, 6);
+        joystickDriverBumperRight.whileHeld(new CONTAINERARM_PidSet(3.3));
+        joystickDriverButtonBack = new JoystickButton(joystickDriver, 7);
+        joystickDriverButtonBack.whileHeld(new CONTAINERARM_PidSet(3.6));
         */
 
-        //Joystick Control, for Lift (Precise) (Operator Right hand)
+        
+        
+        //Joystick Control, (Operator Right hand)
         liftJoystick = new Joystick(1); 
         
         //Lift Joystick base rear right
-        intakeDeploy = new JoystickButton(liftJoystick, 11);
-        intakeDeploy.whileHeld(new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
+        liftJoystickButton11 = new JoystickButton(liftJoystick, 11);
+        liftJoystickButton11.whileHeld(new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
         
-        LiftJoystick10 = new JoystickButton(liftJoystick, 10);
-        LiftJoystick10.whileHeld (new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
+        LiftJoystickButton10 = new JoystickButton(liftJoystick, 10);
+        LiftJoystickButton10.whileHeld (new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
         
         //Lift Joystick on Hat left button
-        intakeLeft = new JoystickButton(liftJoystick, 4);
-        intakeLeft.whileHeld(new INTAKE_ActivateMotors(leftPush,rightPush));
+        LiftJoystickButton4 = new JoystickButton(liftJoystick, 4);
+        LiftJoystickButton4.whileHeld(new INTAKE_ActivateMotors(leftSlowPush,rightSlowPush));
         //Lift Joystick on Hat right button
-        intakeRight = new JoystickButton(liftJoystick, 5);
-        intakeRight.whileHeld(new INTAKE_ActivateMotors(leftPush,rightPush));
+        LiftJoystickButton5 = new JoystickButton(liftJoystick, 5);
+        LiftJoystickButton5.whileHeld(new INTAKE_ActivateMotors(leftSlowPush,rightSlowPush));
         //Lift Joystick on Hat center button
-        intakePush = new JoystickButton(liftJoystick, 3);				
-       // intakePush.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
-        intakePush.whileHeld(new INTAKE_CloseArms());
-        //intakePush.whileHeld(new INTAKE_CloseArmsAndIntake());
-        
-        
-        
+        LiftJoystickButton3 = new JoystickButton(liftJoystick, 3);				
+        LiftJoystickButton3.whileHeld(new INTAKE_CloseArms());
+        // intakePush.whileHeld(new INTAKE_CloseArmsAndIntake())
+        // intakePush.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
+             
         //Lift Joystick trigger
         liftJoystickTrigger = new JoystickButton(liftJoystick, 1);
-        //intakePull.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
-       // liftJoystickTrigger.whileHeld(new INTAKE_CloseArmsAndPull(leftPull,rightPull));
         liftJoystickTrigger.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
+        // intakePull.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
+        // liftJoystickTrigger.whileHeld(new INTAKE_CloseArmsAndPull(leftPull,rightPull));
 
-        LiftJoystick7 = new JoystickButton(liftJoystick, 7);
-        LiftJoystick7.whileHeld (new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
+        LiftJoystickButton7 = new JoystickButton(liftJoystick, 7);
+        LiftJoystickButton7.whileHeld (new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
                 
-        
         //Lift Joystick Move Tote Left or Right
-        LiftJoystick9 = new JoystickButton(liftJoystick, 9);
-        //LiftJoystick9.whileHeld (new CONTAINERARM_PidSet(1.85));
-        LiftJoystick9.whileHeld(new INTAKE_ActivateMotors(rightFullPush,rightFullPush));
+        LiftJoystickButton9 = new JoystickButton(liftJoystick, 9);
+        LiftJoystickButton9.whileHeld(new INTAKE_ActivateMotors(rightPush,rightPush));
 
-        operatorControlsKickToggle = new JoystickButton(liftJoystick, 8);
-        operatorControlsKickToggle.whileHeld(new INTAKE_ActivateMotors(leftFullPush,leftFullPush));
+        LiftJoystickButton8 = new JoystickButton(liftJoystick, 8);
+        LiftJoystickButton8.whileHeld(new INTAKE_ActivateMotors(leftPush,leftPush));
         
-
-        
-        
-
         //Lift Joystick on Hat bottom button
-        kickerKick = new JoystickButton(liftJoystick, 2);
-        kickerKick.whenPressed(new KICKER_KickOut());
+        LiftJoystickButton2 = new JoystickButton(liftJoystick, 2);
+        LiftJoystickButton2.whenPressed(new KICKER_KickOut());
+        
         
         
         //ButtonPanel for Lift (Operator Left Hand)
@@ -199,8 +191,7 @@ public class OI {
         operatorControlsBase3 = new JoystickButton(operatorControls, 7);
         operatorControlsBase3.whileHeld(new CONTAINERARM_DisablePID());
 
-        
-        
+             
         //  Operator Station Buttons 10 - 15  White, Green, and 4 Black buttons.
         
         //Operator Controls white button # 15
@@ -254,10 +245,7 @@ public class OI {
         operatorControlsRightToggle.whenReleased(new INTAKE_OpenArms_ArmsIn());
         
       
-        
-
-        
-        
+    
         
         
 	    
@@ -281,19 +269,19 @@ public class OI {
         
         //SmartDashboard.putData("StopMotors", new StopMotors());
         
-        SmartDashboard.putData("PNEUMATIC_ArmsIn", new INTAKE_ExtendArms_ArmsIn());
-        SmartDashboard.putData("PNUEMATIC_ArmsOut", new INTAKE_ExtendArms_ArmsOut());
-        SmartDashboard.putData("INTAKE_ActivateMotors (.5,.5)", new INTAKE_ActivateMotors(.5,.5));
+        //SmartDashboard.putData("PNEUMATIC_ArmsIn", new INTAKE_ExtendArms_ArmsIn());
+        //SmartDashboard.putData("PNUEMATIC_ArmsOut", new INTAKE_ExtendArms_ArmsOut());
+        //SmartDashboard.putData("INTAKE_ActivateMotors (.5,.5)", new INTAKE_ActivateMotors(.5,.5));
         
-        SmartDashboard.putData("Pos0", new LIFT_PidSet(0,1));
-        SmartDashboard.putData("Pos1", new LIFT_PidSet(1,1));
-        SmartDashboard.putData("Pos2", new LIFT_PidSet(2,1));
-        SmartDashboard.putData("Pos3", new LIFT_PidSet(3,1));
-        SmartDashboard.putData("Pos4", new LIFT_PidSet(4,1));
-        SmartDashboard.putData("Pos5", new LIFT_PidSet(5,1));
+        //SmartDashboard.putData("Pos0", new LIFT_PidSet(0,1));
+        //SmartDashboard.putData("Pos1", new LIFT_PidSet(1,1));
+        //SmartDashboard.putData("Pos2", new LIFT_PidSet(2,1));
+        //SmartDashboard.putData("Pos3", new LIFT_PidSet(3,1));
+        //SmartDashboard.putData("Pos4", new LIFT_PidSet(4,1));
+        //SmartDashboard.putData("Pos5", new LIFT_PidSet(5,1));
         
-        SmartDashboard.putData("GYRO Turn 90cw", new AutonTurnDegreesCwPos(90));
-        SmartDashboard.putData("GYRO Turn -90ccw", new AutonTurnDegreesCcwNeg(-90));
+        //SmartDashboard.putData("GYRO Turn 90cw", new AutonTurnDegreesCwPos(90));
+        //SmartDashboard.putData("GYRO Turn -90ccw", new AutonTurnDegreesCcwNeg(-90));
         
         //SmartDashboard.putData("Base0", new LIFT_PidSet(0,0));
         //SmartDashboard.putData("Base1", new LIFT_PidSet(1,0));
@@ -313,19 +301,18 @@ public class OI {
 
     }
     
-
+    //For Driver Gamepad 
     public Joystick getjoystickDriver() {
         return joystickDriver;
     }
-    //For OperatorControl Joystick (allows for it to run)
+    //For OperatorControl Panel 
     public Joystick getOperatorControls() {
         return operatorControls; 
     }
-    //For LiftJoystick Joystick (allows for it to run)
+    //For LiftJoystick Joystick 
     public Joystick getLiftJoystick() {
         return liftJoystick; 
     }
-
 
 }
 

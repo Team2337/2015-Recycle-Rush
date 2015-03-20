@@ -26,14 +26,14 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static ChassisPID chassis;
     public static Lift lift;
-    public static IntakeMotors intake;
+    public static IntakeMotors intakeMotors;
     public static Pneumatics pneumatics;
-    public static IntakeExtendArms intakePneumatics;
+    public static IntakeExtendArms intakeExtendArms;
     public static Kicker kicker;
     public static ContainerArmLift containerArmLift;
     public static ContainerArmExtension conExtension;
     public static LED led;
-    public static IntakeOpenArms intakeOpen;
+    public static IntakeOpenArms intakeOpenArms;
 
 
     /**
@@ -45,14 +45,14 @@ public class Robot extends IterativeRobot {
 
         chassis = new ChassisPID();
         lift = new Lift();
-        intake = new IntakeMotors();
+        intakeMotors = new IntakeMotors();
         pneumatics = new Pneumatics();
-        intakePneumatics = new IntakeExtendArms();
+        intakeExtendArms = new IntakeExtendArms();
         kicker = new Kicker();
         containerArmLift = new ContainerArmLift();
         conExtension = new ContainerArmExtension();
         led = new LED();
-        intakeOpen = new IntakeOpenArms();
+        intakeOpenArms = new IntakeOpenArms();
 
 
         // OI must be constructed after subsystems. If the OI creates Commands 
@@ -73,7 +73,7 @@ public class Robot extends IterativeRobot {
         autonChooser.addObject("COMP - Move 3 Totes J AFTER Kettering TEST", new Auton_3ToteJ_After_Kettering());
         autonChooser.addDefault("TEST - Move 3 Summary with arms", new Auton_Nested_A());
        
-        autonChooser.addObject("Do Nothing", new PNEUMATICS_DoNothing());
+        autonChooser.addObject("Do Nothing", new AutonWait(15));
         
     }
     
@@ -97,8 +97,8 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putBoolean	("Chassis Tote Sensor", 			Robot.chassis.isToteSensor());
     	
     	//Intake
-    	SmartDashboard.putBoolean	("Intake Extended", 			Robot.intakePneumatics.getArmPosition());
-    	SmartDashboard.putBoolean	("Intake Open", 				Robot.intakeOpen.getArmPosition());
+    	SmartDashboard.putBoolean	("Intake Extended", 			Robot.intakeExtendArms.getArmPosition());
+    	SmartDashboard.putBoolean	("Intake Open", 				Robot.intakeOpenArms.getArmPosition());
     	
     	//Lift
     	SmartDashboard.putBoolean	("Practice Bot Positions",		Robot.lift.isCompetitionBot());
@@ -114,8 +114,8 @@ public class Robot extends IterativeRobot {
         
         //Container Arm
         //SmartDashboard.putBoolean	("Container Arm Extended", 		Robot.conExtension.getSolenoidPosition());
-        SmartDashboard.putNumber	("Container Arm Lift Position", Robot.containerArmLift.getPosition());
-        SmartDashboard.putNumber	("Container Arm Set Point", 	Robot.containerArmLift.getSetpoint());
+        //SmartDashboard.putNumber	("Container Arm Lift Position", Robot.containerArmLift.getPosition());
+        //SmartDashboard.putNumber	("Container Arm Set Point", 	Robot.containerArmLift.getSetpoint());
 
         //GYRO - IMU
         SmartDashboard.putBoolean(  "IMU_Connected",        RobotMap.imu.isConnected());
@@ -184,8 +184,6 @@ public class Robot extends IterativeRobot {
         LiveWindow.run();
     	RobotMap.imu.zeroYaw();        
         robotPeriodic();
-
-
         
     }
 }
