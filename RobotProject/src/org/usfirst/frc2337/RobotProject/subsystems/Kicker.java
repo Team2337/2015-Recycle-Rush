@@ -46,8 +46,6 @@ public class Kicker extends Subsystem {
     public boolean getPosition() {
     	return stateOut;
     }
-    public boolean isAutoKick() {
-    	return !autoOff;
-    }
+
 }
 

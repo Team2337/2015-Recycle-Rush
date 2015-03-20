@@ -19,6 +19,7 @@ public class KICKER_KickIn extends Command {
     		//Robot.kicker.autoOff = true;
     		Robot.kicker.solenoid.set(DoubleSolenoid.Value.kForward);
     		Robot.kicker.stateOut = true;
+    		Robot.led.kickerLED(false);
     }
 
     // Called repeatedly when this Command is scheduled to run
