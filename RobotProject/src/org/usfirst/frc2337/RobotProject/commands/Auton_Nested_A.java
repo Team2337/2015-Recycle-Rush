@@ -25,7 +25,7 @@ public class Auton_Nested_A extends CommandGroup {
     	
     	setTimeout(14.3);											// set Auton timer here
     	
-    	addSequential(new GyroReset());
+    	addSequential(new ResetGyro());
     	addSequential(new ResetEncoder());
     	addSequential(new ResetStrafeEncoder());
 

@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Auton_OneContainer extends CommandGroup {
     
     public  Auton_OneContainer() {
-    	addSequential(new GyroReset());
+    	addSequential(new ResetGyro());
     	addSequential(new ResetEncoder());
     	addSequential(new ResetStrafeEncoder());
     	

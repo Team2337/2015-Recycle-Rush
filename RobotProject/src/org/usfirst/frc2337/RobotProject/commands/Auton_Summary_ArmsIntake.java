@@ -21,7 +21,7 @@ public class Auton_Summary_ArmsIntake extends CommandGroup {
     
     public  Auton_Summary_ArmsIntake() {
     	addParallel(new INTAKE_OpenArms_ArmsOut());
-    	addSequential(new INTAKEPNEUMATICS_ArmsOut());
+    	addSequential(new INTAKE_ExtendArms_ArmsOut());
     	addSequential(new INTAKE_ActivateMotors(-1,1));
     	
 	

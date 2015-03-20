@@ -26,7 +26,7 @@ public class Auton_3ToteG extends CommandGroup {
         //      addSequential(new Command2());
     	//Auton_LIFT_PidSet(Robot.lift.autonPos)
 
-    	addSequential(new GyroReset());
+    	addSequential(new ResetGyro());
     	addSequential(new ResetEncoder());
     	addSequential(new KICKER_StopKick());
     	

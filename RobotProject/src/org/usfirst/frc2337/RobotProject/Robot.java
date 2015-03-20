@@ -26,9 +26,9 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static ChassisPID chassis;
     public static Lift lift;
-    public static Intake intake;
+    public static IntakeMotors intake;
     public static Pneumatics pneumatics;
-    public static IntakePneumatics intakePneumatics;
+    public static IntakeExtendArms intakePneumatics;
     public static Kicker kicker;
     public static ContainerArmLift containerArmLift;
     public static ContainerArmExtension conExtension;
@@ -45,9 +45,9 @@ public class Robot extends IterativeRobot {
 
         chassis = new ChassisPID();
         lift = new Lift();
-        intake = new Intake();
+        intake = new IntakeMotors();
         pneumatics = new Pneumatics();
-        intakePneumatics = new IntakePneumatics();
+        intakePneumatics = new IntakeExtendArms();
         kicker = new Kicker();
         containerArmLift = new ContainerArmLift();
         conExtension = new ContainerArmExtension();
@@ -73,7 +73,7 @@ public class Robot extends IterativeRobot {
         autonChooser.addObject("COMP - Move 3 Totes J AFTER Kettering TEST", new Auton_3ToteJ_After_Kettering());
         autonChooser.addDefault("TEST - Move 3 Summary with arms", new Auton_Nested_A());
        
-        autonChooser.addObject("Do Nothing", new DoNothing());
+        autonChooser.addObject("Do Nothing", new PNEUMATICS_DoNothing());
         
     }
     

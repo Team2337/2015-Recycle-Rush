@@ -28,7 +28,7 @@ public class Auton_3ToteJ_COMP_Premier_field extends CommandGroup {
 
     	setTimeout(14);											// set Auton timer here
     	
-    	addSequential(new GyroReset());
+    	addSequential(new ResetGyro());
     	addSequential(new ResetEncoder());
     	addSequential(new ResetStrafeEncoder());
     	addSequential(new KICKER_StopKick());

@@ -14,8 +14,8 @@ import edu.wpi.first.wpilibj.*;
 public class LED extends Subsystem {
 	
 	Solenoid kickerLED = RobotMap.ledKicker;
-	Solenoid PIDLED =  RobotMap.ledPID;
-	Solenoid bumperLED = RobotMap.ledBumper;
+	Solenoid PIDLED =  RobotMap.ledPID;			//not used
+	Solenoid bumperLED = RobotMap.ledBumper;	//not used
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -27,24 +27,15 @@ public class LED extends Subsystem {
     	setDefaultCommand(new LED_DoNothing());
 
     }
-    
     /**
-     * Sets the state of the kicker and finger LEDs and determines whether they are flashing or not.
-     * @param kicker 
-     * @param finger
-     * @param flasher
+     * Sets the state of the kicker LED
+     * @param on  Set to true if the LED is on
+     * Accepts boolean
      */
-    public void kickerLED(boolean kicker, boolean finger, boolean flasher) {
-    	if (!Robot.kicker.autoOff) {
-    		kickerLED.set(finger);
-    	}
-    	else if (flasher) {
-    		kickerLED.set(kicker);
-    	}
-    	else {
-    		kickerLED.set(false);
-    	}
+    public void kickerLED(boolean on) {
+    	PIDLED.set(on);
     }
+
     /**
      * Sets the state of the PID LED
      * @param on  Set to true if the LED is on
@@ -61,5 +52,27 @@ public class LED extends Subsystem {
     public void bumperLED(boolean on) {
     	bumperLED.set(on);
     }
+    
+    
+    /**
+     * Sets the state of the kicker and finger LEDs and determines whether they are flashing or not.
+     * @param kicker 
+     * @param finger
+     * @param flasher
+     */
+    /*
+    public void kickerLED(boolean kicker, boolean finger, boolean flasher) {
+    	if (!Robot.kicker.autoOff) {
+    		kickerLED.set(finger);
+    	}
+    	else if (flasher) {
+    		kickerLED.set(kicker);
+    	}
+    	else {
+    		kickerLED.set(false);
+    	}
+    }
+    */
+    
 }
 

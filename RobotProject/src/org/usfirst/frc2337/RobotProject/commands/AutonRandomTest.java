@@ -24,7 +24,7 @@ public class AutonRandomTest extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
     	addSequential(new ResetEncoder());
-    	addSequential(new GyroReset());
+    	addSequential(new ResetGyro());
 
     	addSequential(new Auton_ChassisPidSetWithToteSensor(450));
     	//addSequential(new Auton_ChassisPidSetAfterToteSensor(158));					//drive to 2nd tote // from 510 at kettering  //527 at Kettering

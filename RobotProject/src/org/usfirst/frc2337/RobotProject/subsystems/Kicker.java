@@ -1,7 +1,9 @@
 package org.usfirst.frc2337.RobotProject.subsystems;
 
+import org.usfirst.frc2337.RobotProject.Robot;
 import org.usfirst.frc2337.RobotProject.RobotMap;
 import org.usfirst.frc2337.RobotProject.commands.KICKER_DoNothing;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.*;
 
@@ -27,6 +29,7 @@ public class Kicker extends Subsystem {
     public void kickOut() {
     	solenoid.set(DoubleSolenoid.Value.kForward);
     	stateOut = true;
+    	Robot.led.kickerLED(true);
     }
     /**
      * Sets the kicker to the in position.
@@ -34,6 +37,7 @@ public class Kicker extends Subsystem {
     public void kickIn() {
     	solenoid.set(DoubleSolenoid.Value.kReverse);
     	stateOut = false;
+    	Robot.led.kickerLED(false);
     }
     /**
      * Returns the position of the kicker

@@ -21,7 +21,7 @@ public class Auton_Summary_ArmsStop extends CommandGroup {
     
     public  Auton_Summary_ArmsStop() {
     	addParallel(new INTAKE_OpenArms_ArmsIn());
-    	addSequential(new INTAKEPNEUMATICS_ArmsOut());
+    	addSequential(new INTAKE_ExtendArms_ArmsOut());
     	addSequential(new INTAKE_ActivateMotors(0,0));
     	
 	

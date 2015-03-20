@@ -23,7 +23,7 @@ public class Auton_Summary_TheBigFinish extends CommandGroup {
     	
     	
     	addParallel(new INTAKE_OpenArms_ArmsOut());
-    	addSequential(new INTAKEPNEUMATICS_ArmsOut());
+    	addSequential(new INTAKE_ExtendArms_ArmsOut());
     	addSequential(new Auton_ActivateMotors(-1,1));
     	
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//		STILL NEED ????
@@ -32,6 +32,11 @@ public class Auton_Summary_TheBigFinish extends CommandGroup {
     	addSequential(new Auton_ActivateMotors(0,0));
     	addSequential(new AutonEncoderStrafeIn(0.8, -750));
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 2.4));		//strafe into the auton zone
+    	
+      	addSequential(new Auton_ActivateMotors(-1,1));
+    	addSequential(new AutonTurnDegreesCcwNeg(-90));
+    	addSequential(new Auton_ActivateMotors(0,0));
+    	
     	addSequential(new AutonWait(0.4));
     	addSequential(new KICKER_KickIn());	
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));		//lower lift to release tote
@@ -40,7 +45,7 @@ public class Auton_Summary_TheBigFinish extends CommandGroup {
     	
     	
     	addParallel(new INTAKE_OpenArms_ArmsIn());
-    	addSequential(new INTAKEPNEUMATICS_ArmsIn());
+    	addSequential(new INTAKE_ExtendArms_ArmsIn());
     	addSequential(new Auton_ActivateMotors(0,0));
     	
     	//addSequential(new AutonEncoderStrafeOut(0.8, -749));			//goes back a couple feet for some reason

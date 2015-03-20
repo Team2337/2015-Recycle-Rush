@@ -28,7 +28,7 @@ public class Auton_3ToteK_sub extends CommandGroup {
 
     	//setTimeout(10.5);											// set Auton timer here
     	
-    	addSequential(new GyroReset());
+    	addSequential(new ResetGyro());
     	addSequential(new ResetEncoder());
     	addSequential(new KICKER_StopKick());
     	 	

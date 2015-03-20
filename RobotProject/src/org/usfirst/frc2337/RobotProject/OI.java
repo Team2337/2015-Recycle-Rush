@@ -101,6 +101,11 @@ public class OI {
         		
         double rightSlowPull = (speed * p)/2;
         double leftSlowPull = (speed * n)/2;
+        
+        //Move Totes to the side
+        double rightFullPush = (speed * n);
+        double leftFullPush = (speed * p);
+        
         //Declare variables
         
         double rightRotateRight, leftRotateRight, leftRotateLeft,rightRotateLeft;
@@ -115,6 +120,10 @@ public class OI {
         
         joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
         joystickDriverButtonA.whileHeld(new TestLED());
+        joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
+        joystickDriverButtonB.whenPressed(new ChassisRotate(45));
+        joystickDriverButtonY = new JoystickButton(joystickDriver, 4);
+        joystickDriverButtonY.whenPressed(new ChassisRotate(-45));
         /* //Driver Joystick 
         joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
         joystickDriverButtonA.whileHeld(new CONTAINERARM_PidSet(1.52));
@@ -130,6 +139,10 @@ public class OI {
         //Lift Joystick base rear right
         intakeDeploy = new JoystickButton(liftJoystick, 11);
         intakeDeploy.whileHeld(new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
+        
+        LiftJoystick10 = new JoystickButton(liftJoystick, 10);
+        LiftJoystick10.whileHeld (new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
+        
         //Lift Joystick on Hat left button
         intakeLeft = new JoystickButton(liftJoystick, 4);
         intakeLeft.whileHeld(new INTAKE_ActivateMotors(leftPush,rightPush));
@@ -137,9 +150,9 @@ public class OI {
         intakeRight = new JoystickButton(liftJoystick, 5);
         intakeRight.whileHeld(new INTAKE_ActivateMotors(leftPush,rightPush));
         //Lift Joystick on Hat center button
-        intakePush = new JoystickButton(liftJoystick, 3);
+        intakePush = new JoystickButton(liftJoystick, 3);				
        // intakePush.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
-        intakePush.whileHeld(new INTAKE_CloseArmsAndPull(leftPull,rightPull));
+        intakePush.whileHeld(new INTAKE_CloseArms());
         //intakePush.whileHeld(new INTAKE_CloseArmsAndIntake());
         
         
@@ -154,16 +167,18 @@ public class OI {
         LiftJoystick7.whileHeld (new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
                 
         
-        //Lift Joystick container arm button
+        //Lift Joystick Move Tote Left or Right
         LiftJoystick9 = new JoystickButton(liftJoystick, 9);
-        LiftJoystick9.whileHeld (new CONTAINERARM_PidSet(1.85));
-        
-        LiftJoystick10 = new JoystickButton(liftJoystick, 10);
-        LiftJoystick10.whileHeld (new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
-        
-        //Lift Joystick base front right
+        //LiftJoystick9.whileHeld (new CONTAINERARM_PidSet(1.85));
+        LiftJoystick9.whileHeld(new INTAKE_ActivateMotors(rightFullPush,rightFullPush));
+
         operatorControlsKickToggle = new JoystickButton(liftJoystick, 8);
-        operatorControlsKickToggle.whenPressed(new KICKER_StopKick());
+        operatorControlsKickToggle.whileHeld(new INTAKE_ActivateMotors(leftFullPush,leftFullPush));
+        
+
+        
+        
+
         //Lift Joystick on Hat bottom button
         kickerKick = new JoystickButton(liftJoystick, 2);
         kickerKick.whenPressed(new KICKER_KickOut());
@@ -224,8 +239,8 @@ public class OI {
         //Operator Station Toggles
         // Left Toggle Operator Controls # 5
         operatorControlsLeftToggle = new JoystickButton(operatorControls, 5);
-        operatorControlsLeftToggle.whileHeld(new INTAKEPNEUMATICS_ArmsOut());
-        operatorControlsLeftToggle.whenReleased(new INTAKEPNEUMATICS_ArmsIn());
+        operatorControlsLeftToggle.whileHeld(new INTAKE_ExtendArms_ArmsOut());
+        operatorControlsLeftToggle.whenReleased(new INTAKE_ExtendArms_ArmsIn());     
        
         //LiftToggle (On or Off) Components
         // Right Toggle Operator Controls # 6
@@ -266,8 +281,8 @@ public class OI {
         
         //SmartDashboard.putData("StopMotors", new StopMotors());
         
-        SmartDashboard.putData("PNEUMATIC_ArmsIn", new INTAKEPNEUMATICS_ArmsIn());
-        SmartDashboard.putData("PNUEMATIC_ArmsOut", new INTAKEPNEUMATICS_ArmsOut());
+        SmartDashboard.putData("PNEUMATIC_ArmsIn", new INTAKE_ExtendArms_ArmsIn());
+        SmartDashboard.putData("PNUEMATIC_ArmsOut", new INTAKE_ExtendArms_ArmsOut());
         SmartDashboard.putData("INTAKE_ActivateMotors (.5,.5)", new INTAKE_ActivateMotors(.5,.5));
         
         SmartDashboard.putData("Pos0", new LIFT_PidSet(0,1));
