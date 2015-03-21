@@ -78,6 +78,8 @@ public class Robot extends IterativeRobot {
       //  autonChooser.addObject("COMP - Move 3 Totes J Kettering BLUE", new Auton_3ToteJ_COMP_Kettering_BLUE());
         autonChooser.addObject("COMP - Move 3 Totes J AFTER Kettering TEST", new Auton_3ToteJ_After_Kettering());
         autonChooser.addDefault("TEST - Move 3 Summary with arms", new Auton_Nested_A());
+        autonChooser.addObject("TEST - Move 3 Summary with arms", new Auton_Nested_A_WithContainer());
+        
        
         autonChooser.addObject("Do Nothing", new AutonWait(15));
         

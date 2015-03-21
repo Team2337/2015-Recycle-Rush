@@ -189,6 +189,11 @@ public class RobotMap {
         kickerSolenoid = new DoubleSolenoid(0,7,6);
         LiveWindow.addActuator("Kicker", "Solenoid", kickerSolenoid);
         
+        //Grabber Arm Solenoids
+        metaTrolleyBrakeSolenoid = new DoubleSolenoid(0,3,2);
+        LiveWindow.addActuator("Meta Trolley Brake", "Solenoid", metaTrolleyBrakeSolenoid);
+        metaTrolleyGrabberSolenoid = new DoubleSolenoid(0,1,0);
+        LiveWindow.addActuator("Meta Trolley Grabber", "Solenoid", metaTrolleyGrabberSolenoid);
 
         //Intake Solenoids
         //intakeRightSolenoid = new Solenoid(0, 4);									
@@ -207,10 +212,10 @@ public class RobotMap {
 
         
         //LEDs initialized as pneumatics, as we are putting them in the pneumatics module.
-        ledKicker = new Solenoid(0,1);
+        ledKicker = new Solenoid(2,1);
         LiveWindow.addActuator("LED", "Kicker", ledKicker);
         
-        testled = new Solenoid(2,1);
+
         
         
 

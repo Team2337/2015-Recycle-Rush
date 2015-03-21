@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.*;
 public class MetaTrolleyBrake extends Subsystem {
     
 	//public DigitalInput fingerSensor = RobotMap.kickerFingerSensor;
-	public DoubleSolenoid solenoid = RobotMap.metaTrolleyGrabberSolenoid;
+	public DoubleSolenoid solenoidB = RobotMap.metaTrolleyBrakeSolenoid;
 
 
     public void initDefaultCommand() {
@@ -25,13 +25,13 @@ public class MetaTrolleyBrake extends Subsystem {
      * Sets the MetaTrolley brake on.
      */
     public void on() {
-    	solenoid.set(DoubleSolenoid.Value.kForward);
+    	solenoidB.set(DoubleSolenoid.Value.kReverse);
     }
     /**
      * Sets the MetaTrolley brake off.
      */
     public void off() {
-    	solenoid.set(DoubleSolenoid.Value.kReverse);
+    	solenoidB.set(DoubleSolenoid.Value.kForward);
     }
 
 }

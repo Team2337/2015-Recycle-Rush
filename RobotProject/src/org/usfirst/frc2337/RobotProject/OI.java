@@ -113,15 +113,19 @@ public class OI {
     	//Joystick Driver     - USED MOSTLY FOR TESTING
         joystickDriver = new Joystick(0);
         
-        /*
+       
         joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
-        joystickDriverButtonA.whileHeld(new TestLED());
+        joystickDriverButtonA.whenPressed(new MetaTrolleyBrake_Off());
         joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
-        joystickDriverButtonB.whenPressed(new ChassisRotate(45));
+        joystickDriverButtonB.whenPressed(new MetaTrolleyGrabber_Open());
+
+        
+
         joystickDriverButtonX = new JoystickButton(joystickDriver, 3);
-        joystickDriverButtonX.whenPressed(new ChassisRotate(-45));
+        joystickDriverButtonX.whenPressed(new MetaTrolleyBrake_On());
         joystickDriverButtonY = new JoystickButton(joystickDriver, 4);
-        joystickDriverButtonY.whenPressed(new TestLED());
+        joystickDriverButtonY.whenPressed(new MetaTrolleyGrabber_Closed());
+        /*
         joystickDriverBumperLeft = new JoystickButton(joystickDriver, 5);
         joystickDriverBumperLeft.whileHeld(new CONTAINERARM_PidSet(1.52));
         joystickDriverBumperRight = new JoystickButton(joystickDriver, 6);
@@ -212,11 +216,13 @@ public class OI {
         
         //Operator controls second from top Black Button # 11
         operatorControlsLift4 = new JoystickButton(operatorControls, 11);
-        operatorControlsLift4.whileHeld(new LIFT_PidSet(4,1));
+        //operatorControlsLift4.whileHeld(new LIFT_PidSet(4,1));
+        operatorControlsLift4.whenPressed(new ScoreButton());
+
         
         //Operator controls second from bottom Black Button # 12
         operatorControlsLift3 = new JoystickButton(operatorControls, 12);
-        operatorControlsLift3.whileHeld(new LIFT_PidSet(3,1));
+        operatorControlsLift3.whenPressed(new ScoreButton2());
         
         //Operator controls bottom Black Button # 13
         operatorControlsLift2 = new JoystickButton(operatorControls, 13);

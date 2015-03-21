@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.*;
 public class MetaTrolleyGrabber extends Subsystem {
     
 	//public DigitalInput fingerSensor = RobotMap.kickerFingerSensor;
-	public DoubleSolenoid solenoid = RobotMap.metaTrolleyBrakeSolenoid;
+	public DoubleSolenoid solenoidG = RobotMap.metaTrolleyGrabberSolenoid;
 
 
     public void initDefaultCommand() {
@@ -25,13 +25,13 @@ public class MetaTrolleyGrabber extends Subsystem {
      * Sets the MetaTrolley grabber closed.
      */
     public void closed() {
-    	solenoid.set(DoubleSolenoid.Value.kForward);
+    	solenoidG.set(DoubleSolenoid.Value.kReverse);
     }
     /**
      * Sets the MetaTrolley grabber open.
      */
     public void open() {
-    	solenoid.set(DoubleSolenoid.Value.kReverse);
+    	solenoidG.set(DoubleSolenoid.Value.kForward);
     }
    
 }
