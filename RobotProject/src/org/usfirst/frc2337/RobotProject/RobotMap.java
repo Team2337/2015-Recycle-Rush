@@ -57,6 +57,11 @@ public class RobotMap {
     public static CANTalon slaveliftMotor3;
     public static AnalogPotentiometer liftPotentiometer;
     
+    //MetaTrolley									=====================================================
+    public static DoubleSolenoid metaTrolleyBrakeSolenoid;
+    public static DoubleSolenoid metaTrolleyGrabberSolenoid;
+      
+    
     //Kicker > Actuator
     public static DoubleSolenoid kickerSolenoid;
     

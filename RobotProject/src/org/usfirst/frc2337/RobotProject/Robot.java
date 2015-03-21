@@ -34,6 +34,10 @@ public class Robot extends IterativeRobot {
     public static ContainerArmExtension conExtension;
     public static LED led;
     public static IntakeOpenArms intakeOpenArms;
+    
+    public static MetaTrolleyBrake metaTrolleyBrake;		//====================================================
+    public static MetaTrolleyGrabber metaTrolleyGrabber;
+
 
 
     /**
@@ -53,7 +57,9 @@ public class Robot extends IterativeRobot {
         conExtension = new ContainerArmExtension();
         led = new LED();
         intakeOpenArms = new IntakeOpenArms();
-
+        
+        metaTrolleyBrake = new MetaTrolleyBrake();			//============================================
+        metaTrolleyGrabber = new MetaTrolleyGrabber();
 
         // OI must be constructed after subsystems. If the OI creates Commands 
         //(which it very likely will), subsystems are not guaranteed to be 
