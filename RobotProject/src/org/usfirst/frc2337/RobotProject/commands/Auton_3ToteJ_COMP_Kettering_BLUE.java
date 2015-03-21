@@ -31,7 +31,7 @@ public class Auton_3ToteJ_COMP_Kettering_BLUE extends CommandGroup {
     	addSequential(new ResetGyro());
     	addSequential(new ResetEncoder());
     	addSequential(new ResetStrafeEncoder());
-    	addSequential(new KICKER_StopKick());
+    	//addSequential(new KICKER_StopKicke());
     	 	
     	//LIFT TOTE 1
     	

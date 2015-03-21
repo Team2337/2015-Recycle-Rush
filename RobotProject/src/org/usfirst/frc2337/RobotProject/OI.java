@@ -62,8 +62,8 @@ public class OI {
     public JoystickButton operatorControlsLift3;		//12
     public JoystickButton operatorControlsLift4;		//11
     public JoystickButton operatorControlsLift5;		//10
-    public JoystickButton operatorControlsLeftToggle;	//5
-    public JoystickButton operatorControlsRightToggle;	//6
+    public JoystickButton operatorControlsRockerCmdA;	//5
+    public JoystickButton operatorControlsRockerCmdB;	//6
     public JoystickButton operatorControlsKickToggle;
     public JoystickButton operatorControlsBlueButton;	//3
     public JoystickButton operatorControlsYellowButton;	//4
@@ -135,12 +135,17 @@ public class OI {
         //Joystick Control, (Operator Right hand)
         liftJoystick = new Joystick(1); 
         
-        //Lift Joystick base rear right
-        liftJoystickButton11 = new JoystickButton(liftJoystick, 11);
-        liftJoystickButton11.whileHeld(new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
+        //Lift Joystick trigger
+        liftJoystickTrigger = new JoystickButton(liftJoystick, 1);
+        liftJoystickTrigger.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
         
-        LiftJoystickButton10 = new JoystickButton(liftJoystick, 10);
-        LiftJoystickButton10.whileHeld (new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
+        //Lift Joystick on Hat bottom button
+        LiftJoystickButton2 = new JoystickButton(liftJoystick, 2);
+        LiftJoystickButton2.whenPressed(new KICKER_KickOut());
+        
+        //Lift Joystick on Hat center button
+        LiftJoystickButton3 = new JoystickButton(liftJoystick, 3);				
+        LiftJoystickButton3.whileHeld(new INTAKE_CloseArms());
         
         //Lift Joystick on Hat left button
         LiftJoystickButton4 = new JoystickButton(liftJoystick, 4);
@@ -148,73 +153,28 @@ public class OI {
         //Lift Joystick on Hat right button
         LiftJoystickButton5 = new JoystickButton(liftJoystick, 5);
         LiftJoystickButton5.whileHeld(new INTAKE_ActivateMotors(leftSlowPush,rightSlowPush));
-        //Lift Joystick on Hat center button
-        LiftJoystickButton3 = new JoystickButton(liftJoystick, 3);				
-        LiftJoystickButton3.whileHeld(new INTAKE_CloseArms());
-        // intakePush.whileHeld(new INTAKE_CloseArmsAndIntake())
-        // intakePush.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
-             
-        //Lift Joystick trigger
-        liftJoystickTrigger = new JoystickButton(liftJoystick, 1);
-        liftJoystickTrigger.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
-        // intakePull.whileHeld(new INTAKE_ActivateMotors(leftPull,rightPull));
-        // liftJoystickTrigger.whileHeld(new INTAKE_CloseArmsAndPull(leftPull,rightPull));
-
+        
         LiftJoystickButton7 = new JoystickButton(liftJoystick, 7);
         LiftJoystickButton7.whileHeld (new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
-                
-        //Lift Joystick Move Tote Left or Right
-        LiftJoystickButton9 = new JoystickButton(liftJoystick, 9);
-        LiftJoystickButton9.whileHeld(new INTAKE_ActivateMotors(rightPush,rightPush));
-
+        
         LiftJoystickButton8 = new JoystickButton(liftJoystick, 8);
         LiftJoystickButton8.whileHeld(new INTAKE_ActivateMotors(leftPush,leftPush));
         
-        //Lift Joystick on Hat bottom button
-        LiftJoystickButton2 = new JoystickButton(liftJoystick, 2);
-        LiftJoystickButton2.whenPressed(new KICKER_KickOut());
+        //Lift Joystick Move Tote Left or Right
+        LiftJoystickButton9 = new JoystickButton(liftJoystick, 9);
+        LiftJoystickButton9.whileHeld(new INTAKE_ActivateMotors(rightPush,rightPush));
         
+        LiftJoystickButton10 = new JoystickButton(liftJoystick, 10);
+        LiftJoystickButton10.whileHeld (new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
         
+        //Lift Joystick base rear right
+        liftJoystickButton11 = new JoystickButton(liftJoystick, 11);
+        liftJoystickButton11.whileHeld(new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
+        
+
         
         //ButtonPanel for Lift (Operator Left Hand)
         operatorControls = new Joystick(2);         
-        
-        //Operator Station Rocker switch
-        
-        //Rocker switch Pos 2
-        operatorControlsBase1 = new JoystickButton(operatorControls, 9);
-       // operatorControlsBase1.whenPressed(new LIFT_PidSet(0,0));
-        //Rocker switch Pos OFF
-        operatorControlsBase2 = new JoystickButton(operatorControls, 8);
-       // operatorControlsBase2.whenPressed(new LIFT_PidSet(1,0));
-        //Rocker switch Pos 1
-        operatorControlsBase3 = new JoystickButton(operatorControls, 7);
-        operatorControlsBase3.whileHeld(new CONTAINERARM_DisablePID());
-
-             
-        //  Operator Station Buttons 10 - 15  White, Green, and 4 Black buttons.
-        
-        //Operator Controls white button # 15
-        operatorControlsLift0 = new JoystickButton(operatorControls, 15);
-        operatorControlsLift0.whileHeld(new LIFT_PidSetWhiteButton());
-        
-        //Operator Controls Green button # 14
-        operatorControlsLift1 = new JoystickButton(operatorControls, 14);
-        operatorControlsLift1.whenPressed(new LIFT_PidSet1stBlackButton());
-        //Operator controls bottom Black Button # 13
-        operatorControlsLift2 = new JoystickButton(operatorControls, 13);
-        operatorControlsLift2.whenPressed(new LIFT_PidSetGreenButton());
-        //Operator controls second from bottom Black Button # 12
-        operatorControlsLift3 = new JoystickButton(operatorControls, 12);
-        operatorControlsLift3.whileHeld(new LIFT_PidSet(3,1));
-        //Operator controls second from top Black Button # 11
-        operatorControlsLift4 = new JoystickButton(operatorControls, 11);
-        operatorControlsLift4.whileHeld(new LIFT_PidSet(4,1));
-        //Operator controls top Black Button # 10
-        operatorControlsLift5 = new JoystickButton(operatorControls, 10);
-        //operatorControlsLift5.whileHeld(new LIFT_PidSet(5,1));
-        operatorControlsLift5.whileHeld(new KICKER_KickIn());
-        
         
         //ContainerArm Components
         // Buttons 3 and 4
@@ -227,76 +187,64 @@ public class OI {
         operatorControlsYellowButton = new JoystickButton(operatorControls, 4);
         operatorControlsYellowButton.whileHeld(new INTAKE_OutAndPull(leftPull,rightPull));        
         
-        //Operator Station Toggles
-        // Left Toggle Operator Controls # 5
-        operatorControlsLeftToggle = new JoystickButton(operatorControls, 5);
-        operatorControlsLeftToggle.whileHeld(new INTAKE_ExtendArms_ArmsOut());
-        operatorControlsLeftToggle.whenReleased(new INTAKE_ExtendArms_ArmsIn());     
+        
+        // **************************  Leave 5 an 6 alone, these are both being called by the rocker switch.  ****************
+        //Operator Station Rocker Switch
+        // Operator Controls Rocker Switch # 5
+        operatorControlsRockerCmdA = new JoystickButton(operatorControls, 5);
+        operatorControlsRockerCmdA.whileHeld(new INTAKE_ExtendArms_ArmsOut());
+        operatorControlsRockerCmdA.whenReleased(new INTAKE_ExtendArms_ArmsIn());     
        
-        //LiftToggle (On or Off) Components
-        // Right Toggle Operator Controls # 6
+        // Operator Controls Rocker from UHID # 6
+        operatorControlsRockerCmdB = new JoystickButton(operatorControls, 6);
+        operatorControlsRockerCmdB.whileHeld(new INTAKE_OpenArms_ArmsOut());
+        operatorControlsRockerCmdB.whenReleased(new INTAKE_OpenArms_ArmsIn());
         
-        operatorControlsRightToggle = new JoystickButton(operatorControls, 6);
-       // operatorControlsRightToggle.whenPressed(new LIFT_StopPID());
-        //operatorControlsRightToggle.whenReleased(new LIFT_StartPID());
-
-       //operatorControlsRightToggle.whileHeld(new CONTAINERARM_DisablePID());
-        operatorControlsRightToggle.whileHeld(new INTAKE_OpenArms_ArmsOut());
-        operatorControlsRightToggle.whenReleased(new INTAKE_OpenArms_ArmsIn());
-        
-      
-    
+        //********************************************************************************************************************
         
         
-	    
-        // SMARTDASH BOARD STUFF
+        //  Operator Station Buttons 10 - 15  White, Green, and 4 Black buttons.
         
-        //SmartDashboard.putData("Auton Strafe out (-1.0,1.0)", new AutonStrafeAtSpeedForTime(-1.0,1.0));
-        //SmartDashboard.putData("Auton Backup (-0.3,1.0)", new AutonDriveAtSpeedForTime(-0.3,1.0));
-        //SmartDashboard.putData("Auton Strafe in (0.3,1.0)", new AutonStrafeAtSpeedForTime(0.3,1.0));
-        //SmartDashboard.putData("Auton Drive Gyro (0.5,6.0)", new AutonDriveAtSpeedForTimeGyro(0.5,6.0));
-        //SmartDashboard.putData("Auton Strafe Gyro in (0.7,6.0)", new AutonStrafeAtSpeedForTimeGyro(0.7,6.0));
-               
-        //SmartDashboard.putData("PID Drive with Tote Sensor (171.250)", new Auton_ChassisPidSetWithToteSensor(171.250));
-        //SmartDashboard.putData("PID with Gyro and Totoe Sensor in (165)", new Auton_ChassisPidSetWithToteSensor(165));
+        //Operator controls top Black Button # 10
+        operatorControlsLift5 = new JoystickButton(operatorControls, 10);
+        //operatorControlsLift5.whileHeld(new LIFT_PidSet(5,1));
+        operatorControlsLift5.whileHeld(new KICKER_KickIn());
         
-        //SmartDashboard.putData("AutonRandomTest", new AutonRandomTest());
-        //SmartDashboard.putData("Auton_3ToteJ (was _AfterKetteringWithToteC)", new Auton_3ToteJ());
-
-        //SmartDashboard.putData("AutonDriveForTimeGyroIterative(.5)", new AutonDriveForTimeGyroIterative(.5));
-        //SmartDashboard.putData("AutonDriveForTimeGyroIterative(1)", new AutonDriveForTimeGyroIterative(1));
-        //SmartDashboard.putData("AutonStrafewithEncoder(0.5,90)", new AutonEncoderStrafeIn(.5, 900));
+        //Operator controls second from top Black Button # 11
+        operatorControlsLift4 = new JoystickButton(operatorControls, 11);
+        operatorControlsLift4.whileHeld(new LIFT_PidSet(4,1));
         
-        //SmartDashboard.putData("StopMotors", new StopMotors());
+        //Operator controls second from bottom Black Button # 12
+        operatorControlsLift3 = new JoystickButton(operatorControls, 12);
+        operatorControlsLift3.whileHeld(new LIFT_PidSet(3,1));
         
-        //SmartDashboard.putData("PNEUMATIC_ArmsIn", new INTAKE_ExtendArms_ArmsIn());
-        //SmartDashboard.putData("PNUEMATIC_ArmsOut", new INTAKE_ExtendArms_ArmsOut());
-        //SmartDashboard.putData("INTAKE_ActivateMotors (.5,.5)", new INTAKE_ActivateMotors(.5,.5));
+        //Operator controls bottom Black Button # 13
+        operatorControlsLift2 = new JoystickButton(operatorControls, 13);
+        operatorControlsLift2.whenPressed(new LIFT_PidSetGreenButton());
         
-        //SmartDashboard.putData("Pos0", new LIFT_PidSet(0,1));
-        //SmartDashboard.putData("Pos1", new LIFT_PidSet(1,1));
-        //SmartDashboard.putData("Pos2", new LIFT_PidSet(2,1));
-        //SmartDashboard.putData("Pos3", new LIFT_PidSet(3,1));
-        //SmartDashboard.putData("Pos4", new LIFT_PidSet(4,1));
-        //SmartDashboard.putData("Pos5", new LIFT_PidSet(5,1));
+        //Operator Controls Green button # 14
+        operatorControlsLift1 = new JoystickButton(operatorControls, 14);
+        operatorControlsLift1.whenPressed(new LIFT_PidSet1stBlackButton());
         
-        //SmartDashboard.putData("GYRO Turn 90cw", new AutonTurnDegreesCwPos(90));
-        //SmartDashboard.putData("GYRO Turn -90ccw", new AutonTurnDegreesCcwNeg(-90));
+        //Operator Controls white button # 15
+        operatorControlsLift0 = new JoystickButton(operatorControls, 15);
+        operatorControlsLift0.whileHeld(new LIFT_PidSetWhiteButton());
         
-        //SmartDashboard.putData("Base0", new LIFT_PidSet(0,0));
-        //SmartDashboard.putData("Base1", new LIFT_PidSet(1,0));
-        //SmartDashboard.putData("Base2", new LIFT_PidSet(2,0));
+        /*  In case we bring back the container arm.
         
+        //Operator Station Rocker switch
         
-        //Preferences
-        //SmartDashboard.putNumber("teleopMaxSpeedUp", Robot.lift.teleopMaxSpeedUp);
-        //SmartDashboard.putNumber("teleopMaxSpeedDown", Robot.lift.teleopMaxSpeedDown);
+        //Rocker switch Pos 2
+        operatorControlsBase1 = new JoystickButton(operatorControls, 9);
+       // operatorControlsBase1.whenPressed(new LIFT_PidSet(0,0));
+        //Rocker switch Pos OFF
+        operatorControlsBase2 = new JoystickButton(operatorControls, 8);
+       // operatorControlsBase2.whenPressed(new LIFT_PidSet(1,0));
+        //Rocker switch Pos 1
+        operatorControlsBase3 = new JoystickButton(operatorControls, 7);
+        operatorControlsBase3.whileHeld(new CONTAINERARM_DisablePID());
         
-       // SmartDashboard.putBoolean("openArmPositionOI", Robot.intakeOpen.openArmPosition);
-        //SmartDashboard.putBoolean("outArmPositionOI", Robot.intakePneumatics.armPosition);
-        
-
-
+        */
 
 
     }

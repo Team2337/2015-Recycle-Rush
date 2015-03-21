@@ -64,8 +64,6 @@ public class  INTAKE_CloseArms extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	//RobotMap.intakeLeftArmMotor.set(0);
-    	//RobotMap.intakeRightArmMotor.set(0);
 
     }
 
