@@ -30,13 +30,9 @@ public class Auton_Nested_A extends CommandGroup {
     	addSequential(new ResetStrafeEncoder());
 
     	addSequential(new Auton_Summary_Initial_Block());
-    	//addParallel(new Auton_Summary_ArmsIntake());
     	addSequential(new Auton_Summary_GrabTote2());
-    	//addSequential(new Auton_Summary_ArmsStop());
     	addSequential(new Auton_Summary_MoveToTote3AndPush());
-    	//addParallel(new Auton_Summary_ArmsIntake());
     	addSequential(new Auton_Summary_TheBigFinish());
-    	//addSequential(new Auton_Summary_ArmsStop());
     	
     	
     	
