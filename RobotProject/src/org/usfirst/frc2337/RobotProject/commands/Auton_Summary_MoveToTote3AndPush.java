@@ -36,7 +36,8 @@ public class Auton_Summary_MoveToTote3AndPush extends CommandGroup {
     	addSequential(new AutonEncoderStrafeOut(0.65, 10));				// changed at kettering for container arm
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.5, 0.4));	//strafe out to clear handle of can when driving forward
     	
-    	addSequential(new AutonWait(0.5));								//STILL NEED ?????
+    	addParallel(new MetaTrolleyBrake_On());
+    	//addSequential(new AutonWait(0.5));								//STILL NEED ?????
     	
     	//DRIVE TO TOTE 3
     	//addSequential(new AutonDriveForEncoderGyroIterative(290));			//Ramp up speed and drive past container

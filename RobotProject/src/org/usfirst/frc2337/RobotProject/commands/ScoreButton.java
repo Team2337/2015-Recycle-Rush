@@ -28,16 +28,17 @@ public class ScoreButton extends CommandGroup {
     	requires(Robot.intakeOpenArms);
     	
     	
-   addParallel(new INTAKE_ExtendArms_ArmsIn());
-   //addParallel(new MetaTrolleyGrabber_Open());	
-  // addParallel(new MetaTrolleyBrake_On());	
-   //addParallel(new INTAKE_OpenArms_ArmsIn());   
+    	addParallel(new INTAKE_ExtendArms_ArmsIn());
+    	//addParallel(new MetaTrolleyGrabber_Open());	
+    	//addParallel(new MetaTrolleyBrake_On());	
+    	//addParallel(new INTAKE_OpenArms_ArmsIn());   
 
 	
     }
+    
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
@@ -48,4 +49,5 @@ public class ScoreButton extends CommandGroup {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+    
 }

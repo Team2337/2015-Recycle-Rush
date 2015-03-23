@@ -19,20 +19,17 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *  With Strafe Encoder, Acceleration Profile, Tuned PID on drive encoder, and Gyro(IMU).
  */
-public class Auton_Nested_A_withContainer extends CommandGroup {
+public class Auton_Nested_A_TEST extends CommandGroup {
 	
-    public  Auton_Nested_A_withContainer() {
-
-    	//setTimeout(14.5);											// set Auton timer here
-    	setTimeout(15);											// set Auton timer here
+    public  Auton_Nested_A_TEST() {
+    	
+    	setTimeout(14.5);											// set Auton timer here
     	
     	addSequential(new ResetGyro());
     	addSequential(new ResetEncoder());
     	addSequential(new ResetStrafeEncoder());
-    	
-    	addSequential(new Auton_Summary_GrabContainer());
-    	addSequential(new Auton_Summary_Initial_Block2());
-    	addSequential(new Auton_Summary_GrabTote2());
+    	addSequential(new Auton_Summary_TEST_Initial_Block());
+    	addSequential(new Auton_Summary_TEST_GrabTote2());
     	addSequential(new Auton_Summary_MoveToTote3AndPush());
     	addSequential(new Auton_Summary_TheBigFinish());
     	

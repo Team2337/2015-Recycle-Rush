@@ -23,9 +23,9 @@ public class Lift extends PIDSubsystem {
     double setPointTolerance = 0.05;
     
     /** Defines the max speed for the lift in the up direction for auton */
-    public double autonMaxSpeedUp = 0.8; //65;
+    public double autonMaxSpeedUp = 1; //0.8
     /** Defines the max speed for the lift in the down direction for auton */
-    public double autonMaxSpeedDown = -0.8;
+    public double autonMaxSpeedDown = -1; //0.8
     /** Defines the max speed for the lift in the up direction for teleop */
     public double teleopMaxSpeedUp = .8;
     /** Defines the max speed for the lift in the up direction for teleop */
@@ -64,6 +64,7 @@ public class Lift extends PIDSubsystem {
 	public double autonPos11;
 	public double autonPos12;
 	public double autonPos13;
+	public double autonPos14;
     
     //Joystick mode for switching back motor and lift
     public boolean joystickStatus = true;
@@ -100,6 +101,7 @@ public class Lift extends PIDSubsystem {
     	autonPos11 = 1.05;
     	autonPos12 = .85;
     	autonPos13 = 3.5;
+    	autonPos14 = 3.3;
     }
     /**
      * Sets the lift set points for the Competition Robot.
@@ -148,6 +150,7 @@ public class Lift extends PIDSubsystem {
     	autonPos11 = 1.05;
     	autonPos12 = .85;
     	autonPos13 = 3.5;
+    	autonPos14 = 3.3;
     }
     
     // Initialize your subsystem here
@@ -160,6 +163,7 @@ public class Lift extends PIDSubsystem {
         
         getPIDController().setOutputRange(autonMaxSpeedDown, autonMaxSpeedUp);   //For the lift PID
         getPIDController().setInputRange(liftBottomLimit, liftTopLimit);
+        
         
       //call method to set set-points based on DIO jumper 
         if (competitionBot.get()) {       	

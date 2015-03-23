@@ -8,6 +8,7 @@ import org.usfirst.frc2337.RobotProject.Robot;
  * 
  * @param seconds The time, in seconds, to wait for.
  */
+
 public class  AutonWait extends Command {
 
 	private double seconds;

@@ -17,9 +17,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Auton_Summary_GrabTote2 extends CommandGroup {
+public class Auton_Summary_TEST_GrabTote2 extends CommandGroup {
     
-    public  Auton_Summary_GrabTote2() {
+    public  Auton_Summary_TEST_GrabTote2() {
 
     	
     	addParallel(new INTAKE_OpenArms_ArmsOut());
@@ -28,13 +28,13 @@ public class Auton_Summary_GrabTote2 extends CommandGroup {
     	
     	
        	//SET DOWN TOTE 1 ON TOTE 2
-    	addSequential(new AutonEncoderStrafeIn(0.5, 1));
+    	//addSequential(new AutonEncoderStrafeIn(0.5, 1));
 
-    	addParallel(new KICKER_KickIn());								//kicker already in?????????
-    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos4));		//set down tote and get ready to pick up 2nd tote
-    	addSequential(new AutonEncoderStrafeIn(0.5, -20));				//Changed 3/22 from -30    //Changed at kettering from -20
+    	addParallel(new KICKER_KickIn());								//release kicker to nest tote
+    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos4));		//set down tote and get ready to pick up 2nd tote  pos4 .85
+    	addSequential(new AutonEncoderStrafeIn(0.4, -20));				//Changed at kettering from -20
 
-    	addParallel(new Auton_ActivateMotors(0,0));					//Moved from line 46
+    	addSequential(new Auton_ActivateMotors(0,0));					//Moved from line 46
       	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos5));		//grab 2 tote stack
 
     	addSequential(new INTAKE_OpenArms_ArmsIn());

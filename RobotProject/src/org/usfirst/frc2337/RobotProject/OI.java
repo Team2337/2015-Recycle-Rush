@@ -116,15 +116,15 @@ public class OI {
        
         joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
         joystickDriverButtonA.whenPressed(new MetaTrolleyBrake_Off());
-        joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
-        joystickDriverButtonB.whenPressed(new MetaTrolleyGrabber_Open());
+        //joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
+       // joystickDriverButtonB.whenPressed(new MetaTrolleyGrabber_Open());
 
         
 
         joystickDriverButtonX = new JoystickButton(joystickDriver, 3);
         joystickDriverButtonX.whenPressed(new MetaTrolleyBrake_On());
-        joystickDriverButtonY = new JoystickButton(joystickDriver, 4);
-        joystickDriverButtonY.whenPressed(new MetaTrolleyGrabber_Closed());
+       // joystickDriverButtonY = new JoystickButton(joystickDriver, 4);
+       // joystickDriverButtonY.whenPressed(new MetaTrolleyGrabber_Closed());
         /*
         joystickDriverBumperLeft = new JoystickButton(joystickDriver, 5);
         joystickDriverBumperLeft.whileHeld(new CONTAINERARM_PidSet(1.52));
@@ -183,8 +183,8 @@ public class OI {
         //ContainerArm Components
         // Buttons 3 and 4
 
-        //Operator Controls Blue button # 3
-        operatorControlsBlueButton = new JoystickButton(operatorControls, 3);
+        //Operator Controls Blue button # 10
+        operatorControlsBlueButton = new JoystickButton(operatorControls, 10);
         operatorControlsBlueButton.whenPressed(new LIFT_PidSetBlueButton()); 
         
         //Operator Controls yellow button # 4
@@ -209,8 +209,8 @@ public class OI {
         
         //  Operator Station Buttons 10 - 15  White, Green, and 4 Black buttons.
         
-        //Operator controls top Black Button # 10
-        operatorControlsLift5 = new JoystickButton(operatorControls, 10);
+        //Operator controls top Black Button # 3
+        operatorControlsLift5 = new JoystickButton(operatorControls, 3);
         //operatorControlsLift5.whileHeld(new LIFT_PidSet(5,1));
         operatorControlsLift5.whileHeld(new KICKER_KickIn());
         
@@ -222,11 +222,11 @@ public class OI {
         
         //Operator controls second from bottom Black Button # 12
         operatorControlsLift3 = new JoystickButton(operatorControls, 12);
-        operatorControlsLift3.whenPressed(new ScoreButton2());
+        operatorControlsLift3.whenPressed(new MetaTrolleyGrabber_Open());
         
         //Operator controls bottom Black Button # 13
         operatorControlsLift2 = new JoystickButton(operatorControls, 13);
-        operatorControlsLift2.whenPressed(new LIFT_PidSetGreenButton());
+        operatorControlsLift2.whenPressed(new MetaTrolleyGrabber_Closed());
         
         //Operator Controls Green button # 14
         operatorControlsLift1 = new JoystickButton(operatorControls, 14);
