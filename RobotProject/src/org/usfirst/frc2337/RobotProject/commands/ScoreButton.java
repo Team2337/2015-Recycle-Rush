@@ -22,32 +22,15 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class ScoreButton extends CommandGroup {
     
     public  ScoreButton() {
-    	requires(Robot.metaTrolleyBrake);
-    	requires(Robot.metaTrolleyGrabber);
-    	requires(Robot.intakeExtendArms);
-    	requires(Robot.intakeOpenArms);
-    	
-    	
-    	addParallel(new INTAKE_ExtendArms_ArmsIn());
-    	//addParallel(new MetaTrolleyGrabber_Open());	
-    	//addParallel(new MetaTrolleyBrake_On());	
-    	//addParallel(new INTAKE_OpenArms_ArmsIn());   
 
 	
-    }
-    
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
+    	
+    	addSequential(new MetaTrolleyGrabber_Open());	
+    	addSequential(new MetaTrolleyBrake_On());
+    	addSequential(new INTAKE_OpenArms_ArmsIn());   
+    	addSequential(new INTAKE_ExtendArms_ArmsIn());
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
+	
     }
     
 }

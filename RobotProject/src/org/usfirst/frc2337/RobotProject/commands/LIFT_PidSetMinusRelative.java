@@ -10,49 +10,57 @@
 
 
 package org.usfirst.frc2337.RobotProject.commands;
+
+import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc2337.RobotProject.Robot;
 import org.usfirst.frc2337.RobotProject.RobotMap;
-
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class ScoreButton2 extends CommandGroup {
-    
-    public  ScoreButton2() {
-    	requires(Robot.metaTrolleyBrake);
-    	//requires(Robot.metaTrolleyGrabber);
-    	requires(Robot.intakeExtendArms);
-    	//requires(Robot.intakeOpenArms);
-
-
+public class  LIFT_PidSetMinusRelative extends Command {
 	
-    }
-    
-    protected void initialize() {
-    	Robot.metaTrolleyBrake.on();
-    	Robot.metaTrolleyGrabber.open();
-    	Robot.intakeExtendArms.armsIn();
-    	Robot.intakeOpenArms.openArmsIn();
+	public double setpoint;
 
-    
-    }
-    protected void execute() {
+   
+
+    public LIFT_PidSetMinusRelative() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	//requires(Robot.chassis);
+    	requires(Robot.lift);
     	
     }
+
+    // Called just before this Command runs the first time
+    protected void initialize() { 
+
+    	Robot.lift.setSetpointRelative(0.4);
+    	//Robot.lift.setSetpoint(Robot.lift.getPosition() - 1.0);
+
+    }
+
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() {
+    }
+    
+
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+    	 return (Robot.lift.onTarget());
+   	 
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	
+
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	this.end();
     }
 }

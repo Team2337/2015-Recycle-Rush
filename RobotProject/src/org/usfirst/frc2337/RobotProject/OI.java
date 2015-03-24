@@ -1,7 +1,9 @@
 // RobotBuilder Version: 1.5
 
 package org.usfirst.frc2337.RobotProject;
+
 import org.usfirst.frc2337.RobotProject.commands.*;
+
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.buttons.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -67,6 +69,10 @@ public class OI {
     public JoystickButton operatorControlsKickToggle;
     public JoystickButton operatorControlsBlueButton;	//3
     public JoystickButton operatorControlsYellowButton;	//4
+    
+    public JoystickButton operatorControlsTest1;	
+    public JoystickButton operatorControlsTest2;	
+    
     public Joystick operatorControls;
     
     //Buttons for Operator Joystick, i.e. intake/kicker
@@ -196,12 +202,12 @@ public class OI {
         //Operator Station Rocker Switch
         // Operator Controls Rocker Switch # 5
         operatorControlsRockerCmdA = new JoystickButton(operatorControls, 5);
-        operatorControlsRockerCmdA.whileHeld(new INTAKE_ExtendArms_ArmsOut());
+        operatorControlsRockerCmdA.whenPressed(new INTAKE_ExtendArms_ArmsOut());
         operatorControlsRockerCmdA.whenReleased(new INTAKE_ExtendArms_ArmsIn());     
        
         // Operator Controls Rocker from UHID # 6
         operatorControlsRockerCmdB = new JoystickButton(operatorControls, 6);
-        operatorControlsRockerCmdB.whileHeld(new INTAKE_OpenArms_ArmsOut());
+        operatorControlsRockerCmdB.whenPressed(new INTAKE_OpenArms_ArmsOut());
         operatorControlsRockerCmdB.whenReleased(new INTAKE_OpenArms_ArmsIn());
         
         //********************************************************************************************************************
@@ -214,10 +220,19 @@ public class OI {
         //operatorControlsLift5.whileHeld(new LIFT_PidSet(5,1));
         operatorControlsLift5.whileHeld(new KICKER_KickIn());
         
-        //Operator controls second from top Black Button # 11
+        //Operator controls yellow SCORE button
         operatorControlsLift4 = new JoystickButton(operatorControls, 11);
-        //operatorControlsLift4.whileHeld(new LIFT_PidSet(4,1));
         operatorControlsLift4.whenPressed(new ScoreButton());
+        
+        //##############################################################################################################
+        SmartDashboard.putData("Score", new ScoreButton());
+        
+        operatorControlsTest1 = new JoystickButton(operatorControls, 1);
+        operatorControlsTest1.whenPressed(new LIFT_PidSetMinusRelative());
+        SmartDashboard.putData("Minus", new LIFT_PidSetMinusRelative());
+        
+        
+        //############################################################################################################## 
 
         
         //Operator controls second from bottom Black Button # 12

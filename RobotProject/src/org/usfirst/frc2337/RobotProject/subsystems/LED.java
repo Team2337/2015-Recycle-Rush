@@ -22,7 +22,7 @@ public class LED extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	//setDefaultCommand(new LED_Auto());
-    	setDefaultCommand(new LED_DoNothing());
+    	//setDefaultCommand(new LED_DoNothing());
     }
     
     /**

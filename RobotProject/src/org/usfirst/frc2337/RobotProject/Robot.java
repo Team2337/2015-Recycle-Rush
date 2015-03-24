@@ -99,6 +99,7 @@ public class Robot extends IterativeRobot {
     	//SmartDashboard.putData		("Scheduled Commands", 			Scheduler.getInstance());
     	
     	//Chassis
+         SmartDashboard.putData(chassis);
         SmartDashboard.putNumber	("Chassis PID Setpoint", 			Robot.chassis.getSetpoint());
     	SmartDashboard.putNumber	("Chassis PID Position", 			Robot.chassis.getPosition());
     	SmartDashboard.putNumber	("Chassis Auton Encoder Position",	Robot.chassis.readAutonEncoder());
@@ -106,10 +107,17 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putBoolean	("Chassis Tote Sensor", 			Robot.chassis.isToteSensor());
     	
     	//Intake
+    	 SmartDashboard.putData(intakeExtendArms);	
+    	 SmartDashboard.putData(intakeOpenArms);	
+    	 SmartDashboard.putData(intakeMotors);
     	SmartDashboard.putBoolean	("Intake Extended", 			Robot.intakeExtendArms.getArmPosition());
     	SmartDashboard.putBoolean	("Intake Open", 				Robot.intakeOpenArms.getArmPosition());
     	
     	//Lift
+   	 	 SmartDashboard.putData(lift);
+    	 SmartDashboard.putData(metaTrolleyBrake);
+    	 SmartDashboard.putData(metaTrolleyGrabber);
+    	 SmartDashboard.putData(led);
     	SmartDashboard.putBoolean	("Practice Bot Positions",		Robot.lift.isCompetitionBot());
     	//SmartDashboard.putNumber	("Lift Variable: Base", 		Robot.lift.base);
     	//SmartDashboard.putNumber	("Lift Variable: Tote", 		Robot.lift.tote);
@@ -118,6 +126,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber	("Lift New Position",			Robot.lift.getPosition());
         
         //Kicker
+   	 	 SmartDashboard.putData(kicker);
         SmartDashboard.putBoolean	("Kicker Position", 			Robot.kicker.getPosition());
         //SmartDashboard.putBoolean	("Kicker AutoKick",				Robot.kicker.isAutoKick());
         

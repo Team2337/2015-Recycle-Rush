@@ -20,7 +20,7 @@ public class IntakeExtendArms extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new INTAKE_ExtendArms_DoNothing());
+    	//setDefaultCommand(new INTAKE_ExtendArms_DoNothing());
     }
 
     /**

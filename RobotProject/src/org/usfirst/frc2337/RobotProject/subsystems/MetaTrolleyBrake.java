@@ -19,7 +19,7 @@ public class MetaTrolleyBrake extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());\
-    	setDefaultCommand(new MetaTrolleyBrake_DoNothing());
+    	//setDefaultCommand(new MetaTrolleyBrake_DoNothing());
     }
     /**
      * Sets the MetaTrolley brake on.
