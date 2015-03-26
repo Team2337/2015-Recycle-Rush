@@ -28,7 +28,7 @@ public class Auton_Summary_TheBigFinish extends CommandGroup {
     	
 
 
-       	addSequential(new AutonEncoderStrafeIn(0.8, -300));
+       	addSequential(new AutonEncoderStrafeIn(1.0, -300)); 		//.8
     	addSequential(new Auton_ActivateMotors(0,0));
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//		STILL NEED ????
     	addSequential(new AutonEncoderStrafeIn(0.8, -750));

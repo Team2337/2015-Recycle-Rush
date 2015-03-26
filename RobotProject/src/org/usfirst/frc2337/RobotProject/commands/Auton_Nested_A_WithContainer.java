@@ -24,7 +24,7 @@ public class Auton_Nested_A_withContainer extends CommandGroup {
     public  Auton_Nested_A_withContainer() {
 
     	//setTimeout(14.5);											// set Auton timer here
-    	setTimeout(15);											// set Auton timer here
+    	setTimeout(14.6);											// set Auton timer here
     	
     	addSequential(new ResetGyro());
     	addSequential(new ResetEncoder());

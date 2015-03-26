@@ -156,7 +156,7 @@ public class Lift extends PIDSubsystem {
     // Initialize your subsystem here
     public Lift() {
 
-        super("Lift", 2.0, 0.0, 0.0);
+        super("Lift", 4.0, 0.0, 0.0);
         setAbsoluteTolerance(setPointTolerance);
         getPIDController().setContinuous(false);
         LiveWindow.addActuator("Lift", "PIDSubsystem Controller", getPIDController());   

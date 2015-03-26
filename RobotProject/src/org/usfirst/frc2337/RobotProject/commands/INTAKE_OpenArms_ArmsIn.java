@@ -50,6 +50,7 @@ public class  INTAKE_OpenArms_ArmsIn extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.intakeOpenArms.openArmsOut();
     }
 
     // Called when another command which requires one or more of the same

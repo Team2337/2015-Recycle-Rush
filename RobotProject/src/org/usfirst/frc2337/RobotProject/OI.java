@@ -120,15 +120,15 @@ public class OI {
         joystickDriver = new Joystick(0);
         
        
-        joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
-        joystickDriverButtonA.whenPressed(new MetaTrolleyBrake_Off());
+       // joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
+       // joystickDriverButtonA.whenPressed(new MetaTrolleyBrake_Off());
         //joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
        // joystickDriverButtonB.whenPressed(new MetaTrolleyGrabber_Open());
 
         
 
-        joystickDriverButtonX = new JoystickButton(joystickDriver, 3);
-        joystickDriverButtonX.whenPressed(new MetaTrolleyBrake_On());
+      //  joystickDriverButtonX = new JoystickButton(joystickDriver, 3);
+      //  joystickDriverButtonX.whenPressed(new MetaTrolleyBrake_On());
        // joystickDriverButtonY = new JoystickButton(joystickDriver, 4);
        // joystickDriverButtonY.whenPressed(new MetaTrolleyGrabber_Closed());
         /*
@@ -191,11 +191,13 @@ public class OI {
 
         //Operator Controls Blue button # 10
         operatorControlsBlueButton = new JoystickButton(operatorControls, 10);
-        operatorControlsBlueButton.whenPressed(new LIFT_PidSetBlueButton()); 
+        //operatorControlsBlueButton.whenPressed(new LIFT_PidSetBlueButton()); 
+        operatorControlsBlueButton.whenPressed(new MetaTrolleyBrake_On());
         
         //Operator Controls yellow button # 4
         operatorControlsYellowButton = new JoystickButton(operatorControls, 4);
-        operatorControlsYellowButton.whileHeld(new INTAKE_OutAndPull(leftPull,rightPull));        
+        //operatorControlsYellowButton.whileHeld(new INTAKE_OutAndPull(leftPull,rightPull));        
+        operatorControlsYellowButton.whenPressed(new MetaTrolleyBrake_Off());
         
         
         // **************************  Leave 5 an 6 alone, these are both being called by the rocker switch.  ****************
@@ -229,7 +231,7 @@ public class OI {
         
         operatorControlsTest1 = new JoystickButton(operatorControls, 1);
         operatorControlsTest1.whenPressed(new LIFT_PidSetMinusRelative());
-        SmartDashboard.putData("Minus", new LIFT_PidSetMinusRelative());
+        SmartDashboard.putData("Arms Out", new INTAKE_OpenArms_ArmsOut());
         
         
         //############################################################################################################## 

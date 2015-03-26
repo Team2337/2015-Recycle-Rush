@@ -30,7 +30,7 @@ public class Auton_Summary_Initial_Block2 extends CommandGroup {
     	//addSequential(new AutonDriveAtSpeedForTimeGyro(-0.3, 0.11));	//drive back to clear can lid when lifting
     	
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos2));		//lift tote to position to clear can
-    	addSequential(new AutonEncoderStrafeOut(0.5, 10));				// changed at kettering for container arm
+    	addSequential(new AutonEncoderStrafeOut(0.8, 10));				// changed at kettering for container arm  0.5
     	//*****************MASK LACK OF STAFE ENCODER
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.5, 0.3));		//strafe in to set down tote 1 on tote 2
     	//addSequential(new AutonWait(1));								// STILL NEED??????
