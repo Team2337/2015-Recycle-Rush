@@ -29,7 +29,7 @@ public class Kicker extends Subsystem {
     public void kickOut() {
     	solenoid.set(DoubleSolenoid.Value.kForward);
     	stateOut = true;
-    	Robot.led.kickerLED(true);
+    	Robot.led.led(true);
     }
     /**
      * Sets the kicker to the in position.
@@ -37,7 +37,7 @@ public class Kicker extends Subsystem {
     public void kickIn() {
     	solenoid.set(DoubleSolenoid.Value.kReverse);
     	stateOut = false;
-    	Robot.led.kickerLED(false);
+    	Robot.led.led(false);
     }
     /**
      * Returns the position of the kicker

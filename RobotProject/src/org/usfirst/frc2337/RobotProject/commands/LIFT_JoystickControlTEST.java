@@ -18,11 +18,11 @@ import org.usfirst.frc2337.RobotProject.RobotMap;
 /**
  *
  */
-public class  LIFT_JoystickControl extends Command {
+public class  LIFT_JoystickControlTEST extends Command {
 
 	public boolean setPointSet = false;
 	
-    public LIFT_JoystickControl() {
+    public LIFT_JoystickControlTEST() {
         // Use requires() here to declare subsystem dependencies
     	requires(Robot.lift);
     }
@@ -39,16 +39,22 @@ public class  LIFT_JoystickControl extends Command {
     	liftJoystickY = -liftJoystickY;
     	
     	//Check the joystick for a dead band, if in do...
-    	if ((liftJoystickY > -.1 ) && (liftJoystickY < .1)) { //Dead band
+    	if ((liftJoystickY > -.19 ) && (liftJoystickY < .19)) { //Dead band
     		
     		liftJoystickY = 0;  //Set Motor to 0 if in dead band
     		//If setPointSet, is not set (so false), run this ONCE and
     		//enable the Lift PID and set the PID to where the lift is
     		if (!setPointSet) {
+    			if (!Robot.lift.getPIDStatus()){
     			Robot.lift.enable(); //Enable Lift Pid
     			Robot.lift.setSetpoint(Robot.lift.getPosition()); //Set the Lift
     			//Make setPointSet true so this statement true so it won't loop
     			setPointSet = true; 
+    			} else {
+    				RobotMap.masterliftMotor.set(0);
+    			}
+    			
+    		
     		}
     	} else {		//If the Joystick is out of the dead band, do..
     		Robot.lift.disable(); //Disable the Lift PID
@@ -77,8 +83,10 @@ public class  LIFT_JoystickControl extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	RobotMap.masterliftMotor.set(0);
+    	if (!Robot.lift.getPIDStatus()){
     	Robot.lift.enable();
 		Robot.lift.setSetpoint(Robot.lift.getPosition());
+    	}
     }
 
     // Called when another command which requires one or more of the same

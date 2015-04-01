@@ -33,8 +33,8 @@ public class Lift extends PIDSubsystem {
     
 
 
-    double liftTopLimit = 8.1;
-    double liftBottomLimit = 0.80;
+    public double liftTopLimit = 7.76;			//   From 8.1 before Grabber
+    public double liftBottomLimit = 0.82;		// Changed for Comp bot from .80 to compensate for roller wheels.
 	
     //Make an array for the positions
     /** Defines the array for the teleop lift set positions */
@@ -211,7 +211,7 @@ public class Lift extends PIDSubsystem {
 
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        setDefaultCommand(new LIFT_JoystickControl());
+        setDefaultCommand(new LIFT_JoystickControlTEST());
     }
     
     protected double returnPIDInput() {
@@ -267,12 +267,14 @@ public class Lift extends PIDSubsystem {
      */
     public void stopPID(){
     	this.PIDStatus = true;
+    	this.disable();
     }
     /**
      * Enables the PID subsystem on the lift.
      */
     public void startPID() {
     	this.PIDStatus = false;
+    	this.enable();
     }
     //Return the PID when needed to another command.
     /**

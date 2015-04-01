@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.*;
  */
 public class LED extends Subsystem {
 	
-	Solenoid kickerLED = RobotMap.ledKicker;
+	Solenoid LED = RobotMap.led; 
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -22,7 +22,7 @@ public class LED extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	//setDefaultCommand(new LED_Auto());
-    	//setDefaultCommand(new LED_DoNothing());
+    	setDefaultCommand(new LED_Default());
     }
     
     /**
@@ -30,8 +30,8 @@ public class LED extends Subsystem {
      * @param on  Set to true if the LED is on
      * Accepts boolean
      */
-    public void kickerLED(boolean on) {
-    	kickerLED.set(on);
+    public void led(boolean on) {
+    	LED.set(on);
     }
     
 }

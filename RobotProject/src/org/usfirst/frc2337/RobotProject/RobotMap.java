@@ -58,7 +58,7 @@ public class RobotMap {
     public static AnalogPotentiometer liftPotentiometer;
     
     //MetaTrolley									=====================================================
-    public static DoubleSolenoid metaTrolleyBrakeSolenoid;
+    public static Solenoid metaTrolleyBrakeSolenoid;
     public static DoubleSolenoid metaTrolleyGrabberSolenoid;
       
     
@@ -79,13 +79,15 @@ public class RobotMap {
     //ContainerArm and Extension (Solenoid)
     public static CANTalon containerArmMotor;  
     public static AnalogPotentiometer armPotentiometer;
-    //public static Solenoid containerSolenoid1;
+    
+    //Multi Purpose container solenoid.
+    public static Solenoid containerSolenoid1;
     
     //////////
     // LEDS //
     //////////
     //LED to show whether the kicker is out or in.
-    public static Solenoid ledKicker;
+    public static Solenoid led;
 
     public static Solenoid testled;
 
@@ -120,6 +122,8 @@ public class RobotMap {
         LiveWindow.addActuator("chassis", "backLeft", (VictorSP) chassisbackLeft);
         chassisbackRight = new VictorSP(3);
         LiveWindow.addActuator("chassis", "backRight", (VictorSP) chassisbackRight);
+        
+
         
         chassisrobotDrive = new RobotDrive(chassisfrontLeft, chassisbackLeft, chassisfrontRight, chassisbackRight);
         
@@ -180,9 +184,9 @@ public class RobotMap {
         armPotentiometer = new AnalogPotentiometer(0, 10.0, 0.068);			//settings ok????
         LiveWindow.addSensor("ContainerArmLift", "Potentiometer", liftPotentiometer);
         
-        
-    	//containerSolenoid1 = new Solenoid(0,3);
-    	//LiveWindow.addActuator("ContainerArmLift", "Container Arm Extender", containerSolenoid1);
+        //Multipurpose Container Grabber
+    	containerSolenoid1 = new Solenoid(0,0);
+    	LiveWindow.addActuator("MultiPurposeContainerGrabber", "Multi Purpose Container grabber", containerSolenoid1);
         
         
         //Kicker Solenoid
@@ -190,9 +194,9 @@ public class RobotMap {
         LiveWindow.addActuator("Kicker", "Solenoid", kickerSolenoid);
         
         //Grabber Arm Solenoids
-        metaTrolleyBrakeSolenoid = new DoubleSolenoid(0,3,2);
+        metaTrolleyBrakeSolenoid = new Solenoid(0,3);
         LiveWindow.addActuator("Meta Trolley Brake", "Solenoid", metaTrolleyBrakeSolenoid);
-        metaTrolleyGrabberSolenoid = new DoubleSolenoid(0,1,0);
+        metaTrolleyGrabberSolenoid = new DoubleSolenoid(0,1,2);
         LiveWindow.addActuator("Meta Trolley Grabber", "Solenoid", metaTrolleyGrabberSolenoid);
 
         //Intake Solenoids
@@ -212,8 +216,8 @@ public class RobotMap {
 
         
         //LEDs initialized as pneumatics, as we are putting them in the pneumatics module.
-        ledKicker = new Solenoid(2,1);
-        LiveWindow.addActuator("LED", "Kicker", ledKicker);
+        led = new Solenoid(2,0);
+        LiveWindow.addActuator("LED", "ledr", led);
         
 
         
@@ -232,6 +236,13 @@ public class RobotMap {
         //Power Distribution Board
         pdp = new PowerDistributionPanel();
         LiveWindow.addSensor("Lift", "PDP1", pdp);
+        
+
+
+
+
+        
+        
         
         //usbCamera1 = CameraServer.getInstance();
         //usbCamera1.setQuality(50);

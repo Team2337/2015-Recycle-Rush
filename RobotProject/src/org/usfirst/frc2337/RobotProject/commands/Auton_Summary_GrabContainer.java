@@ -23,7 +23,7 @@ public class Auton_Summary_GrabContainer extends CommandGroup {
 
     	addSequential(new MetaTrolleyGrabber_Closed());					//Grab the can
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos14));	//Raise the can
-    	addParallel(new MetaTrolleyBrake_On());
+    	//addParallel(new MetaTrolleyBrake_On());
     	addSequential(new Auton_ChassisPidSet(-135));					//Drive to 1st tote
     	
     	//addParallel(new INTAKE_OpenArms_ArmsOut());					//Enable the arm intake

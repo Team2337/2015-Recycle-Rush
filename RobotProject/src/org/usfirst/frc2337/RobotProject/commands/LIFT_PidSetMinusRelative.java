@@ -22,23 +22,23 @@ import org.usfirst.frc2337.RobotProject.RobotMap;
 public class  LIFT_PidSetMinusRelative extends Command {
 	
 	public double setpoint;
+	
+	/**
+	 * Resets the Lift setpoint to a relative value from the current set point. 
+	 * @param setpoint double value of the relative PID position. Positive or negative.
+	 */
 
-   
-
-    public LIFT_PidSetMinusRelative() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	//requires(Robot.chassis);
+    public LIFT_PidSetMinusRelative(double setpoint) {
     	requires(Robot.lift);
-    	
+    	this.setpoint = setpoint;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() { 
-
-    	Robot.lift.setSetpointRelative(0.4);
-    	//Robot.lift.setSetpoint(Robot.lift.getPosition() - 1.0);
-
+    	if (Robot.lift.getPosition() > 2.19) {
+    	Robot.lift.getPIDController().setInputRange(2.19, Robot.lift.liftTopLimit);
+    	}
+    	Robot.lift.setSetpointRelative(setpoint);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -49,13 +49,11 @@ public class  LIFT_PidSetMinusRelative extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	 return (Robot.lift.onTarget());
-   	 
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	
-
+    	Robot.lift.getPIDController().setInputRange( Robot.lift.liftBottomLimit, Robot.lift.liftTopLimit);
     }
 
     // Called when another command which requires one or more of the same

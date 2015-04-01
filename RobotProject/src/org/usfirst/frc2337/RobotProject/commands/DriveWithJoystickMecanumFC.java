@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc2337.RobotProject.Robot;
+import org.usfirst.frc2337.RobotProject.RobotMap;
 
 /**
  * Drive with a mecanum-style drive. The joystick is setup as a
@@ -23,12 +24,12 @@ import org.usfirst.frc2337.RobotProject.Robot;
  * stick, left and right, is used for rotation; and the triggers
  * are used for strafing.
  */
-public class  DriveWithJoystickMecanum extends Command {
+public class  DriveWithJoystickMecanumFC extends Command {
 
-	private Joystick joystickDriver = Robot.oi.joystickDriver;
+	public Joystick joystickDriverFC = Robot.oi.joystickDriver;
 	private double threshold = 0.1;
 	
-    public DriveWithJoystickMecanum() {
+    public DriveWithJoystickMecanumFC() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 
@@ -44,9 +45,10 @@ public class  DriveWithJoystickMecanum extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double moveValue = joystickDriver.getRawAxis(1);
-    	double strafeValue = joystickDriver.getRawAxis(3) - joystickDriver.getRawAxis(2);
-    	double rotateValue = joystickDriver.getRawAxis(4);
+    	double moveValue = joystickDriverFC.getRawAxis(1);
+    	double strafeValue = joystickDriverFC.getRawAxis(3) - joystickDriverFC.getRawAxis(2);
+    	double rotateValue = joystickDriverFC.getRawAxis(4);
+    	double gyro = RobotMap.imu.getYaw();
     	
     	//Set the values to 0 if the input is below threshold
     	if (Math.abs(moveValue) < threshold) {
@@ -75,11 +77,8 @@ public class  DriveWithJoystickMecanum extends Command {
         } else {
             rotateValue = -(rotateValue * rotateValue);
         }
-      // if (Robot.oi.operatorControlsKickToggle.get())  {
-       // 	Robot.chassis.driveMecanum(moveValue, strafeValue, rotateValue, RobotMap.igyro);
-      //  } else  {
-        Robot.chassis.driveMecanum(moveValue, strafeValue, rotateValue);
-     //   }
+        
+        Robot.chassis.driveMecanumFC(moveValue, strafeValue, rotateValue, gyro);
     }
 
     // Make this return true when this Command no longer needs to run execute()

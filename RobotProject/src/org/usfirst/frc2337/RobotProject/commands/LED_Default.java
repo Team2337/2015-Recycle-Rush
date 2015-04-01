@@ -1,34 +1,53 @@
 package org.usfirst.frc2337.RobotProject.commands;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
+
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc2337.RobotProject.Robot;
+import org.usfirst.frc2337.RobotProject.RobotMap;
 
 /**
- * The KICKER_KickOut Class retracts the lift kicker
+ *
  */
-public class KICKER_KickIn extends Command {
+public class  LED_Default extends Command {
+	
+	int i;
 
-    public KICKER_KickIn() {
+    public LED_Default() {
         // Use requires() here to declare subsystem dependencies
-    	requires(Robot.kicker);
+        // eg. requires(chassis);
+    	//requires(Robot.chassis);
+    	requires(Robot.led);   	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    		//Robot.kicker.autoOff = true;
-    		Robot.kicker.solenoid.set(DoubleSolenoid.Value.kForward);
-    		Robot.kicker.stateOut = true;
-    		//Robot.led.kickerLED(false);
+    	i = 0;
+    	//RobotMap.led.set(true);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	/*
+    	if (i>100) {
+  
+    		RobotMap.led.set(false);
+    	}
+    	else {
+    		i++;
+    	}
+    	*/
+    	if (Robot.lift.getPosition() > .87) {
+    		RobotMap.led.set(false);
+    	} else {
+    		RobotMap.led.set(true);
+    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

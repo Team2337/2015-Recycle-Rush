@@ -10,41 +10,34 @@
 
 
 package org.usfirst.frc2337.RobotProject.commands;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
-import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc2337.RobotProject.Robot;
+/**
+ *
+ */
+public class BUTTON_KickIn_LiftDown extends CommandGroup {
+    
+    public  BUTTON_KickIn_LiftDown() {
+        // Add Commands here:
+        // e.g. addParallel(new Command1());
+        //      addSequential(new Command2());
 
-public class  LIFT_StartPID extends Command {
 
-	/**
-	 * Sets the Lift PID subsystem to enabled.
-	 */
-    public LIFT_StartPID() {
-        // Use requires() here to declare subsystem dependencies
-    	requires(Robot.lift);
+    	addSequential(new KICKER_KickIn());	
+    	addSequential(new AutonWait(.15));
+    	//addSequential(new LIFT_PidSet(0,1));
+    	addSequential(new LIFT_PidSetWithSpeed(0,1, 0.8,-0.9));
+   //	addSequential(new LED_TurnOn());
+
+	
     }
-
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    	Robot.lift.startPID();
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-
-    }
-
+    
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
     }
 }

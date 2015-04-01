@@ -55,8 +55,8 @@ public class OI {
     public Joystick joystickDriver;
     
     //Buttons for Operator Control Panel
-    public JoystickButton operatorControlsBase1;		//9
-    public JoystickButton operatorControlsBase2;		//8
+    public JoystickButton operatorControlsRightToggleDown;		//9
+    public JoystickButton operatorControlsRightToggleUp;		//8
     public JoystickButton operatorControlsBase3;		//7
     public JoystickButton operatorControlsLift0;
     public JoystickButton operatorControlsLift1;		//14
@@ -66,7 +66,7 @@ public class OI {
     public JoystickButton operatorControlsLift5;		//10
     public JoystickButton operatorControlsRockerCmdA;	//5
     public JoystickButton operatorControlsRockerCmdB;	//6
-    public JoystickButton operatorControlsKickToggle;
+    public JoystickButton operatorControlsLeftToggle;	//16
     public JoystickButton operatorControlsBlueButton;	//3
     public JoystickButton operatorControlsYellowButton;	//4
     
@@ -120,10 +120,10 @@ public class OI {
         joystickDriver = new Joystick(0);
         
        
-       // joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
-       // joystickDriverButtonA.whenPressed(new MetaTrolleyBrake_Off());
-        //joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
-       // joystickDriverButtonB.whenPressed(new MetaTrolleyGrabber_Open());
+       joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
+       joystickDriverButtonA.whenPressed(new MultiPurposeGrabber_Open());
+       joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
+       joystickDriverButtonB.whenPressed(new MultiPurposeGrabber_Close());
 
         
 
@@ -179,7 +179,9 @@ public class OI {
         
         //Lift Joystick base rear right
         liftJoystickButton11 = new JoystickButton(liftJoystick, 11);
-        liftJoystickButton11.whileHeld(new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
+        //liftJoystickButton11.whileHeld(new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
+        liftJoystickButton11.whenPressed(new BUTTON_ScoreWithoutLower());
+
         
 
         
@@ -190,12 +192,12 @@ public class OI {
         // Buttons 3 and 4
 
         //Operator Controls Blue button # 10
-        operatorControlsBlueButton = new JoystickButton(operatorControls, 10);
+        operatorControlsBlueButton = new JoystickButton(operatorControls, 4);
         //operatorControlsBlueButton.whenPressed(new LIFT_PidSetBlueButton()); 
         operatorControlsBlueButton.whenPressed(new MetaTrolleyBrake_On());
         
         //Operator Controls yellow button # 4
-        operatorControlsYellowButton = new JoystickButton(operatorControls, 4);
+        operatorControlsYellowButton = new JoystickButton(operatorControls, 10);
         //operatorControlsYellowButton.whileHeld(new INTAKE_OutAndPull(leftPull,rightPull));        
         operatorControlsYellowButton.whenPressed(new MetaTrolleyBrake_Off());
         
@@ -215,6 +217,14 @@ public class OI {
         //********************************************************************************************************************
         
         
+        operatorControlsRightToggleUp = new JoystickButton(operatorControls, 8);
+        operatorControlsRightToggleUp.whenPressed(new LIFT_StopPID());
+        operatorControlsRightToggleUp.whenReleased(new LIFT_StartPID());
+        
+        
+      // operatorControlsRightToggleDown = new JoystickButton(operatorControls, 9);
+      //  operatorControlsRightToggleDown.whileHeld(new LIFT_StartPID());
+        
         //  Operator Station Buttons 10 - 15  White, Green, and 4 Black buttons.
         
         //Operator controls top Black Button # 3
@@ -224,13 +234,13 @@ public class OI {
         
         //Operator controls yellow SCORE button
         operatorControlsLift4 = new JoystickButton(operatorControls, 11);
-        operatorControlsLift4.whenPressed(new ScoreButton());
+        operatorControlsLift4.whenPressed(new BUTTON_Score());
         
         //##############################################################################################################
-        SmartDashboard.putData("Score", new ScoreButton());
+        SmartDashboard.putData("Score", new BUTTON_Score());
         
         operatorControlsTest1 = new JoystickButton(operatorControls, 1);
-        operatorControlsTest1.whenPressed(new LIFT_PidSetMinusRelative());
+        operatorControlsTest1.whenPressed(new LIFT_PidSetMinusRelative(-0.8));
         SmartDashboard.putData("Arms Out", new INTAKE_OpenArms_ArmsOut());
         
         
@@ -247,11 +257,16 @@ public class OI {
         
         //Operator Controls Green button # 14
         operatorControlsLift1 = new JoystickButton(operatorControls, 14);
-        operatorControlsLift1.whenPressed(new LIFT_PidSet1stBlackButton());
+        operatorControlsLift1.whenPressed(new BUTTON_LiftUp_KickOut_LiftUp());
         
         //Operator Controls white button # 15
         operatorControlsLift0 = new JoystickButton(operatorControls, 15);
-        operatorControlsLift0.whileHeld(new LIFT_PidSetWhiteButton());
+        operatorControlsLift0.whileHeld(new BUTTON_KickIn_LiftDown());
+        
+        //Field Centric # 16
+        operatorControlsLeftToggle = new JoystickButton(operatorControls, 16);
+        operatorControlsLeftToggle.whileHeld(new AutonWait(.1));
+        //operatorControlsKickToggle.whileHeld(new LIFT_StopPID());
         
         /*  In case we bring back the container arm.
         

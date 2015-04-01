@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc2337.RobotProject.commands.*;
 import org.usfirst.frc2337.RobotProject.subsystems.*;
 
@@ -37,6 +38,7 @@ public class Robot extends IterativeRobot {
     
     public static MetaTrolleyBrake metaTrolleyBrake;		//====================================================
     public static MetaTrolleyGrabber metaTrolleyGrabber;
+    public static MultiPurposeContainerGrabber multiPurposeGrabber;
 
 
 
@@ -60,6 +62,9 @@ public class Robot extends IterativeRobot {
         
         metaTrolleyBrake = new MetaTrolleyBrake();			//============================================
         metaTrolleyGrabber = new MetaTrolleyGrabber();
+        multiPurposeGrabber = new MultiPurposeContainerGrabber();
+        
+        
 
         // OI must be constructed after subsystems. If the OI creates Commands 
         //(which it very likely will), subsystems are not guaranteed to be 
@@ -139,7 +144,16 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean(  "IMU_Connected",        RobotMap.imu.isConnected());
         SmartDashboard.putBoolean(  "IMU_IsCalibrating",    RobotMap.imu.isCalibrating());
         SmartDashboard.putNumber(   "IMU_Yaw",              RobotMap.imu.getYaw());
-
+        
+        SmartDashboard.putNumber("PDP chassisfrontLeft 0 ", RobotMap.pdp.getCurrent(0));
+        SmartDashboard.putNumber("PDP chassisbackLeft 1", RobotMap.pdp.getCurrent(1));
+        SmartDashboard.putNumber("PDP chassisfrontRight 2", RobotMap.pdp.getCurrent(2));
+        SmartDashboard.putNumber("PDP chassisbackRight 3",RobotMap. pdp.getCurrent(3));
+        
+        //Sticky faults
+      //  SmartDashboard.putBoolean("StickyFault?", RobotMap.containerSolenoid1.getPCMSolenoidVoltageStickyFault());
+      //  SmartDashboard.putData("Clear Sticky Faults", new ClearStickyFaults());
+        
         
     }
 

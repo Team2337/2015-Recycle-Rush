@@ -10,28 +10,31 @@ import edu.wpi.first.wpilibj.*;
 /**
  *
  */
-public class MetaTrolleyBrake extends Subsystem {
+public class MultiPurposeContainerGrabber extends Subsystem {
     
-	//public DigitalInput fingerSensor = RobotMap.kickerFingerSensor;
-	public Solenoid solenoidB = RobotMap.metaTrolleyBrakeSolenoid;
+
+	public Solenoid solenoidC = RobotMap.containerSolenoid1;
 
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());\
-    	//setDefaultCommand(new MetaTrolleyBrake_DoNothing());
+
+    	//setDefaultCommand(new DoNothing());
     }
     /**
      * Sets the MetaTrolley brake on.
      */
     public void on() {
-    	solenoidB.set(true);
+    	solenoidC.set(true);
     }
     /**
      * Sets the MetaTrolley brake off.
      */
     public void off() {
-    	solenoidB.set(false);
+    	solenoidC.set(false);
+    }
+    public void getState() {
+    	solenoidC.get();
+    
     }
 
 }

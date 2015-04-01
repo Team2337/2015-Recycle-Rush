@@ -32,7 +32,7 @@ public class Auton_Summary_GrabTote2 extends CommandGroup {
 
     	addParallel(new KICKER_KickIn());								//kicker already in?????????
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos4));		//set down tote and get ready to pick up 2nd tote
-    	addSequential(new AutonEncoderStrafeIn(0.5, -20));				//Changed 3/22 from -30    //Changed at kettering from -20
+    	addSequential(new AutonEncoderStrafeIn(0.5, -30));				//Changed 3/22 from -30    //Changed at kettering from -20
 
     	addParallel(new Auton_ActivateMotors(0,0));					//Moved from line 46
       	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos5));		//grab 2 tote stack

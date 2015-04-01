@@ -64,6 +64,7 @@ public class  INTAKE_CloseArms extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.intakeOpenArms.openArmsOut();
 
     }
 

@@ -133,6 +133,10 @@ public class ChassisPID extends PIDSubsystem {
     	robotDrive.mecanumDrive_Cartesian(strafeValue, moveValue, rotateValue, 0);
     }
     
+    public void driveMecanumFC(double moveValue, double strafeValue, double rotateValue, double gyro) {
+    	robotDrive.mecanumDrive_Cartesian(strafeValue, moveValue, rotateValue, gyro);
+    }
+    
     /**
      * Return whether the tote sensor has been triggered.
      * 
