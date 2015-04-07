@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.Timer;
 public class  Auton_ChassisPidSetWithToteSensor extends Command {
 
    double pidset; 
-   double totePosition = 148;
+   double totePosition = 152;
    
     public Auton_ChassisPidSetWithToteSensor(double pidset) {
     	this.pidset = pidset;

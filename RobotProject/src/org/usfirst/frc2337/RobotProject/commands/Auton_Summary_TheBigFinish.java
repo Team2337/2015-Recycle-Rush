@@ -28,11 +28,12 @@ public class Auton_Summary_TheBigFinish extends CommandGroup {
     	
 
 
-       	addSequential(new AutonEncoderStrafeIn(1.0, -300)); 		//.8
+       	addSequential(new AutonEncoderStrafeIn(1.0, -450)); 		//.8
     	addSequential(new Auton_ActivateMotors(0,0));
-
+    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos15));     //   commented out..................
+    	
     	addSequential(new MetaTrolleyBrake_On());
-    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//		STILL NEED ????
+    	//addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//		STILL NEED ????
     	addSequential(new AutonEncoderStrafeIn(0.8, -750));
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 2.4));		//strafe into the auton zone
     	
@@ -41,12 +42,13 @@ public class Auton_Summary_TheBigFinish extends CommandGroup {
     	//addSequential(new Auton_ActivateMotors(0,0));
     	
     	//addSequential(new AutonWait(0.2));							// Removed during testing.
-    	//========addParallel(new KICKER_KickIn());	//======================================================================
+    	addSequential(new KICKER_KickIn());								// commented out.......................
     	//addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));		//lower lift to release tote
     	
 
 
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos12));	//lower lift to ground to prepare for teleop
+    																	//COMMENTED OUT..........
     	
     	
     	addParallel(new INTAKE_OpenArms_ArmsIn());

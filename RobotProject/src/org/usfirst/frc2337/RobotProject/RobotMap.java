@@ -81,7 +81,7 @@ public class RobotMap {
     public static AnalogPotentiometer armPotentiometer;
     
     //Multi Purpose container solenoid.
-    public static Solenoid containerSolenoid1;
+   // public static Solenoid containerSolenoid1;
     
     //////////
     // LEDS //
@@ -185,8 +185,8 @@ public class RobotMap {
         LiveWindow.addSensor("ContainerArmLift", "Potentiometer", liftPotentiometer);
         
         //Multipurpose Container Grabber
-    	containerSolenoid1 = new Solenoid(0,0);
-    	LiveWindow.addActuator("MultiPurposeContainerGrabber", "Multi Purpose Container grabber", containerSolenoid1);
+    	//containerSolenoid1 = new Solenoid(0,0);
+    	//LiveWindow.addActuator("MultiPurposeContainerGrabber", "Multi Purpose Container grabber", containerSolenoid1);
         
         
         //Kicker Solenoid

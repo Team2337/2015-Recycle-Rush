@@ -38,7 +38,7 @@ public class Robot extends IterativeRobot {
     
     public static MetaTrolleyBrake metaTrolleyBrake;		//====================================================
     public static MetaTrolleyGrabber metaTrolleyGrabber;
-    public static MultiPurposeContainerGrabber multiPurposeGrabber;
+    //public static MultiPurposeContainerGrabber multiPurposeGrabber;
 
 
 
@@ -62,7 +62,7 @@ public class Robot extends IterativeRobot {
         
         metaTrolleyBrake = new MetaTrolleyBrake();			//============================================
         metaTrolleyGrabber = new MetaTrolleyGrabber();
-        multiPurposeGrabber = new MultiPurposeContainerGrabber();
+        //multiPurposeGrabber = new MultiPurposeContainerGrabber();
         
         
 
@@ -112,17 +112,17 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putBoolean	("Chassis Tote Sensor", 			Robot.chassis.isToteSensor());
     	
     	//Intake
-    	 SmartDashboard.putData(intakeExtendArms);	
-    	 SmartDashboard.putData(intakeOpenArms);	
-    	 SmartDashboard.putData(intakeMotors);
+    	 //SmartDashboard.putData(intakeExtendArms);	
+    	 //SmartDashboard.putData(intakeOpenArms);	
+    	 //SmartDashboard.putData(intakeMotors);
     	SmartDashboard.putBoolean	("Intake Extended", 			Robot.intakeExtendArms.getArmPosition());
     	SmartDashboard.putBoolean	("Intake Open", 				Robot.intakeOpenArms.getArmPosition());
     	
     	//Lift
-   	 	 SmartDashboard.putData(lift);
-    	 SmartDashboard.putData(metaTrolleyBrake);
-    	 SmartDashboard.putData(metaTrolleyGrabber);
-    	 SmartDashboard.putData(led);
+   	 	 //SmartDashboard.putData(lift);
+    	 //SmartDashboard.putData(metaTrolleyBrake);
+    	 //SmartDashboard.putData(metaTrolleyGrabber);
+    	 //SmartDashboard.putData(led);
     	SmartDashboard.putBoolean	("Practice Bot Positions",		Robot.lift.isCompetitionBot());
     	//SmartDashboard.putNumber	("Lift Variable: Base", 		Robot.lift.base);
     	//SmartDashboard.putNumber	("Lift Variable: Tote", 		Robot.lift.tote);
@@ -131,7 +131,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber	("Lift New Position",			Robot.lift.getPosition());
         
         //Kicker
-   	 	 SmartDashboard.putData(kicker);
+   	 	 //SmartDashboard.putData(kicker);
         SmartDashboard.putBoolean	("Kicker Position", 			Robot.kicker.getPosition());
         //SmartDashboard.putBoolean	("Kicker AutoKick",				Robot.kicker.isAutoKick());
         
@@ -145,15 +145,21 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean(  "IMU_IsCalibrating",    RobotMap.imu.isCalibrating());
         SmartDashboard.putNumber(   "IMU_Yaw",              RobotMap.imu.getYaw());
         
-        SmartDashboard.putNumber("PDP chassisfrontLeft 0 ", RobotMap.pdp.getCurrent(0));
-        SmartDashboard.putNumber("PDP chassisbackLeft 1", RobotMap.pdp.getCurrent(1));
-        SmartDashboard.putNumber("PDP chassisfrontRight 2", RobotMap.pdp.getCurrent(2));
-        SmartDashboard.putNumber("PDP chassisbackRight 3",RobotMap. pdp.getCurrent(3));
+        //SmartDashboard.putNumber("PDP chassisfrontLeft 0 ", RobotMap.pdp.getCurrent(0));
+        //SmartDashboard.putNumber("PDP chassisbackLeft 1", RobotMap.pdp.getCurrent(1));
+        //SmartDashboard.putNumber("PDP chassisfrontRight 2", RobotMap.pdp.getCurrent(2));
+        //SmartDashboard.putNumber("PDP chassisbackRight 3",RobotMap. pdp.getCurrent(3));
+        
+        
+        //SmartDashboard.putData("Container Hugger Up", new MultiPurposeGrabber_Open());
         
         //Sticky faults
       //  SmartDashboard.putBoolean("StickyFault?", RobotMap.containerSolenoid1.getPCMSolenoidVoltageStickyFault());
       //  SmartDashboard.putData("Clear Sticky Faults", new ClearStickyFaults());
-        
+
+        SmartDashboard.putNumber("Drive Speed", Robot.oi.joystickDriver.getRawAxis(1));
+        SmartDashboard.putNumber("Strafe Speed", Robot.oi.joystickDriver.getRawAxis(3) - Robot.oi.joystickDriver.getRawAxis(2));
+        SmartDashboard.putNumber("Rotate Speed", Robot.oi.joystickDriver.getRawAxis(4));
         
     }
 
@@ -198,6 +204,7 @@ public class Robot extends IterativeRobot {
     	Robot.chassis.disable();
     	Robot.lift.setTeleopLiftSpeed();
     	Robot.containerArmLift.enable();
+    	//Robot.multiPurposeGrabber.on();
 
     }
 

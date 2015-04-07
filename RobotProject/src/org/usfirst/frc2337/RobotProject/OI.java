@@ -69,6 +69,7 @@ public class OI {
     public JoystickButton operatorControlsLeftToggle;	//16
     public JoystickButton operatorControlsBlueButton;	//3
     public JoystickButton operatorControlsYellowButton;	//4
+    public JoystickButton operatorControlsTopWhiteButton;
     
     public JoystickButton operatorControlsTest1;	
     public JoystickButton operatorControlsTest2;	
@@ -121,9 +122,9 @@ public class OI {
         
        
        joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
-       joystickDriverButtonA.whenPressed(new MultiPurposeGrabber_Open());
-       joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
-       joystickDriverButtonB.whenPressed(new MultiPurposeGrabber_Close());
+       joystickDriverButtonA.whenPressed(new AutonEncoderStrafeOutB(0.5,40));
+       //joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
+      // joystickDriverButtonB.whenPressed(new MultiPurposeGrabber_Close());
 
         
 
@@ -236,6 +237,9 @@ public class OI {
         operatorControlsLift4 = new JoystickButton(operatorControls, 11);
         operatorControlsLift4.whenPressed(new BUTTON_Score());
         
+        operatorControlsTopWhiteButton = new JoystickButton(operatorControls, 18);
+        operatorControlsTopWhiteButton.whenPressed(new BUTTON_ScoreWithoutLower());
+        
         //##############################################################################################################
         SmartDashboard.putData("Score", new BUTTON_Score());
         
@@ -283,7 +287,6 @@ public class OI {
         operatorControlsBase3.whileHeld(new CONTAINERARM_DisablePID());
         
         */
-
 
     }
     

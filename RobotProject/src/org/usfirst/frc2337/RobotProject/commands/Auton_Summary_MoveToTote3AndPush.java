@@ -23,7 +23,7 @@ public class Auton_Summary_MoveToTote3AndPush extends CommandGroup {
 
     	
     	//PICK UP 2 TOTE STACK
-    	addParallel(new KICKER_KickOut());								//deploy kicker
+    	addSequential(new KICKER_KickOut());								//deploy kicker
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos6));		//pick up 2 tote stack
     	
      	//RESET ENCODER
@@ -41,7 +41,7 @@ public class Auton_Summary_MoveToTote3AndPush extends CommandGroup {
     	
     	//DRIVE TO TOTE 3
     	//addSequential(new AutonDriveForEncoderGyroIterative(290));			//Ramp up speed and drive past container
-    	addSequential(new AutonDriveForTimeGyroIterative(1.05));			//Ramp up speed and drive past container
+    	addSequential(new AutonDriveForTimeGyroIterative(1.20));			//Ramp up speed and drive past container
 
     	addSequential(new Auton_ChassisPidSetWithToteSensor(560));		//Drive to next tote with sensor
 

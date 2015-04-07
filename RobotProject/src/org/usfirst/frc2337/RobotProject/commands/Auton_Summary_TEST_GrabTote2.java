@@ -21,11 +21,11 @@ public class Auton_Summary_TEST_GrabTote2 extends CommandGroup {
     
     public  Auton_Summary_TEST_GrabTote2() {
 
-    	
+/*    	
     	addParallel(new INTAKE_OpenArms_ArmsOut());
     	addSequential(new INTAKE_ExtendArms_ArmsOut());
     	addSequential(new Auton_ActivateMotors(-1,1));
-    	
+*/    	
     	
        	//SET DOWN TOTE 1 ON TOTE 2
     	//addSequential(new AutonEncoderStrafeIn(0.5, 1));
@@ -33,13 +33,14 @@ public class Auton_Summary_TEST_GrabTote2 extends CommandGroup {
     	addParallel(new KICKER_KickIn());								//release kicker to nest tote
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos4));		//set down tote and get ready to pick up 2nd tote  pos4 .85
     	addSequential(new AutonEncoderStrafeIn(0.4, -20));				//Changed at kettering from -20
-
+/*
     	addSequential(new Auton_ActivateMotors(0,0));					//Moved from line 46
-      	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos5));		//grab 2 tote stack
-
+*/
+    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos5));		//grab 2 tote stack
+/*
     	addSequential(new INTAKE_OpenArms_ArmsIn());
     	addSequential(new INTAKE_ExtendArms_ArmsIn());
-      	
+*/      	
     	addSequential(new ChassisDisable());
     	addSequential(new AutonDriveAtSpeedForTimeGyro(-0.3, 0.3));		//drive back to clear can lid when lifting
     	

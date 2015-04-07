@@ -31,7 +31,7 @@ public class Auton_Summary_GrabContainer extends CommandGroup {
     	//addParallel(new Auton_ActivateMotors(-1,1));
     	
     	//addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos4));		//Lower lift to pick up 1st tote
-    	addSequential(new AutonEncoderStrafeIn(0.5, -45));				//Strafe in to tote
+    	addSequential(new AutonEncoderStrafeIn(0.5, -35));				//Strafe in to tote
 
     	addParallel(new INTAKE_OpenArms_ArmsOut());						//Enable the arm intake
     	addParallel(new INTAKE_ExtendArms_ArmsOut());
@@ -40,7 +40,7 @@ public class Auton_Summary_GrabContainer extends CommandGroup {
     	
     	addSequential(new AutonWait(0.3));
     	
-    	addParallel(new MetaTrolleyBrake_Off());
+    	//addParallel(new MetaTrolleyBrake_Off());
     	addParallel(new KICKER_KickOut());
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));   	//Lift tote to position 1
     	
