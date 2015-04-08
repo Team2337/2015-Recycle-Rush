@@ -181,7 +181,7 @@ public class OI {
         //Lift Joystick base rear right
         liftJoystickButton11 = new JoystickButton(liftJoystick, 11);
         //liftJoystickButton11.whileHeld(new INTAKE_ActivateMotors(leftSlowPull,rightSlowPull));
-        liftJoystickButton11.whenPressed(new BUTTON_ScoreWithoutLower());
+        liftJoystickButton11.whenPressed(new BUTTON_Score());
 
         
 
@@ -235,10 +235,10 @@ public class OI {
         
         //Operator controls yellow SCORE button
         operatorControlsLift4 = new JoystickButton(operatorControls, 11);
-        operatorControlsLift4.whenPressed(new BUTTON_Score());
+        operatorControlsLift4.whenPressed(new BUTTON_ScoreWithoutLower());
         
         operatorControlsTopWhiteButton = new JoystickButton(operatorControls, 18);
-        operatorControlsTopWhiteButton.whenPressed(new BUTTON_ScoreWithoutLower());
+        operatorControlsTopWhiteButton.whenPressed(new BUTTON_Score());
         
         //##############################################################################################################
         SmartDashboard.putData("Score", new BUTTON_Score());

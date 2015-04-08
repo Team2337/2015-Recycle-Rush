@@ -77,11 +77,11 @@ public class Robot extends IterativeRobot {
         autonChooser.addObject("Move 1 Container to Auton Zone", new Auton_OneContainer());
         autonChooser.addObject("Move 1 Tote to Auton Zone", new Auton_1Tote());
         autonChooser.addObject("Grab Container First Pre Troy", new Auton_Nested_A_WithContainerPreTroy());
-        autonChooser.addObject("Grab Container First Post Troy", new Auton_SummaryPostTroy());
-        autonChooser.addDefault("Grab Container First", new Auton_Nested_A_WithContainer());
-      //  autonChooser.addObject("COMP - Move 3 Totes J Kettering BLUE", new Auton_3ToteJ_COMP_Kettering_BLUE());
-        //autonChooser.addObject("COMP - Move 3 Totes J AFTER Kettering TEST", new Auton_3ToteJ_After_Kettering());
-        autonChooser.addObject("Move 3 Summary with arms", new Auton_Nested_A());
+        autonChooser.addObject("Grab Container First", new Auton_Nested_A_WithContainer());
+         //autonChooser.addObject("COMP - Move 3 Totes J Kettering BLUE", new Auton_3ToteJ_COMP_Kettering_BLUE());
+         //autonChooser.addObject("COMP - Move 3 Totes J AFTER Kettering TEST", new Auton_3ToteJ_After_Kettering());
+         //autonChooser.addObject("Move 3 Summary with arms", new Auton_Nested_A());
+        autonChooser.addDefault("Grab Container First Post Troy", new Auton_SummaryPostTroy());
       
 
        // autonChooser.addObject("TEST - Move 3 Summary with arms", new Auton_Nested_A_TEST());
