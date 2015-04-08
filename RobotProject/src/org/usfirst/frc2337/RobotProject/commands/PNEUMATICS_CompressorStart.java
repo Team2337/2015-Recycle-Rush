@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.*;
 /**
  *
  */
-public class Pneumatics_CompressorStart extends Command {
+public class PNEUMATICS_CompressorStart extends Command {
 	
 	Compressor compressor = RobotMap.pneumaticsCompressor;
 
-    public Pneumatics_CompressorStart() {
+    public PNEUMATICS_CompressorStart() {
         // Use requires() here to declare subsystem dependencies
     	requires (Robot.pneumatics);
     }

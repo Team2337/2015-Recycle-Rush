@@ -53,7 +53,7 @@ public class  Auton_ChassisPidSetWithToteSensor extends Command {
     protected boolean isFinished() {
     	// return (Robot.chassis.onTarget() || Robot.chassis.isToteSensor());
     	//return (Robot.chassis.onTarget());
-    		return ((Robot.chassis.isToteSensor() && Robot.chassis.getPosition() > 200));
+    		return (Robot.chassis.isToteSensor() && (Robot.chassis.getPosition() > 200));
     }
 
     // Called once after isFinished returns true

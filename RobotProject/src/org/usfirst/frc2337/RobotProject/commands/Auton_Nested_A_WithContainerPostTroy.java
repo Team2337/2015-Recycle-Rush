@@ -19,9 +19,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *  With Strafe Encoder, Acceleration Profile, Tuned PID on drive encoder, and Gyro(IMU).
  */
-public class Auton_Nested_A_WithContainer extends CommandGroup {
+public class Auton_Nested_A_WithContainerPostTroy extends CommandGroup {
 	
-    public  Auton_Nested_A_WithContainer() {
+    public  Auton_Nested_A_WithContainerPostTroy() {
 
     	//setTimeout(14.5);											// set Auton timer here
     	setTimeout(14.6);											// set Auton timer here
