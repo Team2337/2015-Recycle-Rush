@@ -31,8 +31,6 @@ public class Robot extends IterativeRobot {
     public static Pneumatics pneumatics;
     public static IntakeExtendArms intakeExtendArms;
     public static Kicker kicker;
-    public static ContainerArmLift containerArmLift;
-    public static ContainerArmExtension conExtension;
     public static LED led;
     public static IntakeOpenArms intakeOpenArms;
     
@@ -55,8 +53,6 @@ public class Robot extends IterativeRobot {
         pneumatics = new Pneumatics();
         intakeExtendArms = new IntakeExtendArms();
         kicker = new Kicker();
-        containerArmLift = new ContainerArmLift();
-        conExtension = new ContainerArmExtension();
         led = new LED();
         intakeOpenArms = new IntakeOpenArms();
         
@@ -80,11 +76,15 @@ public class Robot extends IterativeRobot {
         autonChooser.addObject("Drive To Auton Zone with PID", new Auton_DriveToAutonZone());
         autonChooser.addObject("Move 1 Container to Auton Zone", new Auton_OneContainer());
         autonChooser.addObject("Move 1 Tote to Auton Zone", new Auton_1Tote());
+        autonChooser.addObject("Grab Container First Pre Troy", new Auton_Nested_A_WithContainerPreTroy());
+        autonChooser.addObject("Grab Container First Post Troy", new Auton_SummaryPostTroy());
         autonChooser.addDefault("Grab Container First", new Auton_Nested_A_WithContainer());
       //  autonChooser.addObject("COMP - Move 3 Totes J Kettering BLUE", new Auton_3ToteJ_COMP_Kettering_BLUE());
-        autonChooser.addObject("COMP - Move 3 Totes J AFTER Kettering TEST", new Auton_3ToteJ_After_Kettering());
-        autonChooser.addObject("TEST - Move 3 Summary with arms", new Auton_Nested_A());
-        autonChooser.addObject("TEST - Move 3 Summary with arms", new Auton_Nested_A_TEST());
+        //autonChooser.addObject("COMP - Move 3 Totes J AFTER Kettering TEST", new Auton_3ToteJ_After_Kettering());
+        autonChooser.addObject("Move 3 Summary with arms", new Auton_Nested_A());
+      
+
+       // autonChooser.addObject("TEST - Move 3 Summary with arms", new Auton_Nested_A_TEST());
         
        
         autonChooser.addObject("Do Nothing", new AutonWait(15));
@@ -204,7 +204,6 @@ public class Robot extends IterativeRobot {
     	RobotMap.imu.zeroYaw();
     	Robot.chassis.disable();
     	Robot.lift.setTeleopLiftSpeed();
-    	Robot.containerArmLift.enable();
     	//Robot.multiPurposeGrabber.on();
 
     }

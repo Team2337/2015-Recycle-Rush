@@ -48,6 +48,10 @@ public class Auton_Nested_A_WithContainerPreTroy extends CommandGroup {
 		Timer.delay(.1);
 		//Robot.lift.setSetpoint(1.8);				//trying to back away from stacked totes to score auton points
 		//Robot.kicker.kickIn();
+		
+		if (RobotMap.imu.getPitch() > 10) {
+			Robot.lift.setSetpoint(Robot.lift.getPosition() + .8);
+		}
 
 		for (int i = 0; i < 15; i++) {
 			RobotMap.chassisbackLeft.set(0.5);

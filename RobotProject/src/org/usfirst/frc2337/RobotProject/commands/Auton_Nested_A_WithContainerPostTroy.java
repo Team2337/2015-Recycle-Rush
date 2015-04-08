@@ -30,11 +30,8 @@ public class Auton_Nested_A_WithContainerPostTroy extends CommandGroup {
     	addSequential(new ResetEncoder());
     	addSequential(new ResetStrafeEncoder());
     	
-    	addSequential(new Auton_Summary_GrabContainer());
-    	addSequential(new Auton_Summary_Initial_Block2());
-    	addSequential(new Auton_Summary_GrabTote2());
-    	addSequential(new Auton_Summary_MoveToTote3AndPush());
-    	addSequential(new Auton_Summary_TheBigFinish());
+    	addSequential(new Auton_SummaryPostTroy());
+
     	
     	
     	
@@ -46,8 +43,10 @@ public class Auton_Nested_A_WithContainerPostTroy extends CommandGroup {
 	
 	protected void end() {
 		Timer.delay(.1);
-		//Robot.lift.setSetpoint(1.8);				//trying to back away from stacked totes to score auton points
-		//Robot.kicker.kickIn();
+
+		if (RobotMap.imu.getPitch() > 10) {
+			Robot.lift.setSetpoint(Robot.lift.getPosition() + .8);
+		}
 
 		for (int i = 0; i < 15; i++) {
 			RobotMap.chassisbackLeft.set(0.5);
@@ -56,6 +55,8 @@ public class Auton_Nested_A_WithContainerPostTroy extends CommandGroup {
 			RobotMap.chassisfrontRight.set(-0.5);
 			Timer.delay(.02);
 		}
+		
+
 	}    
  
 }

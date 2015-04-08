@@ -74,11 +74,6 @@ public class RobotMap {
     public static SpeedController intakeLeftArmMotor;
     public static SpeedController intakeRightArmMotor;
     
-    		//public static DigitalInput liftAutoTote;
-
-    //ContainerArm and Extension (Solenoid)
-    public static CANTalon containerArmMotor;  
-    public static AnalogPotentiometer armPotentiometer;
     
     //Multi Purpose container solenoid.
    // public static Solenoid containerSolenoid1;
@@ -176,13 +171,7 @@ public class RobotMap {
         liftPotentiometer = new AnalogPotentiometer(2, 10.0, 0.068);
         LiveWindow.addSensor("Lift", "Potentiometer", liftPotentiometer);
         
-    	//Container items
-        containerArmMotor = new CANTalon(10);
-        containerArmMotor.changeControlMode(ControlMode.PercentVbus);
-        containerArmMotor.enableBrakeMode(false);
-        containerArmMotor.reverseOutput(false);
-        armPotentiometer = new AnalogPotentiometer(0, 10.0, 0.068);			//settings ok????
-        LiveWindow.addSensor("ContainerArmLift", "Potentiometer", liftPotentiometer);
+
         
         //Multipurpose Container Grabber
     	//containerSolenoid1 = new Solenoid(0,0);
