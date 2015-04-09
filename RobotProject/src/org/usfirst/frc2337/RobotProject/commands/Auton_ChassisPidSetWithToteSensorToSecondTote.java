@@ -18,12 +18,13 @@ import edu.wpi.first.wpilibj.Timer;
 /**
  *
  */
-public class  Auton_ChassisPidSetWithToteSensor extends Command {
+public class  Auton_ChassisPidSetWithToteSensorToSecondTote extends Command {
 
    double pidset; 
    double totePosition = 152;
+   boolean toteSensed = false;
    
-    public Auton_ChassisPidSetWithToteSensor(double pidset) {
+    public Auton_ChassisPidSetWithToteSensorToSecondTote(double pidset) {
     	this.pidset = pidset;
     	
         // Use requires() here to declare subsystem dependencies
@@ -42,10 +43,11 @@ public class  Auton_ChassisPidSetWithToteSensor extends Command {
     protected void execute() {
     	double pidget = Robot.chassis.getPosition();
     	
-    	if (Robot.chassis.isToteSensor()) {
+    	if (Robot.chassis.isToteSensor() && !toteSensed) {		//tote sensor active AND hasn't previously triggered AND not sensing something else
     		Robot.chassis.disable();
     		Robot.chassis.setSetpoint(pidget + totePosition);
     		Robot.chassis.enable();
+    		toteSensed = true;
     	}
     }
 
@@ -53,9 +55,9 @@ public class  Auton_ChassisPidSetWithToteSensor extends Command {
     protected boolean isFinished() {
     	// return (Robot.chassis.onTarget() || Robot.chassis.isToteSensor());
     	//return (Robot.chassis.onTarget());
-    	return (Robot.chassis.isToteSensor() && (Robot.chassis.getPosition() > 200));
+    		return ((Robot.chassis.onTarget() || (Robot.chassis.getPosition() > Robot.chassis.getSetpoint())) && (Robot.chassis.getPosition() > 420));
     }
-
+    
     // Called once after isFinished returns true
     protected void end() {
     	//Robot.chassis.stopMotors();

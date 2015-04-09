@@ -18,7 +18,7 @@ public class KICKER_KickOut extends Command {
     protected void initialize() {
     	//Robot.kicker.autoOff = true;
     		Robot.kicker.solenoid.set(DoubleSolenoid.Value.kReverse);
-    		Robot.kicker.stateOut = false;
+    		Robot.kicker.stateOut = true;
     		//Robot.led.kickerLED(true);
     }
 

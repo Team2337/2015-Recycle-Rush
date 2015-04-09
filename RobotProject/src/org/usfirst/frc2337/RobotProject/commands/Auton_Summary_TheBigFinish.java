@@ -34,7 +34,7 @@ public class Auton_Summary_TheBigFinish extends CommandGroup {
     	
     	addSequential(new MetaTrolleyBrake_On());
     	//addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos3));		//		STILL NEED ????
-    	addSequential(new AutonEncoderStrafeIn(0.8, -750));
+    	addSequential(new AutonEncoderStrafeIn(.8, -750));
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.8, 2.4));		//strafe into the auton zone
     	
       	//addSequential(new Auton_ActivateMotors(-1,1));

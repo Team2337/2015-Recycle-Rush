@@ -45,9 +45,11 @@ public class Auton_Nested_A_WithContainer extends CommandGroup {
 	}
 	
 	protected void end() {
-		Timer.delay(.1);
+		//Timer.delay(.1);
 		//Robot.lift.setSetpoint(1.8);				//trying to back away from stacked totes to score auton points
 		//Robot.kicker.kickIn();
+		Robot.intakeExtendArms.armsIn();
+		
 		if (RobotMap.imu.getPitch() > 10) {
 			Robot.lift.setSetpoint(Robot.lift.getPosition() + .8);
 		}
@@ -59,6 +61,8 @@ public class Auton_Nested_A_WithContainer extends CommandGroup {
 			RobotMap.chassisfrontRight.set(-0.5);
 			Timer.delay(.02);
 		}
+		Robot.intakeOpenArms.openArmsIn();
+		Robot.intakeMotors.setIntakeMotorsStop();
 	}    
  
 }
