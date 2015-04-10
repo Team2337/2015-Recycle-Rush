@@ -50,9 +50,18 @@ public class Auton_Nested_A_WithContainer extends CommandGroup {
 		//Robot.kicker.kickIn();
 		Robot.intakeExtendArms.armsIn();
 		
+		/*
 		if (RobotMap.imu.getPitch() > 10) {
 			Robot.lift.setSetpoint(Robot.lift.getPosition() + .8);
 		}
+		*/
+		
+		if (RobotMap.imu.getPitch() > 10) {
+			Robot.lift.setSetpoint(Robot.lift.getPosition() + .8);
+		}else {
+			Robot.lift.setSetpoint(Robot.lift.getPosition() - .1);			
+		}
+		
 		
 		for (int i = 0; i < 15; i++) {
 			RobotMap.chassisbackLeft.set(0.5);

@@ -19,8 +19,8 @@ public class Auton_DriveToAutonZone extends CommandGroup {
     
     public  Auton_DriveToAutonZone() {
 
-    	addSequential(new Auton_ChassisPidSet(260));
-    	addSequential(new AutonTurnDegreesCwPos(90));
+    	addSequential(new Auton_ChassisPidSet(275));
+    	//addSequential(new AutonTurnDegreesCwPos(90));
     	//addSequential(new AutonEncoderStrafeOut(0.5, 5));
 	
     }

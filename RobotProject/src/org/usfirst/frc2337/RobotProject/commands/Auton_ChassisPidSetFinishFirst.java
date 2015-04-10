@@ -18,50 +18,35 @@ import edu.wpi.first.wpilibj.Timer;
 /**
  *
  */
-public class  Auton_ChassisPidSetWithToteSensor extends Command {
+public class  Auton_ChassisPidSetFinishFirst extends Command {
 
-   double pidset; 
-   double totePosition = 148;
    
-    public Auton_ChassisPidSetWithToteSensor(double pidset) {
-    	this.pidset = pidset;
-    	
+    public Auton_ChassisPidSetFinishFirst() {
+   
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	//requires(Robot.chassis);
     	requires(Robot.chassis); 
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    		Robot.chassis.enable();
-    		Robot.chassis.setSetpoint(pidset);    
+    		Robot.chassis.enable();  
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double pidget = Robot.chassis.getPosition();
-    	
-    	if (Robot.chassis.isToteSensor()) {
-    		Robot.chassis.disable();
-    		Robot.chassis.setSetpoint(pidget + totePosition);
-    		Robot.chassis.enable();
-    	}
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	// return (Robot.chassis.onTarget() || Robot.chassis.isToteSensor());
-    	//return (Robot.chassis.onTarget());
-    	return (Robot.chassis.isToteSensor() && (Robot.chassis.getPosition() > 250));
+    	
+    	return (Robot.chassis.onTarget() || Robot.chassis.getPosition() >  Robot.chassis.getSetpoint());
+
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	//Robot.chassis.stopMotors();
-    	//Robot.chassis.resetEncoder();
-    	//Robot.chassis.disable();
-    	//    	Robot.chassis.setSetpoint(Robot.chassis.getPosition());
+
     }
 
     // Called when another command which requires one or more of the same

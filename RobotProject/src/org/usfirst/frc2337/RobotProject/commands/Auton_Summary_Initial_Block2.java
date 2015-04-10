@@ -44,6 +44,7 @@ public class Auton_Summary_Initial_Block2 extends CommandGroup {
     	//addSequential(new AutonWait(1));
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos2));		//lower tote to pos 2 in parallel while driving to next tote
 
+    	//    addSequential(new Auton_ChassisPidSetFinishFirst());  /// testing........................................
 	
     }
 }

@@ -31,7 +31,7 @@ public class Auton_Summary_MoveToTote3AndPush extends CommandGroup {
     	
     	//AVOID CONTAINER 2: PART 2
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos9));		//lift tote stack to position 6 to clear can
-    	//Changed to .6 from .5 at kettering.
+    	
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.65, 0.6));	//strafe out to clear handle of can when driving forward
     	addSequential(new AutonEncoderStrafeOut(1, 10));				// changed at kettering for container arm  .65
     	//addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.5, 0.4));	//strafe out to clear handle of can when driving forward
