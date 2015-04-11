@@ -122,9 +122,9 @@ public class OI {
         
        
        joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
-       joystickDriverButtonA.whenPressed(new AutonEncoderStrafeOutB(0.5,40));
-       //joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
-      // joystickDriverButtonB.whenPressed(new MultiPurposeGrabber_Close());
+       joystickDriverButtonA.whenPressed(new MultiPurposeGrabber_Open());
+       joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
+       joystickDriverButtonB.whenPressed(new MultiPurposeGrabber_Close());
 
         
 

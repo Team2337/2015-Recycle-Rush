@@ -76,7 +76,8 @@ public class RobotMap {
     
     
     //Multi Purpose container solenoid.
-   // public static Solenoid containerSolenoid1;
+    public static Solenoid containerSolenoid1;
+    //public static DoubleSolenoid containerSolenoid1;
     
     //////////
     // LEDS //
@@ -174,7 +175,8 @@ public class RobotMap {
 
         
         //Multipurpose Container Grabber
-    	//containerSolenoid1 = new Solenoid(0,0);
+    	containerSolenoid1 = new Solenoid(0,0);
+        //containerSolenoid1 = new DoubleSolenoid(0,0);
     	//LiveWindow.addActuator("MultiPurposeContainerGrabber", "Multi Purpose Container grabber", containerSolenoid1);
         
         

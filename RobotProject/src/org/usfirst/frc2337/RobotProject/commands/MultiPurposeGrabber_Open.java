@@ -24,13 +24,13 @@ public class  MultiPurposeGrabber_Open extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	//requires(Robot.chassis);
-    //	requires(Robot.multiPurposeGrabber);
+    	requires(Robot.multiPurposeGrabber);
 
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-   // 	Robot.multiPurposeGrabber.on();
+    	Robot.multiPurposeGrabber.on();
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.*;
 public class MultiPurposeContainerGrabber extends Subsystem {
     
 
-	//public Solenoid solenoidC = RobotMap.containerSolenoid1;
+	public Solenoid solenoidC = RobotMap.containerSolenoid1;
 
 
     public void initDefaultCommand() {
@@ -24,16 +24,16 @@ public class MultiPurposeContainerGrabber extends Subsystem {
      * Sets the MetaTrolley brake on.
      */
     public void on() {
-  //  	solenoidC.set(true);
+    	solenoidC.set(true);
     }
     /**
      * Sets the MetaTrolley brake off.
      */
     public void off() {
-    //	solenoidC.set(false);
+    	solenoidC.set(false);
     }
     public void getState() {
-   // 	solenoidC.get();
+    	solenoidC.get();
     
     }
 
