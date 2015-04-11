@@ -23,17 +23,18 @@ public class Auton_Summary_TheBigFinish extends CommandGroup {
     	
     	
     	addParallel(new INTAKE_OpenArms_ArmsOut());
-    	addSequential(new INTAKE_ExtendArms_ArmsOut());
     	addSequential(new Auton_ActivateMotors(-1,1));
+    	addSequential(new INTAKE_ExtendArms_ArmsOut());
+
     	
 
 
-       	addSequential(new AutonEncoderStrafeIn(1.0, -450)); 		
+       	addSequential(new AutonEncoderStrafeIn(1.0, -400)); 		
     	addSequential(new Auton_ActivateMotors(0,0));
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos15));     
     	
     	addSequential(new MetaTrolleyBrake_On());
-    	addSequential(new AutonEncoderStrafeIn(1, -750));
+    	addSequential(new AutonEncoderStrafeIn(1, -650));
      	addSequential(new KICKER_KickIn());								
     	//addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));		//lower lift to release tote
     	

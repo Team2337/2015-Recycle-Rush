@@ -58,8 +58,8 @@ public class Auton_Nested_A_WithContainer extends CommandGroup {
 		
 		if (RobotMap.imu.getPitch() > 10) {
 			Robot.lift.setSetpoint(Robot.lift.getPosition() + .8);
-		}else {
-			Robot.lift.setSetpoint(Robot.lift.getPosition() - .1);			
+		} else {
+			Robot.lift.setSetpoint(Robot.lift.getPosition() - .2);			
 		}
 		
 		

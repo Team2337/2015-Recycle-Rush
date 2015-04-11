@@ -20,21 +20,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Auton_Summary_Initial_Block2 extends CommandGroup {
     
     public  Auton_Summary_Initial_Block2() {
-    //	addParallel(new KICKER_KickIn());								//deploy kicker IN Just in case
-    	//*****************MASK LACK OF STAFE ENCODER
-    //	addSequential(new AutonStrafeAtSpeedForTimeGyro(-0.5, 0.3));	//strafe out to clear handle of can when driving forward
-    	addParallel(new KICKER_KickOut());
+     	addParallel(new KICKER_KickOut());
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));   	//lift tote to position 1
-    	
-    	//AVOID CONTAINER
-    	//addSequential(new AutonDriveAtSpeedForTimeGyro(-0.3, 0.11));	//drive back to clear can lid when lifting
-    	
+    	    	
     	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos2));		//lift tote to position to clear can
     	addSequential(new AutonEncoderStrafeOut(1, 10));				// changed at kettering for container arm  0.5
-    	//*****************MASK LACK OF STAFE ENCODER
-    	//addSequential(new AutonStrafeAtSpeedForTimeGyro(0.5, 0.3));		//strafe in to set down tote 1 on tote 2
-  
-    	//addSequential(new AutonWait(1));								// STILL NEED??????
+
 
     	//DRIVE TO TOTE 2   	
     	//addSequential(new AutonDriveForEncoderGyroIterative(290));			//ramp speed up and drive past container

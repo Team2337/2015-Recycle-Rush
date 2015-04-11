@@ -28,20 +28,22 @@ public class Auton_Summary_GrabTote2 extends CommandGroup {
        	//SET DOWN TOTE 1 ON TOTE 2
     	addSequential(new AutonEncoderStrafeIn(1, -15));    	
     	addParallel(new INTAKE_OpenArms_ArmsOut());
-    	addSequential(new INTAKE_ExtendArms_ArmsOut());
-    	addSequential(new Auton_ActivateMotors(-1,1));
+    	addParallel(new Auton_ActivateMotors(-1,1));
+    	addParallel(new INTAKE_ExtendArms_ArmsOut());
+
 
     	//addSequential(new MetaTrolleyBrake_On());
     	addSequential(new AutonWait(0.6));
-    	addSequential(new KICKER_KickIn());								//kicker already in?????????
+    	addSequential(new KICKER_KickIn());								
     	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos4));		//set down tote and get ready to pick up 2nd tote
     								
     	addSequential(new AutonEncoderStrafeIn(1, -35));				//Changed 3/22 from -30    //Changed at kettering from -20
-
+      	addSequential(new KICKER_KickOut());
      	addSequential(new AutonWait(0.4));
       	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos5));		//grab 2 tote stack
       	//addSequential(new MetaTrolleyBrake_Off());
-    	
+
+      	
     	addParallel(new Auton_ActivateMotors(0,0));					//Moved from line 46
     	addSequential(new INTAKE_OpenArms_ArmsIn());
     	addSequential(new INTAKE_ExtendArms_ArmsIn());
