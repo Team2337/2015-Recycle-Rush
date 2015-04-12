@@ -18,9 +18,9 @@ import org.usfirst.frc2337.RobotProject.Robot;
 import org.usfirst.frc2337.RobotProject.RobotMap;
 
 /**
- * Drive for a specified time. May or may not be in a straight line. Linearly ramps up the speed.
+ * Turns to a degree in the counter-clockwise direction (to a negative value)
  * 
- * @param seconds The time, in seconds, to drive for.
+ * @param degreesS.
  */
 public class AutonTurnDegreesCcwNeg extends Command {
 		private double degrees;

@@ -10,6 +10,8 @@
 
 
 package org.usfirst.frc2337.RobotProject.commands;
+import org.usfirst.frc2337.RobotProject.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -22,12 +24,13 @@ public class Auton_1Tote extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
 
-    	
-    	addSequential(new LIFT_PidSet(2,1)); 						//lift tote to position 2 (also to simulate end of 3-tote auton)
-    												// kick out pancake cylinder in preperation to push tote(s)
-    	addParallel(new LIFT_PidSet(0,1));							//drop tote to floor
-    	addSequential(new AutonStrafeAtSpeedForTime(1.0,1.9));		//strafe out to auton zone...  Need to check distance
-    	addSequential(new AutonStrafeAtSpeedForTime(-1.0,0.5));		//strafe back away from tote(s)
+    	addSequential(new ChassisDisable());
+    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));   	//Lift tote to position 1
+    	addParallel(new KICKER_KickOut());
+    	addSequential(new AutonEncoderStrafeIn(1, -650));
+    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos12));
+    	addSequential(new MetaTrolleyBrake_On());
+     	addSequential(new KICKER_KickIn());	
 	
     }
 }
