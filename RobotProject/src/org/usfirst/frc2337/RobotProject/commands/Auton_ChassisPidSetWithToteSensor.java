@@ -62,6 +62,7 @@ public class  Auton_ChassisPidSetWithToteSensor extends Command {
     	//Robot.chassis.resetEncoder();
     	//Robot.chassis.disable();
     	//    	Robot.chassis.setSetpoint(Robot.chassis.getPosition());
+    	System.out.println("Saw the tote Sensor.");
     }
 
     // Called when another command which requires one or more of the same

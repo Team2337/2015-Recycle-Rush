@@ -17,9 +17,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Auton_Summary_TheBigFinish extends CommandGroup {
+public class Auton_Summary_TheBigFinishWithTurn extends CommandGroup {
     
-    public  Auton_Summary_TheBigFinish() {
+    public  Auton_Summary_TheBigFinishWithTurn() {
     	
     	
     	addParallel(new INTAKE_OpenArms_ArmsOut());
@@ -27,14 +27,18 @@ public class Auton_Summary_TheBigFinish extends CommandGroup {
     	addSequential(new INTAKE_ExtendArms_ArmsOut());
 
     	
+    	addSequential(new AutonEncoderStrafeIn(1.0, -160));
+    	addSequential(new AutonTurnDegreesCcwNeg(83));
 
 
-       	addSequential(new AutonEncoderStrafeIn(1.0, -350)); 				///////////Changed To Final and from 400 to 350
+       	//addSequential(new AutonEncoderStrafeIn(1.0, -350)); 				///////////Changed To Final and from 400 to 350
+
+     
+
+    	addSequential(new Auton_TheBigFinishInside());
     	addSequential(new Auton_ActivateMotors(0,0));
-    	addParallel(new Auton_LIFT_PidSet(Robot.lift.autonPos15));     
-    	
-    	addSequential(new MetaTrolleyBrake_On());
-    	addSequential(new AutonEncoderStrafeIn(1, -650));					//////////Changed to Final
+
+    	//addSequential(new AutonEncoderStrafeIn(1, -650));					//////////Changed to Final
      	addSequential(new KICKER_KickIn());								
     	//addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos1));		//lower lift to release tote
     	

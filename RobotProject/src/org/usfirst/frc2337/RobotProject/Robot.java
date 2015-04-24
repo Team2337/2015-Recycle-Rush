@@ -76,7 +76,7 @@ public class Robot extends IterativeRobot {
         autonChooser.addObject("Drive To Auton Zone with PID", new Auton_DriveToAutonZone());
         autonChooser.addObject("Move 1 Container to Auton Zone", new Auton_OneContainer());
         autonChooser.addObject("Move 1 Tote to Auton Zone", new Auton_1Tote());
-        //autonChooser.addObject("Grab Container First Pre Troy", new Auton_Nested_A_WithContainerPreTroy());
+        autonChooser.addObject("Grab Container And Turn at End", new Auton_Nested_A_WithContainerAndTurn());
         autonChooser.addDefault("Grab Container First", new Auton_Nested_A_WithContainer());
         autonChooser.addObject("Grab Container from Step", new Auton_StepContainer());
          //autonChooser.addObject("COMP - Move 3 Totes J Kettering BLUE", new Auton_3ToteJ_COMP_Kettering_BLUE());
