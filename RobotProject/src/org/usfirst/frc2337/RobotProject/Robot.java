@@ -37,6 +37,7 @@ public class Robot extends IterativeRobot {
     public static MetaTrolleyBrake metaTrolleyBrake;		//====================================================
     public static MetaTrolleyGrabber metaTrolleyGrabber;
     public static MultiPurposeContainerGrabber multiPurposeGrabber;
+    public static CanBurglarMotors canBurglar;
 
 
 
@@ -59,6 +60,7 @@ public class Robot extends IterativeRobot {
         metaTrolleyBrake = new MetaTrolleyBrake();			//============================================
         metaTrolleyGrabber = new MetaTrolleyGrabber();
         multiPurposeGrabber = new MultiPurposeContainerGrabber();
+        canBurglar = new CanBurglarMotors();
         
         
 
@@ -76,9 +78,15 @@ public class Robot extends IterativeRobot {
         autonChooser.addObject("Drive To Auton Zone with PID", new Auton_DriveToAutonZone());
         autonChooser.addObject("Move 1 Container to Auton Zone", new Auton_OneContainer());
         autonChooser.addObject("Move 1 Tote to Auton Zone", new Auton_1Tote());
-        autonChooser.addObject("Grab Container And Turn at End", new Auton_Nested_A_WithContainerAndTurn());
-        autonChooser.addDefault("Grab Container First", new Auton_Nested_A_WithContainer());
-        autonChooser.addObject("Grab Container from Step", new Auton_StepContainer());
+        
+        autonChooser.addObject("Grab Container First", new Auton_Nested_A_WithContainer());
+        autonChooser.addObject("3 TOTE DO NOT Grab Container First", new Auton_Nested_A_without_container());
+        
+        
+        
+        autonChooser.addDefault("Grab Container from Step NOW", new Auton_CanBurglarImmediate());
+        autonChooser.addObject("Grab Container from Step without driving", new Auton_CanBurglarDelayed());
+        //autonChooser.addObject("OLD Grab Container from Step", new Auton_StepContainer());
          //autonChooser.addObject("COMP - Move 3 Totes J Kettering BLUE", new Auton_3ToteJ_COMP_Kettering_BLUE());
          //autonChooser.addObject("COMP - Move 3 Totes J AFTER Kettering TEST", new Auton_3ToteJ_After_Kettering());
          //autonChooser.addObject("Move 3 Summary with arms", new Auton_Nested_A());
@@ -163,6 +171,12 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Drive Speed", Robot.oi.joystickDriver.getRawAxis(1));
         SmartDashboard.putNumber("Strafe Speed", Robot.oi.joystickDriver.getRawAxis(3) - Robot.oi.joystickDriver.getRawAxis(2));
         SmartDashboard.putNumber("Rotate Speed", Robot.oi.joystickDriver.getRawAxis(4));
+        
+        SmartDashboard.putBoolean("Left fwd limit switch", RobotMap.canburglarleft.isFwdLimitSwitchClosed());
+        SmartDashboard.putBoolean("Left rev limit switch", RobotMap.canburglarleft.isRevLimitSwitchClosed());
+        SmartDashboard.putBoolean("right fwd limit switch", RobotMap.canburglarright.isFwdLimitSwitchClosed());
+        SmartDashboard.putBoolean("right rev limit switch", RobotMap.canburglarright.isRevLimitSwitchClosed());
+        
         
     }
 

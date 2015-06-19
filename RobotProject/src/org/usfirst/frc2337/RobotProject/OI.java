@@ -122,10 +122,12 @@ public class OI {
         
        
        joystickDriverButtonA = new JoystickButton(joystickDriver, 1);
-       joystickDriverButtonA.whenPressed(new MultiPurposeGrabber_Open());
        joystickDriverButtonB = new JoystickButton(joystickDriver, 2);
-       joystickDriverButtonB.whenPressed(new MultiPurposeGrabber_Close());
-
+       
+       //joystickDriverButtonA.whenPressed(new MultiPurposeGrabber_Open());
+       //joystickDriverButtonB.whenPressed(new MultiPurposeGrabber_Close());
+       joystickDriverButtonA.whileHeld(new CANBURGLAR_Retract());
+       joystickDriverButtonB.whileHeld(new CANBURGLAR_Deploy());
         
 
       //  joystickDriverButtonX = new JoystickButton(joystickDriver, 3);

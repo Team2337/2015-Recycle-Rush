@@ -57,6 +57,11 @@ public class RobotMap {
     public static CANTalon slaveliftMotor3;
     public static AnalogPotentiometer liftPotentiometer;
     
+    // Can Burgalars
+    public static CANTalon canburglarright;
+    public static CANTalon canburglarleft;
+    
+    
     //MetaTrolley									=====================================================
     public static Solenoid metaTrolleyBrakeSolenoid;
     public static DoubleSolenoid metaTrolleyGrabberSolenoid;
@@ -172,6 +177,24 @@ public class RobotMap {
         liftPotentiometer = new AnalogPotentiometer(2, 10.0, 0.068);
         LiveWindow.addSensor("Lift", "Potentiometer", liftPotentiometer);
         
+        //Canburglars
+        canburglarright = new CANTalon(11);
+        canburglarright.changeControlMode(ControlMode.PercentVbus);
+        canburglarright.reverseOutput(false);
+        canburglarright.enableBrakeMode(true);
+        canburglarright.enableLimitSwitch(true, true);
+        canburglarright.ConfigFwdLimitSwitchNormallyOpen(true);
+        canburglarright.ConfigRevLimitSwitchNormallyOpen(true);
+        
+
+        
+        canburglarleft = new CANTalon(10);
+        canburglarleft.changeControlMode(ControlMode.PercentVbus);
+        canburglarleft.reverseOutput(true);
+        canburglarleft.enableBrakeMode(true);
+        //canburglarleft.enableLimitSwitch(true, true);
+        canburglarleft.ConfigFwdLimitSwitchNormallyOpen(true);
+        canburglarleft.ConfigRevLimitSwitchNormallyOpen(true);
 
         
         //Multipurpose Container Grabber
