@@ -38,6 +38,7 @@ public class Robot extends IterativeRobot {
     public static MetaTrolleyGrabber metaTrolleyGrabber;
     public static MultiPurposeContainerGrabber multiPurposeGrabber;
     public static CanBurglarMotors canBurglar;
+    public static boolean TelopCanGrab;
 
 
 
@@ -69,7 +70,7 @@ public class Robot extends IterativeRobot {
         // constructed yet. Thus, their requires() statements may grab null 
         // pointers. Bad news. Don't move it.
         oi = new OI();
-
+        TelopCanGrab = false;
         
       //AUTON CHOOSER
         //Instantiate the command used for the autonomous period
@@ -77,7 +78,10 @@ public class Robot extends IterativeRobot {
         autonChooser = new SendableChooser();
         autonChooser.addObject("Drive To Auton Zone with PID", new Auton_DriveToAutonZone());
         autonChooser.addObject("Move 1 Container to Auton Zone", new Auton_OneContainer());
+        autonChooser.addObject("Move 2 Containers to Auton Zone", new Auton_TwoContainer());
         autonChooser.addObject("Move 1 Tote to Auton Zone", new Auton_1Tote());
+        autonChooser.addObject("Set variable to grab can at beginning of Telop", new Auton_TelopCanGrab());
+        
         
         autonChooser.addObject("Grab Container First", new Auton_Nested_A_WithContainer());
         autonChooser.addObject("3 TOTE DO NOT Grab Container First", new Auton_Nested_A_without_container());
@@ -221,6 +225,11 @@ public class Robot extends IterativeRobot {
     	Robot.chassis.disable();
     	Robot.lift.setTeleopLiftSpeed();
     	Robot.multiPurposeGrabber.off();
+    	
+    	if (TelopCanGrab) {
+    		new Auton_CanBurglarImmediate();
+    	
+    	}
 
     }
 
