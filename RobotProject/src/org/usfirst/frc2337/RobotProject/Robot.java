@@ -76,6 +76,7 @@ public class Robot extends IterativeRobot {
         //Instantiate the command used for the autonomous period
         //SmartDashboard Auton Selector
         autonChooser = new SendableChooser();
+        autonChooser.addObject("Can Burglar with Wiggle", new Auton_CanBurglarWiggleWiggleWiggle());
         autonChooser.addObject("Drive To Auton Zone with PID", new Auton_DriveToAutonZone());
         autonChooser.addObject("Move 1 Container to Auton Zone", new Auton_OneContainer());
         autonChooser.addObject("Move 2 Containers to Auton Zone", new Auton_TwoContainer());
