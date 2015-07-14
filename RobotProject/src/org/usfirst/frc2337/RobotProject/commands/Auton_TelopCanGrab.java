@@ -20,18 +20,23 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Auton_TelopCanGrab extends CommandGroup {
     
     public  Auton_TelopCanGrab() {
-    	addSequential(new ResetGyro());
-    	addSequential(new ResetEncoder());
-    	addSequential(new ResetStrafeEncoder());
+    	
+    }
+        protected void initialize() {
+        	Robot.TelopCanGrab = true;
+        }
+    //	addSequential(new ResetGyro());
+    //	addSequential(new ResetEncoder());
+    //	addSequential(new ResetStrafeEncoder());
     	
     	//addSequential(new LIFT_PidSetBlueButton());
-    	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos13));
-    	addSequential(new KICKER_KickOut());
-    	addSequential(new AutonWait(1));
+    //	addSequential(new Auton_LIFT_PidSet(Robot.lift.autonPos13));
+    	//addSequential(new KICKER_KickOut());
+    //	addSequential(new AutonWait(1));
     	
-    	addSequential(new Auton_ChassisPidSet(800));
+   // 	addSequential(new Auton_ChassisPidSet(800));
     	//addSequential(new AutonTurnDegreesCwPos(90));
     	//addSequential(new AutonEncoderStrafeOut(0.5, 5));
 	
-    }
+    
 }

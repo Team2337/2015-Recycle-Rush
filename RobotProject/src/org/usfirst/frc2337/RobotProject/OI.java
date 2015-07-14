@@ -221,9 +221,11 @@ public class OI {
         
         
         operatorControlsRightToggleUp = new JoystickButton(operatorControls, 8);
-        operatorControlsRightToggleUp.whenPressed(new LIFT_StopPID());
-        operatorControlsRightToggleUp.whenReleased(new LIFT_StartPID());
+       // operatorControlsRightToggleUp.whenPressed(new LIFT_StopPID());
+      //  operatorControlsRightToggleUp.whenReleased(new LIFT_StartPID());
         
+        operatorControlsRightToggleUp.whileHeld(new Telop_CanBurglarImmediate());
+    
         
       // operatorControlsRightToggleDown = new JoystickButton(operatorControls, 9);
       //  operatorControlsRightToggleDown.whileHeld(new LIFT_StartPID());

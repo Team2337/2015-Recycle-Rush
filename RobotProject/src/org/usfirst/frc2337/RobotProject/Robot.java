@@ -3,6 +3,7 @@
 package org.usfirst.frc2337.RobotProject;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.RobotState;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -70,7 +71,7 @@ public class Robot extends IterativeRobot {
         // constructed yet. Thus, their requires() statements may grab null 
         // pointers. Bad news. Don't move it.
         oi = new OI();
-        TelopCanGrab = false;
+  
         
       //AUTON CHOOSER
         //Instantiate the command used for the autonomous period
@@ -81,7 +82,7 @@ public class Robot extends IterativeRobot {
         autonChooser.addObject("Move 1 Container to Auton Zone", new Auton_OneContainer());
         autonChooser.addObject("Move 2 Containers to Auton Zone", new Auton_TwoContainer());
         autonChooser.addObject("Move 1 Tote to Auton Zone", new Auton_1Tote());
-        autonChooser.addObject("Set variable to grab can at beginning of Telop", new Auton_TelopCanGrab());
+       // autonChooser.addObject("Set variable to grab can at beginning of Telop", new Auton_TelopCanGrab());
         
         
         autonChooser.addObject("Grab Container First", new Auton_Nested_A_WithContainer());
@@ -181,6 +182,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean("Left rev limit switch", RobotMap.canburglarleft.isRevLimitSwitchClosed());
         SmartDashboard.putBoolean("right fwd limit switch", RobotMap.canburglarright.isFwdLimitSwitchClosed());
         SmartDashboard.putBoolean("right rev limit switch", RobotMap.canburglarright.isRevLimitSwitchClosed());
+        SmartDashboard.putBoolean("Robot STATE", RobotState.isOperatorControl());
         
         
     }
@@ -227,10 +229,7 @@ public class Robot extends IterativeRobot {
     	Robot.lift.setTeleopLiftSpeed();
     	Robot.multiPurposeGrabber.off();
     	
-    	if (TelopCanGrab) {
-    		new Auton_CanBurglarImmediate();
-    	
-    	}
+
 
     }
 
@@ -240,6 +239,8 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         robotPeriodic();
+
+
     }
 
     /**

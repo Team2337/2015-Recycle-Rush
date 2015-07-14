@@ -13,23 +13,21 @@ package org.usfirst.frc2337.RobotProject.commands;
 import org.usfirst.frc2337.RobotProject.Robot;
 import org.usfirst.frc2337.RobotProject.RobotMap;
 
+import edu.wpi.first.wpilibj.RobotState;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *  
  */
-public class Auton_CanBurglarWiggleWiggleWiggle extends CommandGroup {
+public class Telop_CanBurglarImmediate extends CommandGroup {
 	
-    public  Auton_CanBurglarWiggleWiggleWiggle() {
-    	
-    	addSequential(new Auton_CANBURGLAR_Deploy(1.0));
-     	addSequential(new AutonDriveAtSpeedForTimeGyro(0.4, 0.1));
-    	addSequential(new AutonDriveAtSpeedForTimeGyro(-0.4, 0.2));
-    	addSequential(new AutonDriveAtSpeedForTimeGyro(0.4, 0.1));
+    public  Telop_CanBurglarImmediate() {
+    	if (RobotState.isOperatorControl()) {
+    	addParallel(new Auton_CANBURGLAR_Deploy(1.0));
     	addSequential(new AutonWait(0.4));
-    	//addSequential(new AutonStrafeAtSpeedForTime(1, 3));
+    	addSequential(new AutonStrafeAtSpeedForTime(1, 3));
     	//addSequential(new AutonEncoderStrafeIn(1, 200));
-    	
+    	}
     }
 }
